@@ -110,7 +110,7 @@ aside{display:flex;flex-direction:column;gap:16px;min-width:0}
   <header>
     <h1>Oficina Polyplas<small>Tu equipo de agentes trabajando por las ventas de polyplas.cl</small></h1>
     <div class="controls">
-      <span class="chip"><span class="dot"></span>Vigilante + SEO + CRO + Ads + UX/UI activos</span>
+      <span class="chip"><span class="dot"></span>Vigilante + SEO + CRO + Ads + UX/UI + Intel activos</span>
       <span class="chip" id="modeChip"><span class="dot demo"></span>Actividad simulada</span>
       <button class="btn" id="modeBtn" type="button">Ver solo lo real</button>
       <button class="btn primary" id="pauseBtn" type="button">Pausar</button>
@@ -164,9 +164,40 @@ const AGENTS=[
  {id:'cat',name:'Catalogador',shirt:0xd0742b,hair:0x8a5a2b,
   tasks:['PETG 2 mm → compra directa','Tina Kuyen → alto ticket','Cúpula a medida → cotización','Receptáculo 90x90 → remodelación','Revisando variantes de espesor'],
   props:[{what:'Marcar policarbonato compacto como "proyecto/volumen"',why:'Sus consultas suelen venir de empresas con medidas grandes.'}]},
- {id:'ana',name:'Analista',shirt:0x2f6db5,hair:0xc9a227,
-  tasks:['Armando informe del lunes','Cruzando ventas por tipo de compra','Buscando productos que caen','Leyendo preguntas de clientes'],
-  props:[{what:'Priorizar la guía de tinas esta semana',why:'Quienes leen la guía compran tinas con más frecuencia (dato de ejemplo).'}]},
+ {id:'intel',name:'Intel',real:true,shirt:0x1a3a5c,hair:0xe8c87a,
+  tasks:[
+    'Relevando precios de Norglas en tinas entry-mid: Ocean $472.990, Creta $679.990, Lebka Plus $939.990',
+    'Comparando precio acrílico 5mm: DVP $82.990, Polymershapes $70.080 — ¿cómo está Polyplas?',
+    'Revisando outlet activo de Norglas (Noventta 140×140, Sea 183×90) — señal de stock alto',
+    'Analizando diferencial CHC: garantía 5 años explícita + 12 cuotas sin interés en fichas de tinas',
+    'Mapeando keywords donde Norglas.cl posiciona que Polyplas no tiene (GSC cruzado)',
+    'Revisando anuncios de Ads de competidores en "tina hidromasaje chile" y "plancha acrilico santiago"',
+    'Chequeando si DVP o Polymershapes tienen campañas Shopping activas esta semana',
+    'Construyendo tabla base: 5 SKUs clave de Polyplas vs precio equivalente en cada competidor'
+  ],
+  props:[
+    {
+      what:'CHC declara garantía de 5 años en tinas — Polyplas no tiene garantía visible en las fichas',
+      why:'chc.cl muestra "5-year warranty" explícitamente en sus fichas de tinas (relevado nov 2026). Polyplas importa directamente y probablemente ofrece garantía equivalente, pero no está declarada en la ficha del producto. El cliente que compara no lo ve.',
+      objetivo:'conversión',
+      riesgo:'bajo',
+      ficha:'HALLAZGO: CHC.cl declara garantía de 5 años en todas sus tinas de hidromasaje (fuente: chc.cl/banos/tinas-y-spas, nov 2026). Las fichas de tinas de Polyplas (40-producto-tina-*/01-ficha.html) no muestran garantía visible.\n\nCOMPETIDORES CON GARANTÍA VISIBLE:\n• CHC: 5 años, declarado en ficha\n• Norglas: no verificado todavía\n• Sodimac/Falabella: garantía del fabricante (genérica)\n\nACCIÓN PROPUESTA: Agregar en la ficha de cada tina, cerca del precio y del CTA:\n  "Garantía: [X] años de fábrica"\nRequiere confirmar con Polyplas cuál es la garantía real que ofrece. Si es ≥3 años, declararlo explícitamente es una mejora de conversión sin costo.\n\nIMPACTO: Un cliente que compara Polyplas ($479.990 desde) vs Norglas Ocean ($472.990) con garantía visible en Norglas puede elegir Norglas solo por ese detalle. Paridad de precio + garantía visible = ventaja Polyplas.\nURGENCIA: Esta semana.\nACCIÓN POR ÁREA: confirmar garantía (jefe) → agregar texto en fichas (UX/UI).\nFUENTE: chc.cl/banos/tinas-y-spas — relevado 2026-11-03.'
+    },
+    {
+      what:'Norglas tiene outlet de tinas activo (Noventta 140×140, Sea 183×90) — revisar si impacta el precio percibido de Polyplas',
+      why:'tienda.norglas.cl tiene una sección "Outlet de Fábrica" con al menos 2 tinas activas (relevado nov 2026). Si Norglas está liquidando stock, puede bajar el precio de referencia del mercado temporalmente y hacer que los precios de Polyplas parezcan más caros.',
+      objetivo:'eficiencia',
+      riesgo:'medio',
+      ficha:'HALLAZGO: Norglas tiene activa una colección "Outlet de Fábrica" con tinas a precios reducidos:\n• Tina Noventta 140×140 cm — precio de outlet (rebajado)\n• Tina Sea 183×90 cm — precio de outlet\n(Fuente: tienda.norglas.cl/collections/tinas-de-hidromasaje, nov 2026)\n\nCOMPETE DIRECTAMENTE CON: modelos de Polyplas en el rango 140×140 y similares.\n\nANÁLISIS:\n• El outlet de Norglas es cíclico — cuando liquidan, el precio de mercado baja temporalmente\n• Si el outlet de Norglas tiene modelos similares a los de Polyplas con precio 20%+ más bajo, puede restarle ventas sin que Polyplas se entere\n• Contrariamente: si Polyplas tiene modelos que Norglas no tiene en outlet, ese trimestre Polyplas tiene ventaja de catálogo\n\nACCIÓN PROPUESTA: Verificar precios exactos del outlet Norglas esta semana y comparar con modelos equivalentes de Polyplas. Si hay overlap de precio >15% en el mismo tamaño → alertar al jefe para decisión de precio o promoción.\n\nURGENCIA: Esta semana (revisar precios del outlet).\nACCIÓN POR ÁREA: precios y decisión → jefe. Comunicación → SEO/Ads si se decide responder.\nFUENTE: tienda.norglas.cl — relevado 2026-11-03.\nRIESGO INTEL: los precios de outlet cambian rápido, necesito precio exacto antes de actuar.'
+    },
+    {
+      what:'Novoacril vende corte láser a medida 100% online con entrega 5-8 días — Polyplas debe hacer visible su ventaja de entrega el mismo día / retiro hoy',
+      why:'novoacril.cl vende acrílico con corte a medida (recto y circular) y servicio láser online, con despacho en 5-8 días (relevado nov 2026). Polyplas ofrece retiro en Santiago Centro el mismo día y despacho en la RM — ventaja de velocidad que no está siendo comunicada en las fichas de planchas.',
+      objetivo:'conversión',
+      riesgo:'bajo',
+      ficha:'HALLAZGO: Novoacril.cl tiene un modelo 100% online de corte láser con tiempos de entrega de 5-8 días hábiles tras el pago. Precio del corte láser: desde $350 CLP/minuto.\n(Fuente: novoacril.cl/corte-laser-1 — relevado 2026-11-03)\n\nVENTAJA POLYPLAS NO COMUNICADA:\n• Retiro en Santiago Centro el MISMO DÍA (si el stock está disponible)\n• Despacho gratis en RM desde $350.000 (rápido, sin esperar 5-8 días)\n• 29 años como importadora directa (confianza vs un competidor online sin historia)\n\nACCIÓN PROPUESTA: Agregar en las fichas de planchas y en el configurador de corte a medida un mensaje visible:\n  "Retiro hoy en Santiago Centro · Despacho RM gratis desde $350.000"\nHoy ese mensaje puede estar en el topbar o en el footer, pero no en la ficha donde se decide la compra.\n\nIMPACTO: Un cliente que busca "plancha acrílico 5mm a medida Santiago" y encuentra a Novoacril con 5-8 días vs Polyplas con retiro hoy → la velocidad puede ser el factor decisivo.\nURGENCIA: Esta semana (cambio de texto en fichas, bajo riesgo).\nACCIÓN POR ÁREA: texto → UX/UI. SEO: agregar "retiro hoy" y "despacho rápido" como mensaje en meta description.\nFUENTE: novoacril.cl — relevado 2026-11-03.'
+    }
+  ]},
  {id:'cro',name:'CRO',real:true,shirt:0xb8475f,hair:0x2a1a12,
   tasks:[
     'Paso 0: verificando que GA4 registre purchase con valor — hoy los ingresos por evento muestran $0',
@@ -582,7 +613,8 @@ log('SEO: agente activado — primera auditoría pendiente de acceso a GSC y GA4
 log('CRO: agente activado — Paso 0 pendiente: verificar evento purchase en GA4');
 log('Ads: agente activado — Paso 0 pendiente: auditar conversiones en Google Ads');
 log('UX/UI: agente activado — Paso 0 pendiente: auditar carrito y fichas de tinas en mobile');
-log('Oficina abierta. Vigilante + SEO + CRO + Ads + UX/UI activos.');
+log('Intel: agente activado — Competencia identificada: Norglas, CHC, DVP, Polymershapes, Novoacril');
+log('Oficina abierta. Vigilante + SEO + CRO + Ads + UX/UI + Intel activos.');
 AGENTS.slice(0,4).forEach((a,i)=>setTimeout(()=>work(a),500+i*500));
 setTimeout(()=>propose(AGENTS[4]),2600);
 setInterval(tick,2300);
