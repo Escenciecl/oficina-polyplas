@@ -4,5 +4,10 @@ Cada cambio implementado se registra aquí con fecha, URL afectada y resultado m
 
 | Fecha | Cambio | URLs afectadas | Riesgo | Aprobado por | Resultado 14d | Resultado 28d | Resultado 56d |
 |-------|--------|---------------|--------|-------------|--------------|--------------|--------------|
+| 2026-11-03 | Optimizar title + meta description | /categoria-producto/tinas-de-hidromasaje/ | Medio | Jefe | — | — | — |
 
-> Agente activado el 2026-11-03. Sin cambios implementados aún — pendiente primera auditoría con datos reales de GSC y GA4.
+**Detalle del cambio 2026-11-03:**
+- Title: "Tinas de Hidromasaje y Jacuzzi 1 y 2 Personas desde $479.990" → "Tinas de Hidromasaje y Jacuzzi desde $479.990 · Retiro hoy en Santiago"
+- Meta: agrega "Importador directo, 29 años", "1 año de garantía", pone "Jacuzzi" primero
+- Rama: `agente/seo-tinas-meta` — commit d1d6b84
+- Medir: CTR en GSC a 14 días. Control: /categoria-producto/planchas-acrilico/ (sin cambios)
