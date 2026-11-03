@@ -167,10 +167,40 @@ const AGENTS=[
  {id:'ana',name:'Analista',shirt:0x2f6db5,hair:0xc9a227,
   tasks:['Armando informe del lunes','Cruzando ventas por tipo de compra','Buscando productos que caen','Leyendo preguntas de clientes'],
   props:[{what:'Priorizar la guía de tinas esta semana',why:'Quienes leen la guía compran tinas con más frecuencia (dato de ejemplo).'}]},
- {id:'cro',name:'Catálogo/CRO',shirt:0xb8475f,hair:0x2a1a12,
-  tasks:['Revisando ficha de plancha acrílico','Midiendo abandono en "Datos y envío"','Probando cotizador a medida','Ordenando fotos de tinas'],
-  props:[{what:'Mostrar costo de despacho a regiones antes del paso 3',why:'Muchos abandonan al ver que fuera de la RM no hay despacho gratis.'},
-         {what:'Agregar "usos típicos" en fichas de acrílico',why:'Clientes preguntan por WhatsApp si sirve para vitrinas o letreros.'}]},
+ {id:'cro',name:'CRO',real:true,shirt:0xb8475f,hair:0x2a1a12,
+  tasks:[
+    'Paso 0: verificando que GA4 registre purchase con valor — hoy los ingresos por evento muestran $0',
+    'Midiendo abandono funnel planchas: add_to_cart (622) → begin_checkout (454) = 27% dropout',
+    'Auditando ficha de tinas: 445 visitas, ticket alto, ¿suficiente info para decidir?',
+    'Revisando si el costo de despacho a regiones es visible antes del checkout',
+    'Cruzando búsquedas internas sin resultado con catálogo actual',
+    'Analizando funnel por dispositivo: escritorio vs celular',
+    'Revisando configurador de corte: conf_medida → conf_espesor → conf_pedido (~300 usos c/u)',
+    'Coordinando con SEO: páginas con tráfico orgánico alto y baja conversión'
+  ],
+  props:[
+    {
+      what:'Verificar y corregir el evento purchase en GA4 (Paso 0)',
+      why:'GA4 muestra ingresos totales de 1.542.799 CLP en 28 días, pero cada fila de eventos individuales marca $0 en ingresos. El evento purchase puede no estar enviando el parámetro value. Si los datos de conversión están rotos, toda optimización posterior es sobre arena.',
+      objetivo:'medición',
+      riesgo:'bajo',
+      ficha:'QUÉ: Verificar en GA4 > Configuración > Eventos que "purchase" existe y lleva parámetro value > 0. Comparar número de compras en GA4 vs ventas reales del sistema (Webpay + transferencias) en el mismo período. Si diferencia >10%, priorizar fix antes que cualquier otra propuesta.\n\nPOR QUÉ (datos reales GA4):\n• Total ingresos header: 1.542.799 $ (28 días)\n• Ingresos por fila de eventos: $0 en todos los eventos visibles\n• Esto sugiere que "purchase" existe pero sin valor, o que el revenue está en un evento diferente\n• Sin medición correcta no podemos calcular ROI de ningún cambio\n\nHIPÓTESIS: El evento purchase se dispara (Webpay redirige a la confirmación) pero no pasa el parámetro "value" con el monto real de la compra.\n\nIMPACTO: Sin costo si se confirma que todo está bien. Con costo si falta: cada mes operamos sin saber qué vende realmente.\n\nCONFIANZA: Alta en que hay un problema; media en el diagnóstico exacto hasta revisar GTM.\nESFUERZO: 2–4 horas (revisión GTM + Webpay callback).\nRIESGO: BAJO — solo lectura y diagnóstico, sin cambios al sitio.\nMEDICIÓN: Compras GA4 vs compras sistema en el mismo período de 7 días.'
+    },
+    {
+      what:'Mostrar aviso de despacho a regiones en la página del carrito',
+      why:'GA4: 622 add_to_cart → 454 begin_checkout = 27% abandona antes de llegar al checkout. Hipótesis principal: los usuarios de regiones descubren tarde que el despacho gratis es solo RM desde $350.000, o que no hay despacho disponible.',
+      objetivo:'conversión',
+      riesgo:'bajo',
+      ficha:'QUÉ: Agregar un aviso claro en la página del carrito (antes del botón "Ir al checkout") que explique: despacho gratis RM desde $350.000, despacho a regiones con costo estimado, y la opción de retiro en Santiago Centro sin costo. NO cambia el flujo de checkout.\n\nPOR QUÉ (datos reales GA4 — 1 jun al 22 oct 2026):\n• add_to_cart: 622 eventos\n• begin_checkout: 454 eventos\n• Abandono: 168 sesiones (27%) entre carrito y checkout\n• Causa probable: sorpresa con el costo de despacho (patrón clásico de e-commerce)\n\nHIPÓTESIS: Si el cliente sabe el costo de despacho antes de iniciar el checkout, los que igual quieran comprar lo harán con menos fricción, y los que no quieran saldrán antes sin "manchar" las métricas de checkout.\n\nIMPACTO ESTIMADO:\n• Sesiones que llegan al carrito (proxy): ~622 eventos / 5 meses = 124/mes\n• Si recuperamos el 20% del abandono: +34 checkouts/mes\n• Conversión post-checkout estimada (add_payment_info → compra): ~60%\n• Ventas extra: +20/mes × ticket promedio estimado\n• Conservador: +5 ventas/mes | Esperado: +12 | Optimista: +20\n\nCONFIANZA: Media — la hipótesis del despacho es probable pero no confirmada; puede haber otras causas de abandono.\nESFUERZO: 2–3 horas (texto + diseño + implementación).\nRIESGO: BAJO — texto informativo, no cambia el flujo. Reversible en <30 min.\nMÉTRICA PRINCIPAL: tasa add_to_cart → begin_checkout (hoy 73%).\nMÉTRICA RESGUARDO: ticket promedio (no debe bajar).\nMÉTODO: antes/después, medir 4 semanas completas. Control: tasa de begin_checkout en período equivalente.'
+    },
+    {
+      what:'Agregar ficha técnica completa en páginas de tinas de hidromasaje',
+      why:'GA4: 445 visitas a tinas en 28 días (156 usuarios únicos), bounce 18.7%. GSC: 29.315 impresiones, CTR 1.1%. Las tinas son el producto de mayor ticket y la ficha actual probablemente no da suficiente información para decidir (medidas, instalación, garantía, consumo eléctrico).',
+      objetivo:'conversión',
+      riesgo:'bajo',
+      ficha:'QUÉ: Agregar a las fichas de tinas: tabla de especificaciones técnicas (medidas externas/internas, peso, potencia, consumo eléctrico, número de jets), requisitos de instalación (espacio mínimo, desagüe, eléctrico), plazo de despacho, garantía, y sección de preguntas frecuentes.\n\nPOR QUÉ (datos reales):\n• GA4 panorámico (28 días): Tinas = 445 vistas, 156 usuarios activos, 2.4 mil eventos\n• GSC (3 meses): /tinas-de-hidromasaje/ → 29.315 imp, 334 clics, CTR 1.1%, pos 8.3\n• generate_lead (cotizaciones): 738 eventos en 5 meses — muchos probablemente piden info que ya debería estar en la ficha\n• click_asistencia_flotante: 750 (WhatsApp) — ídem\n• Las tinas tienen ticket ~17× mayor que planchas → la decisión requiere más información\n\nHIPÓTESIS: Si la ficha responde las preguntas de instalación, medidas y garantía, más usuarios deciden online (compra directa o cotización formal) sin necesitar WhatsApp.\n\nIMPACTO ESTIMADO:\n• Sesiones en tinas: ~445 (28 días)\n• Si conversión sube de X% a X+1%: depende de conversión actual (no disponible por página todavía)\n• Pendiente: crear segmento GA4 tinas para medir conversión base\n• Escenarios al tener datos: conservador +2 ventas/mes | esperado +5 | optimista +10\n\nCONFIANZA: Alta en que falta información (validado por volumen de WhatsApp y leads); media en el impacto exacto.\nESFUERZO: 4–6 horas (redacción + fotos + implementación).\nRIESGO: BAJO — contenido nuevo, no cambia estructura ni URLs.\nMÉTRICA PRINCIPAL: tasa generate_lead + compras directas en /tinas-de-hidromasaje/.\nMÉTRICA RESGUARDO: click_asistencia_flotante (esperamos que baje, no suba).\nMÉTODO: antes/después, medir 4 semanas.'
+    }
+  ]},
  {id:'seo',name:'SEO',real:true,shirt:0x3f9a5c,hair:0x5a3d2b,
   tasks:[
     'Panel lunes: midiendo clics sin marca últimos 28 días vs período anterior',
