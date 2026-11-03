@@ -235,9 +235,40 @@ const AGENTS=[
       ficha:'QUÉ: Marcar fichas individuales de tinas con schema.org/Product: nombre, precio, disponibilidad, imagen, SKU. NO cambia URLs ni contenido visible.\n\nPOR QUÉ:\n• 29.315 imp en categoría tinas (las de mayor ticket, ~17× el de una plancha)\n• CTR actual 1,1% — sin rich results el resultado es idéntico a competidores\n• Google puede mostrar precio y stock directamente en el SERP\n\nIMPACTO ESTIMADO:\n• Si CTR mejora +15% relativo: 334 clics → 384 clics/trimestre (+50)\n• Escenarios: Conservador +8% CTR | Esperado +15% | Optimista +25%\n\nCONFIANZA: Alta en que mejora CTR; media en la magnitud sin historial propio.\nESFUERZO: 3–4 horas (desarrollo + prueba en Rich Results Test de Google).\nRIESGO: BAJO — schema no cambia contenido visible ni URLs. Reversible: eliminar markup.\nMEDICIÓN: CTR fichas de tinas vs fichas de cúpulas (control) a 28 días en GSC. Verificar con Rich Results Test antes de publicar.\nFECHA DE EVALUACIÓN: +28 días tras implementar.'
     }
   ]},
- {id:'ads',name:'Ads/email',shirt:0xc77d12,hair:0x111111,
-  tasks:['Preparando recordatorio de recompra','Revisando gasto de campañas','Segmentando talleres y letreros','Armando correo de tinas'],
-  props:[{what:'Enviar recordatorio de recompra a talleres',why:'Clientes de planchas suelen repetir cada 6 a 10 semanas (ejemplo).'}]},
+ {id:'ads',name:'Ads',real:true,shirt:0xc77d12,hair:0x111111,
+  tasks:[
+    'Verificando ritmo de gasto diario vs $59.000 CLP/día (presupuesto mensual $1.800.000)',
+    'Revisando términos de búsqueda esta semana: filtrando irrelevantes (uñas, manualidades, gratis)',
+    'Midiendo CPL real: Paid Search generó 100 eventos clave en 28 días con 773.023 CLP invertidos',
+    'Analizando Paid Shopping: 50% tasa de interacción vs 74,86% de Search — bajo rendimiento',
+    'Chequeando cuota de impresiones perdida por presupuesto vs por ranking',
+    'Revisando que cada anuncio lleve a la página del producto correcto',
+    'Coordinando con CRO: páginas de destino con alta tasa de abandono',
+    'Evaluando oportunidades de compra online vs cotización por chat'
+  ],
+  props:[
+    {
+      what:'Paso 0: auditar qué cuenta como conversión en Google Ads',
+      why:'GA4 registra click_asistencia_flotante (WhatsApp) = 750 eventos en 5 meses de todos los canales combinados. No sabemos si Google Ads cuenta el clic, la conversación iniciada, o si hay duplicados. Si la conversión está mal definida, el algoritmo optimiza hacia lo incorrecto.',
+      objetivo:'medición',
+      riesgo:'bajo',
+      ficha:'QUÉ: Revisar en Google Ads > Conversiones qué acción está marcada como conversión principal. Verificar que no haya duplicados (ej.: clic en WhatsApp Y apertura de chat contados por separado). Cruzar el número de conversiones de Ads con click_asistencia_flotante de GA4 en el mismo período.\n\nPOR QUÉ (datos reales GA4 — 28 días):\n• Paid Search: 1.408 sesiones, 100 eventos clave (6,18% tasa), 773.023 CLP ingresos\n• click_asistencia_flotante total (todos los canales, 5 meses): 750 = ~150/mes\n• Si toda la conversión de Ads se basa en el clic (no la conversación), el algoritmo puede estar optimizando hacia clics vacíos\n• CPL estimado con datos actuales: 1.800.000 / 150 = ~12.000 CLP/lead (si todo WhatsApp fuera de Ads, lo cual es imposible)\n\nHIPÓTESIS: Hay una diferencia entre lo que Google Ads llama "conversión" y los leads reales que terminan en venta. Necesitamos saberlo antes de cualquier cambio de puja.\n\nIMPACTO: Sin costo. Si se detecta duplicación, el CPL real puede ser el doble de lo que muestra Ads.\n¿REINICIA APRENDIZAJE?: No — solo lectura y diagnóstico.\nESFUERZO: 2 horas.\nRIESGO: BAJO — ningún cambio a la campaña.\nFECHA EVALUACIÓN: 1 semana.'
+    },
+    {
+      what:'Agregar lista de términos negativos urgentes (búsquedas no compradoras)',
+      why:'Con presupuesto de $1.800.000 CLP/mes, cada clic irrelevante quita presupuesto a leads reales. El catálogo de plásticos industriales atrae búsquedas de "uñas acrílicas", "pintura acrílica", "manualidades" y similares que nunca compran en Polyplas.',
+      objetivo:'eficiencia',
+      riesgo:'bajo',
+      ficha:'QUÉ: Agregar lista de negativos de concordancia amplia y de frase a todas las campañas de Search. Lista inicial sugerida:\n• uñas, nail, manicure\n• pintura, barniz, esmalte\n• manualidades, artesanía, craft\n• resina, epoxi\n• lentes, anteojos, gafas\n• plástico reciclado, pet botella\n• gratis, pdf, qué es, para qué sirve, historia\n• trabajo, empleo, sueldo\n• juguetes, juegos\n• acuario (salvo si venden para acuarios)\nVerificar antes en los informes de términos de búsqueda que cada uno tenga impresiones reales en la cuenta.\n\nPOR QUÉ: Sin ver los términos de búsqueda de la cuenta, estos son los irrelevantes más comunes en cuentas de plásticos industriales (basado en el negocio). Con presupuesto ajustado, cada clic ahorrado se redirige a términos compradores.\n\n¿REINICIA APRENDIZAJE?: No — las negativas no reinician el aprendizaje.\nIMPACTO ESTIMADO:\n• Si el 10% del gasto va a términos irrelevantes: libera ~180.000 CLP/mes\n• Redirigido a términos con CPL de 12.000 CLP = +15 cotizaciones extra/mes\n• Conservador: +5 | Esperado: +15 | Optimista: +25\nESFUERZO: 1–2 horas (revisar términos de búsqueda + agregar lista).\nRIESGO: BAJO — reversible en 5 min. Riesgo menor: excluir algún término válido por error.\nMITIGACIÓN: Usar negativos de concordancia de frase (no exacta) para minimizar falsos positivos.\nFECHA EVALUACIÓN: +14 días.'
+    },
+    {
+      what:'Reasignar presupuesto desde Paid Shopping hacia Search (Shopping rinde la mitad)',
+      why:'GA4 real (28 días): Paid Shopping = 72 sesiones, 50% tasa de interacción y $0 ingresos atribuidos. Paid Search = 1.408 sesiones, 74,86% interacción y 773.023 CLP. Shopping convierte a la mitad y no genera ingresos visibles.',
+      objetivo:'eficiencia',
+      riesgo:'medio',
+      ficha:'QUÉ: Evaluar reducir el presupuesto de Paid Shopping en un 50% y reasignarlo a campañas de Search con mejor rendimiento. Hacerlo gradualmente (máx. ±20% por ajuste) para no reiniciar el aprendizaje.\n\nPOR QUÉ (datos reales GA4 — 28 días):\n• Paid Shopping: 72 sesiones, tasa de interacción 50%, $0 ingresos, 36 sesiones con interacción\n• Paid Search: 1.408 sesiones, tasa 74,86%, 773.023 CLP ingresos\n• Shopping tiene 24,86 pp menos de tasa de interacción — los usuarios llegan y salen sin interactuar\n• Sin ver la cuenta de Ads directamente no podemos confirmar el presupuesto exacto por canal\n\nHIPÓTESIS: Shopping muestra el producto sin contexto suficiente (precio sin saber que es "a medida"), atrayendo clics de bajo valor. Search, en cambio, llega con intención más específica.\n\nIMPACTO ESTIMADO (si Shopping usa ~20% del presupuesto = ~360.000 CLP/mes):\n• Reducir 50%: libera ~180.000 CLP\n• Redirigido a Search con CPL actual: +15 cotizaciones/mes estimadas\n• Conservador: +5 | Esperado: +12 | Optimista: +20\n\n¿REINICIA APRENDIZAJE?: Parcial — cambio de presupuesto >20% puede afectar. Hacer gradual.\nRIESGO: MEDIO — Shopping podría estar capturando demanda que no se ve en GA4 (atribución). Verificar en Google Ads el reporte de conversiones asistidas antes de reducir.\nMÉTODO: Reducción gradual ±15% semanal. Monitorear 14 días.\nFECHA EVALUACIÓN: +14 días.'
+    }
+  ]},
  {id:'ven',name:'Vendedor',shirt:0x5b7680,hair:0x4a2c1a,
   tasks:['Cotizando corte 60x40 cm, 5 mm','Explicando acrílico vs PET','Respondiendo despacho a Concepción','Pasando cotización grande a una persona'],
   props:[{what:'Ofrecer 5% por pedidos sobre 10 planchas',why:'Tres empresas pidieron descuento por volumen esta semana (ejemplo).'}]}
