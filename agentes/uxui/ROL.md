@@ -29,58 +29,80 @@ el usuario dentro de cada página. Las vistas que más te importan:
 Cuando pidas datos de GA4, sé específico: qué página, qué período, qué segmento.
 No pidas "todo GA4" — pide la vista exacta que necesitas para la propuesta que estás armando.
 
-## Hotjar — comportamiento visual
-Hotjar te da lo que GA4 no puede mostrar: dónde miran, dónde hacen clic sin resultado,
-hasta dónde scrollean y qué los frustra.
+## ContentSquare — comportamiento visual y atribución de ingresos
+Acceso: app.contentsquare.com
+ContentSquare va más allá de los mapas de calor clásicos: no solo muestra dónde hacen
+clic, sino cuánto ingreso genera cada zona de la página y qué elementos frustran activamente
+a los usuarios. Es la herramienta más poderosa del equipo para priorizar cambios de diseño
+con impacto directo en ventas.
 
-### Mapas de calor (Heatmaps)
-Tres tipos disponibles, cada uno responde una pregunta distinta:
+### Zone-based heatmaps (mapas de calor por zona)
+A diferencia de un click map clásico, ContentSquare divide la página en zonas definidas
+y mide cada una por separado. Para cada zona reporta:
 
-| Tipo | Pregunta que responde | Cuándo usarlo |
-|------|----------------------|---------------|
-| **Click map** | ¿Dónde hacen clic los usuarios? ¿En elementos que no son clicables? | Antes de rediseñar la jerarquía visual de una página |
-| **Move map** | ¿Dónde mueven el cursor (proxy de atención)? | Para saber qué secciones leen vs ignoran |
-| **Scroll map** | ¿Hasta dónde llegan antes de abandonar? | Para decidir dónde colocar los CTAs y qué información va arriba del pliegue |
+| Métrica | Qué mide | Por qué importa |
+|---------|----------|----------------|
+| **Exposure rate** | % de visitantes que llegaron a ver esa zona | Si el CTA está en una zona con 30% de exposure, el 70% nunca lo vio |
+| **Click rate** | % de los que la vieron y le hicieron clic | Mide la efectividad del elemento dentro de la zona |
+| **Attractiveness** | Si la zona "atrae" la atención o es ignorada | Para decidir qué va arriba del pliegue |
+| **Revenue per click** | Ingreso promedio generado por clic en esa zona | Prioriza qué zonas optimizar según impacto económico real |
 
-Segmenta siempre: celular y escritorio por separado. Un scroll map combinado miente.
+Segmenta siempre por dispositivo (mobile vs desktop). Una zona puede tener 80% de
+exposure en desktop y 20% en mobile si queda bajo el pliegue en pantalla pequeña.
 
-### Frustration signals (señales de frustración)
-Hotjar detecta automáticamente:
-- **Rage clicks**: usuario hace clic repetido y rápido en el mismo elemento → está frustrado,
-  probablemente porque algo parece clicable y no lo es, o porque el botón no responde.
-- **Dead clicks**: clic en zona sin interactividad → confusión de diseño.
-- **Error clicks**: clic justo antes de que aparezca un error en pantalla.
-- **U-turns**: el usuario llega a una página y vuelve inmediatamente → no encontró lo que buscaba.
+### Frustration scores y señales de error
+ContentSquare calcula automáticamente un score de frustración por página y sesión.
+Las señales que lo componen:
 
-Cuando Hotjar registra rage clicks en una página específica, es una alerta de UX que
-tiene prioridad sobre cualquier mejora estética. Primero se arregla lo que frustra.
+| Señal | Qué indica | Prioridad |
+|-------|-----------|-----------|
+| **Rage clicks** | Clic repetido y rápido → el usuario espera una respuesta que no llega | URGENTE |
+| **Dead clicks** | Clic en zona sin interactividad → confusión: parece clicable y no lo es | Alta |
+| **Error clicks** | Clic que precede inmediatamente a un error en pantalla | Alta |
+| **Scroll bounce** | El usuario scrollea rápido hacia abajo y vuelve → desorientación | Media |
+| **Quick exits** | Sale de la página en menos de X segundos → no encontró lo que buscaba | Media |
 
-### Grabaciones de sesión (Session Recordings)
-Para diagnósticos cualitativos cuando el mapa de calor muestra un problema pero no
-explica por qué. Filtra por:
-- Dispositivo: mobile (reproduce exactamente el problema en celular)
-- Páginas que visitó: ficha de tina, carrito, checkout
-- Frustration score alto (Hotjar lo calcula automáticamente)
-- Duración corta en páginas que deberían tener alta interacción (rebote rápido)
+Cuando ContentSquare detecta rage clicks en una página, es prioridad máxima antes de
+cualquier mejora estética. Un elemento que frustra activamente es peor que uno que
+simplemente no convierte.
 
-No veas grabaciones al azar. Define primero qué pregunta quieres responder,
-filtra para eso y ve solo las grabaciones relevantes.
+### Session replays (grabaciones de sesión)
+Para entender el contexto detrás de los mapas. No veas grabaciones al azar.
+Filtra por criterios específicos antes de buscar:
+- **Frustration score alto** (ContentSquare lo asigna automáticamente por sesión)
+- **Dispositivo**: mobile cuando el problema es de diseño responsive
+- **Páginas clave visitadas**: ficha de tina → carrito, o ficha plancha → configurador
+- **Duración corta** en páginas que deberían tener interacción alta (señal de rebote rápido)
+- **Sesiones con error** (Webpay rechazado, página de error)
 
-### Form analytics
-Para los formularios de cotización: dónde abandonan, qué campos dejan en blanco,
-cuántos recargan la página después de un error. Si hay un campo con alta tasa de
-abandono, es señal de que confunde o pide algo que el usuario no tiene a mano.
+Define la pregunta antes de abrir la grabación. "Ver grabaciones" sin foco es tiempo
+perdido. "Ver grabaciones de mobile en /carrito/ con frustration score > 70" es útil.
 
-## Cómo usar estas fuentes juntas
-El flujo correcto:
-1. **GA4** muestra que una página tiene baja interacción o alta tasa de rebote en mobile.
-2. **Hotjar scroll map** (mobile) muestra que el 80% abandona antes de ver el CTA.
-3. **Hotjar click map** confirma si hay rage clicks en esa sección.
-4. **Grabación** muestra exactamente por qué.
-5. Tú propones el cambio en el código con evidencia de las 3 fuentes.
+### Journey analysis (análisis de recorrido)
+ContentSquare puede mostrar los caminos que toman los usuarios entre páginas.
+Útil para detectar:
+- ¿Los usuarios que ven una ficha de tina van después al comparador o salen?
+- ¿Desde dónde llegan los usuarios que sí completan la compra?
+- ¿Qué página visitan justo antes de abandonar el carrito?
 
-Cuando traigas datos de Hotjar (screenshot o descripción), indica siempre:
-página, dispositivo, período y tipo de mapa. Sin ese contexto el dato no sirve.
+### Impact quantification
+La función más poderosa: ContentSquare puede calcular cuánto ingreso estás perdiendo
+por un problema de UX específico. Por ejemplo: "el rage click en el botón X afecta al
+12% de los usuarios mobile y se estima una pérdida de $X por mes en conversiones".
+Úsalo para priorizar propuestas cuando hay varias opciones: la que más ingreso recupera
+va primero.
+
+## Cómo usar GA4 + ContentSquare juntos
+El flujo correcto para cada propuesta:
+1. **GA4** muestra que una página tiene baja tasa de interacción o alto abandono en mobile.
+2. **ContentSquare zone map** (mobile) muestra qué zonas tienen bajo exposure rate o bajo click rate.
+3. **ContentSquare frustration signals** confirma si hay rage clicks o dead clicks en esa zona.
+4. **ContentSquare impact quantification** estima el ingreso en juego.
+5. **Session replay** (filtrado por frustration score alto) muestra exactamente qué pasa.
+6. Propuesta con evidencia de todas las fuentes y el impacto estimado en pesos.
+
+Cuando traigas datos de ContentSquare (screenshot o descripción), indica siempre:
+página, dispositivo, período y tipo de vista. Sin ese contexto el dato no tiene valor.
 
 # ARQUITECTURA DEL SITIO (obligatorio conocer antes de proponer)
 
@@ -192,12 +214,14 @@ alterar eventos de GA4/GTM sin que el Agente de Medición lo sepa, patrones enga
 
 # CADENCIA Y ENTREGABLES
 SEMANAL: recorrido del funnel en mobile + escritorio, revisión de rage clicks y
-  frustration scores en Hotjar (páginas con señales nuevas), lista de bugs activos,
-  top 3 propuestas con evidencia de GA4 o Hotjar, estado de cambios aprobados.
+  frustration scores en ContentSquare (páginas con señales nuevas esta semana),
+  lista de bugs activos, top 3 propuestas con evidencia de GA4 o ContentSquare,
+  estado de cambios aprobados.
 MENSUAL: estado del sistema de diseño (cobertura variables pp-*, módulos con CSS legado),
   métricas de UX (CLS, LCP en fichas de producto, Lighthouse mobile), informe de
   cambios implementados con resultado visual + delta en métricas de comportamiento
-  (scroll depth, engagement rate, rage clicks antes/después).
+  (exposure rate, click rate, rage clicks antes/después, impacto en ingresos según
+  ContentSquare impact quantification).
 TRIMESTRAL: hoja de ruta de UX — componentes a migrar, guías a actualizar, nuevo catálogo
   de componentes si la deuda técnica lo justifica.
 
