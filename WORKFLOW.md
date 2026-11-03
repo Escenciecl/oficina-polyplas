@@ -1,0 +1,103 @@
+# Workflow de la Oficina Polyplas
+
+Cómo funciona el equipo de agentes, cómo aprobar cambios y cómo pedir reportes.
+
+---
+
+## Regla de oro
+**Ningún agente puede tocar el sitio sin tu aprobación explícita.**
+Proponen → tú revisas → tú apruebas → se ejecuta.
+
+---
+
+## Cómo aprobar un cambio
+
+1. Ves una propuesta en la **Bandeja del jefe** (la oficina 3D)
+2. Vienes a Claude Code y dices: `"aprobé [propuesta] del agente [X]"`
+3. Te muestro el diff exacto del archivo que cambia
+4. Dices `"dale al sitio"`
+5. Se sube a producción y queda registrado en `REGISTRO_CAMBIOS.md` del agente
+
+Cada cambio viaja en su propia rama (`agente/nombre-del-cambio`) antes de llegar a `main`.
+
+---
+
+## Cadencia de reportes
+
+### Diario — Reunión de cierre
+Di **`"reunión de cierre"`** al terminar tu jornada.
+
+Responden los tres agentes de seguimiento diario:
+
+| Agente | Qué reporta |
+|--------|-------------|
+| **Vigilante** | ¿El sitio está funcionando? Alertas del día |
+| **SEO** | Qué hice hoy para aumentar conversiones web orgánicas |
+| **Ads** | Ritmo de gasto vs presupuesto, alertas de campaña |
+
+Formato: 3 líneas por agente. Máximo 5 minutos.
+
+### Semanal — Lunes
+Di **`"reporte semanal"`** el lunes al inicio de la jornada.
+
+Responden los tres agentes de análisis semanal:
+
+| Agente | Qué reporta |
+|--------|-------------|
+| **CRO** | Funnel de la semana: tasa de cada etapa, caídas, alertas |
+| **UX/UI** | Bugs activos, estado de cambios en curso |
+| **Intel** | Movimientos de competencia: precios, catálogo, promociones |
+
+Puedes pedir el reporte de un agente específico: `"reporte semanal CRO"`.
+
+### Mensual — Primer lunes del mes
+Di **`"reporte mensual"`**.
+
+Responden todos los agentes activos con:
+- Resultados del mes (lo que funcionó y lo que no)
+- Top 3 propuestas para el mes siguiente
+- Una métrica que mejoró y una que no
+
+---
+
+## Cómo alimentar a los agentes con datos frescos
+
+Los agentes no acceden solos a GA4, GSC o Google Ads — tú les traes los datos:
+
+| Dato | Cómo entregarlo |
+|------|----------------|
+| GA4 | Screenshot de la vista que corresponde |
+| Google Search Console | Screenshot del panel de rendimiento |
+| Google Ads | Screenshot del resumen de campaña |
+| Competencia | El agente Intel hace búsqueda web directamente |
+
+Sin datos frescos los agentes reportan sobre lo que saben (análisis anterior).
+Con datos frescos el reporte es real y accionable.
+
+---
+
+## Cómo acercarte a un agente en la oficina
+
+En la escena 3D, cuando te acercas a un agente aparece su nombre y en qué está trabajando ahora.
+Si quieres hablar con él directamente: ven a Claude Code y di `"hablar con [nombre del agente]"`.
+
+---
+
+## Registro de todo lo aprobado
+
+Cada cambio al sitio queda en:
+- `agentes/[agente]/REGISTRO_CAMBIOS.md` — qué se cambió, cuándo y qué resultó
+- El historial de git en `Polyplas-web` — el diff exacto, la rama y el commit
+
+---
+
+## Agentes activos (nov 2026)
+
+| Agente | Estado | Reporte |
+|--------|--------|---------|
+| Vigilante | Real | Diario |
+| SEO | Real | Diario + Semanal |
+| CRO | Real | Semanal |
+| Ads | Real | Diario |
+| UX/UI | Real | Semanal |
+| Intel | Real | Semanal |

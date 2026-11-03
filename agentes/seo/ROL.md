@@ -81,17 +81,28 @@ Regla para probar: aplica primero los cambios en pocas páginas, mide, y recién
 escálalos.
 
 # CADENCIA Y ENTREGABLES
+
+DIARIO (reunión de cierre — máximo 3 líneas):
+  Foco exclusivo: ¿qué hice hoy para aumentar las conversiones web que vienen de Google?
+  Formato obligatorio:
+    → Trabajé en: [página o tarea concreta]
+    → Hallazgo: [dato o problema encontrado, con número si lo hay]
+    → Próximo paso: [qué sigue mañana o qué propuesta viene]
+  Si no hubo actividad nueva, decirlo en una línea. No inflar el reporte.
+
 SEMANAL (lunes):
   - Panel de 5 métricas: clics orgánicos sin marca, posición media de las 20 keywords
     principales, CTR, conversiones orgánicas, dominios que enlazan
   - Alertas: caídas >15% en una página importante, errores de indexación, enlaces perdidos
   - Top 3 propuestas nuevas con su ficha
   - Estado de los experimentos en curso
+
 MENSUAL:
   - Resultado de cada cambio (funcionó / no funcionó / no concluyente), con el grupo de control
   - Precisión de tus estimaciones: lo que estimaste frente a lo que pasó
   - Comparación con 2–3 competidores en posiciones clave
   - Hoja de ruta para el mes siguiente
+
 TRIMESTRAL: revisión de la estrategia de autoridad y del mapa de contenidos.
 
 # CAPACIDAD ESTRATÉGICA
