@@ -101,6 +101,34 @@ aside{display:flex;flex-direction:column;gap:16px;min-width:0}
 .note{font-size:12px;color:var(--muted)}
 .fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:var(--muted)}
 @media (max-width:560px){.legend{display:none}.hint{font-size:11px}}
+
+/* Sala de revisión */
+.btn.reunion{background:var(--warn);border-color:var(--warn);color:#fff}
+.btn.reunion:hover{filter:brightness(1.08)}
+.reunion-overlay{position:fixed;inset:0;background:rgba(15,28,32,.82);z-index:2000;display:flex;align-items:stretch;overflow:hidden}
+.reunion-panel{background:var(--bg);display:flex;flex-direction:column;width:min(860px,100%);margin:0 auto;height:100%;overflow:hidden}
+.reunion-hdr{padding:18px 24px 14px;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.reunion-hdr-text{flex:1;min-width:200px}
+.reunion-hdr h2{font-family:var(--f-display);font-size:22px;margin:0 0 2px}
+.reunion-hdr p{margin:0;color:var(--muted);font-size:13px}
+.reunion-hdr .close-btn{flex-shrink:0;align-self:flex-start}
+.reunion-body{flex:1;overflow-y:auto;padding:20px 24px 40px;display:flex;flex-direction:column;gap:28px}
+.reunion-agent{display:flex;flex-direction:column;gap:10px}
+.reunion-agent-hdr{display:flex;align-items:center;gap:10px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+.reunion-agent-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
+.reunion-agent-hdr h3{font-family:var(--f-display);font-size:17px;margin:0;flex:1}
+.reunion-agent-hdr .agent-count{font-size:12px;color:var(--muted)}
+.reunion-prop{border:1px solid var(--line);border-left:4px solid var(--warn);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;background:var(--panel)}
+.reunion-prop[data-riesgo="alto"]{border-left-color:var(--bad)}
+.reunion-prop[data-riesgo="bajo"]{border-left-color:var(--ok)}
+.reunion-prop .rp-badges{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.reunion-prop .rp-what{font-weight:700;font-size:15px;line-height:1.3}
+.reunion-prop .rp-why{font-size:13px;color:var(--muted);line-height:1.45}
+.reunion-prop .rp-ficha{font:12px/1.55 var(--f-mono);color:var(--muted);white-space:pre-wrap;border-top:1px solid var(--line);padding-top:12px;display:none;word-break:break-word}
+.reunion-prop .rp-ficha.open{display:block}
+.reunion-prop .rp-acts{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:2px}
+.badge.pending-badge{color:var(--warn);border-color:var(--warn)}
+.badge.approved-badge{color:var(--ok);border-color:var(--ok)}
 </style>
 
 <style>body{margin:0}</style>
@@ -113,6 +141,7 @@ aside{display:flex;flex-direction:column;gap:16px;min-width:0}
       <span class="chip"><span class="dot"></span>Vigilante + SEO + CRO + Ads + UX/UI + Intel + Medición + Tatis activos</span>
       <span class="chip" id="modeChip"><span class="dot demo"></span>Actividad simulada</span>
       <button class="btn" id="modeBtn" type="button">Ver solo lo real</button>
+      <button class="btn reunion" id="reunionBtn" type="button">Sala de revisión · <span id="reunionCount">0</span></button>
       <button class="btn primary" id="pauseBtn" type="button">Pausar</button>
     </div>
   </header>
@@ -145,6 +174,19 @@ aside{display:flex;flex-direction:column;gap:16px;min-width:0}
         <p class="note" style="margin:10px 0 0">Los agentes en demo se contratan uno por uno, en el orden del plan.</p>
       </div>
     </aside>
+  </div>
+</div>
+
+<div id="reunionModal" class="reunion-overlay" hidden>
+  <div class="reunion-panel">
+    <div class="reunion-hdr">
+      <div class="reunion-hdr-text">
+        <h2>Sala de revisión</h2>
+        <p>Todas las propuestas del equipo — revisa, aprueba o rechaza antes del cierre de jornada.</p>
+      </div>
+      <button class="btn close-btn" id="closeReunion" type="button">Cerrar sala ×</button>
+    </div>
+    <div class="reunion-body" id="reunionBody"></div>
   </div>
 </div>
 
@@ -562,7 +604,7 @@ async function meeting(a){
   const b=rnd(others);meetingBusy=true;a.busy=b.busy=true;a.setStatus('meet');b.setStatus('meet');
   await Promise.all([goTo(a,SEATS[0]),goTo(b,SEATS[1])]);
   faceTo(a,Math.PI/2);faceTo(b,-Math.PI/2);
-  const msgs={ana:'Te paso los números de la semana',ven:'Los clientes preguntan mucho por esto',med:'Este dato ahora está bien medido',seo:'Hay páginas en posición 4–15 con alto potencial',cro:'Probé un cambio en la ficha',cat:'Reclasifiqué estos productos',ads:'La campaña de tinas va bien',vig:'Hoy no hubo cambios raros'};
+  const msgs={med:'Este dato ahora está bien medido',tatis:'Documenté la reunión en Confluence',seo:'Hay páginas en posición 4–15 con alto potencial',cro:'Probé un cambio en la ficha',intel:'Encontré movimiento en la competencia',ads:'La campaña de tinas va bien',vig:'Hoy no hubo cambios raros',uxui:'Detecté un problema en mobile'};
   say(a,msgs[a.id]||'Revisemos esto',2600);await wait(2700);say(b,'Anotado, lo uso en mi próxima tarea',2400);
   log(a.name+' le pasó información a '+b.name);await wait(2500);
   await Promise.all([back(a),back(b)]);a.setStatus('work');b.setStatus('work');a.busy=b.busy=false;meetingBusy=false;
@@ -661,6 +703,109 @@ log('Intel: agente activado — Competencia identificada: Norglas, CHC, DVP, Pol
 log('Medición: agente activado — Paso 0 urgente: purchase con value=$0 + transferencias sin purchase');
 log('Oficina abierta. 8 agentes activos: Vigilante + SEO + CRO + Ads + UX/UI + Intel + Medición + Tatis.');
 log('Tatis activada — documentación en Confluence: moralesgarcianat.atlassian.net/wiki/spaces/PMP/folder/40206337');
+/* ---------- Sala de revisión ---------- */
+const approvedSet=new Set();
+
+function updateReunionCount(){
+  let n=0;
+  AGENTS.forEach(a=>{if(active(a))n+=a.props.length});
+  document.getElementById('reunionCount').textContent=n;
+}
+
+function openReunion(){
+  const body=document.getElementById('reunionBody');
+  body.innerHTML='';
+  let hasAny=false;
+
+  AGENTS.forEach(a=>{
+    if(!active(a)||!a.props.length)return;
+    hasAny=true;
+    const sec=document.createElement('div');
+    sec.className='reunion-agent';
+    const shirtHex='#'+a.shirt.toString(16).padStart(6,'0');
+    const hdr=document.createElement('div');
+    hdr.className='reunion-agent-hdr';
+    hdr.innerHTML=`<i class="reunion-agent-dot" style="background:${shirtHex}"></i><h3>${a.name}</h3><span class="agent-count">${a.props.length} propuesta${a.props.length!==1?'s':''}</span>`;
+    sec.appendChild(hdr);
+
+    a.props.forEach(p=>{
+      const r=p.riesgo||'bajo',o=p.objetivo||'';
+      const key=a.id+'::'+p.what;
+      const isPending=pending.some(x=>x.agent===a&&x.what===p.what);
+      const isDone=approvedSet.has(key+'::ok')||approvedSet.has(key+'::no');
+
+      const card=document.createElement('div');
+      card.className='reunion-prop';
+      card.dataset.riesgo=r;
+
+      let badgesHtml=`<span class="badge riesgo-${r}">riesgo ${r}</span>`;
+      if(o)badgesHtml+=`<span class="badge obj">${o}</span>`;
+      if(isPending)badgesHtml+=`<span class="badge pending-badge">En bandeja</span>`;
+      if(approvedSet.has(key+'::ok'))badgesHtml+=`<span class="badge approved-badge">✓ Aprobado</span>`;
+      if(approvedSet.has(key+'::no'))badgesHtml+=`<span class="badge" style="color:var(--bad);border-color:var(--bad)">✗ Rechazado</span>`;
+
+      let actsHtml='';
+      if(!isPending&&!isDone){
+        actsHtml='<button class="btn ok r-ok" type="button">Aprobar</button><button class="btn no r-no" type="button">Rechazar</button>';
+      }else if(isPending){
+        actsHtml='<span style="font-size:13px;color:var(--muted)">Pendiente en bandeja del jefe</span>';
+      }else{
+        actsHtml='<span style="font-size:13px;color:var(--muted)">Decisión registrada</span>';
+      }
+      if(p.ficha)actsHtml+='<button class="btn detail r-det" type="button">Ver ficha completa ↓</button>';
+
+      card.innerHTML=`
+        <div class="rp-badges">${badgesHtml}</div>
+        <div class="rp-what"></div>
+        <div class="rp-why"></div>
+        ${p.ficha?'<pre class="rp-ficha"></pre>':''}
+        <div class="rp-acts">${actsHtml}</div>`;
+
+      card.querySelector('.rp-what').textContent=p.what;
+      card.querySelector('.rp-why').textContent=p.why;
+      if(p.ficha)card.querySelector('.rp-ficha').textContent=p.ficha;
+
+      if(!isPending&&!isDone){
+        card.querySelector('.r-ok').onclick=()=>{
+          if(!pending.some(x=>x.agent===a&&x.what===p.what))pending.push({agent:a,...p});
+          const found=pending.find(x=>x.agent===a&&x.what===p.what);
+          if(found)decide(found,true);
+          approvedSet.add(key+'::ok');
+          openReunion();
+        };
+        card.querySelector('.r-no').onclick=()=>{
+          if(!pending.some(x=>x.agent===a&&x.what===p.what))pending.push({agent:a,...p});
+          const found=pending.find(x=>x.agent===a&&x.what===p.what);
+          if(found)decide(found,false);
+          approvedSet.add(key+'::no');
+          openReunion();
+        };
+      }
+      const det=card.querySelector('.r-det');
+      if(det)det.onclick=()=>{const f=card.querySelector('.rp-ficha');f.classList.toggle('open');det.textContent=f.classList.contains('open')?'Cerrar ficha ↑':'Ver ficha completa ↓'};
+
+      sec.appendChild(card);
+    });
+    body.appendChild(sec);
+  });
+
+  if(!hasAny)body.innerHTML='<div class="empty">Los agentes no tienen propuestas activas todavía.</div>';
+  document.getElementById('reunionModal').hidden=false;
+  paused=true;
+  document.getElementById('pauseBtn').textContent='Reanudar';
+  log('Sala de revisión abierta — simulación pausada');
+}
+
+function closeReunion(){
+  document.getElementById('reunionModal').hidden=true;
+}
+
+document.getElementById('reunionBtn').onclick=openReunion;
+document.getElementById('closeReunion').onclick=closeReunion;
+document.getElementById('reunionModal').addEventListener('click',e=>{if(e.target===document.getElementById('reunionModal'))closeReunion()});
+
+updateReunionCount();
+
 AGENTS.slice(0,4).forEach((a,i)=>setTimeout(()=>work(a),500+i*500));
 setTimeout(()=>propose(AGENTS[4]),2600);
 setInterval(tick,2300);
