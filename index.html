@@ -129,6 +129,30 @@ aside{display:flex;flex-direction:column;gap:16px;min-width:0}
 .reunion-prop .rp-acts{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:2px}
 .badge.pending-badge{color:var(--warn);border-color:var(--warn)}
 .badge.approved-badge{color:var(--ok);border-color:var(--ok)}
+
+/* Videollamada */
+.call-overlay{position:fixed;inset:0;background:rgba(8,18,22,.9);z-index:3000;display:flex;align-items:center;justify-content:center;padding:16px}
+.call-panel{background:var(--bg);border-radius:20px;box-shadow:0 24px 80px rgba(0,0,0,.5);width:min(700px,100%);max-height:88vh;display:flex;flex-direction:column;overflow:hidden}
+.call-top{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;background:var(--panel)}
+.call-avatar-circle{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-size:17px;font-weight:700;color:#fff;flex-shrink:0}
+.call-agent-info{flex:1}
+.call-agent-name{font-family:var(--f-display);font-size:18px;font-weight:700;display:block;line-height:1.1}
+.call-agent-sub{font-size:12px;color:var(--ok);display:flex;align-items:center;gap:5px;margin-top:2px}
+.call-chat{flex:1;overflow-y:auto;padding:16px 18px;display:flex;flex-direction:column;gap:10px;min-height:200px}
+.call-msg{display:flex;gap:8px;align-items:flex-end}
+.call-msg.me{flex-direction:row-reverse}
+.call-bubble{max-width:78%;background:var(--panel);border-radius:14px;padding:10px 14px;font-size:14px;line-height:1.5;border:1px solid var(--line);white-space:pre-wrap;word-break:break-word}
+.call-msg.me .call-bubble{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.call-msg-avatar{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff}
+.call-typing-bubble{background:var(--panel);border-radius:14px;padding:12px 16px;border:1px solid var(--line);display:flex;gap:5px;align-items:center}
+.call-typing-bubble span{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:tdot 1.2s infinite}
+.call-typing-bubble span:nth-child(2){animation-delay:.2s}
+.call-typing-bubble span:nth-child(3){animation-delay:.4s}
+@keyframes tdot{0%,100%{opacity:.2;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}
+.call-actions{padding:12px 18px 14px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px;background:var(--panel)}
+.btn.call-btn{font-size:12px;padding:6px 11px}
+.btn.hangup{border-color:var(--bad);color:var(--bad)}
+.btn.llamar{font-size:12px;padding:4px 10px;border-color:var(--accent);color:var(--accent)}
 </style>
 
 <style>body{margin:0}</style>
@@ -155,6 +179,7 @@ aside{display:flex;flex-direction:column;gap:16px;min-width:0}
       <div class="near" id="near" hidden>
         <div class="t"><b id="nearName"></b><span id="nearTask"></span></div>
         <button class="btn primary" id="nearAsk" type="button">Pedir avance</button>
+        <button class="btn" id="nearCall" type="button">📞 Videollamada</button>
       </div>
     </section>
 
@@ -174,6 +199,21 @@ aside{display:flex;flex-direction:column;gap:16px;min-width:0}
         <p class="note" style="margin:10px 0 0">Los agentes en demo se contratan uno por uno, en el orden del plan.</p>
       </div>
     </aside>
+  </div>
+</div>
+
+<div id="callModal" class="call-overlay" hidden>
+  <div class="call-panel">
+    <div class="call-top">
+      <div id="callAvatarCircle" class="call-avatar-circle"></div>
+      <div class="call-agent-info">
+        <span id="callAgentName" class="call-agent-name"></span>
+        <span class="call-agent-sub"><i class="dot"></i>activo · en videollamada</span>
+      </div>
+      <button class="btn hangup" id="callHangup" type="button">Colgar ✕</button>
+    </div>
+    <div class="call-chat" id="callChat"></div>
+    <div class="call-actions" id="callActions"></div>
   </div>
 </div>
 
@@ -726,6 +766,10 @@ function openReunion(){
     const hdr=document.createElement('div');
     hdr.className='reunion-agent-hdr';
     hdr.innerHTML=`<i class="reunion-agent-dot" style="background:${shirtHex}"></i><h3>${a.name}</h3><span class="agent-count">${a.props.length} propuesta${a.props.length!==1?'s':''}</span>`;
+    const callBtn=document.createElement('button');
+    callBtn.className='btn llamar';callBtn.type='button';callBtn.textContent='📞 Llamar';
+    callBtn.onclick=()=>{closeReunion();openCall(a)};
+    hdr.appendChild(callBtn);
     sec.appendChild(hdr);
 
     a.props.forEach(p=>{
@@ -805,6 +849,160 @@ document.getElementById('closeReunion').onclick=closeReunion;
 document.getElementById('reunionModal').addEventListener('click',e=>{if(e.target===document.getElementById('reunionModal'))closeReunion()});
 
 updateReunionCount();
+
+/* ---------- Videollamada ---------- */
+let callAgent=null,callPropIdx=0;
+
+function extractSection(ficha,keywords){
+  const lines=ficha.split('\n');const out=[];let cap=false,capLines=0;
+  lines.forEach(l=>{
+    const u=l.toUpperCase();
+    if(keywords.some(k=>u.includes(k))){cap=true;capLines=0}
+    if(cap){out.push(l);capLines++;if(capLines>10&&l.trim()==='')cap=false}
+  });
+  const txt=out.join('\n').trim();
+  return txt.length>30?txt:ficha.slice(0,500);
+}
+
+function callAddMsg(who,text){
+  const chat=document.getElementById('callChat');
+  const d=document.createElement('div');
+  d.className='call-msg '+(who==='me'?'me':'agent');
+  if(who==='agent'){
+    const av=document.createElement('div');
+    av.className='call-msg-avatar';
+    av.style.background='#'+callAgent.shirt.toString(16).padStart(6,'0');
+    av.textContent=callAgent.name.slice(0,2).toUpperCase();
+    d.appendChild(av);
+  }
+  const b=document.createElement('div');b.className='call-bubble';b.textContent=text;
+  d.appendChild(b);chat.appendChild(d);chat.scrollTop=chat.scrollHeight;
+}
+
+function callTyping(cb,delay){
+  const chat=document.getElementById('callChat');
+  const d=document.createElement('div');d.className='call-msg agent call-typing-row';
+  const av=document.createElement('div');av.className='call-msg-avatar';
+  av.style.background='#'+callAgent.shirt.toString(16).padStart(6,'0');
+  av.textContent=callAgent.name.slice(0,2).toUpperCase();
+  d.appendChild(av);
+  const b=document.createElement('div');b.className='call-typing-bubble';
+  b.innerHTML='<span></span><span></span><span></span>';d.appendChild(b);
+  chat.appendChild(d);chat.scrollTop=chat.scrollHeight;
+  setTimeout(()=>{d.remove();cb()},delay||800);
+}
+
+function callShowOptions(opts){
+  const acts=document.getElementById('callActions');acts.innerHTML='';
+  opts.forEach(o=>{
+    const b=document.createElement('button');
+    b.className='btn call-btn '+(o.cls||'');b.type='button';b.textContent=o.label;
+    b.onclick=()=>{b.disabled=true;o.fn()};acts.appendChild(b);
+  });
+}
+
+function callPresentProp(){
+  const a=callAgent;
+  if(callPropIdx>=a.props.length){
+    callTyping(()=>{
+      callAddMsg('agent','Eso es todo lo que tengo por ahora. ¿Quieres que te cuente en qué más estoy trabajando?');
+      callShowOptions([{label:'¿En qué estás trabajando?',fn:callShowTasks},{label:'Listo, gracias',fn:closeCall}]);
+    },700);return;
+  }
+  const p=a.props[callPropIdx];
+  const total=a.props.length;
+  callTyping(()=>{
+    callAddMsg('agent',`Propuesta ${callPropIdx+1} de ${total}:\n\n📋 ${p.what}`);
+    setTimeout(()=>{callTyping(()=>{
+      callAddMsg('agent',p.why);
+      callShowPropOptions(p);
+    },600)},500);
+  },900);
+}
+
+function callShowPropOptions(p){
+  const key=callAgent.id+'::'+p.what;
+  const isPending=pending.some(x=>x.agent===callAgent&&x.what===p.what);
+  const isDone=approvedSet.has(key+'::ok')||approvedSet.has(key+'::no');
+  const opts=[];
+  if(p.ficha){
+    const f=p.ficha;
+    if(/IMPACTO|ESTIMADO/i.test(f))opts.push({label:'¿Cuál es el impacto?',fn:()=>callQ('¿Cuál es el impacto?',extractSection(f,['IMPACTO','ESTIMADO']),p)});
+    if(/RIESGO/i.test(f))opts.push({label:'¿Qué arriesgamos?',fn:()=>callQ('¿Qué arriesgamos?',extractSection(f,['RIESGO','MITIGACIÓN']),p)});
+    if(/ESFUERZO/i.test(f))opts.push({label:'¿Cuánto tiempo toma?',fn:()=>callQ('¿Cuánto tiempo toma?',extractSection(f,['ESFUERZO']),p)});
+    if(/MEDICIÓN|VERIFICACIÓN|MÉTODO/i.test(f))opts.push({label:'¿Cómo lo medimos?',fn:()=>callQ('¿Cómo lo medimos?',extractSection(f,['MEDICIÓN','VERIFICACIÓN','MÉTODO']),p)});
+  }
+  if(!isDone&&!isPending){
+    opts.push({label:'✓ Aprobar',cls:'ok',fn:()=>callDecide(p,true)});
+    opts.push({label:'✗ Rechazar',cls:'no',fn:()=>callDecide(p,false)});
+  } else if(isPending){
+    opts.push({label:'Ya está en bandeja',cls:'',fn:()=>{}});
+  } else {
+    opts.push({label:approvedSet.has(key+'::ok')?'✓ Ya aprobada':'✗ Ya rechazada',cls:'',fn:()=>{}});
+  }
+  if(callPropIdx<callAgent.props.length-1)opts.push({label:'Siguiente →',fn:()=>{callAddMsg('me','Siguiente.');callPropIdx++;setTimeout(()=>callPresentProp(),400)}});
+  else opts.push({label:'Finalizar llamada',fn:()=>{callTyping(()=>{callAddMsg('agent','Perfecto jefe, quedamos en contacto.');setTimeout(closeCall,800)},600)}});
+  callShowOptions(opts);
+}
+
+function callQ(q,answer,p){
+  callAddMsg('me',q);
+  callTyping(()=>{callAddMsg('agent',answer||'No tengo más detalle sobre eso ahora.');callShowPropOptions(p)},800);
+}
+
+function callDecide(p,ok){
+  callAddMsg('me',ok?'Aprobado.':'Rechazado.');
+  const a=callAgent;
+  if(!pending.some(x=>x.agent===a&&x.what===p.what))pending.push({agent:a,...p});
+  const found=pending.find(x=>x.agent===a&&x.what===p.what);
+  if(found)decide(found,ok);
+  approvedSet.add(a.id+'::'+p.what+'::'+(ok?'ok':'no'));
+  callTyping(()=>{
+    callAddMsg('agent',ok?'¡Perfecto, jefe! Lo pongo en marcha.':'Entendido, lo anoto.');
+    callPropIdx++;
+    if(callPropIdx<a.props.length){
+      setTimeout(()=>{callTyping(()=>{callAddMsg('agent','Paso a la siguiente propuesta.');setTimeout(()=>callPresentProp(),400)},500)},700);
+    } else {setTimeout(()=>callPresentProp(),700)}
+  },700);
+}
+
+function callShowTasks(){
+  callAddMsg('me','¿En qué estás trabajando?');
+  callTyping(()=>{
+    callAddMsg('agent','Esta semana trabajo en:\n\n'+callAgent.tasks.map((t,i)=>`${i+1}. ${t}`).join('\n'));
+    callShowOptions([{label:'Listo, gracias',fn:()=>{callTyping(()=>{callAddMsg('agent','Hasta pronto, jefe.');setTimeout(closeCall,700)},500)}}]);
+  },800);
+}
+
+function openCall(a){
+  callAgent=a;callPropIdx=0;
+  document.getElementById('callChat').innerHTML='';
+  document.getElementById('callActions').innerHTML='';
+  const circ=document.getElementById('callAvatarCircle');
+  circ.textContent=a.name.slice(0,2).toUpperCase();
+  circ.style.background='#'+a.shirt.toString(16).padStart(6,'0');
+  document.getElementById('callAgentName').textContent=a.name;
+  document.getElementById('callModal').hidden=false;
+  paused=true;document.getElementById('pauseBtn').textContent='Reanudar';
+  const n=a.props.length;
+  callTyping(()=>{
+    callAddMsg('agent',n?`Hola jefe, tengo ${n} propuesta${n!==1?'s':''} para presentarte. Cuando quieras empezamos.`:'Hola jefe, no tengo propuestas nuevas en este momento. Puedo contarte en qué estoy trabajando si quieres.');
+    if(n){
+      callShowOptions([{label:'Empezar presentación',fn:()=>callPresentProp()},{label:'Primero dime en qué estás trabajando',fn:callShowTasks}]);
+    } else {
+      callShowOptions([{label:'¿En qué estás trabajando?',fn:callShowTasks},{label:'Listo, gracias',fn:closeCall}]);
+    }
+  },1000);
+}
+
+function closeCall(){
+  document.getElementById('callModal').hidden=true;
+  callAgent=null;
+}
+
+document.getElementById('callHangup').onclick=closeCall;
+document.getElementById('callModal').addEventListener('click',e=>{if(e.target===document.getElementById('callModal'))closeCall()});
+document.getElementById('nearCall').onclick=()=>{if(nearA)openCall(nearA)};
 
 AGENTS.slice(0,4).forEach((a,i)=>setTimeout(()=>work(a),500+i*500));
 setTimeout(()=>propose(AGENTS[4]),2600);
