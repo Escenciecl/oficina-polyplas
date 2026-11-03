@@ -110,7 +110,7 @@ aside{display:flex;flex-direction:column;gap:16px;min-width:0}
   <header>
     <h1>Oficina Polyplas<small>Tu equipo de agentes trabajando por las ventas de polyplas.cl</small></h1>
     <div class="controls">
-      <span class="chip"><span class="dot"></span>Vigilante + SEO + CRO + Ads + UX/UI + Intel + Medición activos</span>
+      <span class="chip"><span class="dot"></span>Vigilante + SEO + CRO + Ads + UX/UI + Intel + Medición + Tatis activos</span>
       <span class="chip" id="modeChip"><span class="dot demo"></span>Actividad simulada</span>
       <button class="btn" id="modeBtn" type="button">Ver solo lo real</button>
       <button class="btn primary" id="pauseBtn" type="button">Pausar</button>
@@ -191,9 +191,23 @@ const AGENTS=[
       ficha:'QUÉ: Modificar el evento click_asistencia_flotante en pp-track.js (o en GTM) para que incluya un parámetro con la página y el producto de origen.\n\nCÓDIGO A MODIFICAR: public/legacy/pp-track.js o el módulo 00-flotantes/01-chat-maca.html.\n\nPARÁMETROS A AGREGAR:\n  page_path: window.location.pathname  (ej. "/tina-hidromasaje-queilen/")\n  product_category: la categoría de la página actual (ej. "Tinas Hidromasaje")\n  product_id: el SKU si está disponible en el contexto (ej. "TINA_queilen")\n\nIMPACTO:\n• Ads puede saber desde qué keyword/anuncio llegó el usuario que luego hizo clic en WhatsApp\n• CRO puede saber qué productos generan más consultas (¿falta información en la ficha?)\n• SEO puede saber qué páginas convierten vía WhatsApp vs compra directa\n\nRIESGO: BAJO — agregar parámetros a un evento existente no rompe el evento.\nTiempo de implementación: 1–2 horas.\nVERIFICACIÓN: con ?pp_debug=1 en una ficha de tinas, clic en WhatsApp → ppTrackLog debe mostrar el evento con los nuevos parámetros.'
     }
   ]},
- {id:'cat',name:'Catalogador',shirt:0xd0742b,hair:0x8a5a2b,
-  tasks:['PETG 2 mm → compra directa','Tina Kuyen → alto ticket','Cúpula a medida → cotización','Receptáculo 90x90 → remodelación','Revisando variantes de espesor'],
-  props:[{what:'Marcar policarbonato compacto como "proyecto/volumen"',why:'Sus consultas suelen venir de empresas con medidas grandes.'}]},
+ {id:'tatis',name:'Tatis',real:true,shirt:0xe05fa0,hair:0x2d1b00,
+  tasks:[
+    'Documentando cierre 2026-11-03 en Confluence (Reuniones y Reportes)',
+    'Actualizando "✅ Cambios Implementados" — SEO tinas, medir CTR el 2026-11-17',
+    'Creando plantilla para primera reunión de cierre del equipo',
+    'Preparando página de historial para cada agente activo (8 agentes)',
+    'Registrando línea base de KPIs nov 2026 en "📊 KPIs y Evolución"'
+  ],
+  props:[
+    {
+      what:'Crear página "Cierre 2026-11-03" en Confluence con los reportes de hoy',
+      why:'Primera sesión de la oficina con todos los agentes activos. Tatis documenta el estado inicial: agentes activados, Confluence conectado, cambio SEO aprobado en /tinas-de-hidromasaje/, bugs de medición identificados. Sin este registro, la próxima sesión pierde contexto.',
+      objetivo:'documentación',
+      riesgo:'bajo',
+      ficha:'PROPUESTA: Crear la primera página de cierre diario en Confluence.\n\nContenido:\n• Fecha: 2026-11-03\n• Agentes presentes: Vigilante · SEO · CRO · Ads · UX/UI · Intel · Medición · Tatis\n• Hito: activación completa del equipo\n• Cambio aprobado: SEO title+meta /tinas-de-hidromasaje/ (medir 2026-11-17)\n• Bugs activos: purchase value=$0, transferencias sin evento, WhatsApp sin producto\n• Confluence estructurado: 4 páginas base creadas (IDs: 40271873, 40304641, 40337409, 40337431)\n\nURL destino: moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/40271873\nACCIÓN: crear sub-página "Cierre 2026-11-03" bajo "📋 Reuniones y Reportes".'
+    }
+  ]},
  {id:'intel',name:'Intel',real:true,shirt:0x1a3a5c,hair:0xe8c87a,
   tasks:[
     'Relevando precios de Norglas en tinas entry-mid: Ocean $472.990, Creta $679.990, Lebka Plus $939.990',
@@ -645,7 +659,8 @@ log('Ads: agente activado — Paso 0 pendiente: auditar conversiones en Google A
 log('UX/UI: agente activado — Paso 0 pendiente: auditar carrito y fichas de tinas en mobile');
 log('Intel: agente activado — Competencia identificada: Norglas, CHC, DVP, Polymershapes, Novoacril');
 log('Medición: agente activado — Paso 0 urgente: purchase con value=$0 + transferencias sin purchase');
-log('Oficina abierta. 7 agentes activos: Vigilante + SEO + CRO + Ads + UX/UI + Intel + Medición.');
+log('Oficina abierta. 8 agentes activos: Vigilante + SEO + CRO + Ads + UX/UI + Intel + Medición + Tatis.');
+log('Tatis activada — documentación en Confluence: moralesgarcianat.atlassian.net/wiki/spaces/PMP/folder/40206337');
 AGENTS.slice(0,4).forEach((a,i)=>setTimeout(()=>work(a),500+i*500));
 setTimeout(()=>propose(AGENTS[4]),2600);
 setInterval(tick,2300);

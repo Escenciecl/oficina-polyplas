@@ -37,6 +37,8 @@ Responden los tres agentes de seguimiento diario:
 
 Formato: 3 líneas por agente. Máximo 5 minutos.
 
+**Tatis documenta cada reunión de cierre** en Confluence bajo "📋 Reuniones y Reportes" — crea la página `Cierre YYYY-MM-DD` dentro de la misma sesión.
+
 ### Semanal — Lunes
 Di **`"reporte semanal"`** el lunes al inicio de la jornada.
 
@@ -102,3 +104,20 @@ Cada cambio al sitio queda en:
 | UX/UI | Real | Semanal |
 | Intel | Real | Semanal |
 | Medición | Real | Semanal + después de cada cambio al sitio |
+| Tatis | Real | Diario (documentación) |
+
+---
+
+## Confluence — documentación del equipo
+
+Espacio: **Proyecto Marketing & Producto (PMP)**
+URL base: https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/folder/40206337
+
+| Sección | ID | Para qué |
+|---------|-----|---------|
+| 📋 Reuniones y Reportes | 40271873 | Cierre diario + reportes semanales |
+| 🤖 Historial por Agente | 40304641 | CV de cada agente: propuestas, hallazgos, logros |
+| ✅ Cambios Implementados | 40337409 | Tabla viva de cambios con resultados a 14 y 28 días |
+| 📊 KPIs y Evolución | 40337431 | Panel mensual con línea base nov 2026 |
+
+**Tatis** mantiene estas páginas actualizadas. Para revisar avances, ve directamente a Confluence.
