@@ -110,7 +110,7 @@ aside{display:flex;flex-direction:column;gap:16px;min-width:0}
   <header>
     <h1>Oficina Polyplas<small>Tu equipo de agentes trabajando por las ventas de polyplas.cl</small></h1>
     <div class="controls">
-      <span class="chip"><span class="dot"></span>Vigilante + SEO + CRO + Ads + UX/UI + Intel activos</span>
+      <span class="chip"><span class="dot"></span>Vigilante + SEO + CRO + Ads + UX/UI + Intel + Medición activos</span>
       <span class="chip" id="modeChip"><span class="dot demo"></span>Actividad simulada</span>
       <button class="btn" id="modeBtn" type="button">Ver solo lo real</button>
       <button class="btn primary" id="pauseBtn" type="button">Pausar</button>
@@ -157,10 +157,40 @@ if(!window.THREE){stage.insertAdjacentHTML('beforeend','<div class="fallback">No
 const AGENTS=[
  {id:'vig',name:'Vigilante',real:true,shirt:0x0f8b8d,hair:0x3b2a1e,
   tasks:['Revisando precios de tinas','Chequeando que Webpay responda','Comparando portada con ayer','Probando botón de WhatsApp','Todo en orden en cúpulas'],props:[]},
- {id:'med',name:'Medición',shirt:0x6a5acd,hair:0x1c1c1c,
-  tasks:['Auditando GA4 y GTM','Probando checkout paso 3','Revisando evento purchase','Cuadrando ventas vs GA4','Marcando clics de WhatsApp'],
-  props:[{what:'Instalar evento whatsapp_click en todo el sitio',why:'Hoy no se sabe qué producto origina cada conversación de WhatsApp.'},
-         {what:'Registrar transferencias confirmadas como venta en GA4',why:'Las compras por transferencia no aparecen en Analytics y las campañas se ven peor de lo que son.'}]},
+ {id:'med',name:'Medición',real:true,shirt:0x6a5acd,hair:0x1c1c1c,
+  tasks:[
+    'Paso 0: diagnosticando por qué purchase llega con value=$0 en filas individuales de GA4 (total acumulado sí muestra ingresos)',
+    'Verificando con ?pp_debug=1 que window.ppTrackLog muestra el parámetro value correcto en el evento purchase de /gracias/',
+    'Investigando si transferencias confirmadas disparan el evento purchase — flujo separado en transferencia-confirmar.js',
+    'Revisando click_asistencia_flotante: no lleva parámetro de producto de origen, Ads no puede atribuir el chat a una keyword',
+    'Auditando tags huérfanos en GTM heredados de la migración WordPress → Next.js',
+    'Verificando cobertura del configurador de corte: conf_medida → conf_espesor → conf_pedido',
+    'Cruzando número de compras GA4 vs ventas reales del sistema (Webpay + transferencias)',
+    'Documentando el CATÁLOGO de pp-track.js: alertar si se agrega un producto nuevo sin actualizar el catálogo'
+  ],
+  props:[
+    {
+      what:'Diagnosticar y corregir el evento purchase que llega con value=$0 en GA4',
+      why:'GA4 muestra $1.542.799 CLP en ingresos totales (28 días) pero cada fila individual del evento purchase marca $0. El tag en GTM probablemente no está mapeando el parámetro value al campo de ingresos de GA4. Sin esto, el ROAS real es incalculable y Google Ads optimiza a ciegas.',
+      objetivo:'medición',
+      riesgo:'medio',
+      ficha:'QUÉ: Revisar en GTM el tag de GA4 asociado al evento "purchase" y verificar que el campo "value" esté mapeado correctamente. En GA4, "value" es el parámetro que llena el campo de ingresos.\n\nCÓDIGO RELEVANTE (pp-track.js):\nEl script envía los eventos vía window.dataLayer.push(). El value debería venir en el objeto ecommerce.value.\nEn GTM, el tag de GA4 debe tener configurada la variable {{ecommerce.value}} en el campo "Value".\n\nCÓMO VERIFICAR EL BUG:\n1. Ir a cualquier página de producto en polyplas.cl\n2. Agregar ?pp_debug=1 a la URL\n3. Completar una compra de prueba (o simularla)\n4. Revisar window.ppTrackLog en la consola — buscar el evento "purchase"\n5. Verificar que tenga el campo value con el monto correcto\n6. Si el log muestra value correcto pero GA4 marca $0 → el bug está en GTM\n7. Si el log no muestra value → el bug está en pp-track.js\n\nFIX PROBABLE: En GTM, en el tag de evento de GA4 para "purchase", agregar el campo "Value" con la variable {{ecommerce.value}} o {{dlv - ecommerce.value}}.\n\nIMPACTO: Sin este fix, los Ads optimizan sin saber cuánto vale cada conversión. El CRO no puede calcular ingreso por sesión. El SEO no puede calcular ROI del canal orgánico.\n¿REINICIA APRENDIZAJE?: Sí — cambiar el campo value de las conversiones afecta la optimización de Ads. Coordinar con el Agente Ads antes de publicar.\nRIESGO: MEDIO — cambio en GTM va directo a producción. Verificar con GA4 DebugView antes de publicar el contenedor.\nVERIFICACIÓN POST-FIX: hacer una compra de prueba y verificar en GA4 DebugView (tiempo real) que el evento purchase llega con value > 0.'
+    },
+    {
+      what:'Verificar y corregir que transferencias confirmadas disparen el evento purchase',
+      why:'El flujo de transferencia usa transferencia-confirmar.js, separado del flujo Webpay. Si este flujo no dispara el evento purchase, todas las ventas por transferencia no aparecen en GA4 ni en los reportes de conversión de Ads y SEO — las campañas se ven peores de lo que son y el ROAS real es más alto que el reportado.',
+      objetivo:'medición',
+      riesgo:'bajo',
+      ficha:'QUÉ: Trazar el flujo completo de una compra por transferencia hasta la página de confirmación y verificar que el evento purchase se dispara con los parámetros correctos.\n\nFLUJO ACTUAL (inferido del código):\n1. Cliente elige transferencia → transferencia-init.js crea la orden\n2. Cliente recibe instrucciones de pago\n3. Polyplas confirma la transferencia → transferencia-confirmar.js marca como pagada\n4. ¿Hay redirección a /gracias/ con parámetros? → Si no, el evento purchase no se dispara\n\nDIFERENCIA CON WEBPAY:\nWebpay redirige automáticamente a /gracias/?pp_pago=aprobado&monto=...&orden=...\nTransferencia es manual — la confirmación puede no generar esa redirección automática.\n\nCÓMO VERIFICAR:\n1. Revisar transferencia-confirmar.js: ¿redirige a /gracias/? ¿con qué parámetros?\n2. Si no redirige, el evento purchase nunca se dispara para transferencias.\n\nFIX POSIBLE: asegurarse de que transferencia-confirmar.js redirige a /gracias/ con los mismos parámetros que Webpay, para que pp-track.js pueda leer el monto y disparar el purchase.\n\nIMPACTO: depende de qué % de ventas son por transferencia. Si es el 30%, estamos subestimando conversiones en un 30%.\nRIESGO: BAJO para el diagnóstico. MEDIO para el fix (toca el flujo de confirmación de pago).\nEL FIX AL FLUJO requiere aprobación: es código de negocio en functions/.'
+    },
+    {
+      what:'Agregar parámetro de producto de origen a click_asistencia_flotante (WhatsApp)',
+      why:'GA4 registra 750 eventos click_asistencia_flotante en 5 meses pero sin saber desde qué producto o página se originó el clic. El Agente Ads no puede atribuir el chat a una keyword. El Agente CRO no puede saber qué productos generan más consultas por WhatsApp.',
+      objetivo:'medición',
+      riesgo:'bajo',
+      ficha:'QUÉ: Modificar el evento click_asistencia_flotante en pp-track.js (o en GTM) para que incluya un parámetro con la página y el producto de origen.\n\nCÓDIGO A MODIFICAR: public/legacy/pp-track.js o el módulo 00-flotantes/01-chat-maca.html.\n\nPARÁMETROS A AGREGAR:\n  page_path: window.location.pathname  (ej. "/tina-hidromasaje-queilen/")\n  product_category: la categoría de la página actual (ej. "Tinas Hidromasaje")\n  product_id: el SKU si está disponible en el contexto (ej. "TINA_queilen")\n\nIMPACTO:\n• Ads puede saber desde qué keyword/anuncio llegó el usuario que luego hizo clic en WhatsApp\n• CRO puede saber qué productos generan más consultas (¿falta información en la ficha?)\n• SEO puede saber qué páginas convierten vía WhatsApp vs compra directa\n\nRIESGO: BAJO — agregar parámetros a un evento existente no rompe el evento.\nTiempo de implementación: 1–2 horas.\nVERIFICACIÓN: con ?pp_debug=1 en una ficha de tinas, clic en WhatsApp → ppTrackLog debe mostrar el evento con los nuevos parámetros.'
+    }
+  ]},
  {id:'cat',name:'Catalogador',shirt:0xd0742b,hair:0x8a5a2b,
   tasks:['PETG 2 mm → compra directa','Tina Kuyen → alto ticket','Cúpula a medida → cotización','Receptáculo 90x90 → remodelación','Revisando variantes de espesor'],
   props:[{what:'Marcar policarbonato compacto como "proyecto/volumen"',why:'Sus consultas suelen venir de empresas con medidas grandes.'}]},
@@ -614,7 +644,8 @@ log('CRO: agente activado — Paso 0 pendiente: verificar evento purchase en GA4
 log('Ads: agente activado — Paso 0 pendiente: auditar conversiones en Google Ads');
 log('UX/UI: agente activado — Paso 0 pendiente: auditar carrito y fichas de tinas en mobile');
 log('Intel: agente activado — Competencia identificada: Norglas, CHC, DVP, Polymershapes, Novoacril');
-log('Oficina abierta. Vigilante + SEO + CRO + Ads + UX/UI + Intel activos.');
+log('Medición: agente activado — Paso 0 urgente: purchase con value=$0 + transferencias sin purchase');
+log('Oficina abierta. 7 agentes activos: Vigilante + SEO + CRO + Ads + UX/UI + Intel + Medición.');
 AGENTS.slice(0,4).forEach((a,i)=>setTimeout(()=>work(a),500+i*500));
 setTimeout(()=>propose(AGENTS[4]),2600);
 setInterval(tick,2300);

@@ -101,3 +101,4 @@ Cada cambio al sitio queda en:
 | Ads | Real | Diario |
 | UX/UI | Real | Semanal |
 | Intel | Real | Semanal |
+| Medición | Real | Semanal + después de cada cambio al sitio |
