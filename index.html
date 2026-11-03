@@ -110,7 +110,7 @@ aside{display:flex;flex-direction:column;gap:16px;min-width:0}
   <header>
     <h1>Oficina Polyplas<small>Tu equipo de agentes trabajando por las ventas de polyplas.cl</small></h1>
     <div class="controls">
-      <span class="chip"><span class="dot"></span>Vigilante + SEO activos</span>
+      <span class="chip"><span class="dot"></span>Vigilante + SEO + CRO + Ads + UX/UI activos</span>
       <span class="chip" id="modeChip"><span class="dot demo"></span>Actividad simulada</span>
       <button class="btn" id="modeBtn" type="button">Ver solo lo real</button>
       <button class="btn primary" id="pauseBtn" type="button">Pausar</button>
@@ -269,9 +269,40 @@ const AGENTS=[
       ficha:'QUÉ: Evaluar reducir el presupuesto de Paid Shopping en un 50% y reasignarlo a campañas de Search con mejor rendimiento. Hacerlo gradualmente (máx. ±20% por ajuste) para no reiniciar el aprendizaje.\n\nPOR QUÉ (datos reales GA4 — 28 días):\n• Paid Shopping: 72 sesiones, tasa de interacción 50%, $0 ingresos, 36 sesiones con interacción\n• Paid Search: 1.408 sesiones, tasa 74,86%, 773.023 CLP ingresos\n• Shopping tiene 24,86 pp menos de tasa de interacción — los usuarios llegan y salen sin interactuar\n• Sin ver la cuenta de Ads directamente no podemos confirmar el presupuesto exacto por canal\n\nHIPÓTESIS: Shopping muestra el producto sin contexto suficiente (precio sin saber que es "a medida"), atrayendo clics de bajo valor. Search, en cambio, llega con intención más específica.\n\nIMPACTO ESTIMADO (si Shopping usa ~20% del presupuesto = ~360.000 CLP/mes):\n• Reducir 50%: libera ~180.000 CLP\n• Redirigido a Search con CPL actual: +15 cotizaciones/mes estimadas\n• Conservador: +5 | Esperado: +12 | Optimista: +20\n\n¿REINICIA APRENDIZAJE?: Parcial — cambio de presupuesto >20% puede afectar. Hacer gradual.\nRIESGO: MEDIO — Shopping podría estar capturando demanda que no se ve en GA4 (atribución). Verificar en Google Ads el reporte de conversiones asistidas antes de reducir.\nMÉTODO: Reducción gradual ±15% semanal. Monitorear 14 días.\nFECHA EVALUACIÓN: +14 días.'
     }
   ]},
- {id:'ven',name:'Vendedor',shirt:0x5b7680,hair:0x4a2c1a,
-  tasks:['Cotizando corte 60x40 cm, 5 mm','Explicando acrílico vs PET','Respondiendo despacho a Concepción','Pasando cotización grande a una persona'],
-  props:[{what:'Ofrecer 5% por pedidos sobre 10 planchas',why:'Tres empresas pidieron descuento por volumen esta semana (ejemplo).'}]}
+ {id:'uxui',name:'UX/UI',real:true,shirt:0x7c3aed,hair:0xf5d0a9,
+  tasks:[
+    'Paso 0: auditando carrito y checkout modal en iPhone SE (375px) — el FAB está a top:20px con header de 84px',
+    'Revisando fichas de tinas en mobile: ticket alto (~$800K-$3M), ¿imagen principal visible sin scroll?',
+    'Mapeando módulos HTML con clases elementor-* mezcladas con pp-* (deuda de migración de WordPress)',
+    'Verificando que todos los CTA de compra usen .pp-btn--primary del sistema de diseño',
+    'Coordinando con CRO: funnel add_to_cart→begin_checkout (27% abandono), ¿hay fricción de diseño?',
+    'Revisando accesibilidad: aria-labels en botones flotantes, foco visible en mobile menu',
+    'Auditando loading="eager" en imágenes principales de fichas de producto (CLS en Core Web Vitals)',
+    'Revisando el configurador de corte en desktop — el fix mobile ya está, ¿hay issues en pantallas grandes?'
+  ],
+  props:[
+    {
+      what:'Paso 0: auditar FAB del carrito en celular — posible ocultamiento tras el header sticky',
+      why:'Código real de carrito-y-pago.html: #ppGC-fab está fijo a top:20px + right:28px. El .pp-header sticky mide 84px (mainbar) + 36px (topbar). En mobile, cuando el usuario tiene ítems en el carrito, el botón flotante puede quedar detrás del header, haciéndolo invisible o parcialmente tapado.',
+      objetivo:'accesibilidad',
+      riesgo:'bajo',
+      ficha:'QUÉ: Revisar en polyplas.cl desde un iPhone (375px) si el botón #ppGC-fab del carrito es visible cuando hay productos agregados. Verificar si hay conflicto de z-index entre el FAB (z-index:10001) y el header (z-index:1000) — z-index mayor debería funcionar, pero el posicionamiento top:20px puede solapar con el logo y búsqueda.\n\nCÓDIGO ACTUAL (carrito-y-pago.html):\n  #ppGC-fab { position:fixed; top:20px; right:28px; z-index:10001; ... }\n\nCÓDIGO ACTUAL (site.css):\n  .pp-header { position:sticky; top:calc(-1 * var(--pp-topbar-h)); } /* -36px */\n  .pp-mainbar__in { height:84px; }\n\nEN MOBILE: el topbar (36px) se oculta al hacer scroll (sticky top:-36px), pero la mainbar (84px) queda pegada arriba desde la posición 0. El FAB a top:20px quedaría a 20px del top del viewport, es decir, DENTRO de la mainbar de 84px. El usuario no lo ve.\n\nFIX PROPUESTO (si se confirma el bug):\n  #ppGC-fab { top: calc(var(--pp-header-h, 84px) + 12px); }\n  O ajustar a: top: 96px; en mobile.\n\nImpacto: cada usuario que agrega al carrito y no ve el botón para ir al checkout puede abandonar sin saberlo.\nConfianza: Media hasta confirmar con pantalla real — z-index 10001 es correcto, el riesgo es el posicionamiento top.\nEsfuerzo confirmado: 2 líneas de CSS. Esfuerzo auditoría: 30 min.\nRiesgo: BAJO — solo un atributo CSS top. Reversible en 5 min.'
+    },
+    {
+      what:'Mostrar precio total en el FAB del carrito (hoy solo muestra número de ítems)',
+      why:'GA4 real: 622 add_to_cart → 454 begin_checkout = 27% abandona. El CRO identifica falta de info de despacho. UX identifica otro factor: el FAB (#ppGC-badge) muestra solo la cantidad de ítems ("2"), no el total. El usuario no sabe si lleva $50.000 o $1.500.000 — aumentar la prominencia del valor puede impulsar el click hacia el checkout.',
+      objetivo:'conversión',
+      riesgo:'bajo',
+      ficha:'QUÉ: Modificar el HTML/JS del FAB del carrito para mostrar el subtotal junto al contador de ítems. Ejemplo: "🛒 2 · $450.000" en lugar de solo "2".\n\nARCHIVO: content/modulos/00-flotantes/04-carrito-y-pago.html\n\nPOR QUÉ (datos reales):\n• GA4: 622 add_to_cart → 454 begin_checkout = 168 usuarios (27%) no llegan al checkout\n• Benchmark e-commerce: mostrar el valor del carrito en el CTA aumenta la tasa de click al checkout en 8–15% (fuentes: Baymard, NNGroup)\n• El código actual en carrito-y-pago.html muestra #ppGC-badge con solo el count\n• Polyplas tiene ticket promedio alto (planchas + corte puede superar $200K CLP fácilmente)\n\nHIPÓTESIS: Ver el monto total en el FAB antes de abrir el carrito genera un micro-compromiso. El usuario recuerda cuánto lleva y hace click con más intención.\n\nFIX PROPUESTO: buscar en el JS del módulo donde se actualiza #ppGC-badge y agregar la visualización del total formateado en CLP. NO toca la lógica de precios ni el carrito, solo la capa de presentación del FAB.\n\nIMPACTO ESTIMADO:\n• Si se recupera el 10% del abandono (add_to_cart→begin_checkout): +17 checkouts/mes\n• Con conversión post-checkout ~60%: +10 ventas/mes\n• Conservador: +4 | Esperado: +10 | Optimista: +18 ventas/mes\n\nCONFIANZA: Media — el cambio es directamente evaluable con GA4 (tasa add_to_cart→begin_checkout).\nESFUERZO: 3–4 horas (localizar la función de actualización del badge + agregar formato de precio).\nRIESGO: BAJO — solo display del FAB. El JS del carrito no cambia.\nMEDICIÓN: tasa add_to_cart → begin_checkout antes/después, mínimo 4 semanas.\nMÉTRICA RESGUARDO: ticket promedio (no debe bajar).'
+    },
+    {
+      what:'Agregar loading="eager" y dimensiones a la imagen principal en fichas de tinas',
+      why:'GSC: 29.315 impresiones en /tinas-de-hidromasaje/ (3 meses). Las fichas de tinas son el ticket más alto del sitio (~$800K-$3M CLP). Los módulos HTML en content/modulos/40-producto-*/01-ficha.html heredados de WordPress no declaran width/height en las imágenes, causando CLS (Cumulative Layout Shift) medible en Core Web Vitals — penaliza SEO y primera impresión.',
+      objetivo:'performance',
+      riesgo:'bajo',
+      ficha:'QUÉ: En cada archivo content/modulos/40-producto-tina-*/01-ficha.html, agregar a la imagen principal (la primera visible al entrar): loading="eager" fetchpriority="high" y los atributos width/height con las dimensiones reales de la imagen.\n\nPOR QUÉ:\n• GSC: /tinas-de-hidromasaje/ tiene 29.315 imp en 3 meses — es la página más estratégica por ticket\n• GA4: 445 visitas en 28 días, ticket de decisión largo (~$800K-$3M CLP)\n• Sin loading="eager" Next.js aplica lazy loading por defecto a imágenes en módulos HTML heredados\n• Sin width/height declarados, el navegador no reserva espacio hasta cargar la imagen → layout shift visible → CLS alto\n• CLS >0.1 baja el score de Lighthouse y puede afectar el ranking en Google (Core Web Vitals son factor de SEO)\n\nARCHIVOS A MODIFICAR:\n  content/modulos/40-producto-tina-hidromasaje-queilen/01-ficha.html\n  content/producto-casco-tina-queilen/01-ficha.html\n  content/modulos/40-producto-casco-tina-coinco/01-ficha.html\n  (y todos los demás 40-producto-tina-*/01-ficha.html)\n\nCAMBIO CONCRETO: buscar la primera <img> de cada ficha y agregar:\n  <img src="..." alt="..." width="800" height="600" loading="eager" fetchpriority="high">\n  (ajustar width/height a las dimensiones reales de cada imagen)\n\nCONFIANZA: Alta — es una práctica estándar documentada por Google.\nESFUERZO: 2–3 horas (revisar cada ficha de tina, confirmar dimensiones de imagen).\nRIESGO: BAJO — atributos HTML no cambian el diseño visual. Reversible: eliminar los atributos.\nMEDICIÓN: Lighthouse mobile en fichas de tinas antes/después. CLS objetivo: < 0.1\nCOORDINACIÓN: avisar al Agente SEO — si LCP mejora, puede afectar positivamente el ranking.'
+    }
+  ]}
 ];
 const DESK_X=[-10,-6,-2,2];
 AGENTS.forEach((a,i)=>{const row=i<4?0:1;a.desk={x:DESK_X[i%4],z:row?3.2:-3.2,row};a.seat={x:a.desk.x,z:row?1.8:-1.8}});
@@ -548,7 +579,10 @@ function frame(t){
 resize();renderTeam();applyMode();renderProps();
 log('Vigilante: tarea diaria creada, ronda cada mañana a las 8:08');
 log('SEO: agente activado — primera auditoría pendiente de acceso a GSC y GA4');
-log('Oficina abierta. SEO y Vigilante activos; el resto en modo demo.');
+log('CRO: agente activado — Paso 0 pendiente: verificar evento purchase en GA4');
+log('Ads: agente activado — Paso 0 pendiente: auditar conversiones en Google Ads');
+log('UX/UI: agente activado — Paso 0 pendiente: auditar carrito y fichas de tinas en mobile');
+log('Oficina abierta. Vigilante + SEO + CRO + Ads + UX/UI activos.');
 AGENTS.slice(0,4).forEach((a,i)=>setTimeout(()=>work(a),500+i*500));
 setTimeout(()=>propose(AGENTS[4]),2600);
 setInterval(tick,2300);
