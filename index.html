@@ -184,25 +184,25 @@ const AGENTS=[
   ],
   props:[
     {
-      what:'Crear página dedicada /acrilico-espejo con contenido transaccional',
-      why:'GSC muestra búsquedas con intención de compra ("acrílico espejo precio", "plancha acrílico espejo") sin página propia. Dato pendiente de confirmar con acceso a GSC.',
-      objetivo:'posición',
-      riesgo:'bajo',
-      ficha:'QUÉ: Página nueva /acrilico-espejo — título, H1, descripción del producto, tabla de espesores y precios, botón de compra/cotización, enlazado desde categoría Planchas.\n\nPOR QUÉ: Búsquedas transaccionales activas sin URL de destino (dato a confirmar en GSC con acceso real).\n\nIMPACTO ESTIMADO: Pendiente de datos reales de GSC para calcular escenarios.\nFórmula: clics extra = impresiones × (CTR pos.3 − CTR actual)\n\nCONFIANZA: Media (el tipo de página existe, falta confirmar volumen).\nESFUERZO: 4–6 horas (redacción + desarrollo).\nRIESGO: Bajo — página nueva, no afecta lo que ya posiciona. Reversible: despublicar.\nMEDICIÓN: clics orgánicos a /acrilico-espejo a 14/28/56 días vs grupo de control (otras páginas de planchas no tocadas).'
-    },
-    {
-      what:'Agregar datos estructurados (schema Product) en fichas de tinas de hidromasaje',
-      why:'Las tinas tienen el ticket más alto del catálogo (~17× el de una plancha). Sin schema, Google no muestra precio ni disponibilidad en el resultado — CTR por debajo del esperado para su posición.',
-      objetivo:'CTR',
-      riesgo:'bajo',
-      ficha:'QUÉ: Marcar fichas de tinas con schema.org/Product: nombre, precio, disponibilidad, imagen, SKU. URLs afectadas: todas las fichas de tinas (estimar cantidad con rastreo).\n\nPOR QUÉ: Rich results de precio mejoran CTR entre 15–30% según experimentos de GSC (dato de industria — reemplazar con datos propios cuando haya historial).\n\nIMPACTO ESTIMADO: Pendiente de datos reales.\nFórmula: clics extra = impresiones_tinas × (CTR objetivo − CTR actual)\nConservador: +8% CTR. Esperado: +18%. Optimista: +28%.\n\nCONFIANZA: Alta en que mejora CTR; media en la magnitud exacta.\nESFUERZO: 2–3 horas (desarrollo).\nRIESGO: Bajo — schema no cambia contenido visible ni URLs. Reversible: quitar el markup.\nMEDICIÓN: CTR en páginas de tinas vs páginas de planchas (control) a 28 días en GSC.'
-    },
-    {
-      what:'Optimizar meta titles de las 5 categorías principales de planchas',
-      why:'Páginas de categoría suelen estar en posición 6–12 con CTR inferior al esperado. Títulos actuales probablemente no incluyen precio ni ventaja diferencial (importación directa, corte a medida).',
+      what:'Optimizar title + meta de /categoria-producto/tinas-de-hidromasaje/',
+      why:'GSC real: 29.315 imp (3 meses), posición 8,3, CTR 1,1% — muy bajo para esa posición. "jacuzzi" (6.869 imp) apunta aquí con 0,6% CTR. Potencial: +399 clics/trimestre si CTR sube a 2,5%.',
       objetivo:'CTR',
       riesgo:'medio',
-      ficha:'QUÉ: Reescribir el <title> y meta description de las 5 categorías principales (acrílico, policarbonato, PET, PETG, y una quinta a definir según tráfico). NO se cambian URLs ni H1.\n\nPOR QUÉ: Un título con "precio" + "Santiago" + diferencial puede subir CTR 0.5–1.5 pp en posiciones 5–10. Dato a confirmar con CTR actual de GSC por posición.\n\nIMPACTO ESTIMADO: Pendiente de datos reales.\nFórmula: clics extra = impresiones × (CTR nuevo − CTR actual)\n\nCONFIANZA: Media (depende del CTR actual y de cuánto mejora el título).\nESFUERZO: 2 horas.\nRIESGO: MEDIO — si el título pierde relevancia semántica, Google puede ignorarlo o la posición puede bajar levemente. Mitigación: cambiar solo 1 categoría primero, medir 14 días antes de escalar.\nREVERSIÓN: Restaurar título original en menos de 10 min.\nMEDICIÓN: CTR por página en GSC, comparado con páginas de categoría no tocadas (control), a 14/28 días.'
+      ficha:'QUÉ: Reescribir <title> y meta description de /categoria-producto/tinas-de-hidromasaje/. NO cambia URL ni H1.\n\nPOR QUÉ (datos reales GSC 3 meses):\n• 29.315 impresiones, posición 8,3, CTR 1,1% (esperado para pos 8: ~2–3%)\n• Query "jacuzzi": 6.869 imp → apunta aquí con CTR 0,6%\n• Query "tina hidromasaje": 2.038 imp, pos 7,3, CTR 0,8%\n\nIMPACTO ESTIMADO:\n• Clics actuales 3 meses: 334\n• Clics si CTR=2,5%: 29.315 × 0,025 = 733 (+399, +119%)\n• Conv orgánica sitio: 7,73% → +31 eventos clave/trimestre\n• Tasa evento→venta: desconocida. Escenarios (ingreso trimestral):\n  Conservador: +1,5M CLP | Esperado: +4M CLP | Optimista: +7M CLP\n\nCONFIANZA: Media — CTR actual muy inferior al esperado para la posición, alta probabilidad de mejora.\nESFUERZO: 2 horas.\nRIESGO: MEDIO — cambio de título puede afectar posición ±1–2 lugares.\nMITIGACIÓN: Solo esta página primero, medir 14 días antes de escalar.\nREVERSIÓN: restaurar título en <10 min.\nMEDICIÓN: CTR /tinas-de-hidromasaje/ vs /planchas-acrilico/ (control) en GSC a 14 y 28 días.\nFECHA DE EVALUACIÓN: +14 días tras implementar.'
+    },
+    {
+      what:'Optimizar title + meta de /categoria-producto/planchas-acrilico/',
+      why:'GSC real: 23.540 imp (3 meses), posición 9,8, CTR 1,4%. "acrilico transparente" (3.075 imp, pos 10,3) apunta aquí con CTR 0,4%. Potencial: +259 clics/trimestre si CTR sube a 2,5%.',
+      objetivo:'CTR',
+      riesgo:'medio',
+      ficha:'QUÉ: Reescribir <title> y meta description de /categoria-producto/planchas-acrilico/. NO cambia URL ni H1.\n\nPOR QUÉ (datos reales GSC 3 meses):\n• 23.540 impresiones, posición 9,8, CTR 1,4%\n• Query "acrilico transparente": 3.075 imp, pos 10,3, CTR 0,4% → apunta aquí\n• Query "plancha de acrilico": 255 imp, pos 13,0, CTR 2,4%\n• El título actual no incluye "transparente" ni precio ni diferencial\n\nIMPACTO ESTIMADO:\n• Clics actuales 3 meses: 326\n• Clics si CTR=2,5%: 23.540 × 0,025 = 589 (+263, +81%)\n• Conv orgánica: 7,73% → +20 eventos clave/trimestre\n• Escenarios: Conservador +500K CLP | Esperado +1,5M CLP | Optimista +3M CLP\n\nCONFIANZA: Media.\nESFUERZO: 2 horas. Implementar DESPUÉS de propuesta 1 para separar variables.\nRIESGO: MEDIO — misma lógica que propuesta 1.\nMEDICIÓN: CTR /planchas-acrilico/ vs /guia-de-acrilicos/ (control) a 14 y 28 días.\nFECHA DE EVALUACIÓN: +14 días tras implementar.'
+    },
+    {
+      what:'Schema Product en fichas de tinas (rich results de precio en Google)',
+      why:'GSC: 29.315 imp en categoría tinas, ticket alto. Sin schema, el resultado en Google no muestra precio ni disponibilidad — CTR 1,1% cuando debería ser 2–3%. Rich results pueden sumar +10–20% de CTR relativo.',
+      objetivo:'CTR',
+      riesgo:'bajo',
+      ficha:'QUÉ: Marcar fichas individuales de tinas con schema.org/Product: nombre, precio, disponibilidad, imagen, SKU. NO cambia URLs ni contenido visible.\n\nPOR QUÉ:\n• 29.315 imp en categoría tinas (las de mayor ticket, ~17× el de una plancha)\n• CTR actual 1,1% — sin rich results el resultado es idéntico a competidores\n• Google puede mostrar precio y stock directamente en el SERP\n\nIMPACTO ESTIMADO:\n• Si CTR mejora +15% relativo: 334 clics → 384 clics/trimestre (+50)\n• Escenarios: Conservador +8% CTR | Esperado +15% | Optimista +25%\n\nCONFIANZA: Alta en que mejora CTR; media en la magnitud sin historial propio.\nESFUERZO: 3–4 horas (desarrollo + prueba en Rich Results Test de Google).\nRIESGO: BAJO — schema no cambia contenido visible ni URLs. Reversible: eliminar markup.\nMEDICIÓN: CTR fichas de tinas vs fichas de cúpulas (control) a 28 días en GSC. Verificar con Rich Results Test antes de publicar.\nFECHA DE EVALUACIÓN: +28 días tras implementar.'
     }
   ]},
  {id:'ads',name:'Ads/email',shirt:0xc77d12,hair:0x111111,
