@@ -72,12 +72,23 @@ aside{display:flex;flex-direction:column;gap:16px;min-width:0}
 .count{font:700 12px var(--f-body);background:var(--bad);color:#fff;border-radius:999px;padding:1px 8px}
 .empty{color:var(--muted);font-size:13px;border:1px dashed var(--line);border-radius:10px;padding:14px;text-align:center}
 .prop{border:1px solid var(--line);border-left:4px solid var(--warn);border-radius:0;padding:10px 12px;display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
-.prop .who{font:500 11px var(--f-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.prop[data-riesgo="alto"]{border-left-color:var(--bad)}
+.prop[data-riesgo="medio"]{border-left-color:var(--warn)}
+.prop[data-riesgo="bajo"]{border-left-color:var(--ok)}
+.prop .who{font:500 11px var(--f-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.05em;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .prop .what{font-weight:700}
 .prop .why{font-size:13px;color:var(--muted)}
-.prop .acts{display:flex;gap:8px;flex-wrap:wrap}
+.prop .ficha{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:6px;white-space:pre-wrap;display:none}
+.prop .ficha.open{display:block}
+.prop .acts{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.badge{font:700 10px var(--f-body);border-radius:999px;padding:1px 7px;border:1px solid currentColor;white-space:nowrap}
+.badge.riesgo-alto{color:var(--bad)}
+.badge.riesgo-medio{color:var(--warn)}
+.badge.riesgo-bajo{color:var(--ok)}
+.badge.obj{color:var(--accent);border-color:var(--accent)}
 .btn.ok{border-color:var(--ok);color:var(--ok)}
 .btn.no{border-color:var(--bad);color:var(--bad)}
+.btn.detail{font-size:11px;padding:4px 8px;color:var(--muted)}
 .log{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;max-height:300px;overflow:auto}
 .log li{font-size:13px;display:grid;grid-template-columns:44px minmax(0,1fr);gap:8px}
 .log time{font:500 11px var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums;padding-top:2px}
@@ -99,7 +110,7 @@ aside{display:flex;flex-direction:column;gap:16px;min-width:0}
   <header>
     <h1>Oficina Polyplas<small>Tu equipo de agentes trabajando por las ventas de polyplas.cl</small></h1>
     <div class="controls">
-      <span class="chip"><span class="dot"></span>Vigilante activo · ronda diaria 8:08</span>
+      <span class="chip"><span class="dot"></span>Vigilante + SEO activos</span>
       <span class="chip" id="modeChip"><span class="dot demo"></span>Actividad simulada</span>
       <button class="btn" id="modeBtn" type="button">Ver solo lo real</button>
       <button class="btn primary" id="pauseBtn" type="button">Pausar</button>
@@ -160,9 +171,40 @@ const AGENTS=[
   tasks:['Revisando ficha de plancha acrílico','Midiendo abandono en "Datos y envío"','Probando cotizador a medida','Ordenando fotos de tinas'],
   props:[{what:'Mostrar costo de despacho a regiones antes del paso 3',why:'Muchos abandonan al ver que fuera de la RM no hay despacho gratis.'},
          {what:'Agregar "usos típicos" en fichas de acrílico',why:'Clientes preguntan por WhatsApp si sirve para vitrinas o letreros.'}]},
- {id:'seo',name:'SEO',shirt:0x3f9a5c,hair:0x5a3d2b,
-  tasks:['Buscando "acrílico espejo precio"','Escribiendo borrador guía PETG','Revisando títulos de categorías','Analizando Search Console'],
-  props:[{what:'Crear página "Acrílico espejo"',why:'Hay búsquedas frecuentes y hoy no existe una página dedicada.'}]},
+ {id:'seo',name:'SEO',real:true,shirt:0x3f9a5c,hair:0x5a3d2b,
+  tasks:[
+    'Panel lunes: midiendo clics sin marca últimos 28 días vs período anterior',
+    'Diagnóstico: páginas en posición 4–15 con más de 500 impresiones/mes',
+    'Analizando CTR bajo en fichas de planchas de acrílico',
+    'Revisando errores de indexación en Search Console',
+    'Identificando búsquedas transaccionales sin página propia',
+    'Comparando posiciones vs competidores en "plancha acrílico santiago"',
+    'Rastreando velocidad y datos estructurados del sitio',
+    'Auditando enlazado interno entre categorías de planchas y baños'
+  ],
+  props:[
+    {
+      what:'Crear página dedicada /acrilico-espejo con contenido transaccional',
+      why:'GSC muestra búsquedas con intención de compra ("acrílico espejo precio", "plancha acrílico espejo") sin página propia. Dato pendiente de confirmar con acceso a GSC.',
+      objetivo:'posición',
+      riesgo:'bajo',
+      ficha:'QUÉ: Página nueva /acrilico-espejo — título, H1, descripción del producto, tabla de espesores y precios, botón de compra/cotización, enlazado desde categoría Planchas.\n\nPOR QUÉ: Búsquedas transaccionales activas sin URL de destino (dato a confirmar en GSC con acceso real).\n\nIMPACTO ESTIMADO: Pendiente de datos reales de GSC para calcular escenarios.\nFórmula: clics extra = impresiones × (CTR pos.3 − CTR actual)\n\nCONFIANZA: Media (el tipo de página existe, falta confirmar volumen).\nESFUERZO: 4–6 horas (redacción + desarrollo).\nRIESGO: Bajo — página nueva, no afecta lo que ya posiciona. Reversible: despublicar.\nMEDICIÓN: clics orgánicos a /acrilico-espejo a 14/28/56 días vs grupo de control (otras páginas de planchas no tocadas).'
+    },
+    {
+      what:'Agregar datos estructurados (schema Product) en fichas de tinas de hidromasaje',
+      why:'Las tinas tienen el ticket más alto del catálogo (~17× el de una plancha). Sin schema, Google no muestra precio ni disponibilidad en el resultado — CTR por debajo del esperado para su posición.',
+      objetivo:'CTR',
+      riesgo:'bajo',
+      ficha:'QUÉ: Marcar fichas de tinas con schema.org/Product: nombre, precio, disponibilidad, imagen, SKU. URLs afectadas: todas las fichas de tinas (estimar cantidad con rastreo).\n\nPOR QUÉ: Rich results de precio mejoran CTR entre 15–30% según experimentos de GSC (dato de industria — reemplazar con datos propios cuando haya historial).\n\nIMPACTO ESTIMADO: Pendiente de datos reales.\nFórmula: clics extra = impresiones_tinas × (CTR objetivo − CTR actual)\nConservador: +8% CTR. Esperado: +18%. Optimista: +28%.\n\nCONFIANZA: Alta en que mejora CTR; media en la magnitud exacta.\nESFUERZO: 2–3 horas (desarrollo).\nRIESGO: Bajo — schema no cambia contenido visible ni URLs. Reversible: quitar el markup.\nMEDICIÓN: CTR en páginas de tinas vs páginas de planchas (control) a 28 días en GSC.'
+    },
+    {
+      what:'Optimizar meta titles de las 5 categorías principales de planchas',
+      why:'Páginas de categoría suelen estar en posición 6–12 con CTR inferior al esperado. Títulos actuales probablemente no incluyen precio ni ventaja diferencial (importación directa, corte a medida).',
+      objetivo:'CTR',
+      riesgo:'medio',
+      ficha:'QUÉ: Reescribir el <title> y meta description de las 5 categorías principales (acrílico, policarbonato, PET, PETG, y una quinta a definir según tráfico). NO se cambian URLs ni H1.\n\nPOR QUÉ: Un título con "precio" + "Santiago" + diferencial puede subir CTR 0.5–1.5 pp en posiciones 5–10. Dato a confirmar con CTR actual de GSC por posición.\n\nIMPACTO ESTIMADO: Pendiente de datos reales.\nFórmula: clics extra = impresiones × (CTR nuevo − CTR actual)\n\nCONFIANZA: Media (depende del CTR actual y de cuánto mejora el título).\nESFUERZO: 2 horas.\nRIESGO: MEDIO — si el título pierde relevancia semántica, Google puede ignorarlo o la posición puede bajar levemente. Mitigación: cambiar solo 1 categoría primero, medir 14 días antes de escalar.\nREVERSIÓN: Restaurar título original en menos de 10 min.\nMEDICIÓN: CTR por página en GSC, comparado con páginas de categoría no tocadas (control), a 14/28 días.'
+    }
+  ]},
  {id:'ads',name:'Ads/email',shirt:0xc77d12,hair:0x111111,
   tasks:['Preparando recordatorio de recompra','Revisando gasto de campañas','Segmentando talleres y letreros','Armando correo de tinas'],
   props:[{what:'Enviar recordatorio de recompra a talleres',why:'Clientes de planchas suelen repetir cada 6 a 10 semanas (ejemplo).'}]},
@@ -353,7 +395,7 @@ async function meeting(a){
   const b=rnd(others);meetingBusy=true;a.busy=b.busy=true;a.setStatus('meet');b.setStatus('meet');
   await Promise.all([goTo(a,SEATS[0]),goTo(b,SEATS[1])]);
   faceTo(a,Math.PI/2);faceTo(b,-Math.PI/2);
-  const msgs={ana:'Te paso los números de la semana',ven:'Los clientes preguntan mucho por esto',med:'Este dato ahora está bien medido',seo:'Encontré búsquedas nuevas',cro:'Probé un cambio en la ficha',cat:'Reclasifiqué estos productos',ads:'La campaña de tinas va bien',vig:'Hoy no hubo cambios raros'};
+  const msgs={ana:'Te paso los números de la semana',ven:'Los clientes preguntan mucho por esto',med:'Este dato ahora está bien medido',seo:'Hay páginas en posición 4–15 con alto potencial',cro:'Probé un cambio en la ficha',cat:'Reclasifiqué estos productos',ads:'La campaña de tinas va bien',vig:'Hoy no hubo cambios raros'};
   say(a,msgs[a.id]||'Revisemos esto',2600);await wait(2700);say(b,'Anotado, lo uso en mi próxima tarea',2400);
   log(a.name+' le pasó información a '+b.name);await wait(2500);
   await Promise.all([back(a),back(b)]);a.setStatus('work');b.setStatus('work');a.busy=b.busy=false;meetingBusy=false;
@@ -372,10 +414,32 @@ function renderProps(){
   if(!pending.length){propsEl.innerHTML='<div class="empty">Sin propuestas pendientes. Cuando un agente quiera cambiar algo, camina a tu escritorio y aparece aquí.</div>';return}
   propsEl.innerHTML='';
   pending.forEach(p=>{
-    const d=document.createElement('div');d.className='prop';
-    d.innerHTML='<span class="who"></span><span class="what"></span><span class="why"></span><div class="acts"><button class="btn ok" type="button">Aprobar</button><button class="btn no" type="button">Rechazar</button></div>';
-    d.querySelector('.who').textContent=p.agent.name+' · ejemplo';d.querySelector('.what').textContent=p.what;d.querySelector('.why').textContent=p.why;
-    const [ok,no]=d.querySelectorAll('button');ok.onclick=()=>decide(p,true);no.onclick=()=>decide(p,false);propsEl.appendChild(d);
+    const r=p.riesgo||'bajo',o=p.objetivo||'';
+    const isReal=p.agent.real;
+    const d=document.createElement('div');d.className='prop';d.dataset.riesgo=r;
+    d.innerHTML=
+      '<span class="who"></span>'+
+      '<span class="what"></span>'+
+      '<span class="why"></span>'+
+      (p.ficha?'<pre class="ficha"></pre>':'')+
+      '<div class="acts">'+
+        '<button class="btn ok" type="button">Aprobar</button>'+
+        '<button class="btn no" type="button">Rechazar</button>'+
+        (p.ficha?'<button class="btn detail" type="button">Ver ficha ↓</button>':'')+
+      '</div>';
+    const whoEl=d.querySelector('.who');
+    whoEl.innerHTML='<span></span>';
+    whoEl.querySelector('span').textContent=p.agent.name+(isReal?' · real':' · ejemplo');
+    if(r){const b=document.createElement('span');b.className='badge riesgo-'+r;b.textContent='riesgo '+r;whoEl.appendChild(b)}
+    if(o){const b=document.createElement('span');b.className='badge obj';b.textContent=o;whoEl.appendChild(b)}
+    d.querySelector('.what').textContent=p.what;
+    d.querySelector('.why').textContent=p.why;
+    if(p.ficha)d.querySelector('.ficha').textContent=p.ficha;
+    const [ok,no]=d.querySelectorAll('button.ok, button.no');
+    ok.onclick=()=>decide(p,true);no.onclick=()=>decide(p,false);
+    const det=d.querySelector('button.detail');
+    if(det)det.onclick=()=>{const f=d.querySelector('.ficha');f.classList.toggle('open');det.textContent=f.classList.contains('open')?'Cerrar ficha ↑':'Ver ficha ↓'};
+    propsEl.appendChild(d);
   });
 }
 function decide(p,ok){
@@ -422,7 +486,8 @@ function frame(t){
 }
 resize();renderTeam();applyMode();renderProps();
 log('Vigilante: tarea diaria creada, ronda cada mañana a las 8:08');
-log('Oficina abierta. Los demás agentes están en modo demo.');
+log('SEO: agente activado — primera auditoría pendiente de acceso a GSC y GA4');
+log('Oficina abierta. SEO y Vigilante activos; el resto en modo demo.');
 AGENTS.slice(0,4).forEach((a,i)=>setTimeout(()=>work(a),500+i*500));
 setTimeout(()=>propose(AGENTS[4]),2600);
 setInterval(tick,2300);
