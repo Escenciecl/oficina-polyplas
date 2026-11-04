@@ -1,0 +1,34 @@
+{
+  "actualizado": "2026-11-03",
+  "sesionAnterior": {
+    "fecha": "2026-11-03",
+    "titulo": "Cierre 2026-11-03",
+    "url": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/40435713",
+    "resumen": "Se resolvieron 4 tareas aprobadas en la sala de revisión: 3 arreglos de tracking en GA4 y 1 mejora de SEO. Todo publicado en producción.",
+    "aprobadas": [
+      {"agente": "uxui", "que": "WhatsApp: el chat ahora registra en GA4 desde qué producto o página escribe cada usuario", "estado": "Publicado"},
+      {"agente": "med", "que": "Corregido el evento purchase que llegaba con value=$0 en GA4", "estado": "Publicado"},
+      {"agente": "med", "que": "Las ventas por transferencia ahora disparan purchase en GA4", "estado": "Publicado"},
+      {"agente": "seo", "que": "Nuevo title y meta description de /tinas-de-hidromasaje/ para subir el CTR", "estado": "Publicado"}
+    ],
+    "trabajado": [
+      "Tatis creó la página Cierre 2026-11-03 en Confluence",
+      "3 agentes verificaron el código publicado: tracking GA4, SEO y WhatsApp OK",
+      "Oficina virtual: nuevo diseño realista, avatares y marca Polyplas"
+    ],
+    "pendientes": [
+      "Verificar GA4_API_SECRET en Cloudflare (sin ella las transferencias no llegan a GA4)",
+      "Hacer un pedido de prueba por transferencia y revisarlo en GA4 DebugView",
+      "Medir el CTR de tinas en GSC en 4 a 6 semanas (meta: de 1,1% a 2,5%)",
+      "Seguir con la sala de revisión: quedan ~15 propuestas"
+    ]
+  },
+  "propuestas": {
+    "Diagnosticar y corregir el evento purchase que llega con value=$0 en GA4": "hecha",
+    "Verificar y corregir que transferencias confirmadas disparen el evento purchase": "hecha",
+    "Agregar parámetro de producto de origen a click_asistencia_flotante (WhatsApp)": "hecha",
+    "Crear página \"Cierre 2026-11-03\" en Confluence con los reportes de hoy": "hecha",
+    "Verificar y corregir el evento purchase en GA4 (Paso 0)": "hecha",
+    "Optimizar title + meta de /categoria-producto/tinas-de-hidromasaje/": "hecha"
+  }
+}
