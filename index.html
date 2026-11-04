@@ -1722,7 +1722,7 @@ function closeCall(){
    ============================================================ */
 const fpPos=new THREE.Vector3(9,1.6,6.6),fpVel={x:0,z:0},fpYaw={v:0},fpPitch={v:0},fpKeys={};
 const EYE=1.7,FP_R=.3,WALK=3.1,RUN=5.8;
-let lookWeb=false,fpLocked=false,fpBob=0,fpDrag=null,fpLookId=null,fpLookLast=null;
+let lookWeb=false,fpLocked=false,fpBob=0,fpDrag=null,fpLookId=null,fpLookLast=null,fpFloor=0,fpEyeY=EYE;
 const joy={x:0,y:0,id:null};
 const fpEls={hud:document.getElementById('fpHud'),hint:document.getElementById('fpHint'),cross:document.getElementById('fpCrosshair'),map:document.getElementById('fpMap'),joy:document.getElementById('fpJoy'),knob:document.getElementById('fpJoyKnob'),fade:document.getElementById('fpFade'),btn:document.getElementById('fpBtnProxy')};
 const modalOpen=()=>!document.getElementById('webModal').hidden||!document.getElementById('callModal').hidden||!document.getElementById('reunionModal').hidden;
@@ -1774,9 +1774,10 @@ function setFPScene(on){
 }
 function enterFP(){
   fpMode=true;fpEls.fade.classList.remove('go');void fpEls.fade.offsetWidth;fpEls.fade.classList.add('go');
-  fpPos.set(me.pos.x,EYE,me.pos.z);fpVel.x=fpVel.z=0;
+  fpFloor=meFloor;fpEyeY=EYE+fpFloor*Y_F2;
+  fpPos.set(me.pos.x,fpEyeY,me.pos.z);fpVel.x=fpVel.z=0;
   fpYaw.v=me.g.rotation.y+Math.PI;fpPitch.v=-.05;
-  if(Math.abs(fpPos.x-9)<2.2&&fpPos.z>4.6){fpPos.x=6.8;fpPos.z=6.6;fpYaw.v=Math.atan2(6.8,6.6)}
+  if(fpFloor===0&&Math.abs(fpPos.x-9)<2.2&&fpPos.z>4.6){fpPos.x=6.8;fpPos.z=6.6;fpYaw.v=Math.atan2(6.8,6.6)}
   if(matchMedia('(pointer:coarse)').matches)fpEls.hint.textContent='Arrastra para mirar · joystick para moverte';
   fpEls.btn.classList.add('active');fpEls.btn.textContent='Salir de 1ª persona';
   fpEls.hint.classList.add('vis');
@@ -1785,7 +1786,7 @@ function enterFP(){
 }
 function exitFP(){
   fpMode=false;if(fpLocked)document.exitPointerLock();
-  me.pos.x=fpPos.x;me.pos.z=fpPos.z;me.g.position.copy(me.pos);me.g.rotation.y=fpYaw.v+Math.PI;me.g.visible=true;me.lbl.style.visibility='';
+  meFloor=fpFloor;me.pos.x=fpPos.x;me.pos.y=fpFloor*Y_F2;me.pos.z=fpPos.z;me.g.position.copy(me.pos);me.g.rotation.y=fpYaw.v+Math.PI;me.g.visible=true;me.lbl.style.visibility='';
   fpEls.btn.classList.remove('active');fpEls.btn.textContent='1ª Persona';
   fpEls.hint.classList.remove('vis');fpEls.cross.classList.remove('target');
   AGENTS.forEach(a=>{a.lbl.style.opacity=''});
@@ -1795,6 +1796,13 @@ fpEls.btn.onclick=()=>{closeMoreMenu();fpMode?exitFP():enterFP()};
 
 /* colisión círculo vs cajas, por eje para deslizarse por las paredes */
 function hits(x,z){
+  if(fpFloor===1){
+    const sx=x>10.3&&x<12.6;
+    if(x<-12.65+FP_R||x>12.65-FP_R||z<-8.65+FP_R)return true;
+    if(z>-3+FP_R&&!sx)return true;
+    if(sx&&z>1.7)return true;
+    return false;
+  }
   if(x<-12.95+FP_R||x>12.95-FP_R||z<-8.95+FP_R||z>8.95-FP_R)return true;
   for(const b of SOLIDS){if(x>b.x1-FP_R&&x<b.x2+FP_R&&z>b.z1-FP_R&&z<b.z2+FP_R)return true}
   return false;
@@ -1819,8 +1827,11 @@ function moveFP(dt){
   const speed=Math.hypot(fpVel.x,fpVel.z);
   if(!reduce)fpBob+=dt*speed*2.4;
   const bobAmt=reduce?0:Math.min(1,speed/WALK);
-  me.pos.x=fpPos.x;me.pos.z=fpPos.z;
-  fpCam.position.set(fpPos.x,EYE+Math.sin(fpBob*2)*.035*bobAmt,fpPos.z);
+  const fpOnStair=fpPos.x>10.3&&fpPos.x<12.6&&fpPos.z>-3.2&&fpPos.z<1.7;
+  if(fpOnStair){const t=THREE.MathUtils.clamp((1.5-fpPos.z)/4.5,0,1);fpEyeY=EYE+t*Y_F2;if(t>=.98)fpFloor=1;if(t<=.02)fpFloor=0;}
+  else fpEyeY=EYE+fpFloor*Y_F2;
+  me.pos.x=fpPos.x;me.pos.y=fpFloor*Y_F2;me.pos.z=fpPos.z;
+  fpCam.position.set(fpPos.x,fpEyeY+Math.sin(fpBob*2)*.035*bobAmt,fpPos.z);
   fpCam.rotation.order='YXZ';fpCam.rotation.y=fpYaw.v;fpCam.rotation.x=fpPitch.v;fpCam.rotation.z=reduce?0:Math.sin(fpBob)*.006*bobAmt;
   const fov=72+(run&&speed>WALK+.4?7:0);if(Math.abs(fpCam.fov-fov)>.05){fpCam.fov+=(fov-fpCam.fov)*Math.min(1,dt*6);fpCam.updateProjectionMatrix()}
 }
