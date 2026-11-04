@@ -310,7 +310,6 @@ kbd{font:600 10px var(--f-mono);border:1px solid var(--line);border-bottom-width
         <div class="more-menu__panel" id="morePanel" hidden>
           <button class="more-menu__item" id="fpBtnProxy" type="button">○ Modo 1ª Persona</button>
           <div class="more-menu__sep"></div>
-          <button class="more-menu__item" id="modeBtnProxy" type="button">Ver solo lo real</button>
           <button class="more-menu__item" id="vozBtnProxy" type="button">Voz: activada</button>
           <div class="more-menu__sep"></div>
           <button class="more-menu__item" id="configBtnProxy" type="button">⚙ Config Claude Code</button>
@@ -1049,7 +1048,7 @@ function moveMe(dt){
 
 /* ---------- interfaz ---------- */
 const logEl=document.getElementById('log'),propsEl=document.getElementById('props');
-let demo=true,paused=false,pending=[],meetingBusy=false;
+const demo=false;let paused=false,pending=[],meetingBusy=false;
 const rnd=a=>a[Math.floor(Math.random()*a.length)];
 const wait=ms=>new Promise(r=>setTimeout(r,ms));
 const now=()=>new Date().toLocaleTimeString('es-CL',{hour:'2-digit',minute:'2-digit'});
@@ -1133,9 +1132,8 @@ function tick(){if(paused)return;const free=AGENTS.filter(a=>!a.busy&&active(a))
 function renderTeam(){const t=document.getElementById('team');if(!t)return;t.innerHTML='';AGENTS.forEach(a=>{const li=document.createElement('li');li.innerHTML='<span><i class="sw"></i><span><b></b><small></small></span></span><span class="tag '+(a.real?'real':'demo')+'">'+(a.real?'Activo':'Demo')+'</span>';li.querySelector('.sw').style.background='#'+a.shirt.toString(16).padStart(6,'0');li.querySelector('b').textContent=a.name;li.querySelector('small').style.cssText='font-size:11px;color:var(--muted);display:block';li.querySelector('small').textContent=a.role||'';t.appendChild(li)})}
 function applyMode(){
   AGENTS.forEach(a=>{const on=active(a);a.g.visible=on;a.lbl.classList.toggle('off',!on);a.lbl.hidden=!on;screens[a.id].material.emissiveIntensity=on?.8:0;if(!on)a.bub.hidden=true});
-  document.getElementById('modeBtnProxy').textContent=demo?'Ver solo lo real':'Ver simulación';
 }
-document.getElementById('modeBtnProxy').onclick=()=>{demo=!demo;applyMode();closeMoreMenu()};
+
 document.getElementById('pauseBtn').onclick=e=>{paused=!paused;e.currentTarget.textContent=paused?'Reanudar':'Pausar'};
 document.getElementById('zin').onclick=()=>{zoom=Math.min(2.2,zoom*1.2);resize()};
 document.getElementById('zout').onclick=()=>{zoom=Math.max(.7,zoom/1.2);resize()};
