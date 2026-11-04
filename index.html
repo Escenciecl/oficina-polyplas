@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Oficina Polyplas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;900&family=Nunito+Sans:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
 <style>
 /* Layout: escena 3D isométrica de la oficina a la izquierda (tu avatar se mueve por ella) + columna lateral con bandeja del jefe, registro y equipo */
 :root{
@@ -14,8 +14,8 @@
   --accent:#00d4ff; --accent-ink:#000a14; --warn:#ffaa00; --ok:#00ffaa; --bad:#ff2255;
   --bubble:#071525; --bubble-ink:#a8d8ff;
   --shadow:0 0 0 1px rgba(0,212,255,.1),0 0 20px rgba(0,212,255,.04),0 8px 32px rgba(0,0,0,.8);
-  --f-display:"Orbitron","Baloo 2",ui-rounded,sans-serif;
-  --f-body:"Nunito Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --f-display:"DM Sans","Plus Jakarta Sans",ui-rounded,sans-serif;
+  --f-body:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
   --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
   color-scheme:dark;
 }
@@ -148,25 +148,25 @@ aside{display:flex;flex-direction:column;gap:16px;min-width:0}
 </style>
 
 <style>
-/* ===== Tema claro · minimalista · futurista ===== */
+/* ===== Tema cálido · moderno · humano ===== */
 :root{
-  --bg:#eef2f6; --panel:#ffffff; --ink:#0f1b2a; --muted:#5b6b7d; --line:#dfe6ed;
-  --stage:#e9eef3; --accent:#06b6d4; --accent-2:#8b5cf6; --accent-ink:#ffffff;
-  --warn:#f59e0b; --ok:#10b981; --bad:#ef4444; --bubble:#ffffff; --bubble-ink:#0f1b2a;
-  --glow:0 0 0 1px rgba(6,182,212,.18),0 8px 30px rgba(6,182,212,.12);
-  --shadow:0 1px 2px rgba(15,27,42,.06),0 10px 30px rgba(15,27,42,.08);
-  --f-display:"Orbitron",ui-rounded,sans-serif;
+  --bg:#faf7f2; --panel:#ffffff; --ink:#1c1409; --muted:#8c7566; --line:#e5d5c4;
+  --stage:#f5ede3; --accent:#d97706; --accent-2:#059669; --accent-ink:#ffffff;
+  --warn:#f59e0b; --ok:#10b981; --bad:#ef4444; --bubble:#fffdf9; --bubble-ink:#1c1409;
+  --glow:0 0 0 1px rgba(217,119,6,.18),0 8px 30px rgba(217,119,6,.12);
+  --shadow:0 1px 2px rgba(28,20,9,.06),0 10px 30px rgba(28,20,9,.08);
+  --f-display:"DM Sans","Plus Jakarta Sans",ui-rounded,sans-serif;
   color-scheme:light;
 }
 html{background:var(--bg)}
 body{margin:0;background:
-  radial-gradient(1200px 500px at 15% -10%,rgba(6,182,212,.10),transparent 60%),
-  radial-gradient(900px 500px at 100% 0%,rgba(139,92,246,.08),transparent 60%),
-  linear-gradient(rgba(15,27,42,.035) 1px,transparent 1px) 0 0/32px 32px,
-  linear-gradient(90deg,rgba(15,27,42,.035) 1px,transparent 1px) 0 0/32px 32px,var(--bg);
+  radial-gradient(1200px 500px at 15% -10%,rgba(217,119,6,.07),transparent 60%),
+  radial-gradient(900px 500px at 100% 0%,rgba(5,150,105,.05),transparent 60%),
+  linear-gradient(rgba(28,20,9,.025) 1px,transparent 1px) 0 0/32px 32px,
+  linear-gradient(90deg,rgba(28,20,9,.025) 1px,transparent 1px) 0 0/32px 32px,var(--bg);
   color:var(--ink)}
 h1{font-weight:700;letter-spacing:.02em;font-size:clamp(22px,3.4vw,32px)!important;
-  background:linear-gradient(120deg,#0f1b2a 0%,#0f1b2a 45%,#0891b2 75%,#8b5cf6 100%);
+  background:linear-gradient(120deg,#1c1409 0%,#1c1409 40%,#92400e 70%,#d97706 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 h1 small{-webkit-text-fill-color:var(--muted);font-size:13px;letter-spacing:0}
 .card h2{font-size:16px!important;letter-spacing:.06em;text-transform:uppercase}
@@ -179,12 +179,12 @@ h1 small{-webkit-text-fill-color:var(--muted);font-size:13px;letter-spacing:0}
 .btn{background:#fff;border-color:var(--line);color:var(--ink);border-radius:10px;transition:border-color .15s,box-shadow .15s,transform .15s}
 .btn:hover{border-color:var(--accent);box-shadow:var(--glow)}
 .btn:active{transform:translateY(1px)}
-.btn.primary{background:linear-gradient(135deg,#06b6d4,#0891b2);border-color:transparent;color:#fff;box-shadow:0 6px 18px rgba(6,182,212,.35)}
+.btn.primary{background:linear-gradient(135deg,#d97706,#b45309);border-color:transparent;color:#fff;box-shadow:0 6px 18px rgba(217,119,6,.35)}
 .btn.primary:hover{filter:brightness(1.06)}
-.btn.reunion{background:linear-gradient(135deg,#8b5cf6,#6d28d9);border-color:transparent;color:#fff;box-shadow:0 6px 18px rgba(139,92,246,.3)}
-.btn.fp-btn{border-color:rgba(139,92,246,.45);color:#6d28d9}
+.btn.reunion{background:linear-gradient(135deg,#059669,#047857);border-color:transparent;color:#fff;box-shadow:0 6px 18px rgba(5,150,105,.3)}
+.btn.fp-btn{border-color:rgba(5,150,105,.45);color:#047857}
 .btn.fp-btn::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;border:2px solid currentColor;margin-right:7px;vertical-align:0}
-.btn.fp-btn.active{background:#6d28d9;color:#fff;border-color:#6d28d9;box-shadow:0 6px 18px rgba(139,92,246,.35)}
+.btn.fp-btn.active{background:#047857;color:#fff;border-color:#047857;box-shadow:0 6px 18px rgba(5,150,105,.35)}
 .btn.ok{border-color:var(--ok);color:#047857}
 .btn.no{border-color:var(--bad);color:#b91c1c}
 .stage{border:1px solid rgba(255,255,255,.95);box-shadow:var(--shadow),0 0 0 1px rgba(15,27,42,.04)}
@@ -199,10 +199,10 @@ h1 small{-webkit-text-fill-color:var(--muted);font-size:13px;letter-spacing:0}
 .prop .ficha,.reunion-prop .rp-ficha{color:#334155}
 .log time{color:#94a3b8}
 .count{background:var(--bad)}
-.reunion-overlay,.call-overlay{background:rgba(226,232,240,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.reunion-overlay,.call-overlay{background:rgba(245,235,220,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .reunion-panel,.call-panel{background:var(--bg);box-shadow:0 30px 80px rgba(15,27,42,.25)}
 .call-top,.call-actions{background:#fff}
-.call-msg.me .call-bubble{background:linear-gradient(135deg,#06b6d4,#0891b2);color:#fff;border-color:transparent}
+.call-msg.me .call-bubble{background:linear-gradient(135deg,#d97706,#b45309);color:#fff;border-color:transparent}
 
 /* ===== HUD de 1ª persona ===== */
 .fp-hud{position:absolute;inset:0;pointer-events:none;display:none}
@@ -211,18 +211,18 @@ h1 small{-webkit-text-fill-color:var(--muted);font-size:13px;letter-spacing:0}
 .stage.fp canvas{cursor:grab}
 .fp-top{position:absolute;left:12px;top:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;max-width:calc(100% - 190px);
   background:rgba(255,255,255,.82);backdrop-filter:blur(10px);border-radius:10px;padding:6px 10px;font-size:12px;color:var(--muted);box-shadow:var(--shadow)}
-.fp-tag{font:700 11px var(--f-display);letter-spacing:.08em;color:#0891b2;text-transform:uppercase}
-.fp-tag::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#06b6d4;box-shadow:0 0 8px #06b6d4;margin-right:6px;vertical-align:1px;animation:pulse 1.6s infinite}
+.fp-tag{font:700 11px var(--f-display);letter-spacing:.08em;color:#b45309;text-transform:uppercase}
+.fp-tag::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#d97706;box-shadow:0 0 8px #d97706;margin-right:6px;vertical-align:1px;animation:pulse 1.6s infinite}
 @keyframes pulse{50%{opacity:.35}}
 kbd{font:600 10px var(--f-mono);border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:0 5px;background:#fff;color:var(--ink);margin-right:3px}
 #fpMap{position:absolute;right:12px;top:12px;width:150px;height:104px;border-radius:10px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.9)}
 #fpCrosshair{position:absolute;top:50%;left:50%;width:22px;height:22px;transform:translate(-50%,-50%);border-radius:50%;border:1.5px solid rgba(15,27,42,.35);transition:width .15s,height .15s,border-color .15s;display:block}
-#fpCrosshair::after{content:"";position:absolute;left:50%;top:50%;width:4px;height:4px;border-radius:50%;background:#0891b2;transform:translate(-50%,-50%);box-shadow:0 0 0 2px rgba(255,255,255,.8)}
-#fpCrosshair.target{width:34px;height:34px;border-color:#06b6d4;box-shadow:0 0 14px rgba(6,182,212,.45)}
+#fpCrosshair::after{content:"";position:absolute;left:50%;top:50%;width:4px;height:4px;border-radius:50%;background:#d97706;transform:translate(-50%,-50%);box-shadow:0 0 0 2px rgba(255,255,255,.8)}
+#fpCrosshair.target{width:34px;height:34px;border-color:#d97706;box-shadow:0 0 14px rgba(217,119,6,.45)}
 #fpHint{position:absolute;top:50%;left:50%;transform:translate(-50%,28px);font-size:12px;font-weight:600;color:var(--ink);background:rgba(255,255,255,.85);padding:4px 10px;border-radius:999px;white-space:nowrap;display:none;box-shadow:var(--shadow)}
 #fpHint.vis{display:block}
 #fpJoy{position:absolute;left:20px;bottom:20px;width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,.35);border:1.5px solid rgba(255,255,255,.85);backdrop-filter:blur(6px);pointer-events:auto;touch-action:none;display:none}
-#fpJoyKnob{position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:linear-gradient(135deg,#22d3ee,#0891b2);box-shadow:0 4px 14px rgba(6,182,212,.5)}
+#fpJoyKnob{position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:linear-gradient(135deg,#f7a830,#d97706);box-shadow:0 4px 14px rgba(217,119,6,.5)}
 @media (pointer:coarse){#fpJoy{display:block}.fp-top .fp-keys{display:none}}
 #fpFade{position:absolute;inset:0;background:#fff;opacity:0}
 #fpFade.go{animation:fpfade .5s ease-out}
@@ -324,9 +324,9 @@ const stage=document.getElementById('stage'),labelsEl=document.getElementById('l
 if(!window.THREE){stage.insertAdjacentHTML('beforeend','<div class="fallback">No se pudo cargar el motor 3D. Revisa tu conexión y recarga la página.</div>');return}
 
 const AGENTS=[
- {id:'vig',name:'Vigilante',real:true,shirt:0x0f8b8d,hair:0x3b2a1e,
+ {id:'vig',name:'Vigilante',role:'Vigilancia',real:true,shirt:0xc9524a,hair:0x3b2a1e,skin:0xf4c4a0,
   tasks:['Revisando precios de tinas','Chequeando que Webpay responda','Comparando portada con ayer','Probando botón de WhatsApp','Todo en orden en cúpulas'],props:[]},
- {id:'med',name:'Medición',real:true,shirt:0x6a5acd,hair:0x1c1c1c,
+ {id:'med',name:'Medición',role:'Analytics',real:true,shirt:0x2563a8,hair:0x1c1c1c,skin:0xd49060,
   tasks:[
     'Paso 0: diagnosticando por qué purchase llega con value=$0 en filas individuales de GA4 (total acumulado sí muestra ingresos)',
     'Verificando con ?pp_debug=1 que window.ppTrackLog muestra el parámetro value correcto en el evento purchase de /gracias/',
@@ -360,7 +360,7 @@ const AGENTS=[
       ficha:'QUÉ: Modificar el evento click_asistencia_flotante en pp-track.js (o en GTM) para que incluya un parámetro con la página y el producto de origen.\n\nCÓDIGO A MODIFICAR: public/legacy/pp-track.js o el módulo 00-flotantes/01-chat-maca.html.\n\nPARÁMETROS A AGREGAR:\n  page_path: window.location.pathname  (ej. "/tina-hidromasaje-queilen/")\n  product_category: la categoría de la página actual (ej. "Tinas Hidromasaje")\n  product_id: el SKU si está disponible en el contexto (ej. "TINA_queilen")\n\nIMPACTO:\n• Ads puede saber desde qué keyword/anuncio llegó el usuario que luego hizo clic en WhatsApp\n• CRO puede saber qué productos generan más consultas (¿falta información en la ficha?)\n• SEO puede saber qué páginas convierten vía WhatsApp vs compra directa\n\nRIESGO: BAJO — agregar parámetros a un evento existente no rompe el evento.\nTiempo de implementación: 1–2 horas.\nVERIFICACIÓN: con ?pp_debug=1 en una ficha de tinas, clic en WhatsApp → ppTrackLog debe mostrar el evento con los nuevos parámetros.'
     }
   ]},
- {id:'tatis',name:'Tatis',real:true,shirt:0xe05fa0,hair:0x2d1b00,
+ {id:'tatis',name:'Tatis',role:'Documentación',real:true,shirt:0xd05080,hair:0x2d1b00,skin:0xf0c8a0,
   tasks:[
     'Documentando cierre 2026-11-03 en Confluence (Reuniones y Reportes)',
     'Actualizando "✅ Cambios Implementados" — SEO tinas, medir CTR el 2026-11-17',
@@ -377,7 +377,7 @@ const AGENTS=[
       ficha:'PROPUESTA: Crear la primera página de cierre diario en Confluence.\n\nContenido:\n• Fecha: 2026-11-03\n• Agentes presentes: Vigilante · SEO · CRO · Ads · UX/UI · Intel · Medición · Tatis\n• Hito: activación completa del equipo\n• Cambio aprobado: SEO title+meta /tinas-de-hidromasaje/ (medir 2026-11-17)\n• Bugs activos: purchase value=$0, transferencias sin evento, WhatsApp sin producto\n• Confluence estructurado: 4 páginas base creadas (IDs: 40271873, 40304641, 40337409, 40337431)\n\nURL destino: moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/40271873\nACCIÓN: crear sub-página "Cierre 2026-11-03" bajo "📋 Reuniones y Reportes".'
     }
   ]},
- {id:'intel',name:'Intel',real:true,shirt:0x1a3a5c,hair:0xe8c87a,
+ {id:'intel',name:'Intel',role:'Inteligencia',real:true,shirt:0x1e3a5c,hair:0xe8c87a,skin:0x8b5a3c,
   tasks:[
     'Relevando precios de Norglas en tinas entry-mid: Ocean $472.990, Creta $679.990, Lebka Plus $939.990',
     'Comparando precio acrílico 5mm: DVP $82.990, Polymershapes $70.080 — ¿cómo está Polyplas?',
@@ -411,7 +411,7 @@ const AGENTS=[
       ficha:'HALLAZGO: Novoacril.cl tiene un modelo 100% online de corte láser con tiempos de entrega de 5-8 días hábiles tras el pago. Precio del corte láser: desde $350 CLP/minuto.\n(Fuente: novoacril.cl/corte-laser-1 — relevado 2026-11-03)\n\nVENTAJA POLYPLAS NO COMUNICADA:\n• Retiro en Santiago Centro el MISMO DÍA (si el stock está disponible)\n• Despacho gratis en RM desde $350.000 (rápido, sin esperar 5-8 días)\n• 29 años como importadora directa (confianza vs un competidor online sin historia)\n\nACCIÓN PROPUESTA: Agregar en las fichas de planchas y en el configurador de corte a medida un mensaje visible:\n  "Retiro hoy en Santiago Centro · Despacho RM gratis desde $350.000"\nHoy ese mensaje puede estar en el topbar o en el footer, pero no en la ficha donde se decide la compra.\n\nIMPACTO: Un cliente que busca "plancha acrílico 5mm a medida Santiago" y encuentra a Novoacril con 5-8 días vs Polyplas con retiro hoy → la velocidad puede ser el factor decisivo.\nURGENCIA: Esta semana (cambio de texto en fichas, bajo riesgo).\nACCIÓN POR ÁREA: texto → UX/UI. SEO: agregar "retiro hoy" y "despacho rápido" como mensaje en meta description.\nFUENTE: novoacril.cl — relevado 2026-11-03.'
     }
   ]},
- {id:'cro',name:'CRO',real:true,shirt:0xb8475f,hair:0x2a1a12,
+ {id:'cro',name:'CRO',role:'Conversión',real:true,shirt:0x9b3b50,hair:0x2a1a12,skin:0xe8a888,
   tasks:[
     'Paso 0: verificando que GA4 registre purchase con valor — hoy los ingresos por evento muestran $0',
     'Midiendo abandono funnel planchas: add_to_cart (622) → begin_checkout (454) = 27% dropout',
@@ -445,7 +445,7 @@ const AGENTS=[
       ficha:'QUÉ: Agregar a las fichas de tinas: tabla de especificaciones técnicas (medidas externas/internas, peso, potencia, consumo eléctrico, número de jets), requisitos de instalación (espacio mínimo, desagüe, eléctrico), plazo de despacho, garantía, y sección de preguntas frecuentes.\n\nPOR QUÉ (datos reales):\n• GA4 panorámico (28 días): Tinas = 445 vistas, 156 usuarios activos, 2.4 mil eventos\n• GSC (3 meses): /tinas-de-hidromasaje/ → 29.315 imp, 334 clics, CTR 1.1%, pos 8.3\n• generate_lead (cotizaciones): 738 eventos en 5 meses — muchos probablemente piden info que ya debería estar en la ficha\n• click_asistencia_flotante: 750 (WhatsApp) — ídem\n• Las tinas tienen ticket ~17× mayor que planchas → la decisión requiere más información\n\nHIPÓTESIS: Si la ficha responde las preguntas de instalación, medidas y garantía, más usuarios deciden online (compra directa o cotización formal) sin necesitar WhatsApp.\n\nIMPACTO ESTIMADO:\n• Sesiones en tinas: ~445 (28 días)\n• Si conversión sube de X% a X+1%: depende de conversión actual (no disponible por página todavía)\n• Pendiente: crear segmento GA4 tinas para medir conversión base\n• Escenarios al tener datos: conservador +2 ventas/mes | esperado +5 | optimista +10\n\nCONFIANZA: Alta en que falta información (validado por volumen de WhatsApp y leads); media en el impacto exacto.\nESFUERZO: 4–6 horas (redacción + fotos + implementación).\nRIESGO: BAJO — contenido nuevo, no cambia estructura ni URLs.\nMÉTRICA PRINCIPAL: tasa generate_lead + compras directas en /tinas-de-hidromasaje/.\nMÉTRICA RESGUARDO: click_asistencia_flotante (esperamos que baje, no suba).\nMÉTODO: antes/después, medir 4 semanas.'
     }
   ]},
- {id:'seo',name:'SEO',real:true,shirt:0x3f9a5c,hair:0x5a3d2b,
+ {id:'seo',name:'SEO',role:'Posicionamiento',real:true,shirt:0x2d6a4f,hair:0x5a3d2b,skin:0xc87850,
   tasks:[
     'Panel lunes: midiendo clics sin marca últimos 28 días vs período anterior',
     'Diagnóstico: páginas en posición 4–15 con más de 500 impresiones/mes',
@@ -479,7 +479,7 @@ const AGENTS=[
       ficha:'QUÉ: Marcar fichas individuales de tinas con schema.org/Product: nombre, precio, disponibilidad, imagen, SKU. NO cambia URLs ni contenido visible.\n\nPOR QUÉ:\n• 29.315 imp en categoría tinas (las de mayor ticket, ~17× el de una plancha)\n• CTR actual 1,1% — sin rich results el resultado es idéntico a competidores\n• Google puede mostrar precio y stock directamente en el SERP\n\nIMPACTO ESTIMADO:\n• Si CTR mejora +15% relativo: 334 clics → 384 clics/trimestre (+50)\n• Escenarios: Conservador +8% CTR | Esperado +15% | Optimista +25%\n\nCONFIANZA: Alta en que mejora CTR; media en la magnitud sin historial propio.\nESFUERZO: 3–4 horas (desarrollo + prueba en Rich Results Test de Google).\nRIESGO: BAJO — schema no cambia contenido visible ni URLs. Reversible: eliminar markup.\nMEDICIÓN: CTR fichas de tinas vs fichas de cúpulas (control) a 28 días en GSC. Verificar con Rich Results Test antes de publicar.\nFECHA DE EVALUACIÓN: +28 días tras implementar.'
     }
   ]},
- {id:'ads',name:'Ads',real:true,shirt:0xc77d12,hair:0x111111,
+ {id:'ads',name:'Ads',role:'Publicidad',real:true,shirt:0xb5771a,hair:0x111111,skin:0x7a4a2a,
   tasks:[
     'Verificando ritmo de gasto diario vs $59.000 CLP/día (presupuesto mensual $1.800.000)',
     'Revisando términos de búsqueda esta semana: filtrando irrelevantes (uñas, manualidades, gratis)',
@@ -513,7 +513,7 @@ const AGENTS=[
       ficha:'QUÉ: Evaluar reducir el presupuesto de Paid Shopping en un 50% y reasignarlo a campañas de Search con mejor rendimiento. Hacerlo gradualmente (máx. ±20% por ajuste) para no reiniciar el aprendizaje.\n\nPOR QUÉ (datos reales GA4 — 28 días):\n• Paid Shopping: 72 sesiones, tasa de interacción 50%, $0 ingresos, 36 sesiones con interacción\n• Paid Search: 1.408 sesiones, tasa 74,86%, 773.023 CLP ingresos\n• Shopping tiene 24,86 pp menos de tasa de interacción — los usuarios llegan y salen sin interactuar\n• Sin ver la cuenta de Ads directamente no podemos confirmar el presupuesto exacto por canal\n\nHIPÓTESIS: Shopping muestra el producto sin contexto suficiente (precio sin saber que es "a medida"), atrayendo clics de bajo valor. Search, en cambio, llega con intención más específica.\n\nIMPACTO ESTIMADO (si Shopping usa ~20% del presupuesto = ~360.000 CLP/mes):\n• Reducir 50%: libera ~180.000 CLP\n• Redirigido a Search con CPL actual: +15 cotizaciones/mes estimadas\n• Conservador: +5 | Esperado: +12 | Optimista: +20\n\n¿REINICIA APRENDIZAJE?: Parcial — cambio de presupuesto >20% puede afectar. Hacer gradual.\nRIESGO: MEDIO — Shopping podría estar capturando demanda que no se ve en GA4 (atribución). Verificar en Google Ads el reporte de conversiones asistidas antes de reducir.\nMÉTODO: Reducción gradual ±15% semanal. Monitorear 14 días.\nFECHA EVALUACIÓN: +14 días.'
     }
   ]},
- {id:'uxui',name:'UX/UI',real:true,shirt:0x7c3aed,hair:0xf5d0a9,
+ {id:'uxui',name:'UX/UI',role:'Diseño',real:true,shirt:0x7a4d88,hair:0xf5d0a9,skin:0xf0d0b0,
   tasks:[
     'Paso 0: auditando carrito y checkout modal en iPhone SE (375px) — el FAB está a top:20px con header de 84px',
     'Revisando fichas de tinas en mobile: ticket alto (~$800K-$3M), ¿imagen principal visible sin scroll?',
@@ -560,31 +560,31 @@ const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});
 renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
 renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 stage.prepend(renderer.domElement);
-const cam=new THREE.OrthographicCamera(-1,1,1,-1,0.1,200);
+const cam=new THREE.PerspectiveCamera(52,1,0.1,200);
 cam.position.set(15,20,21);cam.lookAt(0,0,0);
 const fpCam=new THREE.PerspectiveCamera(72,1,.05,120);
 let zoom=1,fpMode=false;
-function resize(){const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);const a=w/h;const vh=Math.max(16,31/a)/zoom;cam.top=vh/2;cam.bottom=-vh/2;cam.left=-vh*a/2;cam.right=vh*a/2;cam.updateProjectionMatrix();fpCam.aspect=a;fpCam.updateProjectionMatrix()}
+function resize(){const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);const a=w/h;cam.aspect=a;cam.fov=52/zoom;cam.updateProjectionMatrix();fpCam.aspect=a;fpCam.updateProjectionMatrix()}
 new ResizeObserver(resize).observe(stage);
 
-const BG=0xe9eef3;
+const BG=0xfaf0e6;
 scene.background=new THREE.Color(BG);
 /* luz: cielo blanco + sol suave + acentos LED */
-scene.add(new THREE.HemisphereLight(0xffffff,0xc9d5e0,.9));
-scene.add(new THREE.AmbientLight(0xffffff,.22));
-const sun=new THREE.DirectionalLight(0xffffff,.7);sun.position.set(6,18,10);sun.castShadow=true;
+scene.add(new THREE.HemisphereLight(0xfff8f0,0xe8d5c0,.9));
+scene.add(new THREE.AmbientLight(0xfff8f4,.28));
+const sun=new THREE.DirectionalLight(0xfff5e4,.75);sun.position.set(6,18,10);sun.castShadow=true;
 sun.shadow.mapSize.set(2048,2048);sun.shadow.bias=-.0006;sun.shadow.radius=3;
 Object.assign(sun.shadow.camera,{left:-17,right:17,top:17,bottom:-17,near:1,far:60});scene.add(sun);
-const accent1=new THREE.PointLight(0x22d3ee,.55,9);accent1.position.set(9,2.4,-4);scene.add(accent1);
-const accent2=new THREE.PointLight(0x8b5cf6,.4,8);accent2.position.set(9,2.4,4.5);scene.add(accent2);
+const accent1=new THREE.PointLight(0xe8a838,.45,9);accent1.position.set(9,2.4,-4);scene.add(accent1);
+const accent2=new THREE.PointLight(0x52b788,.4,8);accent2.position.set(9,2.4,4.5);scene.add(accent2);
 
 const std=(c,r,m,extra)=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:r,metalness:m},extra||{}));
 const MAT={
-  white:std(0xf8fafc,.32,.04),pearl:std(0xe3e9ef,.45,.08),wall:std(0xf4f6f9,.92,0),
-  steel:std(0xc3ccd6,.28,.75),graphite:std(0x27303b,.38,.45),
-  led:new THREE.MeshBasicMaterial({color:0x22d3ee}),ledSoft:new THREE.MeshBasicMaterial({color:0x9eeaf9}),
-  ledV:new THREE.MeshBasicMaterial({color:0x8b5cf6}),panel:new THREE.MeshBasicMaterial({color:0xffffff}),
-  glass:std(0xd9f4fb,.05,.1,{transparent:true,opacity:.2,depthWrite:false}),
+  white:std(0xfef9f4,.32,.04),pearl:std(0xf0e4d4,.45,.08),wall:std(0xfdf8f2,.92,0),
+  steel:std(0xc3bdb5,.28,.75),graphite:std(0x2d2820,.38,.45),
+  led:new THREE.MeshBasicMaterial({color:0xe8a838}),ledSoft:new THREE.MeshBasicMaterial({color:0xf7cc6a}),
+  ledV:new THREE.MeshBasicMaterial({color:0x52b788}),panel:new THREE.MeshBasicMaterial({color:0xffffff}),
+  glass:std(0xf4e4c8,.05,.1,{transparent:true,opacity:.18,depthWrite:false}),
   leaf:std(0x3c9d68,.85,0),leaf2:std(0x2c7f55,.85,0)
 };
 const M=c=>new THREE.MeshStandardMaterial({color:c,roughness:.6,metalness:0});
@@ -598,10 +598,10 @@ const fpOnly=[];const fpo=m=>{m.visible=false;fpOnly.push(m);return m};
 let floorTex;
 function floorTexture(){
   const c=document.createElement('canvas');c.width=c.height=256;const g=c.getContext('2d');
-  g.fillStyle='#eef2f6';g.fillRect(0,0,256,256);
-  g.strokeStyle='rgba(110,130,150,.20)';g.lineWidth=2;g.strokeRect(1,1,254,254);
-  g.strokeStyle='rgba(110,130,150,.07)';g.lineWidth=1;g.beginPath();g.moveTo(128,0);g.lineTo(128,256);g.moveTo(0,128);g.lineTo(256,128);g.stroke();
-  g.fillStyle='rgba(34,211,238,.35)';[[2,2],[254,2],[2,254],[254,254]].forEach(([x,y])=>{g.beginPath();g.arc(x,y,2.2,0,7);g.fill()});
+  g.fillStyle='#f5e6d3';g.fillRect(0,0,256,256);
+  g.strokeStyle='rgba(170,120,80,.22)';g.lineWidth=2;g.strokeRect(1,1,254,254);
+  g.strokeStyle='rgba(170,120,80,.08)';g.lineWidth=1;g.beginPath();g.moveTo(128,0);g.lineTo(128,256);g.moveTo(0,128);g.lineTo(256,128);g.stroke();
+  g.fillStyle='rgba(232,168,56,.40)';[[2,2],[254,2],[2,254],[254,254]].forEach(([x,y])=>{g.beginPath();g.arc(x,y,2.2,0,7);g.fill()});
   const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(13,9);t.anisotropy=renderer.capabilities.getMaxAnisotropy();return t
 }
 const floorMat=new THREE.MeshStandardMaterial({roughness:.3,metalness:.08});
@@ -626,19 +626,28 @@ fpo(box(26.3,.03,.03,MAT.led,0,.06,8.985));fpo(box(.03,.03,18.3,MAT.led,12.985,.
 /* ventanal panorámico con ciudad */
 function skylineTexture(){
   const c=document.createElement('canvas');c.width=1024;c.height=256;const g=c.getContext('2d');
-  const gr=g.createLinearGradient(0,0,0,256);gr.addColorStop(0,'#bfe0f3');gr.addColorStop(.65,'#e8f4fb');gr.addColorStop(1,'#f6fafc');g.fillStyle=gr;g.fillRect(0,0,1024,256);
-  let s=7;const r=()=>(s=(s*16807)%2147483647)/2147483647;
-  [['#cddbe6',70,150,.0],['#b3c5d4',40,120,.35]].forEach(([col,mn,mx,win])=>{
-    let x=0;while(x<1024){const w=24+r()*46,h=mn+r()*(mx-mn);g.fillStyle=col;g.fillRect(x,256-h,w,h);
-      if(win){g.fillStyle='rgba(255,255,255,.55)';for(let yy=256-h+8;yy<250;yy+=10)for(let xx=x+5;xx<x+w-5;xx+=8)if(r()>.45)g.fillRect(xx,yy,3,4)}
-      x+=w+2+r()*8}
+  // Cielo
+  const sky=g.createLinearGradient(0,0,0,256);sky.addColorStop(0,'#87ceeb');sky.addColorStop(.5,'#b8dfc8');sky.addColorStop(1,'#6db368');g.fillStyle=sky;g.fillRect(0,0,1024,256);
+  // Montañas de fondo
+  g.fillStyle='#5a9450';g.beginPath();g.moveTo(0,180);g.lineTo(120,100);g.lineTo(240,155);g.lineTo(360,80);g.lineTo(500,130);g.lineTo(640,70);g.lineTo(780,120);g.lineTo(900,85);g.lineTo(1024,140);g.lineTo(1024,256);g.lineTo(0,256);g.closePath();g.fill();
+  // Colinas más oscuras (primer plano)
+  g.fillStyle='#3d7035';g.beginPath();g.moveTo(0,210);for(let x=0;x<=1024;x+=30)g.lineTo(x,195+Math.sin(x*.015)*18+Math.sin(x*.04)*10);g.lineTo(1024,256);g.lineTo(0,256);g.closePath();g.fill();
+  // Árboles
+  const treeC=['#2d5e28','#346b2e','#255424'];
+  [80,160,280,420,560,680,800,920].forEach((tx,i)=>{
+    const th=48+i%3*18,tw=22;g.fillStyle=treeC[i%3];
+    g.beginPath();g.moveTo(tx,210-th);g.lineTo(tx-tw,210);g.lineTo(tx+tw,210);g.closePath();g.fill();
+    g.beginPath();g.moveTo(tx,210-th-16);g.lineTo(tx-tw*.7,210-th+16);g.lineTo(tx+tw*.7,210-th+16);g.closePath();g.fill();
   });
   return new THREE.CanvasTexture(c);
 }
-const winW=17.4,winX=-12.6+winW/2;
-const win=new THREE.Mesh(new THREE.PlaneGeometry(winW,2.3),new THREE.MeshBasicMaterial({map:skylineTexture()}));win.position.set(winX,1.7,-8.99);scene.add(win);
-for(let i=0;i<=6;i++)box(.05,2.3,.05,MAT.graphite,-12.6+i*winW/6,1.7,-8.96);
-box(winW,.05,.08,MAT.graphite,winX,.55,-8.95);box(winW,.05,.08,MAT.graphite,winX,2.85,-8.95);
+const winW=22,winX=-11+winW/2;
+const win=new THREE.Mesh(new THREE.PlaneGeometry(winW,2.9),new THREE.MeshBasicMaterial({map:skylineTexture()}));win.position.set(winX,1.7,-8.99);scene.add(win);
+for(let i=0;i<=7;i++)box(.05,2.9,.05,MAT.graphite,-11+i*winW/7,1.7,-8.96);
+box(winW,.05,.08,MAT.graphite,winX,.25,-8.95);box(winW,.05,.08,MAT.graphite,winX,3.15,-8.95);
+// Paneles de madera en la pared (encima y debajo de la ventana)
+const wd=std(0xc4874e,.85,.05);
+box(winW,.24,.12,wd,winX,.14,-8.94);box(winW,.12,.12,wd,winX,3.22,-8.94);
 
 /* pantallas animadas (dashboards) */
 const mkCv=(w,h)=>{const c=document.createElement('canvas');c.width=w;c.height=h;return c};
@@ -646,24 +655,24 @@ const deskCv=mkCv(256,144),bossCv=mkCv(256,144),wallCv=mkCv(512,256),kpiCv=mkCv(
 const deskTex=new THREE.CanvasTexture(deskCv),bossTex=new THREE.CanvasTexture(bossCv),wallTex=new THREE.CanvasTexture(wallCv),kpiTex=new THREE.CanvasTexture(kpiCv);
 function drawDash(cv,t,seed){
   const g=cv.getContext('2d'),w=cv.width,h=cv.height,u=w/256;
-  g.fillStyle='#0a1322';g.fillRect(0,0,w,h);
-  g.fillStyle='#111f36';g.fillRect(0,0,w,14*u);g.fillStyle='#22d3ee';g.fillRect(6*u,5*u,22*u,4*u);g.fillStyle='#2c3e5c';g.fillRect(34*u,5*u,36*u,4*u);
+  g.fillStyle='#1a1208';g.fillRect(0,0,w,h);
+  g.fillStyle='#231810';g.fillRect(0,0,w,14*u);g.fillStyle='#e8a838';g.fillRect(6*u,5*u,22*u,4*u);g.fillStyle='#3d2e1e';g.fillRect(34*u,5*u,36*u,4*u);
   g.fillStyle='#34d399';g.beginPath();g.arc(w-9*u,7*u,2.5*u,0,7);g.fill();
-  const cols=['#22d3ee','#a78bfa','#34d399'];
-  for(let i=0;i<3;i++){const x=6*u+i*82*u;g.fillStyle='#101c30';g.fillRect(x,19*u,76*u,28*u);g.fillStyle='#4b5d78';g.fillRect(x+6*u,24*u,30*u,3*u);
+  const cols=['#e8a838','#52b788','#34d399'];
+  for(let i=0;i<3;i++){const x=6*u+i*82*u;g.fillStyle='#1e1409';g.fillRect(x,19*u,76*u,28*u);g.fillStyle='#7a6855';g.fillRect(x+6*u,24*u,30*u,3*u);
     g.fillStyle=cols[i];g.font='700 '+(11*u)+'px "JetBrains Mono",monospace';g.fillText((((seed*37+i*53)%90)+10+Math.floor(Math.sin(t*.7+i)*3))+(i===1?'%':'K'),x+6*u,42*u)}
   const top=54*u,bot=h-8*u,cw=150*u;
   g.strokeStyle='rgba(120,150,190,.12)';g.lineWidth=1;for(let k=0;k<4;k++){const y=top+k*(bot-top)/3;g.beginPath();g.moveTo(6*u,y);g.lineTo(6*u+cw,y);g.stroke()}
   g.beginPath();for(let k=0;k<=30;k++){const x=6*u+k*cw/30,y=bot-(.5+.32*Math.sin(k*.42+t*1.2+seed)+.12*Math.sin(k*1.3+seed*2))*(bot-top);k?g.lineTo(x,y):g.moveTo(x,y)}
-  g.strokeStyle='#22d3ee';g.lineWidth=2*u;g.stroke();g.lineTo(6*u+cw,bot);g.lineTo(6*u,bot);g.closePath();g.fillStyle='rgba(34,211,238,.12)';g.fill();
-  for(let k=0;k<7;k++){const bh=(.3+.6*Math.abs(Math.sin(k*1.7+t*.9+seed)))*(bot-top);g.fillStyle=k%2?'#8b5cf6':'#6d4fd8';g.fillRect(166*u+k*12*u,bot-bh,8*u,bh)}
+  g.strokeStyle='#e8a838';g.lineWidth=2*u;g.stroke();g.lineTo(6*u+cw,bot);g.lineTo(6*u,bot);g.closePath();g.fillStyle='rgba(232,168,56,.12)';g.fill();
+  for(let k=0;k<7;k++){const bh=(.3+.6*Math.abs(Math.sin(k*1.7+t*.9+seed)))*(bot-top);g.fillStyle=k%2?'#52b788':'#2d9a68';g.fillRect(166*u+k*12*u,bot-bh,8*u,bh)}
 }
 function drawWall(cv,t){
   const g=cv.getContext('2d'),w=cv.width,h=cv.height;drawDash(cv,t,3);
-  g.fillStyle='rgba(10,19,34,.92)';g.fillRect(w*.62,h*.2,w*.35,h*.74);
-  g.font='700 15px "Orbitron",sans-serif';g.fillStyle='#e6f6ff';g.fillText('AGENT OPS',w*.65,h*.3);
-  ['Vigilante','SEO','CRO','Ads','UX/UI','Intel','Medición','Tatis'].forEach((n,i)=>{const y=h*.38+i*18;g.font='500 11px "JetBrains Mono",monospace';g.fillStyle='#93a7c2';g.fillText(n,w*.65,y);
-    const p=.35+.6*Math.abs(Math.sin(t*.25+i*1.1));g.fillStyle='#1b2a44';g.fillRect(w*.8,y-8,w*.14,6);g.fillStyle=i%3===1?'#a78bfa':'#22d3ee';g.fillRect(w*.8,y-8,w*.14*p,6)});
+  g.fillStyle='rgba(26,18,8,.92)';g.fillRect(w*.62,h*.2,w*.35,h*.74);
+  g.font='700 15px "Orbitron",sans-serif';g.fillStyle='#fdf0e0';g.fillText('EQUIPO',w*.65,h*.3);
+  ['Vigilante','SEO','CRO','Ads','UX/UI','Intel','Medición','Tatis'].forEach((n,i)=>{const y=h*.38+i*18;g.font='500 11px "JetBrains Mono",monospace';g.fillStyle='#a08870';g.fillText(n,w*.65,y);
+    const p=.35+.6*Math.abs(Math.sin(t*.25+i*1.1));g.fillStyle='#261a08';g.fillRect(w*.8,y-8,w*.14,6);g.fillStyle=i%3===1?'#52b788':'#e8a838';g.fillRect(w*.8,y-8,w*.14*p,6)});
 }
 const screenMat=tex=>new THREE.MeshStandardMaterial({color:0x000000,emissive:0xffffff,emissiveMap:tex,emissiveIntensity:1,roughness:.2});
 const SCREEN_EXTRAS=[];
@@ -674,8 +683,8 @@ const SCREEN_EXTRAS=[];
 /* letrero + pantalla de la sala de reuniones */
 const sc=document.createElement('canvas');sc.width=1024;sc.height=160;const sg=sc.getContext('2d');
 function drawSign(){sg.clearRect(0,0,1024,160);sg.textAlign='center';sg.textBaseline='middle';sg.font='700 92px "Orbitron","Baloo 2",sans-serif';
-  sg.shadowBlur=26;sg.shadowColor='rgba(34,211,238,.55)';sg.fillStyle='#14202e';sg.fillText('POLYPLAS',512,70);sg.shadowBlur=0;
-  sg.font='600 26px "JetBrains Mono",monospace';sg.fillStyle='#0891b2';sg.fillText('A G E N T   O P S   L A B',512,140)}
+  sg.shadowBlur=26;sg.shadowColor='rgba(232,168,56,.55)';sg.fillStyle='#2d1810';sg.fillText('POLYPLAS',512,70);sg.shadowBlur=0;
+  sg.font='600 26px "JetBrains Mono",monospace';sg.fillStyle='#d97706';sg.fillText('O F I C I N A   D I G I T A L',512,140)}
 drawSign();
 const sign=new THREE.Mesh(new THREE.PlaneGeometry(4.2,.66),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(sc),transparent:true}));sign.position.set(9,2.78,-8.98);scene.add(sign);
 document.fonts&&document.fonts.ready.then(()=>{drawSign();sign.material.map.needsUpdate=true});
@@ -711,20 +720,38 @@ function desk(x,z,facePlusZ,id){
   if(id)screens[id]=scr;return g;
 }
 AGENTS.forEach(a=>desk(a.desk.x,a.desk.z,a.desk.row===1?false:true,a.id));
+AGENTS.forEach(a=>mkChair(a.seat.x,a.seat.z,a.desk.row===1?Math.PI:0));
 
 /* sala de reuniones: mesa blanca + holograma */
-const tbl=new THREE.Mesh(new THREE.CylinderGeometry(1.25,1.25,.08,64),MAT.white);tbl.position.set(9,.82,-4);tbl.castShadow=tbl.receiveShadow=true;scene.add(tbl);
-const tblRing=new THREE.Mesh(new THREE.TorusGeometry(1.25,.018,8,96),MAT.led);tblRing.rotation.x=Math.PI/2;tblRing.position.set(9,.82,-4);scene.add(tblRing);
+const tblMat=std(0xc4933f,.72,.06);
+const tbl=new THREE.Mesh(new THREE.CylinderGeometry(1.25,1.25,.08,64),tblMat);
+tbl.scale.set(1.55,1,2.1);tbl.position.set(9,.82,-4);tbl.castShadow=tbl.receiveShadow=true;scene.add(tbl);
+// Franja negra central (estilo Workrooms)
+const stripe=new THREE.Mesh(new THREE.BoxGeometry(.18,.006,5.0),M(0x1a1510));stripe.position.set(9,.876,-4);scene.add(stripe);
 box(.22,.78,.22,MAT.steel,9,.4,-4);box(.9,.03,.9,MAT.steel,9,.015,-4);
 SOLIDS.push({x1:7.9,x2:10.1,z1:-5.1,z2:-2.9});
-SEATS.forEach(p=>{const st=new THREE.Mesh(new THREE.CylinderGeometry(.3,.3,.08,24),MAT.white);st.position.set(p.x,.5,p.z);st.castShadow=true;scene.add(st);
-  box(.05,.46,.05,MAT.graphite,p.x,.25,p.z);const r=new THREE.Mesh(new THREE.TorusGeometry(.2,.012,6,40),MAT.led);r.rotation.x=Math.PI/2;r.position.set(p.x,.02,p.z);scene.add(r)});
+function mkChair(x,z,ang){
+  const g=new THREE.Group();g.position.set(x,0,z);g.rotation.y=ang;
+  const sc=std(0x5b7fa6,.8,.05),lc=std(0x888888,.4,.6);
+  const seat=new THREE.Mesh(new THREE.BoxGeometry(.56,.07,.5),sc);seat.position.y=.46;seat.castShadow=true;g.add(seat);
+  const back=new THREE.Mesh(new THREE.BoxGeometry(.52,.62,.07),sc);back.position.set(0,.82,-.23);back.castShadow=true;g.add(back);
+  [[.22,.19],[-.22,.19],[.22,-.19],[-.22,-.19]].forEach(([lx,lz])=>{
+    const l=new THREE.Mesh(new THREE.CylinderGeometry(.02,.02,.46,8),lc);l.position.set(lx,.23,lz);g.add(l)});
+  scene.add(g);
+}
+// Sillas sala de reuniones (posiciones SEATS)
+mkChair(7.4,-4,-Math.PI/2);mkChair(10.6,-4,Math.PI/2);
+mkChair(9,-5.6,0);mkChair(9,-2.4,Math.PI);
+mkChair(7.8,-5.2,-Math.PI/4);mkChair(10.2,-5.2,Math.PI/4+Math.PI);
+mkChair(7.8,-2.8,Math.PI/4-Math.PI);mkChair(10.2,-2.8,-Math.PI/4+Math.PI);
 const holo=new THREE.Group();holo.position.set(9,1.78,-4);scene.add(holo);
-const holoCore=new THREE.Mesh(new THREE.IcosahedronGeometry(.3,1),new THREE.MeshBasicMaterial({color:0x22d3ee,wireframe:true,transparent:true,opacity:.7}));holo.add(holoCore);
-const holoInner=new THREE.Mesh(new THREE.IcosahedronGeometry(.14,0),new THREE.MeshBasicMaterial({color:0x8b5cf6,transparent:true,opacity:.85}));holo.add(holoInner);
-const holoR1=new THREE.Mesh(new THREE.TorusGeometry(.5,.007,6,96),new THREE.MeshBasicMaterial({color:0x8b5cf6,transparent:true,opacity:.8}));holoR1.rotation.x=Math.PI/2;holo.add(holoR1);
-const holoR2=new THREE.Mesh(new THREE.TorusGeometry(.62,.006,6,96),new THREE.MeshBasicMaterial({color:0x22d3ee,transparent:true,opacity:.6}));holoR2.rotation.x=Math.PI/2.4;holo.add(holoR2);
-const beam=new THREE.Mesh(new THREE.CylinderGeometry(.42,.6,.92,48,1,true),new THREE.MeshBasicMaterial({color:0x22d3ee,transparent:true,opacity:.07,side:THREE.DoubleSide,depthWrite:false}));beam.position.y=-.46;holo.add(beam);
+const holoCore=new THREE.Mesh(new THREE.IcosahedronGeometry(.3,1),new THREE.MeshBasicMaterial({color:0xe8a838,wireframe:true,transparent:true,opacity:.7}));holo.add(holoCore);
+const holoInner=new THREE.Mesh(new THREE.IcosahedronGeometry(.14,0),new THREE.MeshBasicMaterial({color:0xd97706,transparent:true,opacity:.85}));holo.add(holoInner);
+const holoR1=new THREE.Mesh(new THREE.TorusGeometry(.5,.007,6,96),new THREE.MeshBasicMaterial({color:0x52b788,transparent:true,opacity:.8}));holoR1.rotation.x=Math.PI/2;holo.add(holoR1);
+const holoR2=new THREE.Mesh(new THREE.TorusGeometry(.62,.006,6,96),new THREE.MeshBasicMaterial({color:0xe8a838,transparent:true,opacity:.6}));holoR2.rotation.x=Math.PI/2.4;holo.add(holoR2);
+const beam=new THREE.Mesh(new THREE.CylinderGeometry(.42,.6,.92,48,1,true),new THREE.MeshBasicMaterial({color:0xe8a838,transparent:true,opacity:.07,side:THREE.DoubleSide,depthWrite:false}));beam.position.y=-.46;holo.add(beam);
+
+mkChair(9,5.5,0);// silla del jefe
 
 /* escritorio del jefe */
 const bossG=new THREE.Group();bossG.position.set(9,0,4);scene.add(bossG);
@@ -769,6 +796,16 @@ const rackLeds=[];const ledOff=new THREE.MeshBasicMaterial({color:0x1d3a4a});
   box(.01,2.1,.012,MAT.ledV,-12.195,1.15,z+.47)});
 solid(-12.6,2.95,.84,2.12);
 
+/* luces colgantes sobre mesa de reuniones */
+[-1.4,0,1.4].forEach(ox=>{
+  box(.02,.7,.02,MAT.graphite,9+ox,WH-.35,-4);
+  const shade=new THREE.Mesh(new THREE.ConeGeometry(.28,.22,16,1,true),MAT.graphite);
+  shade.rotation.x=Math.PI;shade.position.set(9+ox,WH-.9,-4);scene.add(shade);
+  const pt=new THREE.PointLight(0xffe8c0,.9,5);pt.position.set(9+ox,WH-1.1,-4);scene.add(pt);
+  const bulb=new THREE.Mesh(new THREE.SphereGeometry(.06,8,8),new THREE.MeshBasicMaterial({color:0xfff8e0}));
+  bulb.position.set(9+ox,WH-1.0,-4);scene.add(bulb);
+});
+
 /* techo con paneles de luz (solo 1ª persona) */
 const ceil=fpo(new THREE.Mesh(new THREE.PlaneGeometry(26.6,18.6),std(0xe4eaf0,.9,0)));ceil.rotation.x=Math.PI/2;ceil.position.y=WH;scene.add(ceil);
 [-10,-6,-2,2].forEach(x=>[-3.2,3.2].forEach(z=>{const p=fpo(new THREE.Mesh(new THREE.PlaneGeometry(2.2,.5),MAT.panel));p.rotation.x=Math.PI/2;p.position.set(x,WH-.01,z);scene.add(p)}));
@@ -781,7 +818,7 @@ const ceil=fpo(new THREE.Mesh(new THREE.PlaneGeometry(26.6,18.6),std(0xe4eaf0,.9
 const PN=150,pPos=new Float32Array(PN*3);
 for(let i=0;i<PN;i++){pPos[i*3]=(Math.random()-.5)*25;pPos[i*3+1]=.3+Math.random()*2.6;pPos[i*3+2]=(Math.random()-.5)*17}
 const pGeo=new THREE.BufferGeometry();pGeo.setAttribute('position',new THREE.BufferAttribute(pPos,3));
-const motes=new THREE.Points(pGeo,new THREE.PointsMaterial({color:0x22d3ee,size:2.2,sizeAttenuation:false,transparent:true,opacity:.55,depthWrite:false}));scene.add(motes);
+const motes=new THREE.Points(pGeo,new THREE.PointsMaterial({color:0xf7a830,size:2.2,sizeAttenuation:false,transparent:true,opacity:.45,depthWrite:false}));scene.add(motes);
 
 /* animación del ambiente */
 let dashT=0;
@@ -794,17 +831,44 @@ function animateScene(dt,t){
 }
 
 /* ---------- personajes ---------- */
-const SKIN=0xf1c9a5;
-function makePerson(shirt,hair,crown){
+const SKIN=0xf4c4a0;
+function makePerson(shirt,hair,crown,skin){
+  const sk=skin||SKIN;
   const g=new THREE.Group();
   const bodyG=new THREE.Group();g.add(bodyG);
-  const body=new THREE.Mesh(new THREE.CylinderGeometry(.3,.36,.85,16),M(shirt));body.position.y=.62;body.castShadow=true;bodyG.add(body);
-  const head=new THREE.Mesh(new THREE.SphereGeometry(.29,20,16),M(SKIN));head.position.y=1.3;head.castShadow=true;bodyG.add(head);
-  const h=new THREE.Mesh(new THREE.SphereGeometry(.31,20,12,0,Math.PI*2,0,Math.PI/2),M(hair));h.position.y=1.34;h.rotation.x=-.25;bodyG.add(h);
-  const eyeM=M(0x18323a);[-.1,.1].forEach(ex=>{const e=new THREE.Mesh(new THREE.SphereGeometry(.035,8,8),eyeM);e.position.set(ex,1.32,.26);bodyG.add(e)});
-  const legM=M(0x22313a);[-.13,.13].forEach(lx=>{const l=new THREE.Mesh(new THREE.BoxGeometry(.14,.3,.16),legM);l.position.set(lx,.15,0);bodyG.add(l)});
+  // Torso
+  const body=new THREE.Mesh(new THREE.CylinderGeometry(.26,.34,.9,16),M(shirt));
+  body.position.y=.62;body.castShadow=true;bodyG.add(body);
+  // Cuello
+  const neck=new THREE.Mesh(new THREE.CylinderGeometry(.1,.12,.18,12),M(sk));
+  neck.position.y=1.1;bodyG.add(neck);
+  // Cabeza
+  const head=new THREE.Mesh(new THREE.SphereGeometry(.29,20,16),M(sk));
+  head.position.y=1.33;head.castShadow=true;bodyG.add(head);
+  // Pelo
+  const h=new THREE.Mesh(new THREE.SphereGeometry(.31,20,12,0,Math.PI*2,0,Math.PI*.52),M(hair));
+  h.position.y=1.37;h.rotation.x=-.22;bodyG.add(h);
+  // Ojos: blanco + pupila
+  [-.1,.1].forEach(ex=>{
+    const ew=new THREE.Mesh(new THREE.SphereGeometry(.042,8,8),M(0xffffff));
+    ew.position.set(ex,1.335,.248);bodyG.add(ew);
+    const ep=new THREE.Mesh(new THREE.SphereGeometry(.028,8,8),M(0x1a2520));
+    ep.position.set(ex,1.335,.272);bodyG.add(ep);
+  });
+  // Brazos
+  [-.38,.38].forEach((ax,si)=>{
+    const sign=si===0?1:-1;
+    const ua=new THREE.Mesh(new THREE.CylinderGeometry(.08,.095,.44,10),M(shirt));
+    ua.position.set(ax*.7,.88,0);ua.rotation.z=sign*.42;ua.castShadow=true;bodyG.add(ua);
+    const fa=new THREE.Mesh(new THREE.CylinderGeometry(.062,.072,.36,10),M(sk));
+    fa.position.set(ax*1.08,.56,.05);fa.rotation.z=sign*.62;fa.rotation.x=.2;fa.castShadow=true;bodyG.add(fa);
+  });
+  // Piernas
+  const legM=M(0x2a2a35);
+  [-.13,.13].forEach(lx=>{const l=new THREE.Mesh(new THREE.BoxGeometry(.14,.34,.16),legM);l.position.set(lx,.13,0);bodyG.add(l)});
   if(crown){const c=new THREE.Mesh(new THREE.CylinderGeometry(.18,.22,.16,5),new THREE.MeshStandardMaterial({color:0xf2c14e,metalness:.4,roughness:.4}));c.position.y=1.68;bodyG.add(c)}
-  const status=new THREE.Mesh(new THREE.SphereGeometry(.11,12,12),new THREE.MeshStandardMaterial({color:0x2f8a4c,emissive:0x2f8a4c,emissiveIntensity:.8}));status.position.y=1.95;g.add(status);
+  const status=new THREE.Mesh(new THREE.SphereGeometry(.11,12,12),new THREE.MeshStandardMaterial({color:0x2f8a4c,emissive:0x2f8a4c,emissiveIntensity:.8}));
+  status.position.y=2.05;g.add(status);
   scene.add(g);return {g,bodyG,status};
 }
 const STATUS={work:0x00ffaa,meet:0x00d4ff,wait:0xffaa00};
@@ -812,7 +876,7 @@ const STATUS={work:0x00ffaa,meet:0x00d4ff,wait:0xffaa00};
 function makeLabel(name,me){const d=document.createElement('div');d.className='lbl'+(me?' me':'');d.innerHTML='<div class="bub" hidden></div><span class="nm"></span>';d.querySelector('.nm').textContent=name;labelsEl.appendChild(d);return d}
 
 AGENTS.forEach(a=>{
-  const p=makePerson(a.shirt,a.hair);Object.assign(a,p);
+  const p=makePerson(a.shirt,a.hair,false,a.skin);Object.assign(a,p);
   a.pos=new THREE.Vector3(a.seat.x,0,a.seat.z);a.g.position.copy(a.pos);a.face=a.desk.row?0:Math.PI;a.g.rotation.y=a.face;
   a.path=[];a.busy=false;a.lbl=makeLabel(a.name);a.bub=a.lbl.querySelector('.bub');a.setStatus=s=>{a.status.material.color.setHex(STATUS[s]);a.status.material.emissive.setHex(STATUS[s])};
 });
@@ -938,7 +1002,7 @@ function decide(p,ok){
 }
 function tick(){if(paused)return;const free=AGENTS.filter(a=>!a.busy&&active(a));if(!free.length)return;const a=rnd(free),r=Math.random();if(r<.6)work(a);else if(r<.8)meeting(a);else propose(a)}
 
-function renderTeam(){const t=document.getElementById('team');t.innerHTML='';AGENTS.forEach(a=>{const li=document.createElement('li');li.innerHTML='<span><i class="sw"></i><span></span></span><span class="tag '+(a.real?'real':'demo')+'">'+(a.real?'Activo':'Demo')+'</span>';li.querySelector('.sw').style.background='#'+a.shirt.toString(16).padStart(6,'0');li.querySelector('span span').textContent=a.name;t.appendChild(li)})}
+function renderTeam(){const t=document.getElementById('team');t.innerHTML='';AGENTS.forEach(a=>{const li=document.createElement('li');li.innerHTML='<span><i class="sw"></i><span><b></b><small></small></span></span><span class="tag '+(a.real?'real':'demo')+'">'+(a.real?'Activo':'Demo')+'</span>';li.querySelector('.sw').style.background='#'+a.shirt.toString(16).padStart(6,'0');li.querySelector('b').textContent=a.name;li.querySelector('small').style.cssText='font-size:11px;color:var(--muted);display:block';li.querySelector('small').textContent=a.role||'';t.appendChild(li)})}
 function applyMode(){
   AGENTS.forEach(a=>{const on=active(a);a.g.visible=on;a.lbl.classList.toggle('off',!on);a.lbl.hidden=!on;screens[a.id].material.emissiveIntensity=on?.8:0;if(!on)a.bub.hidden=true});
   document.getElementById('modeBtn').textContent=demo?'Ver solo lo real':'Ver simulación';
@@ -1366,11 +1430,11 @@ function drawMap(){
   const c=mapCtx,W=fpEls.map.width,H=fpEls.map.height,sx=W/26,sz=H/18,X=x=>(x+13)*sx,Z=z=>(z+9)*sz;
   c.clearRect(0,0,W,H);c.fillStyle='rgba(255,255,255,.82)';c.fillRect(0,0,W,H);
   c.fillStyle='#dbe3ea';SOLIDS.forEach(b=>c.fillRect(X(b.x1),Z(b.z1),(b.x2-b.x1)*sx,(b.z2-b.z1)*sz));
-  c.strokeStyle='#22d3ee';c.lineWidth=2;c.beginPath();c.moveTo(X(5.4),Z(-9));c.lineTo(X(5.4),Z(-1.8));c.moveTo(X(5.4),Z(1.8));c.lineTo(X(5.4),Z(9));c.stroke();
+  c.strokeStyle='#d97706';c.lineWidth=2;c.beginPath();c.moveTo(X(5.4),Z(-9));c.lineTo(X(5.4),Z(-1.8));c.moveTo(X(5.4),Z(1.8));c.lineTo(X(5.4),Z(9));c.stroke();
   AGENTS.forEach(a=>{if(!active(a))return;c.fillStyle='#'+a.shirt.toString(16).padStart(6,'0');c.beginPath();c.arc(X(a.pos.x),Z(a.pos.z),a===nearA?6:4.5,0,7);c.fill();
-    if(a===nearA){c.strokeStyle='#0891b2';c.lineWidth=2;c.stroke()}});
+    if(a===nearA){c.strokeStyle='#d97706';c.lineWidth=2;c.stroke()}});
   const px=X(fpPos.x),pz=Z(fpPos.z),fx=-Math.sin(fpYaw.v),fz=-Math.cos(fpYaw.v),ang=Math.atan2(fz,fx);
-  c.fillStyle='rgba(34,211,238,.18)';c.beginPath();c.moveTo(px,pz);c.arc(px,pz,34,ang-.6,ang+.6);c.closePath();c.fill();
+  c.fillStyle='rgba(217,119,6,.18)';c.beginPath();c.moveTo(px,pz);c.arc(px,pz,34,ang-.6,ang+.6);c.closePath();c.fill();
   c.fillStyle='#0f1b2a';c.save();c.translate(px,pz);c.rotate(ang);c.beginPath();c.moveTo(8,0);c.lineTo(-5,5);c.lineTo(-2,0);c.lineTo(-5,-5);c.closePath();c.fill();c.restore();
 }
 
