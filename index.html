@@ -779,6 +779,7 @@ function floorTexture(){return cvTex(512,512,(g,w,h)=>{g.fillStyle='#9a9c9d';g.f
   for(let i=0;i<40;i++){const v=140+rnd01()*30|0;g.fillStyle=`rgba(${v},${v},${v},.06)`;g.beginPath();g.arc(rnd01()*w,rnd01()*h,20+rnd01()*60,0,7);g.fill()}},[6,4])}
 const floorMat=std(0xffffff,.62,0);
 const floor=new THREE.Mesh(new THREE.PlaneGeometry(26,18),floorMat);floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;scene.add(floor);
+const floor2=new THREE.Mesh(new THREE.PlaneGeometry(26,6),new THREE.MeshBasicMaterial({visible:false,side:THREE.DoubleSide}));floor2.rotation.x=-Math.PI/2;floor2.position.set(0,Y_F2,-6);scene.add(floor2);
 function applyTheme(){floorTex&&floorTex.dispose();floorTex=floorTexture();floorMat.map=floorTex;floorMat.needsUpdate=true}
 applyTheme();
 const woodFloor=(w,d,x,z)=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(w,d),std(0xffffff,.5,0,{map:woodTex(w/3,d/3)}));m.rotation.x=-Math.PI/2;m.position.set(x,.004,z);m.receiveShadow=true;scene.add(m)};
@@ -1131,7 +1132,9 @@ const ray=new THREE.Raycaster(),ndc=new THREE.Vector2();
 renderer.domElement.addEventListener('pointerdown',e=>{
   if(fpMode)return;
   const r=renderer.domElement.getBoundingClientRect();ndc.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);
-  ray.setFromCamera(ndc,cam);if(ray.intersectObject(siteScreen).length){openWeb();return}const hit=ray.intersectObject(floor)[0];if(!hit)return;
+  ray.setFromCamera(ndc,cam);if(ray.intersectObject(siteScreen).length){openWeb();return}
+  if(meFloor===1){const h2=ray.intersectObject(floor2)[0];if(h2){me.path=[{x:THREE.MathUtils.clamp(h2.point.x,-12.4,12.4),z:THREE.MathUtils.clamp(h2.point.z,-9,-3)}];}return}
+  const hit=ray.intersectObject(floor)[0];if(!hit)return;
   const to={x:THREE.MathUtils.clamp(hit.point.x,-12.4,12.4),z:THREE.MathUtils.clamp(hit.point.z,-8.4,8.4)};
   me.path=freeRoute(me.pos,to);
 });
@@ -1144,17 +1147,24 @@ function moveMe(dt){
   let vx=0,vz=0;
   if(keys.arrowup||keys.w){vx+=fwd.x;vz+=fwd.z}if(keys.arrowdown||keys.s){vx-=fwd.x;vz-=fwd.z}
   if(keys.arrowright||keys.d){vx+=right.x;vz+=right.z}if(keys.arrowleft||keys.a){vx-=right.x;vz-=right.z}
-  const m=Math.hypot(vx,vz);
+  const m=Math.hypot(vx,vz);let moved=false;
   if(m>0){const nx=me.pos.x+vx/m*SPEED*1.2*dt,nz=me.pos.z+vz/m*SPEED*1.2*dt;
-    const blocked=Math.abs(nx-5.4)<.35&&Math.abs(nz)>1.6;
-    if(!blocked){me.pos.x=THREE.MathUtils.clamp(nx,-12.4,12.4);me.pos.z=THREE.MathUtils.clamp(nz,-8.4,8.4)}
-    me.g.rotation.y=Math.atan2(vx,vz);return true}
-  return step(me,dt);
+    const onStairX=nx>10.3&&nx<12.6;
+    const blocked=!onStairX&&Math.abs(nx-5.4)<.35&&Math.abs(nz)>1.6;
+    if(!blocked){
+      if(meFloor===1){me.pos.x=THREE.MathUtils.clamp(nx,-12.4,12.4);me.pos.z=THREE.MathUtils.clamp(nz,-9,onStairX?1.7:-3);}
+      else{me.pos.x=THREE.MathUtils.clamp(nx,-12.4,12.4);me.pos.z=THREE.MathUtils.clamp(nz,-8.4,8.4);}}
+    me.g.rotation.y=Math.atan2(vx,vz);moved=true}
+  else moved=step(me,dt);
+  const onStair=me.pos.x>10.3&&me.pos.x<12.6&&me.pos.z>-3.2&&me.pos.z<1.7;
+  if(onStair){const t=THREE.MathUtils.clamp((1.5-me.pos.z)/4.5,0,1);me.pos.y=t*Y_F2;if(t>=.98)meFloor=1;if(t<=.02)meFloor=0;}
+  else me.pos.y=meFloor*Y_F2;
+  return moved;
 }
 
 /* ---------- interfaz ---------- */
 const logEl=document.getElementById('log'),propsEl=document.getElementById('props');
-const demo=false;let paused=false,pending=[],meetingBusy=false;
+const demo=false;let paused=false,pending=[],meetingBusy=false,meFloor=0;
 const rnd=a=>a[Math.floor(Math.random()*a.length)];
 const wait=ms=>new Promise(r=>setTimeout(r,ms));
 const now=()=>new Date().toLocaleTimeString('es-CL',{hour:'2-digit',minute:'2-digit'});
