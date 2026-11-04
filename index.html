@@ -304,7 +304,6 @@ kbd{font:600 10px var(--f-mono);border:1px solid var(--line);border-bottom-width
       <button class="btn resultados-btn" id="resultadosBtn" type="button">Resultados · <span id="expCount">0</span></button>
       <button class="btn" id="minutaBtn" type="button">Minuta</button>
       <button class="btn" id="webBtn" type="button">polyplas.cl</button>
-      <button class="btn primary" id="pauseBtn" type="button">Pausar</button>
       <div class="more-menu" id="moreMenu">
         <button class="btn" id="moreBtn" type="button" aria-label="Más opciones">···</button>
         <div class="more-menu__panel" id="morePanel" hidden>
@@ -1134,7 +1133,6 @@ function applyMode(){
   AGENTS.forEach(a=>{const on=active(a);a.g.visible=on;a.lbl.classList.toggle('off',!on);a.lbl.hidden=!on;screens[a.id].material.emissiveIntensity=on?.8:0;if(!on)a.bub.hidden=true});
 }
 
-document.getElementById('pauseBtn').onclick=e=>{paused=!paused;e.currentTarget.textContent=paused?'Reanudar':'Pausar'};
 document.getElementById('zin').onclick=()=>{zoom=Math.min(2.2,zoom*1.2);resize()};
 document.getElementById('zout').onclick=()=>{zoom=Math.max(.7,zoom/1.2);resize()};
 
@@ -1263,7 +1261,7 @@ function openReunion(){
   if(!hasAny)body.innerHTML='<div class="empty">Los agentes no tienen propuestas activas todavía.</div>';
   document.getElementById('reunionModal').hidden=false;
   paused=true;
-  document.getElementById('pauseBtn').textContent='Reanudar';
+  paused=true;
   log('Sala de revisión abierta — simulación pausada');
 }
 
@@ -1577,7 +1575,7 @@ function openCall(a){
   circ.style.background='#'+a.shirt.toString(16).padStart(6,'0');
   document.getElementById('callAgentName').textContent=a.name;
   document.getElementById('callModal').hidden=false;
-  paused=true;document.getElementById('pauseBtn').textContent='Reanudar';
+  paused=true;paused=true;
   if(a.id==='med'){openCallMedicion(a);return}
   const n=a.props.length;
   callTyping(()=>{
@@ -2061,7 +2059,7 @@ function announce(){document.getElementById('minutaPlay').hidden=true;if(synth)s
   speak(me,'Buenos días equipo. Revisemos lo que quedó listo.');
   meetingLines.forEach(([a,q])=>speak(a,'Soy '+a.name+'. Quedó listo: '+q,()=>say(a,'Listo: '+q,6000)))}
 document.getElementById('minutaPlay').onclick=announce;
-async function endMeeting(){minEl.hidden=true;if(synth)synth.cancel();if(!inMeeting)return;inMeeting=false;meetingBusy=false;paused=false;document.getElementById('pauseBtn').textContent='Pausar';
+async function endMeeting(){minEl.hidden=true;if(synth)synth.cancel();if(!inMeeting)return;inMeeting=false;meetingBusy=false;paused=false;
   await Promise.all(AGENTS.filter(active).map(a=>back(a).then(()=>{a.busy=false;a.setStatus('work')})))}
 function li(ul,txt,tag){const l=document.createElement('li');if(tag){const b=document.createElement('span');b.className='badge obj';b.textContent=tag;l.appendChild(b);l.append(' ')}l.append(txt);ul.appendChild(l)}
 function openMinuta(){
