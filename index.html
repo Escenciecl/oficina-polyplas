@@ -199,6 +199,27 @@ h1 small{-webkit-text-fill-color:var(--muted);font-size:13px;letter-spacing:0}
 .prop .ficha,.reunion-prop .rp-ficha{color:#334155}
 .log time{color:#94a3b8}
 .count{background:var(--bad)}
+
+/* ---- Tarjetas de propuesta en el sidebar ---- */
+.prop-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:10px;margin-bottom:10px;transition:box-shadow .15s}
+.prop-card:hover{box-shadow:0 4px 20px rgba(15,27,42,.10)}
+.pc-agent{display:flex;align-items:center;gap:7px}
+.pc-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.pc-name{font:700 11px var(--f-body);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.pc-what{font:700 14px/1.35 var(--f-body);color:var(--ink)}
+.pc-why{font:400 12px/1.5 var(--f-body);color:var(--muted)}
+.pc-acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:2px}
+.pc-ok{background:#047857;color:#fff;border:none;border-radius:8px;padding:10px;font:700 13px var(--f-body);cursor:pointer}
+.pc-ok:hover{background:#065f46}
+.pc-no{background:transparent;color:#b91c1c;border:1.5px solid #fca5a5;border-radius:8px;padding:10px;font:700 13px var(--f-body);cursor:pointer}
+.pc-no:hover{background:#fef2f2}
+.pc-det{font-size:12px}
+.pc-det summary{color:var(--accent);cursor:pointer;padding:3px 0;list-style:none;user-select:none}
+.pc-det summary::-webkit-details-marker{display:none}
+.pc-ficha{font:11px/1.5 var(--f-mono);color:var(--muted);white-space:pre-wrap;margin-top:8px;padding-top:8px;border-top:1px solid var(--line);word-break:break-word}
+.lbl .nm{cursor:pointer;transition:filter .1s}
+.lbl .nm:hover{filter:brightness(.85)}
+
 .reunion-overlay,.call-overlay{background:rgba(245,235,220,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .reunion-panel,.call-panel{background:var(--bg);box-shadow:0 30px 80px rgba(15,27,42,.25)}
 .call-top,.call-actions{background:#fff}
@@ -280,7 +301,6 @@ kbd{font:600 10px var(--f-mono);border:1px solid var(--line);border-bottom-width
   <header>
     <h1><img class="brand-logo" src="https://polyplas.cl/wp-content/uploads/2022/07/marca-polyplas-1.svg" alt="Polyplas">Oficina Polyplas<small>Tu equipo de agentes trabajando por las ventas de polyplas.cl</small></h1>
     <div class="controls">
-      <button class="btn reunion" id="reunionBtn" type="button">Sala de revisión · <span id="reunionCount">0</span></button>
       <button class="btn resultados-btn" id="resultadosBtn" type="button">Resultados · <span id="expCount">0</span></button>
       <button class="btn" id="minutaBtn" type="button">Minuta</button>
       <button class="btn" id="webBtn" type="button">polyplas.cl</button>
@@ -302,7 +322,7 @@ kbd{font:600 10px var(--f-mono);border:1px solid var(--line);border-bottom-width
   <div class="grid">
     <section class="stage" id="stage" aria-label="Oficina en 3D">
       <div class="labels" id="labels"></div>
-      <div class="hint" id="hint">Muévete con las flechas o WASD, o toca el piso. Acércate a un agente para hablar con él.</div>
+      <div class="hint" id="hint">Haz clic en un agente para hablar con él · muévete con las flechas o toca el piso.</div>
       <div class="zoom"><button class="btn" id="zin" type="button" aria-label="Acercar">+</button><button class="btn" id="zout" type="button" aria-label="Alejar">−</button></div>
       <div class="legend"><span><i class="dot"></i>Trabajando</span><span><i class="dot" style="background:var(--accent)"></i>Reunión</span><span><i class="dot" style="background:var(--warn)"></i>Espera aprobación</span></div>
       <div class="fp-hud" id="fpHud">
@@ -324,18 +344,17 @@ kbd{font:600 10px var(--f-mono);border:1px solid var(--line);border-bottom-width
 
     <aside>
       <div class="card">
-        <h2>Bandeja del jefe <span class="count" id="count">0</span></h2>
-        <p class="sub">Nada se ejecuta sin tu aprobación. Las propuestas de ahora son ejemplos de lo que te llegará.</p>
-        <div id="props"><div class="empty">Sin propuestas pendientes. Cuando un agente quiera cambiar algo, camina a tu escritorio y aparece aquí.</div></div>
+        <h2>Para aprobar <span class="count" id="aprobarCount">0</span></h2>
+        <p class="sub">Revisa lo que propone tu equipo y decide con un clic.</p>
+        <div id="props"><div class="empty">Sin propuestas por ahora. Los agentes te avisarán cuando tengan algo.</div></div>
+      </div>
+      <div class="card" id="jefeCard" hidden>
+        <h2>Listo · revisa <span class="count" id="count">0</span></h2>
+        <div id="jefeProps"></div>
       </div>
       <div class="card">
         <h2>Lo que está pasando</h2>
         <ul class="log" id="log"></ul>
-      </div>
-      <div class="card">
-        <h2>Equipo</h2>
-        <ul class="team" id="team"></ul>
-        <p class="note" style="margin:10px 0 0">Los agentes en demo se contratan uno por uno, en el orden del plan.</p>
       </div>
     </aside>
   </div>
@@ -971,7 +990,9 @@ function makeLabel(name,me){const d=document.createElement('div');d.className='l
 AGENTS.forEach(a=>{
   const p=makePerson(a.shirt,a.hair,false,a.skin,LOOK[a.id]);Object.assign(a,p);
   a.pos=new THREE.Vector3(a.seat.x,0,a.seat.z);a.g.position.copy(a.pos);a.face=a.desk.row?0:Math.PI;a.g.rotation.y=a.face;
-  a.path=[];a.busy=false;a.lbl=makeLabel(a.name);a.bub=a.lbl.querySelector('.bub');a.setStatus=s=>{a.status.material.color.setHex(STATUS[s]).convertSRGBToLinear();a.status.material.emissive.setHex(STATUS[s]).convertSRGBToLinear()};
+  a.path=[];a.busy=false;a.lbl=makeLabel(a.name);a.bub=a.lbl.querySelector('.bub');
+  a.lbl.querySelector('.nm').addEventListener('click',e=>{e.stopPropagation();if(!fpMode)openCall(a)});
+  a.setStatus=s=>{a.status.material.color.setHex(STATUS[s]).convertSRGBToLinear();a.status.material.emissive.setHex(STATUS[s]).convertSRGBToLinear()};
 });
 const me={name:'Tú (jefe)',...makePerson(0xf3f3f1,0x2a1a12,true,0xe8b896,LOOK.me)};
 const isSitting=a=>!a.path.length&&(Math.hypot(a.pos.x-a.seat.x,a.pos.z-a.seat.z)<.15||SEATS.some(s=>Math.hypot(a.pos.x-s.x,a.pos.z-s.z)<.15));
@@ -1056,37 +1077,50 @@ async function propose(a){
   await wait(900);await back(a);a.busy=false;
 }
 function renderProps(){
-  document.getElementById('count').textContent=pending.length;
   papers.forEach((p,i)=>p.visible=i<pending.length);
-  if(!pending.length){propsEl.innerHTML='<div class="empty">Sin propuestas pendientes. Cuando un agente quiera cambiar algo, camina a tu escritorio y aparece aquí.</div>';return}
-  propsEl.innerHTML='';
+  /* Reúne todas las propuestas pendientes de a.props (backlog) */
+  const all=[];
+  AGENTS.forEach(a=>{
+    if(!active(a))return;
+    a.props.forEach(p=>{
+      const key=a.id+'::'+p.what;
+      const done=approvedSet.has(key+'::ok')||approvedSet.has(key+'::no');
+      if(!done)all.push({a,p,key});
+    });
+  });
+  /* También incluir pending que no estén en a.props */
   pending.forEach(p=>{
-    const r=p.riesgo||'bajo',o=p.objetivo||'';
-    const isReal=p.agent.real;
-    const d=document.createElement('div');d.className='prop';d.dataset.riesgo=r;
-    d.innerHTML=
-      '<span class="who"></span>'+
-      '<span class="what"></span>'+
-      '<span class="why"></span>'+
-      (p.ficha?'<pre class="ficha"></pre>':'')+
-      '<div class="acts">'+
-        '<button class="btn ok" type="button">Aprobar</button>'+
-        '<button class="btn no" type="button">Rechazar</button>'+
-        (p.ficha?'<button class="btn detail" type="button">Ver ficha ↓</button>':'')+
-      '</div>';
-    const whoEl=d.querySelector('.who');
-    whoEl.innerHTML='<span></span>';
-    whoEl.querySelector('span').textContent=p.agent.name+(isReal?' · real':' · ejemplo');
-    if(r){const b=document.createElement('span');b.className='badge riesgo-'+r;b.textContent='riesgo '+r;whoEl.appendChild(b)}
-    if(o){const b=document.createElement('span');b.className='badge obj';b.textContent=o;whoEl.appendChild(b)}
-    d.querySelector('.what').textContent=p.what;
-    d.querySelector('.why').textContent=p.why;
-    if(p.ficha)d.querySelector('.ficha').textContent=p.ficha;
-    const [ok,no]=d.querySelectorAll('button.ok, button.no');
-    ok.onclick=()=>decide(p,true);no.onclick=()=>decide(p,false);
-    const det=d.querySelector('button.detail');
-    if(det)det.onclick=()=>{const f=d.querySelector('.ficha');f.classList.toggle('open');det.textContent=f.classList.contains('open')?'Cerrar ficha ↑':'Ver ficha ↓'};
-    propsEl.appendChild(d);
+    const key=p.agent.id+'::'+p.what;
+    if(!all.find(x=>x.key===key))all.push({a:p.agent,p,key});
+  });
+  document.getElementById('aprobarCount').textContent=all.length;
+  if(!all.length){propsEl.innerHTML='<div class="empty">Sin propuestas por ahora. Los agentes te avisarán cuando tengan algo.</div>';return}
+  propsEl.innerHTML='';
+  all.forEach(({a,p,key})=>{
+    const r=p.riesgo||'bajo';
+    const shirtHex='#'+a.shirt.toString(16).padStart(6,'0');
+    const whyShort=p.why&&p.why.length>115?p.why.slice(0,115)+'…':(p.why||'');
+    const card=document.createElement('div');card.className='prop-card';card.dataset.riesgo=r;
+    card.innerHTML=
+      '<div class="pc-agent"><i class="pc-dot" style="background:'+shirtHex+'"></i><span class="pc-name"></span></div>'+
+      '<div class="pc-what"></div>'+
+      '<div class="pc-why"></div>'+
+      (p.ficha?'<details class="pc-det"><summary>Ver ficha completa ↓</summary><pre class="pc-ficha"></pre></details>':'')+
+      '<div class="pc-acts"><button class="pc-ok" type="button">✓ Aprobar</button><button class="pc-no" type="button">✗ Rechazar</button></div>';
+    card.querySelector('.pc-name').textContent=a.name;
+    card.querySelector('.pc-what').textContent=p.what;
+    card.querySelector('.pc-why').textContent=whyShort;
+    if(p.ficha)card.querySelector('.pc-ficha').textContent=p.ficha;
+    const doDecide=(ok)=>{
+      if(!pending.some(x=>x.agent===a&&x.what===p.what))pending.push({agent:a,...p});
+      const found=pending.find(x=>x.agent===a&&x.what===p.what);
+      if(found)decide(found,ok);
+      approvedSet.add(key+'::'+(ok?'ok':'no'));
+      renderProps();
+    };
+    card.querySelector('.pc-ok').onclick=()=>doDecide(true);
+    card.querySelector('.pc-no').onclick=()=>doDecide(false);
+    propsEl.appendChild(card);
   });
 }
 function decide(p,ok){
@@ -1096,7 +1130,7 @@ function decide(p,ok){
 }
 function tick(){if(paused)return;const free=AGENTS.filter(a=>!a.busy&&active(a));if(!free.length)return;const a=rnd(free),r=Math.random();if(r<.6)work(a);else if(r<.8)meeting(a);else propose(a)}
 
-function renderTeam(){const t=document.getElementById('team');t.innerHTML='';AGENTS.forEach(a=>{const li=document.createElement('li');li.innerHTML='<span><i class="sw"></i><span><b></b><small></small></span></span><span class="tag '+(a.real?'real':'demo')+'">'+(a.real?'Activo':'Demo')+'</span>';li.querySelector('.sw').style.background='#'+a.shirt.toString(16).padStart(6,'0');li.querySelector('b').textContent=a.name;li.querySelector('small').style.cssText='font-size:11px;color:var(--muted);display:block';li.querySelector('small').textContent=a.role||'';t.appendChild(li)})}
+function renderTeam(){const t=document.getElementById('team');if(!t)return;t.innerHTML='';AGENTS.forEach(a=>{const li=document.createElement('li');li.innerHTML='<span><i class="sw"></i><span><b></b><small></small></span></span><span class="tag '+(a.real?'real':'demo')+'">'+(a.real?'Activo':'Demo')+'</span>';li.querySelector('.sw').style.background='#'+a.shirt.toString(16).padStart(6,'0');li.querySelector('b').textContent=a.name;li.querySelector('small').style.cssText='font-size:11px;color:var(--muted);display:block';li.querySelector('small').textContent=a.role||'';t.appendChild(li)})}
 function applyMode(){
   AGENTS.forEach(a=>{const on=active(a);a.g.visible=on;a.lbl.classList.toggle('off',!on);a.lbl.hidden=!on;screens[a.id].material.emissiveIntensity=on?.8:0;if(!on)a.bub.hidden=true});
   document.getElementById('modeBtnProxy').textContent=demo?'Ver solo lo real':'Ver simulación';
@@ -1133,6 +1167,7 @@ function frame(t){
   checkNear();
   renderer.render(scene,cam);requestAnimationFrame(frame);
 }
+const approvedSet=new Set();
 resize();renderTeam();applyMode();renderProps();
 log('Vigilante: tarea diaria creada, ronda cada mañana a las 8:08');
 log('SEO: agente activado — primera auditoría pendiente de acceso a GSC y GA4');
@@ -1144,13 +1179,7 @@ log('Medición: agente activado — Paso 0 urgente: purchase con value=$0 + tran
 log('Oficina abierta. 8 agentes activos: Vigilante + SEO + CRO + Ads + UX/UI + Intel + Medición + Tatis.');
 log('Tatis activada — documentación en Confluence: moralesgarcianat.atlassian.net/wiki/spaces/PMP/folder/40206337');
 /* ---------- Sala de revisión ---------- */
-const approvedSet=new Set();
-
-function updateReunionCount(){
-  let n=0;
-  AGENTS.forEach(a=>{if(active(a))n+=a.props.length});
-  document.getElementById('reunionCount').textContent=n;
-}
+function updateReunionCount(){renderProps();}
 
 function openReunion(){
   const body=document.getElementById('reunionBody');
@@ -1244,11 +1273,10 @@ function closeReunion(){
   document.getElementById('reunionModal').hidden=true;
 }
 
-document.getElementById('reunionBtn').onclick=openReunion;
 document.getElementById('closeReunion').onclick=closeReunion;
 document.getElementById('reunionModal').addEventListener('click',e=>{if(e.target===document.getElementById('reunionModal'))closeReunion()});
 
-updateReunionCount();
+renderProps();
 
 /* ---------- Videollamada ---------- */
 let callAgent=null,callPropIdx=0;
@@ -1959,25 +1987,26 @@ async function saveQueue(queue,sha,token){
 }
 
 function addCompletedCard(entry,agentName){
-  const container=document.getElementById('props');
-  const emptyEl=container.querySelector('.empty');if(emptyEl)emptyEl.remove();
+  const jefeCard=document.getElementById('jefeCard');jefeCard.hidden=false;
+  const container=document.getElementById('jefeProps');
   const cambio=entry.cambio||{};
   const d=document.createElement('div');
-  d.className='prop';d.dataset.riesgo='bajo';
+  d.className='prop-card';d.dataset.riesgo='bajo';
   const hora=new Date(entry.completado||entry.aprobado||Date.now()).toLocaleTimeString('es-CL',{hour:'2-digit',minute:'2-digit'});
-  let fichaHtml='';
+  let detHtml='';
   if(cambio.antes||cambio.despues){
-    fichaHtml=`<div class="ficha open" style="display:block;white-space:pre-wrap">`;
-    if(cambio.antes)fichaHtml+=`<b style="color:var(--bad)">Antes:</b>  ${cambio.antes}\n`;
-    if(cambio.despues)fichaHtml+=`<b style="color:var(--ok)">Después:</b> ${cambio.despues}`;
-    if(cambio.archivos&&cambio.archivos.length)fichaHtml+=`\n<b style="color:var(--muted)">Archivos:</b> ${cambio.archivos.join(', ')}`;
-    fichaHtml+='</div>';
+    detHtml='<details class="pc-det" open><summary>Ver cambio</summary><div class="pc-ficha">';
+    if(cambio.antes)detHtml+='<b style="color:var(--bad)">Antes:</b>  '+cambio.antes+'\n';
+    if(cambio.despues)detHtml+='<b style="color:var(--ok)">Después:</b> '+cambio.despues;
+    if(cambio.archivos&&cambio.archivos.length)detHtml+='\n<b style="color:var(--muted)">Archivos:</b> '+cambio.archivos.join(', ');
+    detHtml+='</div></details>';
   }
-  d.innerHTML=`
-    <div class="who"><span>${agentName}</span><span class="badge" style="color:var(--ok);border-color:var(--ok)">✓ Listo</span><time>${hora}</time></div>
-    <div class="what">${entry.what}</div>
-    ${fichaHtml}
-    <div class="acts"><button class="btn" onclick="this.closest('.prop').remove();const c=document.getElementById('count');c.textContent=Math.max(0,parseInt(c.textContent)-1)" style="font-size:12px">Visto ✓</button></div>`;
+  d.innerHTML=
+    '<div class="pc-agent"><span class="pc-name">'+agentName+'</span><span class="badge" style="color:var(--ok);border-color:var(--ok)">✓ Listo · '+hora+'</span></div>'+
+    '<div class="pc-what"></div>'+
+    detHtml+
+    '<div class="pc-acts" style="grid-template-columns:1fr"><button class="pc-ok" style="background:var(--muted)" onclick="this.closest(\'.prop-card\').remove();const c=document.getElementById(\'count\');const n=Math.max(0,parseInt(c.textContent)-1);c.textContent=n;if(!n)document.getElementById(\'jefeCard\').hidden=true">Visto ✓</button></div>';
+  d.querySelector('.pc-what').textContent=entry.what;
   container.insertBefore(d,container.firstChild);
   const cnt=document.getElementById('count');cnt.textContent=(parseInt(cnt.textContent)||0)+1;
 }
