@@ -232,17 +232,24 @@ kbd{font:600 10px var(--f-mono);border:1px solid var(--line);border-bottom-width
 .stage.fp .near{left:50%;right:auto;transform:translateX(-50%);bottom:16px;width:min(560px,calc(100% - 24px))}
 @media (pointer:coarse){.stage.fp .near{bottom:140px}}
 @media (max-width:560px){#fpMap{width:110px;height:76px}.fp-top{max-width:calc(100% - 140px)}}
+.brand-logo{display:block;height:38px;width:auto;margin-bottom:8px}
+.web-panel{background:#fff;border-radius:16px;width:min(1200px,100%);height:min(88vh,900px);display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(15,27,42,.3)}
+.web-panel .call-top{gap:12px}
+.web-panel iframe{flex:1;border:0;width:100%;background:#fafafa}
+#fpWebHint{position:absolute;top:50%;left:50%;transform:translate(-50%,-64px);font-size:12px;font-weight:600;background:rgba(255,255,255,.9);padding:4px 10px;border-radius:999px;display:none;box-shadow:var(--shadow)}
+#fpWebHint.vis{display:block}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <h1>Oficina Polyplas<small>Tu equipo de agentes trabajando por las ventas de polyplas.cl</small></h1>
+    <h1><img class="brand-logo" src="https://polyplas.cl/wp-content/uploads/2022/07/marca-polyplas-1.svg" alt="Polyplas">Oficina Polyplas<small>Tu equipo de agentes trabajando por las ventas de polyplas.cl</small></h1>
     <div class="controls">
       <span class="chip"><span class="dot"></span>Vigilante + SEO + CRO + Ads + UX/UI + Intel + Medición + Tatis activos</span>
       <span class="chip" id="modeChip"><span class="dot demo"></span>Actividad simulada</span>
       <button class="btn" id="modeBtn" type="button">Ver solo lo real</button>
       <button class="btn reunion" id="reunionBtn" type="button">Sala de revisión · <span id="reunionCount">0</span></button>
+      <button class="btn" id="webBtn" type="button">polyplas.cl</button>
       <button class="btn fp-btn" id="fpBtn" type="button">1ª Persona</button>
       <button class="btn primary" id="pauseBtn" type="button">Pausar</button>
     </div>
@@ -258,6 +265,7 @@ kbd{font:600 10px var(--f-mono);border:1px solid var(--line);border-bottom-width
         <div class="fp-top"><span class="fp-tag">Exploración</span><span class="fp-keys"><kbd>WASD</kbd>moverse · <kbd>←→</kbd>girar · <kbd>Shift</kbd>correr · <kbd>E</kbd>avance · <kbd>Q</kbd>llamada · <kbd>Esc</kbd>salir</span></div>
         <canvas id="fpMap" width="300" height="208" aria-label="Minimapa"></canvas>
         <div id="fpCrosshair"></div>
+        <div id="fpWebHint"><kbd>E</kbd> abrir polyplas.cl</div>
         <div id="fpHint">Haz clic para mirar con el mouse · o arrastra</div>
         <div id="fpJoy" aria-label="Joystick"><div id="fpJoyKnob"></div></div>
         <div id="fpFade"></div>
@@ -289,6 +297,13 @@ kbd{font:600 10px var(--f-mono);border:1px solid var(--line);border-bottom-width
   </div>
 </div>
 
+<div id="webModal" class="call-overlay" hidden>
+  <div class="web-panel">
+    <div class="call-top"><img src="https://polyplas.cl/wp-content/uploads/2022/07/marca-polyplas-1.svg" alt="Polyplas" height="30"><span class="call-agent-info" style="font-weight:600;color:var(--muted)">polyplas.cl</span>
+      <a class="btn" href="https://polyplas.cl/" target="_blank" rel="noopener">Abrir en pestaña</a><button class="btn hangup" id="webClose" type="button">Cerrar ✕</button></div>
+    <iframe id="webFrame" title="Sitio web Polyplas" loading="lazy"></iframe>
+  </div>
+</div>
 <div id="callModal" class="call-overlay" hidden>
   <div class="call-panel">
     <div class="call-top">
@@ -674,8 +689,34 @@ const screenMat=tex=>new THREE.MeshStandardMaterial({color:0x000000,emissive:0xf
 box(3.1,1.8,.07,MAT.black,9,1.5,-8.95);
 {const s=new THREE.Mesh(new THREE.PlaneGeometry(2.96,1.66),screenMat(wallTex));s.position.set(9,1.5,-8.91);scene.add(s)}
 /* pantalla KPI en la pared izquierda */
-box(.06,1.56,2.7,MAT.black,-12.97,1.7,-6.3);
-{const s=new THREE.Mesh(new THREE.PlaneGeometry(2.58,1.44),screenMat(kpiTex));s.rotation.y=Math.PI/2;s.position.set(-12.935,1.7,-6.3);scene.add(s)}
+/* marca Polyplas: logo, sitio web en pantalla y afiches de productos (cargados desde polyplas.cl) */
+const PP='https://polyplas.cl/wp-content/uploads/',LOGO=PP+'2022/07/marca-polyplas-1.svg';
+const IMG_TINA=PP+'2026/08/tina-hidromasaje-kuyen-full-polyplas-1.webp',IMG_PLANCHA=PP+'2026/08/planchaspolicarbonatocompacto-1.webp';
+function loadImg(u,cb){const i=new Image();i.crossOrigin='anonymous';i.onload=()=>cb(i);i.src=u}
+const cover=(g,img,x,y,w,h)=>{const r=Math.max(w/img.width,h/img.height),sw=w/r,sh=h/r;g.drawImage(img,(img.width-sw)/2,(img.height-sh)/2,sw,sh,x,y,w,h)};
+const siteCv=mkCv(1024,576),siteTex=mkT(siteCv);const brand={};
+function drawSite(){const g=siteCv.getContext('2d');g.fillStyle='#fafafa';g.fillRect(0,0,1024,576);
+  g.fillStyle='#fff';g.fillRect(0,0,1024,76);g.fillStyle='#e5e7eb';g.fillRect(0,76,1024,2);
+  if(brand.logo)g.drawImage(brand.logo,28,12,140,52);
+  g.font='600 17px Inter,"Plus Jakarta Sans",sans-serif';g.fillStyle='#04213f';['Acrílicos','Policarbonato','Tinas','Baño','Contacto'].forEach((t,i)=>g.fillText(t,330+i*120,46));
+  g.fillStyle='#0a4d3c';g.fillRect(900,22,100,34);g.fillStyle='#fff';g.font='700 15px Inter,sans-serif';g.fillText('Comprar',922,45);
+  if(brand.tina)cover(g,brand.tina,520,96,480,300);
+  g.fillStyle='#04213f';g.font='800 40px Inter,"Plus Jakarta Sans",sans-serif';['Planchas de acrílico','y tinas de hidromasaje','en Chile'].forEach((t,i)=>g.fillText(t,28,160+i*48));
+  g.fillStyle='#5b6473';g.font='500 18px Inter,sans-serif';g.fillText('Despacho a todo Chile · Corte a medida',28,320);
+  g.fillStyle='#0a4d3c';g.fillRect(28,345,190,48);g.fillStyle='#fff';g.font='700 18px Inter,sans-serif';g.fillText('Ver productos',56,376);
+  [['Acrílico',brand.plancha],['Tinas',brand.tina],['Policarbonato',brand.plancha],['Baño',brand.tina]].forEach(([t,im],i)=>{const x=28+i*246;g.fillStyle='#fff';g.fillRect(x,420,230,140);if(im)cover(g,im,x,420,230,100);g.fillStyle='#04213f';g.font='700 17px Inter,sans-serif';g.fillText(t,x+12,546)});
+  g.fillStyle='rgba(4,33,63,.85)';g.fillRect(860,530,150,34);g.fillStyle='#fff';g.font='600 14px Inter,sans-serif';g.fillText('▶ Abrir sitio',880,552);
+  siteTex.needsUpdate=true}
+drawSite();
+box(.07,2.06,3.6,MAT.black,-12.965,1.65,-6.1);
+const siteScreen=new THREE.Mesh(new THREE.PlaneGeometry(3.48,1.96),screenMat(siteTex));siteScreen.rotation.y=Math.PI/2;siteScreen.position.set(-12.925,1.65,-6.1);scene.add(siteScreen);
+const signCv=mkCv(1024,300),signTex2=mkT(signCv);
+const signPanel=new THREE.Mesh(new THREE.PlaneGeometry(2.2,.64),new THREE.MeshBasicMaterial({map:signTex2,transparent:true}));signPanel.position.set(9,2.72,-8.97);
+function poster(img,x,z){const c=mkCv(512,640),t=mkT(c),g=c.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,512,640);cover(g,img,24,24,464,520);if(brand.logo)g.drawImage(brand.logo,24,566,140,52);t.needsUpdate=true;
+  box(.04,1.3,1.04,MAT.black,-12.98,1.65,z);const m=new THREE.Mesh(new THREE.PlaneGeometry(.96,1.2),std(0xffffff,.5,0,{map:t}));m.rotation.y=Math.PI/2;m.position.set(-12.955,1.65,z);m.material.color.convertSRGBToLinear();scene.add(m)}
+loadImg(LOGO,i=>{brand.logo=i;drawSite();const g=signCv.getContext('2d');g.fillStyle='#ffffff';g.beginPath();g.roundRect?g.roundRect(0,0,1024,300,40):g.rect(0,0,1024,300);g.fill();g.drawImage(i,112,25,800,250);signTex2.needsUpdate=true;
+  sign.visible=false;scene.add(signPanel);
+  loadImg(IMG_TINA,t=>{brand.tina=t;drawSite();poster(t,0,3.3)});loadImg(IMG_PLANCHA,t=>{brand.plancha=t;drawSite();poster(t,0,-0.4)})});
 
 /* sala de reuniones con vidrio y marcos negros */
 [-5.4,5.4].forEach(z=>{box(.04,WH,7.2,MAT.glass,5.4,WH/2,z);box(.08,.08,7.2,MAT.frame,5.4,WH-.04,z);box(.08,.06,7.2,MAT.frame,5.4,.03,z);
@@ -870,7 +911,7 @@ const ray=new THREE.Raycaster(),ndc=new THREE.Vector2();
 renderer.domElement.addEventListener('pointerdown',e=>{
   if(fpMode)return;
   const r=renderer.domElement.getBoundingClientRect();ndc.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);
-  ray.setFromCamera(ndc,cam);const hit=ray.intersectObject(floor)[0];if(!hit)return;
+  ray.setFromCamera(ndc,cam);if(ray.intersectObject(siteScreen).length){openWeb();return}const hit=ray.intersectObject(floor)[0];if(!hit)return;
   const to={x:THREE.MathUtils.clamp(hit.point.x,-12.4,12.4),z:THREE.MathUtils.clamp(hit.point.z,-8.4,8.4)};
   me.path=freeRoute(me.pos,to);
 });
@@ -1271,10 +1312,10 @@ function closeCall(){
    ============================================================ */
 const fpPos=new THREE.Vector3(9,1.6,6.6),fpVel={x:0,z:0},fpYaw={v:0},fpPitch={v:0},fpKeys={};
 const EYE=1.7,FP_R=.3,WALK=3.1,RUN=5.8;
-let fpLocked=false,fpBob=0,fpDrag=null,fpLookId=null,fpLookLast=null;
+let lookWeb=false,fpLocked=false,fpBob=0,fpDrag=null,fpLookId=null,fpLookLast=null;
 const joy={x:0,y:0,id:null};
 const fpEls={hud:document.getElementById('fpHud'),hint:document.getElementById('fpHint'),cross:document.getElementById('fpCrosshair'),map:document.getElementById('fpMap'),joy:document.getElementById('fpJoy'),knob:document.getElementById('fpJoyKnob'),fade:document.getElementById('fpFade'),btn:document.getElementById('fpBtn')};
-const modalOpen=()=>!document.getElementById('callModal').hidden||!document.getElementById('reunionModal').hidden;
+const modalOpen=()=>!document.getElementById('webModal').hidden||!document.getElementById('callModal').hidden||!document.getElementById('reunionModal').hidden;
 const typing=()=>document.activeElement&&/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
 
 addEventListener('keydown',e=>{
@@ -1283,6 +1324,7 @@ addEventListener('keydown',e=>{
   if(['arrowup','arrowdown','arrowleft','arrowright',' '].includes(k))e.preventDefault();
   if(e.repeat)return;
   if(k==='e'&&nearA)document.getElementById('nearAsk').click();
+  else if(k==='e'&&lookWeb){if(fpLocked)document.exitPointerLock();openWeb()}
   if(k==='q'&&nearA){if(fpLocked)document.exitPointerLock();openCall(nearA)}
   if(k==='escape'&&!fpLocked)exitFP();
 });
@@ -1380,7 +1422,9 @@ function fpTarget(){
     const dot=(dx*fx+dz*fz)/d;if(!(dot>.94||(d<1.3&&dot>.3)))return;const sc=dot-d*.05;if(sc>bs){bs=sc;best=a}});
   if(best!==nearA){nearA=best;nearEl.hidden=!best;if(best)document.getElementById('nearName').textContent=best.name+(best.real?' · activo':' · demo')}
   if(nearA)document.getElementById('nearTask').textContent=nearA.current?('Ahora: '+nearA.current):'Trabajando en su escritorio';
-  fpEls.cross.classList.toggle('target',!!best);
+  lookWeb=false;if(!best){ray.setFromCamera({x:0,y:0},fpCam);const h=ray.intersectObject(siteScreen)[0];lookWeb=!!h&&h.distance<7}
+  document.getElementById('fpWebHint').classList.toggle('vis',lookWeb);
+  fpEls.cross.classList.toggle('target',!!best||lookWeb);
 }
 
 /* minimapa */
@@ -1418,6 +1462,12 @@ frame=function(t){
   requestAnimationFrame(frame);
 };
 
+const webModal=document.getElementById('webModal'),webFrame=document.getElementById('webFrame');
+function openWeb(){if(!webFrame.src)webFrame.src='https://polyplas.cl/';webModal.hidden=false}
+document.getElementById('webClose').onclick=()=>{webModal.hidden=true};
+webModal.addEventListener('click',e=>{if(e.target===webModal)webModal.hidden=true});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&!webModal.hidden){webModal.hidden=true;e.stopImmediatePropagation()}},true);
+document.getElementById('webBtn').onclick=openWeb;
 document.getElementById('callHangup').onclick=closeCall;
 document.getElementById('callModal').addEventListener('click',e=>{if(e.target===document.getElementById('callModal'))closeCall()});
 document.getElementById('nearCall').onclick=()=>{if(nearA)openCall(nearA)};
