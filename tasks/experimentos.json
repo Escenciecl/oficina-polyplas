@@ -33,5 +33,34 @@
     "revisar_en": "2026-11-18",
     "revisiones": [],
     "estado": "pendiente"
+  },
+  {
+    "id": "exp-002",
+    "tarea_id": "seo::planchas-acrilico-title-meta",
+    "agente": "seo",
+    "cambio": "Title + meta description de /categoria-producto/planchas-acrilico/",
+    "hipotesis": "Incluir 'Precio' + variantes específicas (espejo, blanco, fluor) + '1 corte incluido' sube CTR de 1.4% → ~2.5%",
+    "urls": [
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/"
+    ],
+    "url_muestra": "https://polyplas.cl/categoria-producto/planchas-acrilico/",
+    "metrica_primaria": { "tipo": "gsc", "indicador": "CTR", "objetivo": "> 2.0%", "baseline_valor": "1.4%" },
+    "metrica_secundaria": { "tipo": "gsc", "indicador": "clics", "objetivo": "> 326 (clics últimos 3 meses)" },
+    "control_url": "/guia-de-acrilicos/",
+    "baseline": {
+      "fecha": "2026-11-03",
+      "herramienta": "gsc-manual",
+      "nota": "Datos del panel SEO 2026-11-03. Antes del cambio.",
+      "metricas": {
+        "impresiones_3m": 23540,
+        "clics_3m": 326,
+        "ctr": 0.014,
+        "posicion": 9.8
+      }
+    },
+    "aplicado": "2026-11-04",
+    "revisar_en": "2026-11-18",
+    "revisiones": [],
+    "estado": "pendiente"
   }
 ]
