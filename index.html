@@ -1932,6 +1932,69 @@ setTimeout(async()=>{
   }catch(e){}
 },4000);
 
+/* ---------- Reporte de cambios completados ---------- */
+async function saveQueue(queue,sha,token){
+  const body={message:'presentado: marcar tareas completadas',content:btoa(unescape(encodeURIComponent(JSON.stringify(queue,null,2))))};
+  if(sha)body.sha=sha;
+  try{await fetch(`https://api.github.com/repos/${GH_QUEUE_REPO}/contents/${GH_QUEUE_PATH}`,{method:'PUT',headers:{Authorization:'token '+token,Accept:'application/vnd.github+json','Content-Type':'application/json'},body:JSON.stringify(body)})}catch(e){}
+}
+
+function addCompletedCard(entry,agentName){
+  const container=document.getElementById('props');
+  const emptyEl=container.querySelector('.empty');if(emptyEl)emptyEl.remove();
+  const cambio=entry.cambio||{};
+  const d=document.createElement('div');
+  d.className='prop';d.dataset.riesgo='bajo';
+  const hora=new Date(entry.completado||entry.aprobado||Date.now()).toLocaleTimeString('es-CL',{hour:'2-digit',minute:'2-digit'});
+  let fichaHtml='';
+  if(cambio.antes||cambio.despues){
+    fichaHtml=`<div class="ficha open" style="display:block;white-space:pre-wrap">`;
+    if(cambio.antes)fichaHtml+=`<b style="color:var(--bad)">Antes:</b>  ${cambio.antes}\n`;
+    if(cambio.despues)fichaHtml+=`<b style="color:var(--ok)">Después:</b> ${cambio.despues}`;
+    if(cambio.archivos&&cambio.archivos.length)fichaHtml+=`\n<b style="color:var(--muted)">Archivos:</b> ${cambio.archivos.join(', ')}`;
+    fichaHtml+='</div>';
+  }
+  d.innerHTML=`
+    <div class="who"><span>${agentName}</span><span class="badge" style="color:var(--ok);border-color:var(--ok)">✓ Listo</span><time>${hora}</time></div>
+    <div class="what">${entry.what}</div>
+    ${fichaHtml}
+    <div class="acts"><button class="btn" onclick="this.closest('.prop').remove();const c=document.getElementById('count');c.textContent=Math.max(0,parseInt(c.textContent)-1)" style="font-size:12px">Visto ✓</button></div>`;
+  container.insertBefore(d,container.firstChild);
+  const cnt=document.getElementById('count');cnt.textContent=(parseInt(cnt.textContent)||0)+1;
+}
+
+function presentarCambio(entry){
+  const agent=AGENTS.find(a=>a.id===entry.agente);
+  if(!agent||!active(agent))return;
+  const agentName=(AGENTS.find(a=>a.id===entry.agente)||{name:entry.agente}).name;
+  agent.busy=true;agent.setStatus('work');
+  goTo(agent,BOSS_SPOT).then(()=>{
+    const what=entry.what.slice(0,55);
+    say(agent,`¡Listo jefe! Completé: ${what}`,7000);
+    speak(agent,`¡Jefe! Terminé la tarea. Te dejo el reporte en tu bandeja.`);
+    addCompletedCard(entry,agentName);
+    log(`✓ ${agentName}: completó "${entry.what.slice(0,60)}"`);
+    setTimeout(()=>{agent.busy=false;back(agent)},8000);
+  });
+}
+
+async function checkCompletedTasks(){
+  const token=localStorage.getItem(GH_TOKEN_KEY);
+  if(!token)return;
+  const file=await ghGet(GH_QUEUE_PATH,token);
+  if(!file)return;
+  let queue;
+  try{queue=JSON.parse(atob(file.content.replace(/\n/g,'')))}catch(e){return}
+  const nuevos=queue.filter(t=>t.estado==='completada'&&!t.presentado);
+  if(!nuevos.length)return;
+  nuevos.forEach(t=>{t.presentado=true});
+  await saveQueue(queue,file.sha,token);
+  nuevos.forEach((entry,i)=>setTimeout(()=>presentarCambio(entry),i*3000));
+}
+
+setTimeout(checkCompletedTasks,5000);
+setInterval(checkCompletedTasks,60000);
+
 /* reunión de inicio con minuta */
 const minEl=document.getElementById('minutaModal'),agentName=id=>(AGENTS.find(a=>a.id===id)||{name:id}).name;
 const SPOTS=[...SEATS,{x:6.5,z:-5.4},{x:11.5,z:-5.4},{x:6.5,z:-2.8},{x:11.5,z:-2.8}];
