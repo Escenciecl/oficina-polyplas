@@ -1,0 +1,26 @@
+[
+  {
+    "id": "exp-001",
+    "tarea_id": "uxui::1793827781819",
+    "agente": "uxui",
+    "cambio": "loading=eager en imágenes principales de fichas de tinas (7 páginas)",
+    "hipotesis": "Reducir CLS mejora Core Web Vitals y potencialmente CTR orgánico",
+    "urls": [
+      "https://polyplas.cl/tina-hidromasaje-queilen/",
+      "https://polyplas.cl/tina-hidromasaje-coinco/",
+      "https://polyplas.cl/tina-hidromasaje-vilcun/",
+      "https://polyplas.cl/tina-hidromasaje-antuco/",
+      "https://polyplas.cl/tina-hidromasaje-kuyen-full/",
+      "https://polyplas.cl/producto-casco-tina-coinco/",
+      "https://polyplas.cl/producto-casco-tina-queilen/"
+    ],
+    "url_muestra": "https://polyplas.cl/tina-hidromasaje-queilen/",
+    "metrica_primaria": { "tipo": "pagespeed", "indicador": "CLS", "objetivo": "< 0.1" },
+    "metrica_secundaria": { "tipo": "gsc", "indicador": "CTR", "objetivo": "> actual" },
+    "baseline": null,
+    "aplicado": "2026-11-04",
+    "revisar_en": "2026-11-18",
+    "revisiones": [],
+    "estado": "sin_baseline"
+  }
+]

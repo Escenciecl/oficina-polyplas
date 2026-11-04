@@ -245,6 +245,26 @@ kbd{font:600 10px var(--f-mono);border:1px solid var(--line);border-bottom-width
 .min-res{margin:0;font-weight:600}
 .min-sync{margin-top:16px;padding:12px;border:1px dashed var(--warn);border-radius:10px;font-size:13px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
 #minutaLink{display:inline-block;margin-top:14px}
+/* Resultados panel */
+.btn.resultados-btn{background:linear-gradient(135deg,#1d4ed8,#1e40af);border-color:transparent;color:#fff;box-shadow:0 6px 18px rgba(29,78,216,.3)}
+.btn.resultados-btn:hover{filter:brightness(1.08)}
+.exp-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.exp-card-top{display:flex;align-items:flex-start;gap:10px}
+.exp-what{font-weight:700;font-size:14px;flex:1;line-height:1.3}
+.exp-estado{font:700 10px var(--f-body);border-radius:999px;padding:3px 10px;border:1px solid;white-space:nowrap;flex-shrink:0;margin-top:2px;text-transform:uppercase;letter-spacing:.04em}
+.exp-estado.sin_baseline{color:var(--muted);border-color:var(--muted)}
+.exp-estado.pendiente{color:var(--accent);border-color:var(--accent)}
+.exp-estado.revision_pendiente{color:var(--warn);border-color:var(--warn);animation:pulse 2s infinite}
+.exp-estado.mejoro{color:var(--ok);border-color:var(--ok)}
+.exp-estado.degrado{color:var(--bad);border-color:var(--bad)}
+.exp-estado.igual{color:var(--muted);border-color:var(--muted)}
+.exp-meta{font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:12px}
+.exp-timeline{font:12px/1.4 var(--f-mono);color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+.exp-delta{font-weight:700}
+.exp-delta.pos{color:var(--ok)}
+.exp-delta.neg{color:var(--bad)}
+.exp-actions{display:flex;gap:8px;flex-wrap:wrap}
+.exp-empty{padding:48px 24px;text-align:center;color:var(--muted);font-size:14px}
 </style>
 </head>
 <body>
@@ -259,6 +279,7 @@ kbd{font:600 10px var(--f-mono);border:1px solid var(--line);border-bottom-width
       <button class="btn" id="vozBtn" type="button" aria-pressed="true">Voz: activada</button>
       <button class="btn reunion" id="reunionBtn" type="button">Sala de revisión · <span id="reunionCount">0</span></button>
       <button class="btn" id="webBtn" type="button">polyplas.cl</button>
+      <button class="btn resultados-btn" id="resultadosBtn" type="button">Resultados · <span id="expCount">0</span></button>
       <button class="btn" id="configBtn" type="button" title="Configurar integración con Claude Code">⚙ Config</button>
       <button class="btn fp-btn" id="fpBtn" type="button">1ª Persona</button>
       <button class="btn primary" id="pauseBtn" type="button">Pausar</button>
@@ -374,6 +395,21 @@ kbd{font:600 10px var(--f-mono);border:1px solid var(--line);border-bottom-width
       <button class="btn close-btn" id="closeReunion" type="button">Cerrar sala ×</button>
     </div>
     <div class="reunion-body" id="reunionBody"></div>
+  </div>
+</div>
+
+<div id="resultadosModal" class="reunion-overlay" hidden>
+  <div class="reunion-panel">
+    <div class="reunion-hdr">
+      <div class="reunion-hdr-text">
+        <h2>Resultados · Experimentos activos</h2>
+        <p>Impacto de cada cambio aprobado — baseline vs. revisión a los 14 días.</p>
+      </div>
+      <button class="btn close-btn" id="closeResultados" type="button">Cerrar ×</button>
+    </div>
+    <div class="reunion-body" id="resultadosBody">
+      <div class="exp-empty">Cargando experimentos...</div>
+    </div>
   </div>
 </div>
 
@@ -1608,6 +1644,97 @@ document.getElementById('checkQueue').onclick=async()=>{
     el.textContent=pending.length?pending.length+' tarea(s) pendiente(s): '+pending.map(t=>t.what.slice(0,40)).join(' · '):'Sin tareas pendientes ✓';
   }catch(e){el.textContent='Error leyendo queue'}
 };
+/* ---------- Resultados Panel ---------- */
+const GH_EXP_PATH='tasks/experimentos.json';
+const EXP_ESTADO_LABEL={sin_baseline:'Sin baseline',pendiente:'Midiendo',revision_pendiente:'¡Revisar!',mejoro:'Mejoró ✓',degrado:'Degradó ⚠',igual:'Sin cambio'};
+
+function renderExpCard(exp){
+  const card=document.createElement('div');
+  card.className='exp-card';
+  const revisar=new Date(exp.revisar_en);
+  const hoy=new Date();
+  const dias=Math.round((revisar-hoy)/86400000);
+  let timelineText='';
+  if(exp.estado==='sin_baseline')timelineText='⏳ Esperando baseline — se captura en la próxima revisión';
+  else if(exp.estado==='revision_pendiente')timelineText=`🔔 ¡Revisión lista! Vence ${exp.revisar_en}`;
+  else if(dias>0)timelineText=`⏱ Revisión en ${dias} día${dias!==1?'s':''} · ${exp.revisar_en}`;
+  else if(exp.revisiones&&exp.revisiones.length){const r=exp.revisiones[exp.revisiones.length-1];timelineText=`✓ Revisado ${r.fecha}`;}
+
+  let deltaHtml='';
+  if(exp.baseline&&exp.revisiones&&exp.revisiones.length){
+    const r=exp.revisiones[exp.revisiones.length-1];
+    if(r.metricas&&exp.baseline.metricas){
+      const parts=[];
+      const m=exp.baseline.metricas,rm=r.metricas;
+      if(m.cls!==undefined&&rm.cls!==undefined){const d=(rm.cls-m.cls).toFixed(3);const mejor=rm.cls<m.cls;parts.push(`<span class="exp-delta ${mejor?'pos':'neg'}">CLS ${m.cls}→${rm.cls} (${mejor?'-':'+'}${Math.abs(d)})</span>`);}
+      if(m.performance!==undefined&&rm.performance!==undefined){const d=rm.performance-m.performance;parts.push(`<span class="exp-delta ${d>=0?'pos':'neg'}">PS ${m.performance}→${rm.performance} (${d>=0?'+':''}${d})</span>`);}
+      if(parts.length)deltaHtml=`<div style="display:flex;gap:12px;flex-wrap:wrap">${parts.join('')}</div>`;
+    }
+  }else if(exp.baseline){
+    const m=exp.baseline.metricas||{};
+    const parts=[];
+    if(m.cls!==undefined)parts.push(`CLS ${m.cls}`);
+    if(m.lcp_s!==undefined)parts.push(`LCP ${m.lcp_s}s`);
+    if(m.performance!==undefined)parts.push(`PS ${m.performance}`);
+    if(parts.length)deltaHtml=`<div style="font-size:12px;color:var(--muted)">Baseline: ${parts.join(' · ')}</div>`;
+  }
+
+  card.innerHTML=`
+    <div class="exp-card-top">
+      <span class="exp-estado ${exp.estado}">${EXP_ESTADO_LABEL[exp.estado]||exp.estado}</span>
+      <span class="exp-what">${exp.cambio}</span>
+    </div>
+    <div class="exp-meta">
+      <span>🎯 ${exp.metrica_primaria.indicador} ${exp.metrica_primaria.objetivo}</span>
+      <span>📅 Aplicado ${exp.aplicado}</span>
+      <span>🔗 <a href="${exp.url_muestra}" target="_blank" rel="noopener" style="color:var(--accent)">${exp.url_muestra.replace('https://polyplas.cl','')}</a></span>
+    </div>
+    ${deltaHtml}
+    <div class="exp-timeline">${timelineText}</div>
+    <div class="exp-actions">
+      <a href="https://pagespeed.web.dev/analysis?url=${encodeURIComponent(exp.url_muestra)}" target="_blank" rel="noopener" class="btn" style="font-size:12px">Ver PageSpeed</a>
+      ${exp.estado==='revision_pendiente'?`<button class="btn primary" style="font-size:12px" onclick="solicitarRevision('${exp.id}')">Solicitar revisión</button>`:''}
+    </div>`;
+  return card;
+}
+
+window.solicitarRevision=function(expId){
+  const msg=`Revisa el experimento ${expId} en tasks/experimentos.json: captura las métricas actuales con PageSpeed, compara con el baseline, actualiza estado a 'mejoro'/'degrado'/'igual' y agrega la revisión.`;
+  try{navigator.clipboard.writeText(msg).then(()=>log('📋 Instrucción copiada — pégala en Claude Code'))}catch(_){log('Exp ID: '+expId+' — copia y pega en Claude Code')}
+};
+
+document.getElementById('resultadosBtn').onclick=async()=>{
+  const modal=document.getElementById('resultadosModal');
+  modal.hidden=false;paused=true;
+  const body=document.getElementById('resultadosBody');
+  const token=localStorage.getItem(GH_TOKEN_KEY);
+  if(!token){body.innerHTML='<div class="exp-empty">Conecta el token en ⚙ Config para ver los experimentos.</div>';return}
+  body.innerHTML='<div class="exp-empty">Cargando...</div>';
+  const file=await ghGet(GH_EXP_PATH,token);
+  if(!file){body.innerHTML='<div class="exp-empty">Sin experimentos aún. Se crean automáticamente al completar tareas.</div>';return}
+  let exps=[];
+  try{exps=JSON.parse(atob(file.content.replace(/\n/g,'')))}catch(e){body.innerHTML='<div class="exp-empty" style="color:var(--bad)">Error leyendo experimentos.</div>';return}
+  if(!exps.length){body.innerHTML='<div class="exp-empty">Sin experimentos aún.</div>';return}
+  document.getElementById('expCount').textContent=exps.length;
+  body.innerHTML='';
+  exps.forEach(exp=>body.appendChild(renderExpCard(exp)));
+};
+
+document.getElementById('closeResultados').onclick=()=>{document.getElementById('resultadosModal').hidden=true;paused=false};
+
+setTimeout(async()=>{
+  const token=localStorage.getItem(GH_TOKEN_KEY);
+  if(!token)return;
+  const file=await ghGet(GH_EXP_PATH,token);
+  if(!file)return;
+  try{
+    const exps=JSON.parse(atob(file.content.replace(/\n/g,'')));
+    if(exps.length)document.getElementById('expCount').textContent=exps.length;
+    const alert=exps.filter(e=>e.estado==='revision_pendiente');
+    if(alert.length)log(`🔔 ${alert.length} experimento${alert.length!==1?'s':''} listo${alert.length!==1?'s':''} para revisión — abre Resultados`);
+  }catch(e){}
+},4000);
+
 /* reunión de inicio con minuta */
 const minEl=document.getElementById('minutaModal'),agentName=id=>(AGENTS.find(a=>a.id===id)||{name:id}).name;
 const SPOTS=[...SEATS,{x:6.5,z:-5.4},{x:11.5,z:-5.4},{x:6.5,z:-2.8},{x:11.5,z:-2.8}];
