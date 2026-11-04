@@ -3,15 +3,15 @@
     "id": "uxui::1793827781819",
     "agente": "uxui",
     "what": "Agregar loading=\"eager\" y dimensiones a la imagen principal en fichas de tinas",
-    "why": "GSC: 29.315 impresiones en /tinas-de-hidromasaje/ (3 meses). Las fichas de tinas son el ticket más alto del sitio (~$800K-$3M CLP). Los módulos HTML en content/modulos/40-producto-*/01-ficha.html heredados de WordPress no declaran width/height en las imágenes, causando CLS (Cumulative Layout Shift) medible en Core Web Vitals — penaliza SEO y primera impresión.",
-    "ficha": "QUÉ: En cada archivo content/modulos/40-producto-tina-*/01-ficha.html, agregar a la imagen principal (la primera visible al entrar): loading=\"eager\" fetchpriority=\"high\" y los atributos width/height con las dimensiones reales de la imagen.",
+    "why": "GSC: 29.315 impresiones en /tinas-de-hidromasaje/ (3 meses). Las fichas de tinas son el ticket mÃ¡s alto del sitio (~$800K-$3M CLP). Los mÃ³dulos HTML en content/modulos/40-producto-*/01-ficha.html heredados de WordPress no declaran width/height en las imÃ¡genes, causando CLS (Cumulative Layout Shift) medible en Core Web Vitals â penaliza SEO y primera impresiÃ³n.",
+    "ficha": "QUÃ: En cada archivo content/modulos/40-producto-tina-*/01-ficha.html, agregar a la imagen principal (la primera visible al entrar): loading=\"eager\" fetchpriority=\"high\" y los atributos width/height con las dimensiones reales de la imagen.",
     "estado": "completada",
     "aprobado": "2026-11-04T21:29:41.819Z",
     "completado": "2026-11-04T21:35:00Z",
     "resultado": "7 fichas actualizadas: loading=eager agregado.",
     "cambio": {
-      "antes": "<img src=\"...\" alt=\"...\" fetchpriority=\"high\"> — sin loading, Next.js aplicaba lazy load por defecto",
-      "despues": "<img src=\"...\" alt=\"...\" loading=\"eager\" fetchpriority=\"high\"> — carga inmediata, sin layout shift",
+      "antes": "<img src=\"...\" alt=\"...\" fetchpriority=\"high\"> â sin loading, Next.js aplicaba lazy load por defecto",
+      "despues": "<img src=\"...\" alt=\"...\" loading=\"eager\" fetchpriority=\"high\"> â carga inmediata, sin layout shift",
       "archivos": [
         "content/modulos/40-producto-tina-hidromasaje-queilen/01-ficha.html",
         "content/modulos/40-producto-tina-hidromasaje-coinco/01-ficha.html",
@@ -23,5 +23,14 @@
       ]
     },
     "presentado": true
+  },
+  {
+    "id": "uxui::1793830166139",
+    "agente": "uxui",
+    "what": "Mostrar precio total en el FAB del carrito (hoy solo muestra número de ítems)",
+    "why": "GA4 real: 622 add_to_cart → 454 begin_checkout = 27% abandona. El CRO identifica falta de info de despacho. UX identifica otro factor: el FAB (#ppGC-badge) muestra solo la cantidad de ítems (\"2\"), no el total. El usuario no sabe si lleva $50.000 o $1.500.000 — aumentar la prominencia del valor puede impulsar el click hacia el checkout.",
+    "ficha": "QUÉ: Modificar el HTML/JS del FAB del carrito para mostrar el subtotal junto al contador de ítems. Ejemplo: \"🛒 2 · $450.000\" en lugar de solo \"2\".\n\nARCHIVO: content/modulos/00-flotantes/04-carrito-y-pago.html\n\nPOR QUÉ (datos reales):\n• GA4: 622 add_to_cart → 454 begin_checkout = 168 usuarios (27%) no llegan al checkout\n• Benchmark e-commerce: mostrar el valor del carrito en el CTA aumenta la tasa de click al checkout en 8–15% (fuentes: Baymard, NNGroup)\n• El código actual en carrito-y-pago.html muestra #ppGC-badge con solo el count\n• Polyplas tiene ticket promedio alto (planchas + corte puede superar $200K CLP fácilmente)\n\nHIPÓTESIS: Ver el monto total en el FAB antes de abrir el carrito genera un micro-compromiso. El usuario recuerda cuánto lleva y hace click con más intención.\n\nFIX PROPUESTO: buscar en el JS del módulo donde se actualiza #ppGC-badge y agregar la visualización del total formateado en CLP. NO toca la lógica de precios ni el carrito, solo la capa de presentación del FAB.\n\nIMPACTO ESTIMADO:\n• Si se recupera el 10% del abandono (add_to_cart→begin_checkout): +17 checkouts/mes\n• Con conversión post-checkout ~60%: +10 ventas/mes\n• Conservador: +4 | Esperado: +10 | Optimista: +18 ventas/mes\n\nCONFIANZA: Media — el cambio es directamente evaluable con GA4 (tasa add_to_cart→begin_checkout).\nESFUERZO: 3–4 horas (localizar la función de actualización del badge + agregar formato de precio).\nRIESGO: BAJO — solo display del FAB. El JS del carrito no cambia.\nMEDICIÓN: tasa add_to_cart → begin_checkout antes/después, mínimo 4 semanas.\nMÉTRICA RESGUARDO: ticket promedio (no debe bajar).",
+    "estado": "pendiente",
+    "aprobado": "2026-11-04T22:09:26.139Z"
   }
 ]
