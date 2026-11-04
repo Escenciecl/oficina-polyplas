@@ -30,7 +30,19 @@
     "what": "Mostrar precio total en el FAB del carrito (hoy solo muestra número de ítems)",
     "why": "GA4 real: 622 add_to_cart → 454 begin_checkout = 27% abandona. El CRO identifica falta de info de despacho. UX identifica otro factor: el FAB (#ppGC-badge) muestra solo la cantidad de ítems (\"2\"), no el total. El usuario no sabe si lleva $50.000 o $1.500.000 — aumentar la prominencia del valor puede impulsar el click hacia el checkout.",
     "ficha": "QUÉ: Modificar el HTML/JS del FAB del carrito para mostrar el subtotal junto al contador de ítems. Ejemplo: \"🛒 2 · $450.000\" en lugar de solo \"2\".\n\nARCHIVO: content/modulos/00-flotantes/04-carrito-y-pago.html\n\nPOR QUÉ (datos reales):\n• GA4: 622 add_to_cart → 454 begin_checkout = 168 usuarios (27%) no llegan al checkout\n• Benchmark e-commerce: mostrar el valor del carrito en el CTA aumenta la tasa de click al checkout en 8–15% (fuentes: Baymard, NNGroup)\n• El código actual en carrito-y-pago.html muestra #ppGC-badge con solo el count\n• Polyplas tiene ticket promedio alto (planchas + corte puede superar $200K CLP fácilmente)\n\nHIPÓTESIS: Ver el monto total en el FAB antes de abrir el carrito genera un micro-compromiso. El usuario recuerda cuánto lleva y hace click con más intención.\n\nFIX PROPUESTO: buscar en el JS del módulo donde se actualiza #ppGC-badge y agregar la visualización del total formateado en CLP. NO toca la lógica de precios ni el carrito, solo la capa de presentación del FAB.\n\nIMPACTO ESTIMADO:\n• Si se recupera el 10% del abandono (add_to_cart→begin_checkout): +17 checkouts/mes\n• Con conversión post-checkout ~60%: +10 ventas/mes\n• Conservador: +4 | Esperado: +10 | Optimista: +18 ventas/mes\n\nCONFIANZA: Media — el cambio es directamente evaluable con GA4 (tasa add_to_cart→begin_checkout).\nESFUERZO: 3–4 horas (localizar la función de actualización del badge + agregar formato de precio).\nRIESGO: BAJO — solo display del FAB. El JS del carrito no cambia.\nMEDICIÓN: tasa add_to_cart → begin_checkout antes/después, mínimo 4 semanas.\nMÉTRICA RESGUARDO: ticket promedio (no debe bajar).",
-    "estado": "pendiente",
-    "aprobado": "2026-11-04T22:09:26.139Z"
+    "estado": "completada",
+    "aprobado": "2026-11-04T22:09:26.139Z",
+    "completado": "2026-11-04T22:13:36Z",
+    "resultado": "Total del carrito visible en el header bajo el texto Carrito.",
+    "cambio": {
+      "antes": "Botón cabecera mostraba solo cantidad de ítems (\"2\") — el usuario no sabía el valor sin abrir el carrito",
+      "despues": "Botón muestra \"Carrito / $ 450.000\" — el total en naranja aparece en cuanto hay productos",
+      "archivos": [
+        "content/modulos/00-flotantes/04-carrito-y-pago.html",
+        "components/site/Cuenta.tsx",
+        "app/site.css"
+      ]
+    },
+    "presentado": false
   }
 ]
