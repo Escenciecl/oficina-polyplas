@@ -265,6 +265,14 @@ kbd{font:600 10px var(--f-mono);border:1px solid var(--line);border-bottom-width
 .exp-delta.neg{color:var(--bad)}
 .exp-actions{display:flex;gap:8px;flex-wrap:wrap}
 .exp-empty{padding:48px 24px;text-align:center;color:var(--muted);font-size:14px}
+/* Menú ··· */
+.more-menu{position:relative}
+.more-menu__panel{position:absolute;right:0;top:calc(100% + 6px);background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 32px rgba(15,27,42,.14);min-width:200px;padding:6px;display:flex;flex-direction:column;gap:2px;z-index:500}
+.more-menu__panel[hidden]{display:none!important}
+.more-menu__item{font:600 13px var(--f-body);color:var(--ink);background:none;border:none;border-radius:8px;padding:9px 14px;text-align:left;cursor:pointer;white-space:nowrap;width:100%}
+.more-menu__item:hover{background:var(--bg)}
+.more-menu__item.active{color:#047857}
+.more-menu__sep{height:1px;background:var(--line);margin:4px 0}
 </style>
 </head>
 <body>
@@ -272,17 +280,22 @@ kbd{font:600 10px var(--f-mono);border:1px solid var(--line);border-bottom-width
   <header>
     <h1><img class="brand-logo" src="https://polyplas.cl/wp-content/uploads/2022/07/marca-polyplas-1.svg" alt="Polyplas">Oficina Polyplas<small>Tu equipo de agentes trabajando por las ventas de polyplas.cl</small></h1>
     <div class="controls">
-      <span class="chip"><span class="dot"></span>Vigilante + SEO + CRO + Ads + UX/UI + Intel + Medición + Tatis activos</span>
-      <span class="chip" id="modeChip"><span class="dot demo"></span>Actividad simulada</span>
-      <button class="btn" id="modeBtn" type="button">Ver solo lo real</button>
-      <button class="btn" id="minutaBtn" type="button">Minuta</button>
-      <button class="btn" id="vozBtn" type="button" aria-pressed="true">Voz: activada</button>
       <button class="btn reunion" id="reunionBtn" type="button">Sala de revisión · <span id="reunionCount">0</span></button>
-      <button class="btn" id="webBtn" type="button">polyplas.cl</button>
       <button class="btn resultados-btn" id="resultadosBtn" type="button">Resultados · <span id="expCount">0</span></button>
-      <button class="btn" id="configBtn" type="button" title="Configurar integración con Claude Code">⚙ Config</button>
-      <button class="btn fp-btn" id="fpBtn" type="button">1ª Persona</button>
+      <button class="btn" id="minutaBtn" type="button">Minuta</button>
+      <button class="btn" id="webBtn" type="button">polyplas.cl</button>
       <button class="btn primary" id="pauseBtn" type="button">Pausar</button>
+      <div class="more-menu" id="moreMenu">
+        <button class="btn" id="moreBtn" type="button" aria-label="Más opciones">···</button>
+        <div class="more-menu__panel" id="morePanel" hidden>
+          <button class="more-menu__item" id="fpBtnProxy" type="button">○ Modo 1ª Persona</button>
+          <div class="more-menu__sep"></div>
+          <button class="more-menu__item" id="modeBtnProxy" type="button">Ver solo lo real</button>
+          <button class="more-menu__item" id="vozBtnProxy" type="button">Voz: activada</button>
+          <div class="more-menu__sep"></div>
+          <button class="more-menu__item" id="configBtnProxy" type="button">⚙ Config Claude Code</button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -1086,10 +1099,9 @@ function tick(){if(paused)return;const free=AGENTS.filter(a=>!a.busy&&active(a))
 function renderTeam(){const t=document.getElementById('team');t.innerHTML='';AGENTS.forEach(a=>{const li=document.createElement('li');li.innerHTML='<span><i class="sw"></i><span><b></b><small></small></span></span><span class="tag '+(a.real?'real':'demo')+'">'+(a.real?'Activo':'Demo')+'</span>';li.querySelector('.sw').style.background='#'+a.shirt.toString(16).padStart(6,'0');li.querySelector('b').textContent=a.name;li.querySelector('small').style.cssText='font-size:11px;color:var(--muted);display:block';li.querySelector('small').textContent=a.role||'';t.appendChild(li)})}
 function applyMode(){
   AGENTS.forEach(a=>{const on=active(a);a.g.visible=on;a.lbl.classList.toggle('off',!on);a.lbl.hidden=!on;screens[a.id].material.emissiveIntensity=on?.8:0;if(!on)a.bub.hidden=true});
-  document.getElementById('modeBtn').textContent=demo?'Ver solo lo real':'Ver simulación';
-  document.getElementById('modeChip').innerHTML=demo?'<span class="dot demo"></span>Actividad simulada':'<span class="dot"></span>Solo agentes reales';
+  document.getElementById('modeBtnProxy').textContent=demo?'Ver solo lo real':'Ver simulación';
 }
-document.getElementById('modeBtn').onclick=()=>{demo=!demo;applyMode()};
+document.getElementById('modeBtnProxy').onclick=()=>{demo=!demo;applyMode();closeMoreMenu()};
 document.getElementById('pauseBtn').onclick=e=>{paused=!paused;e.currentTarget.textContent=paused?'Reanudar':'Pausar'};
 document.getElementById('zin').onclick=()=>{zoom=Math.min(2.2,zoom*1.2);resize()};
 document.getElementById('zout').onclick=()=>{zoom=Math.max(.7,zoom/1.2);resize()};
@@ -1564,7 +1576,7 @@ const fpPos=new THREE.Vector3(9,1.6,6.6),fpVel={x:0,z:0},fpYaw={v:0},fpPitch={v:
 const EYE=1.7,FP_R=.3,WALK=3.1,RUN=5.8;
 let lookWeb=false,fpLocked=false,fpBob=0,fpDrag=null,fpLookId=null,fpLookLast=null;
 const joy={x:0,y:0,id:null};
-const fpEls={hud:document.getElementById('fpHud'),hint:document.getElementById('fpHint'),cross:document.getElementById('fpCrosshair'),map:document.getElementById('fpMap'),joy:document.getElementById('fpJoy'),knob:document.getElementById('fpJoyKnob'),fade:document.getElementById('fpFade'),btn:document.getElementById('fpBtn')};
+const fpEls={hud:document.getElementById('fpHud'),hint:document.getElementById('fpHint'),cross:document.getElementById('fpCrosshair'),map:document.getElementById('fpMap'),joy:document.getElementById('fpJoy'),knob:document.getElementById('fpJoyKnob'),fade:document.getElementById('fpFade'),btn:document.getElementById('fpBtnProxy')};
 const modalOpen=()=>!document.getElementById('webModal').hidden||!document.getElementById('callModal').hidden||!document.getElementById('reunionModal').hidden;
 const typing=()=>document.activeElement&&/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
 
@@ -1631,7 +1643,7 @@ function exitFP(){
   AGENTS.forEach(a=>{a.lbl.style.opacity=''});
   setFPScene(false);nearA=undefined;
 }
-fpEls.btn.onclick=()=>fpMode?exitFP():enterFP();
+fpEls.btn.onclick=()=>{closeMoreMenu();fpMode?exitFP():enterFP()};
 
 /* colisión círculo vs cajas, por eje para deslizarse por las paredes */
 function hits(x,z){
@@ -1718,6 +1730,13 @@ document.getElementById('webClose').onclick=()=>{webModal.hidden=true};
 webModal.addEventListener('click',e=>{if(e.target===webModal)webModal.hidden=true});
 addEventListener('keydown',e=>{if(e.key==='Escape'&&!webModal.hidden){webModal.hidden=true;e.stopImmediatePropagation()}},true);
 document.getElementById('webBtn').onclick=openWeb;
+
+/* Menú ··· */
+const morePanel=document.getElementById('morePanel');
+function closeMoreMenu(){morePanel.hidden=true}
+document.getElementById('moreBtn').onclick=e=>{e.stopPropagation();morePanel.hidden=!morePanel.hidden};
+document.addEventListener('click',e=>{if(!document.getElementById('moreMenu').contains(e.target))closeMoreMenu()});
+
 document.getElementById('callHangup').onclick=closeCall;
 document.getElementById('callModal').addEventListener('click',e=>{if(e.target===document.getElementById('callModal'))closeCall()});
 document.getElementById('nearCall').onclick=()=>{if(nearA)openCall(nearA)};
@@ -1730,9 +1749,9 @@ if(synth){cargaVoces();synth.onvoiceschanged=cargaVoces}
 function speak(a,text,onstart){if(!voz||!synth){onstart&&onstart();return}
   const u=new SpeechSynthesisUtterance(text),i=Math.max(0,AGENTS.indexOf(a));u.lang='es-CL';
   if(voces.length)u.voice=voces[i%voces.length];u.pitch=a===me?.9:.8+(i%5)*.12;u.rate=1.05;if(onstart)u.onstart=onstart;synth.speak(u)}
-const vozBtn=document.getElementById('vozBtn');
+const vozBtn=document.getElementById('vozBtnProxy');
 const pintaVoz=()=>{vozBtn.textContent=voz?'Voz: activada':'Voz: apagada';vozBtn.setAttribute('aria-pressed',voz)};
-vozBtn.onclick=()=>{voz=!voz;try{localStorage.setItem(VOZ_KEY,voz?'on':'off')}catch(e){}if(!voz&&synth)synth.cancel();pintaVoz()};pintaVoz();
+vozBtn.onclick=()=>{voz=!voz;try{localStorage.setItem(VOZ_KEY,voz?'on':'off')}catch(e){}if(!voz&&synth)synth.cancel();pintaVoz();closeMoreMenu()};pintaVoz();
 /* ---------- memoria entre sesiones (memoria.json sincronizado con Confluence) ---------- */
 const MEM_KEY='pp_decisiones_v1';
 const local=(()=>{try{return JSON.parse(localStorage.getItem(MEM_KEY)||'{}')}catch(e){return {}}})();
@@ -1773,7 +1792,7 @@ async function pushToQueue(agentId,proposal){
 }
 
 /* Config modal */
-document.getElementById('configBtn').onclick=()=>{
+document.getElementById('configBtnProxy').onclick=()=>{closeMoreMenu();
   const modal=document.getElementById('configModal');
   modal.hidden=false;paused=true;
   const saved=localStorage.getItem(GH_TOKEN_KEY);
