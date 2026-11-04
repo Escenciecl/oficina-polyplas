@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "id": "uxui::1793827781819",
+    "agente": "uxui",
+    "what": "Agregar loading=\"eager\" y dimensiones a la imagen principal en fichas de tinas",
+    "why": "GSC: 29.315 impresiones en /tinas-de-hidromasaje/ (3 meses). Las fichas de tinas son el ticket más alto del sitio (~$800K-$3M CLP). Los módulos HTML en content/modulos/40-producto-*/01-ficha.html heredados de WordPress no declaran width/height en las imágenes, causando CLS (Cumulative Layout Shift) medible en Core Web Vitals — penaliza SEO y primera impresión.",
+    "ficha": "QUÉ: En cada archivo content/modulos/40-producto-tina-*/01-ficha.html, agregar a la imagen principal (la primera visible al entrar): loading=\"eager\" fetchpriority=\"high\" y los atributos width/height con las dimensiones reales de la imagen.\n\nPOR QUÉ:\n• GSC: /tinas-de-hidromasaje/ tiene 29.315 imp en 3 meses — es la página más estratégica por ticket\n• GA4: 445 visitas en 28 días, ticket de decisión largo (~$800K-$3M CLP)\n• Sin loading=\"eager\" Next.js aplica lazy loading por defecto a imágenes en módulos HTML heredados\n• Sin width/height declarados, el navegador no reserva espacio hasta cargar la imagen → layout shift visible → CLS alto\n• CLS >0.1 baja el score de Lighthouse y puede afectar el ranking en Google (Core Web Vitals son factor de SEO)\n\nARCHIVOS A MODIFICAR:\n  content/modulos/40-producto-tina-hidromasaje-queilen/01-ficha.html\n  content/producto-casco-tina-queilen/01-ficha.html\n  content/modulos/40-producto-casco-tina-coinco/01-ficha.html\n  (y todos los demás 40-producto-tina-*/01-ficha.html)\n\nCAMBIO CONCRETO: buscar la primera <img> de cada ficha y agregar:\n  <img src=\"...\" alt=\"...\" width=\"800\" height=\"600\" loading=\"eager\" fetchpriority=\"high\">\n  (ajustar width/height a las dimensiones reales de cada imagen)\n\nCONFIANZA: Alta — es una práctica estándar documentada por Google.\nESFUERZO: 2–3 horas (revisar cada ficha de tina, confirmar dimensiones de imagen).\nRIESGO: BAJO — atributos HTML no cambian el diseño visual. Reversible: eliminar los atributos.\nMEDICIÓN: Lighthouse mobile en fichas de tinas antes/después. CLS objetivo: < 0.1\nCOORDINACIÓN: avisar al Agente SEO — si LCP mejora, puede afectar positivamente el ranking.",
+    "estado": "pendiente",
+    "aprobado": "2026-11-04T21:29:41.819Z"
+  }
+]
