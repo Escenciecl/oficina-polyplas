@@ -1257,14 +1257,23 @@ function callAddMsg(who,text){
   const d=document.createElement('div');
   d.className='call-msg '+(who==='me'?'me':'agent');
   if(who==='agent'){
-    const av=document.createElement('div');
-    av.className='call-msg-avatar';
+    const av=document.createElement('div');av.className='call-msg-avatar';
     av.style.background='#'+callAgent.shirt.toString(16).padStart(6,'0');
-    av.textContent=callAgent.name.slice(0,2).toUpperCase();
-    d.appendChild(av);
+    av.textContent=callAgent.name.slice(0,2).toUpperCase();d.appendChild(av);
   }
   const b=document.createElement('div');b.className='call-bubble';b.textContent=text;
   d.appendChild(b);chat.appendChild(d);chat.scrollTop=chat.scrollHeight;
+}
+
+function callAddHTML(html){
+  const chat=document.getElementById('callChat');
+  const d=document.createElement('div');d.className='call-msg agent';
+  const av=document.createElement('div');av.className='call-msg-avatar';
+  av.style.background='#'+callAgent.shirt.toString(16).padStart(6,'0');
+  av.textContent=callAgent.name.slice(0,2).toUpperCase();d.appendChild(av);
+  const b=document.createElement('div');b.className='call-bubble';b.style.cssText='padding:0;overflow:hidden;background:transparent;border:none';
+  b.innerHTML=html;d.appendChild(b);chat.appendChild(d);chat.scrollTop=chat.scrollHeight;
+  return b;
 }
 
 function callTyping(cb,delay){
@@ -1362,6 +1371,165 @@ function callShowTasks(){
   },800);
 }
 
+/* ---- Medición: agente reportero de resultados ---- */
+async function openCallMedicion(a){
+  const n=a.props.length;
+  const token=localStorage.getItem(GH_TOKEN_KEY);
+  let exps=[];
+  if(token){const file=await ghGet(GH_EXP_PATH,token);if(file){try{exps=JSON.parse(atob(file.content.replace(/\n/g,'')))}catch(e){}}}
+  const hoy=new Date();
+  const vencidos=exps.filter(e=>e.estado==='pendiente'&&new Date(e.revisar_en)<=hoy);
+  const conResult=exps.filter(e=>['mejoro','degrado','igual'].includes(e.estado));
+  const activos=exps.filter(e=>e.estado==='pendiente'&&new Date(e.revisar_en)>hoy);
+  callTyping(()=>{
+    let g='';
+    if(!exps.length){g='Hola jefe. Aún no hay experimentos registrados. Cuando apruebes y ejecutes una tarea, empiezo a medir el impacto automáticamente.';}
+    else if(vencidos.length){
+      g=`Jefe, ${vencidos.length===1?'hay un experimento listo':'hay '+vencidos.length+' experimentos listos'} para revisar. Dame los números de GSC y calculo el resultado ahora mismo.`;
+    } else {
+      g=`Hola jefe. Tengo ${exps.length} experimento${exps.length!==1?'s':''} en seguimiento.`;
+      if(conResult.length)g+=` Tengo resultados de ${conResult.length} cambio${conResult.length!==1?'s':''}.`;
+      if(activos.length)g+=` ${activos.length} corriendo, próxima revisión el ${activos[0].revisar_en}.`;
+    }
+    callAddMsg('agent',g);
+    const opts=[];
+    if(vencidos.length)opts.push({label:`📋 Registrar resultado (${vencidos.length})`,fn:()=>callMedRegistrar(vencidos[0],exps)});
+    if(conResult.length)opts.push({label:`📊 Ver resultados (${conResult.length})`,fn:()=>callMedResults(exps)});
+    if(activos.length)opts.push({label:`⏱ Qué está midiendo (${activos.length})`,fn:()=>callMedActive(exps)});
+    if(n)opts.push({label:'Ver propuestas',fn:()=>callPresentProp()});
+    opts.push({label:'Listo, gracias',fn:closeCall});
+    callShowOptions(opts);
+  },1200);
+}
+
+function callMedRegistrar(exp,exps){
+  callAddMsg('me','Vamos a registrar el resultado.');
+  const baseline=exp.baseline&&exp.baseline.metricas?exp.baseline.metricas:{};
+  const baseCtr=baseline.ctr?((baseline.ctr)*100).toFixed(1):'';
+  const gscUrl=`https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Apolyplas.cl&breakdown=page&num_of_days=28`;
+  callTyping(()=>{
+    callAddMsg('agent',`Vamos con "${exp.cambio}".\n\nBaseline: CTR ${baseCtr?baseCtr+'%':'?'} · pos ${baseline.posicion||'?'}\n\nAbre GSC, filtra por la URL y los últimos 28 días, y tráeme el CTR nuevo.`);
+    const form=callAddHTML(`
+      <div style="padding:14px;display:flex;flex-direction:column;gap:10px;background:var(--panel);border-radius:10px">
+        <a href="${gscUrl}" target="_blank" rel="noopener" style="font-size:12px;color:var(--accent);font-weight:600">🔗 Abrir GSC → ${exp.url_muestra.replace('https://polyplas.cl','')}</a>
+        <label style="font-size:12px;color:var(--muted)">CTR actual (ej: 2.3)
+          <input id="medCtr" type="number" step="0.1" min="0" max="100" placeholder="${baseCtr||'ej: 2.3'}" style="display:block;width:100%;margin-top:4px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg);color:var(--ink)">
+        </label>
+        <label style="font-size:12px;color:var(--muted)">Clics en el período (ej: 180)
+          <input id="medClics" type="number" step="1" min="0" placeholder="ej: 180" style="display:block;width:100%;margin-top:4px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg);color:var(--ink)">
+        </label>
+        <label style="font-size:12px;color:var(--muted)">Impresiones en el período (ej: 8500)
+          <input id="medImp" type="number" step="1" min="0" placeholder="ej: 8500" style="display:block;width:100%;margin-top:4px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg);color:var(--ink)">
+        </label>
+      </div>`);
+    callShowOptions([
+      {label:'✓ Calcular resultado',cls:'ok',fn:()=>callMedGuardarResultado(exp,exps,form)},
+      {label:'Cancelar',fn:closeCall}
+    ]);
+  },900);
+}
+
+async function callMedGuardarResultado(exp,exps,form){
+  const ctrRaw=parseFloat(form.querySelector('#medCtr').value);
+  const clicsRaw=parseInt(form.querySelector('#medClics').value)||0;
+  const impRaw=parseInt(form.querySelector('#medImp').value)||0;
+  if(isNaN(ctrRaw)||ctrRaw<0||ctrRaw>100){callAddMsg('agent','Necesito el CTR (número entre 0 y 100). Por ejemplo: 2.3');return}
+  const ctr_post=Math.round(ctrRaw)/100;
+  const baseline=exp.baseline&&exp.baseline.metricas?exp.baseline.metricas:{};
+  const ctr_pre=baseline.ctr||0;
+  const clics_pre=baseline.clics_3m?Math.round(baseline.clics_3m/6):0;
+  const {estado,delta}=calcDelta(ctr_pre,ctr_post,clics_pre,clicsRaw);
+  delta.impresiones_post=impRaw;
+  const hoy=new Date().toISOString().slice(0,10);
+  exp.estado=estado;
+  exp.revisiones.push({fecha:hoy,metricas:{ctr:ctr_post,clicks:clicsRaw,impressions:impRaw},metricas_pre:{ctr:ctr_pre,clicks:clics_pre},delta,ventana:'28 días post-cambio'});
+  callAddMsg('me','Guardando...');
+  const ok=await saveExperimentos(exps);
+  callTyping(()=>{
+    const ico={mejoro:'📈',degrado:'📉',igual:'➡️'}[estado]||'';
+    const dpp=((delta.delta_abs)*100).toFixed(1);
+    const drel=delta.delta_rel_pct;
+    const dir=delta.delta_abs>=0?'+':'';
+    const estadoLabel=estado==='mejoro'?'mejoró':estado==='degrado'?'degradó':'sin cambio significativo';
+    let txt=`${ico} Resultado: ${estadoLabel}\n\n`;
+    txt+=`CTR: ${(ctr_pre*100).toFixed(1)}% → ${(ctr_post*100).toFixed(1)}% (${dir}${dpp} pp · ${dir}${drel}%)\n`;
+    txt+=`Clics: ${clics_pre} → ${clicsRaw} (${clicsRaw-clics_pre>=0?'+':''}${clicsRaw-clics_pre} en el período)`;
+    if(estado==='mejoro'){const mes=Math.round((clicsRaw-clics_pre)*2.2);txt+=`\nEstimado mes completo: +${mes} clics extra`;}
+    if(!ok)txt+='\n\n⚠️ No pude guardar en GitHub — verifica el token en Config.';
+    callAddMsg('agent',txt);
+    const opts=[];
+    if(estado==='degrado')opts.push({label:'¿Qué hacemos?',fn:()=>{callAddMsg('agent','Recomiendo revertir el cambio. Puedo generar la propuesta de rollback para tu aprobación.');callShowOptions([{label:'Generar propuesta de rollback',fn:()=>{closeCall();log('Medición: generando propuesta de rollback...')}},{label:'Mantener y seguir midiendo',fn:closeCall}])}});
+    opts.push({label:'Listo, gracias',fn:closeCall});
+    callShowOptions(opts);
+    if(ok)log(`📊 Medición: resultado registrado — ${exp.id} ${estado}`);
+    document.getElementById('expCount').textContent=exps.length;
+  },1000);
+}
+
+function callMedResults(exps){
+  callAddMsg('me','Dime los resultados.');
+  const lista=exps.filter(e=>['mejoro','degrado','igual','revision_pendiente'].includes(e.estado));
+  if(!lista.length){callTyping(()=>{callAddMsg('agent','Todavía no hay resultados. Los experimentos se revisan automáticamente al llegar a la fecha.');callShowOptions([{label:'Listo',fn:closeCall}])},600);return}
+  let idx=0;
+  function next(){
+    if(idx>=lista.length){
+      callTyping(()=>{callAddMsg('agent','Eso es todo. ¿Quieres ver el detalle completo?');callShowOptions([{label:'Ver panel completo',fn:()=>{closeCall();setTimeout(()=>document.getElementById('resultadosBtn').click(),300)}},{label:'Listo, gracias',fn:closeCall}])},600);return;
+    }
+    const exp=lista[idx++];
+    const rev=exp.revisiones&&exp.revisiones.length?exp.revisiones[exp.revisiones.length-1]:null;
+    const ico={mejoro:'📈',degrado:'📉',igual:'➡️',revision_pendiente:'🔔'}[exp.estado]||'';
+    let txt=`${ico} ${exp.cambio}\n`;
+    if(rev&&rev.delta){
+      const d=rev.delta;
+      if(d.ctr_pre!==undefined){
+        const pre=(d.ctr_pre*100).toFixed(1),post=(d.ctr_post*100).toFixed(1);
+        const dpp=((d.delta_abs||0)*100).toFixed(1),drel=(d.delta_rel_pct||0);
+        const dir=d.delta_abs>=0?'+':'';
+        txt+=`CTR: ${pre}% → ${post}% (${dir}${dpp} pp · ${dir}${drel}%)\n`;
+        const dc=(d.clics_post||0)-(d.clics_pre||0);
+        txt+=`Clics: ${d.clics_pre||0} → ${d.clics_post||0} (${dc>=0?'+':''}${dc} en el período)`;
+        if(exp.estado==='mejoro'){const mes=Math.round(dc*2.2);txt+=`\nEstimado mes completo: +${mes} clics`;}
+      } else if(d.cls_antes!==undefined){
+        txt+=`CLS: ${d.cls_antes} → ${d.cls_despues}`;
+      }
+    } else if(exp.estado==='revision_pendiente'){
+      txt+=`Vence revisión: ${exp.revisar_en}\nEsperando datos GSC del Action diario.`;
+    } else if(exp.baseline){
+      const m=exp.baseline.metricas||{};
+      const parts=[];
+      if(m.cls!==undefined)parts.push(`CLS ${m.cls}`);
+      if(m.performance!==undefined)parts.push(`Performance ${m.performance}`);
+      if(m.ctr!==undefined)parts.push(`CTR baseline ${(m.ctr*100).toFixed(1)}%`);
+      txt+=parts.length?`Baseline: ${parts.join(' · ')}`:'Sin datos aún.';
+    }
+    callTyping(()=>{
+      callAddMsg('agent',txt);
+      const opts=[];
+      if(idx<lista.length)opts.push({label:'Siguiente →',fn:next});
+      else opts.push({label:'Ver panel',fn:()=>{closeCall();setTimeout(()=>document.getElementById('resultadosBtn').click(),300)}});
+      opts.push({label:'Listo',fn:closeCall});
+      callShowOptions(opts);
+    },900);
+  }
+  next();
+}
+
+function callMedActive(exps){
+  callAddMsg('me','¿Qué está midiendo ahora?');
+  const activos=exps.filter(e=>e.estado==='pendiente');
+  if(!activos.length){callTyping(()=>{callAddMsg('agent','No hay experimentos activos en este momento.');callShowOptions([{label:'Listo',fn:closeCall}])},600);return}
+  const hoy=new Date();
+  const lines=activos.map(exp=>{
+    const dias=Math.round((new Date(exp.revisar_en)-hoy)/86400000);
+    const t=dias>0?`revisión en ${dias} día${dias!==1?'s':''}`:dias===0?'revisión hoy':`vencido hace ${Math.abs(dias)} día${Math.abs(dias)!==1?'s':''}`;
+    return `• ${exp.cambio}\n  ${t} · ${exp.revisar_en}`;
+  });
+  callTyping(()=>{
+    callAddMsg('agent','Midiendo ahora:\n\n'+lines.join('\n\n'));
+    callShowOptions([{label:'Ver panel',fn:()=>{closeCall();setTimeout(()=>document.getElementById('resultadosBtn').click(),300)}},{label:'Listo',fn:closeCall}]);
+  },900);
+}
+
 function openCall(a){
   callAgent=a;callPropIdx=0;
   document.getElementById('callChat').innerHTML='';
@@ -1372,6 +1540,7 @@ function openCall(a){
   document.getElementById('callAgentName').textContent=a.name;
   document.getElementById('callModal').hidden=false;
   paused=true;document.getElementById('pauseBtn').textContent='Reanudar';
+  if(a.id==='med'){openCallMedicion(a);return}
   const n=a.props.length;
   callTyping(()=>{
     callAddMsg('agent',n?`Hola jefe, tengo ${n} propuesta${n!==1?'s':''} para presentarte. Cuando quieras empezamos.`:'Hola jefe, no tengo propuestas nuevas en este momento. Puedo contarte en qué estoy trabajando si quieres.');
@@ -1646,6 +1815,28 @@ document.getElementById('checkQueue').onclick=async()=>{
 };
 /* ---------- Resultados Panel ---------- */
 const GH_EXP_PATH='tasks/experimentos.json';
+
+async function saveExperimentos(exps){
+  const token=localStorage.getItem(GH_TOKEN_KEY);
+  if(!token)return false;
+  try{
+    const file=await ghGet(GH_EXP_PATH,token);
+    const sha=file?file.sha:undefined;
+    const body={message:'medicion: registrar resultado experimento '+new Date().toISOString().slice(0,10),content:btoa(unescape(encodeURIComponent(JSON.stringify(exps,null,2))))};
+    if(sha)body.sha=sha;
+    const res=await fetch(`https://api.github.com/repos/${GH_QUEUE_REPO}/contents/${GH_EXP_PATH}`,{method:'PUT',headers:{Authorization:'token '+token,Accept:'application/vnd.github+json','Content-Type':'application/json'},body:JSON.stringify(body)});
+    return res.ok;
+  }catch(e){return false}
+}
+
+function calcDelta(ctr_pre, ctr_post, clics_pre, clics_post){
+  const delta_abs=ctr_post-ctr_pre;
+  const delta_rel=ctr_pre>0?delta_abs/ctr_pre*100:0;
+  let estado='igual';
+  if(delta_abs>0.002)estado='mejoro';
+  else if(delta_abs<-0.002)estado='degrado';
+  return{estado,delta:{ctr_pre,ctr_post,delta_abs:Math.round(delta_abs*10000)/10000,delta_rel_pct:Math.round(delta_rel*10)/10,clics_pre,clics_post}};
+}
 const EXP_ESTADO_LABEL={sin_baseline:'Sin baseline',pendiente:'Midiendo',revision_pendiente:'¡Revisar!',mejoro:'Mejoró ✓',degrado:'Degradó ⚠',igual:'Sin cambio'};
 
 function renderExpCard(exp){
@@ -1730,8 +1921,14 @@ setTimeout(async()=>{
   try{
     const exps=JSON.parse(atob(file.content.replace(/\n/g,'')));
     if(exps.length)document.getElementById('expCount').textContent=exps.length;
-    const alert=exps.filter(e=>e.estado==='revision_pendiente');
-    if(alert.length)log(`🔔 ${alert.length} experimento${alert.length!==1?'s':''} listo${alert.length!==1?'s':''} para revisión — abre Resultados`);
+    const hoy=new Date();
+    const vencidos=exps.filter(e=>e.estado==='pendiente'&&new Date(e.revisar_en)<=hoy);
+    const medAgent=AGENTS.find(a=>a.id==='med');
+    if(vencidos.length&&medAgent){
+      const nombres=vencidos.map(e=>e.cambio.slice(0,45)).join(' · ');
+      log(`🔔 Medición: ${vencidos.length} revisión${vencidos.length!==1?'es':''} vencida${vencidos.length!==1?'s':''} — llama a Medición para registrar`);
+      setTimeout(()=>say(medAgent,`Jefe, tengo ${vencidos.length===1?'una revisión':'revisiones'} vencida${vencidos.length!==1?'s':''}. Llámame cuando quieras ver los números.`,8000),1500);
+    }
   }catch(e){}
 },4000);
 
