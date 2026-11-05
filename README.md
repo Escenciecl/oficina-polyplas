@@ -1,9 +1,27 @@
 # Oficina Polyplas
 
-Oficina virtual en 3D donde los agentes de IA de Polyplas trabajan para aumentar la venta web de [polyplas.cl](https://polyplas.cl).
+Oficina virtual en 3D donde los agentes de IA de Polyplas trabajan para aumentar las ventas de [polyplas.cl](https://polyplas.cl).
 
-- Recorre la oficina con tu avatar (flechas, WASD o tocando el piso).
-- Acércate a un agente para pedirle avance.
-- Aprueba o rechaza sus propuestas en la bandeja del jefe: ningún cambio importante se ejecuta sin tu aprobación.
+**12 agentes activos** — 2 pisos de trabajo.
 
-Hoy el **Vigilante** es el único agente activo (revisa el sitio cada mañana). El resto funciona en modo demo hasta que se contrate cada uno.
+## Acceso rápido
+
+| Recurso | URL |
+|---------|-----|
+| Oficina 3D | https://escenciecl.github.io/oficina-polyplas/ |
+| Sitio web | https://polyplas.cl |
+| Repositorio del sitio | https://github.com/Escenciecl/Polyplas-web |
+
+## Cómo funciona el sistema
+
+Lee **[COMO_FUNCIONA.md](COMO_FUNCIONA.md)** — guía completa del flujo de propuestas, aprobaciones, ejecución de cambios y comunicación con agentes.
+
+Para el flujo de reportes y cadencia de reuniones, ver **[WORKFLOW.md](WORKFLOW.md)**.
+
+## En la oficina puedes
+
+- Recorrer el espacio con tu avatar (flechas, WASD o clic en el piso)
+- Acercarte a un agente para ver en qué está trabajando
+- Revisar y aprobar propuestas en la **Bandeja del Jefe** (panel derecho)
+- Ver el historial de cambios ya aplicados ("Ver qué cambió →")
+- Subir al segundo piso con el elevador (PMs de producto)
