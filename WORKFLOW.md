@@ -105,6 +105,7 @@ Cada cambio al sitio queda en:
 | Intel | Real | Semanal |
 | Medición | Real | Semanal + después de cada cambio al sitio |
 | Tatis | Real | Diario (documentación) |
+| PM Baños | Real | A pedido — entrega insumos a SEO, CRO, Intel y Ads |
 
 ---
 
