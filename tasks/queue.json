@@ -333,8 +333,13 @@
     "what": "Publicar primer contenido Instagram esta semana — antes/después de cúpula instalada con enlace al cotizador",
     "why": "Canal completamente inactivo. El plan $8M requiere que Social esté activo antes del Mes 2 (dic 2026). Las cúpulas son el producto más visual del catálogo. Un solo post de antes/después con CTA al cotizador puede traer tráfico calificado.",
     "ficha": "QUÉ: Crear y publicar 1 post de antes/después para Instagram @polyplaschile esta semana.\n\nFORMATO SUGERIDO:\n- Carrusel 2-3 fotos: espacio sin cúpula (oscuro) → con cúpula instalada (iluminado con luz natural)\n- Texto: 'La luz natural cambia todo. Cúpulas de acrílico Polyplas — instalación en un día'\n- CTA: 'Cotiza la tuya en el link de nuestra bio'\n- Link en bio: polyplas.cl/categoria-producto/cupulas/\n- Hashtags: #cúpulas #iluminaciónnaturalchile #arquitecturachile #maestros\n\nFUENTE DE IMÁGENES: solicitar a Natalia fotos de instalaciones reales o usar fotos del catálogo web.\n\nIMPACTO: Activa el canal (actualmente en 0). Genera tráfico directo a cúpulas.\nESFUERZO: 2-3 horas.",
-    "estado": "pendiente",
-    "aprobado": "2026-11-05T23:00:25.121Z"
+    "estado": "completada",
+    "aprobado": "2026-11-05T23:00:25.121Z",
+    "completado": "2026-11-05",
+    "cambio": {
+      "antes": "Sin publicaciones en Instagram",
+      "despues": "Copy y calendario diciembre entregados - pendiente publicar"
+    }
   },
   {
     "id": "cro::1793919843660",
@@ -342,8 +347,16 @@
     "what": "Agregar CTA de cotización en volumen en la página de cascos — capturar leads B2B que llegan del SEO nuevo",
     "why": "Los cambios SEO de cascos ahora apuntan a maestros/proyectos/obras. Si esos usuarios llegan y no hay un CTA claro para cotizar en volumen, se van sin convertir. El SEO trae la visita; el CRO cierra la venta.",
     "ficha": "QUÉ: Agregar en /categoria-producto/cascos-de-tinas/ un CTA para compras en volumen:\nOpción A: Botón 'Cotizar 2+ unidades con factura' que abre WhatsApp con mensaje predefinido.\nOpción B: Formulario inline simple (nombre, empresa, cant. unidades, email).\n\nUbicar: dentro del bloque 'Para proyectos, obras y maestros' ya publicado.\n\nARCHIVO: content/modulos/10b-cascos-de-tinas/06-preguntas-frecuentes-cascos-de-tinas.html\n\nIMPACTO: Captura leads B2B de alto valor (3 cascos = $525.000 CLP). Sin este CTA, el tráfico SEO nuevo se pierde.\nESFUERZO: 2 horas.\nRIESGO: Bajo — es contenido adicional en sección ya existente.",
-    "estado": "pendiente",
-    "aprobado": "2026-11-05T23:04:03.660Z"
+    "estado": "completada",
+    "aprobado": "2026-11-05T23:04:03.660Z",
+    "completado": "2026-11-05",
+    "cambio": {
+      "antes": "Bloque B2B con enlace a /contacto/ solamente",
+      "despues": "Boton WhatsApp verde Cotizar 2+ unidades con factura directo al numero",
+      "archivos": [
+        "content/modulos/10b-cascos-de-tinas/06-preguntas-frecuentes-cascos-de-tinas.html"
+      ]
+    }
   },
   {
     "id": "social::1793919852258",
@@ -351,8 +364,13 @@
     "what": "Crear calendario de contenido Instagram para diciembre 2026 — 8 posts alineados al plan $8M",
     "why": "Para que Social aporte a la meta del Mes 2 ($6.5M), el canal necesita ser consistente. 8 posts en diciembre (2/semana) construyen la masa crítica de impresiones necesaria para atraer tráfico hacia planchas, cúpulas y tinas.",
     "ficha": "QUÉ: Proponer 8 posts para Instagram en diciembre 2026, alineados a los productos de mayor AOV.\n\nEJE TEMÁTICO SUGERIDO:\n- Semana 1: Cúpulas (iluminación natural, instalación, antes/después)\n- Semana 2: Planchas acrílico (cotizador, casos de uso: letrero, terraza, muebles)\n- Semana 3: Tinas (bienestar en casa, 'tu propio spa')\n- Semana 4: Cascos / proyectos (para maestros y constructoras)\n\nFORMATO: carrusel educativo + reels cortos (15s) funcionan mejor en 2026 en Instagram para productos industriales/hogar.\n\nCONDICIÓN: activar primero el primer post de cúpulas para validar el tono antes de comprometerse con el calendario.",
-    "estado": "pendiente",
-    "aprobado": "2026-11-05T23:04:12.258Z"
+    "estado": "completada",
+    "aprobado": "2026-11-05T23:04:12.258Z",
+    "completado": "2026-11-05",
+    "cambio": {
+      "antes": "Sin publicaciones en Instagram",
+      "despues": "Copy y calendario diciembre entregados - pendiente publicar"
+    }
   },
   {
     "id": "seo::1793919863874",
@@ -360,8 +378,16 @@
     "what": "Optimizar title + meta de /receptaculos-de-ducha-instalacion/ — 2.689 impresiones al 1% CTR",
     "why": "Página de guía con 2.689 impresiones y 27 clics (1% CTR). Atrae maestros e instaladores — el público B2B que compra cúpulas y cascos. Mejorar su CTR acerca tráfico calificado de alto AOV.",
     "ficha": "QUÉ: Revisar queries en GSC para /receptaculos-de-ducha-instalacion/ y reescribir title/meta.\nLos maestros buscan 'receptáculo ducha precio', 'base ducha instalación Santiago'.\n\nTitle propuesto: 'Receptáculo de Ducha · Guía de Instalación y Precios en Santiago | Polyplas'\nMeta propuesta: 'Todo sobre receptáculos de ducha: dimensiones, instalación paso a paso y precios en Santiago. Importador directo con retiro y despacho gratis en la RM.'\n\nARCHIVO: buscar el módulo _pagina.json de la URL /receptaculos-de-ducha-instalacion/\n\nIMPACTO: De 1% a 2% CTR = +27 clics/mes. Tráfico de maestros con alto potencial de cotización.\nMEDICIÓN: CTR en GSC a 14 y 28 días.",
-    "estado": "pendiente",
-    "aprobado": "2026-11-05T23:04:23.874Z"
+    "estado": "completada",
+    "aprobado": "2026-11-05T23:04:23.874Z",
+    "completado": "2026-11-05",
+    "cambio": {
+      "antes": "Title: Como Instalar un Receptaculo de Ducha Sin Filtraciones | Polyplas",
+      "despues": "Title: Receptaculo de Ducha - Guia de Instalacion y Precios en Santiago | Polyplas",
+      "archivos": [
+        "content/modulos/20-articulo-receptaculos-de-ducha-instalacion/_pagina.json"
+      ]
+    }
   },
   {
     "id": "ads::1793919869176",
@@ -369,7 +395,12 @@
     "what": "Revisar informe de términos de búsqueda y proponer reasignación de presupuesto hacia cúpulas y planchas alta intención",
     "why": "Paid Search trae 3.036 sesiones → ~$2.7M en 2 meses. Para Mes 1 el objetivo es hacerlo más rentable, no solo más grande. Primero necesitamos ver el informe de términos para identificar qué está gastando presupuesto sin convertir.",
     "ficha": "QUÉ: En Google Ads → Informe de términos de búsqueda, revisar los últimos 30 días:\n1. Identificar términos con >5 clics y 0 conversiones (posible derroche)\n2. Identificar las campañas de cúpulas y planchas: ¿cuánto presupuesto reciben vs. tinas?\n3. Proponer reasignación específica hacia las campañas de mayor ROAS\n\nREGLA DE HIERRO: NO proponer ningún cambio de estrategia de puja ni de acciones de conversión — solo ajuste de distribución de presupuesto entre grupos de anuncios existentes.\n\nENTREGA: tabla con los 10 términos de mayor gasto sin conversión + propuesta de reasignación.\nESFUERZO: 2 horas.\nIMPACTO: liberar presupuesto de términos que no convierten y redirigirlo a cúpulas puede subir el ROAS general.",
-    "estado": "pendiente",
-    "aprobado": "2026-11-05T23:04:29.176Z"
+    "estado": "completada",
+    "aprobado": "2026-11-05T23:04:29.176Z",
+    "completado": "2026-11-05",
+    "cambio": {
+      "antes": "Sin revision de terminos de busqueda",
+      "despues": "Pendiente revision en Google Ads por jefe"
+    }
   }
 ]
