@@ -270,8 +270,9 @@
     "what": "Verificar que el tracking de conversiones es correcto en tinas y cascos ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ sin mediciÃÂÃÂÃÂÃÂ³n confiable no podemos validar el Mes 1",
     "why": "Todos los cambios del plan $8M se van a medir en GA4. Si el tracking de view_item, add_to_cart y purchase estÃÂÃÂÃÂÃÂ¡ roto o duplicado en tinas o cascos, los KPIs del Mes 1 van a ser inÃÂÃÂÃÂÃÂºtiles. Antes de optimizar es necesario confirmar que la mediciÃÂÃÂÃÂÃÂ³n es confiable.",
     "ficha": "QUÃÂÃÂÃÂÃÂ: Con ?pp_debug=1 en las URLs clave, verificar que los eventos se disparan correctamente:\n\n1. /tina-hidromasaje-queilen/ ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ debe disparar view_item con modelo correcto\n2. /categoria-producto/tinas-de-hidromasaje/ ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ debe disparar view_item_list\n3. /cascos-de-tinas/ ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ debe disparar view_item_list\n4. Agregar al carrito una tina ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ verificar add_to_cart con precio correcto\n5. Llegar al checkout ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ verificar begin_checkout\n\nADEMÃÂÃÂÃÂÃÂS: en GA4 ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Explorar ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Embudo, crear embudo:\n  SesiÃÂÃÂÃÂÃÂ³n ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ view_item (tinas) ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ add_to_cart ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ begin_checkout ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ purchase\nRegistrar las tasas actuales como LÃÂÃÂÃÂÃÂNEA BASE para medir el Mes 1.\n\nENTREGA: reporte con tasa de conversiÃÂÃÂÃÂÃÂ³n por etapa del embudo para tinas. Si hay bugs, reportar con detalle.\nESFUERZO: 2-3 horas.",
-    "estado": "pendiente",
-    "aprobado": "2026-11-05T22:39:38.031Z"
+    "estado": "completada",
+    "aprobado": "2026-11-05T22:39:38.031Z",
+    "completado": "2026-11-05"
   },
   {
     "id": "intel::1793918449042",
@@ -279,8 +280,9 @@
     "what": "Auditar quÃÂÃÂ© aparece en Google para 'jacuzzi Santiago' y 'cÃÂÃÂºpula acrÃÂÃÂ­lico Santiago' ÃÂ¢ÃÂÃÂ entender por quÃÂÃÂ© el CTR es tan bajo",
     "why": "Tinas tiene 14.300 impresiones al 0,9% CTR a posiciÃÂÃÂ³n 8,2. El problema puede no ser solo el title/meta ÃÂ¢ÃÂÃÂ los competidores en posiciÃÂÃÂ³n 1-5 pueden tener fichas de Google Shopping, valoraciones con estrellas o snippets enriquecidos. Necesitamos saber quÃÂÃÂ© estÃÂÃÂ¡ ganando la batalla visual en el SERP.",
     "ficha": "QUÃÂÃÂ: Buscar en Google (modo incÃÂÃÂ³gnito, Santiago) las queries:\n1. 'jacuzzi Santiago'\n2. 'tina hidromasaje precio Chile'\n3. 'cÃÂÃÂºpula acrÃÂÃÂ­lico Santiago'\n4. 'plancha acrÃÂÃÂ­lico a medida Santiago'\n\nPara cada una, registrar:\n- ÃÂÃÂ¿QuÃÂÃÂ© aparece en posiciones 1-5? (marcas, URLs, tipo de resultado)\n- ÃÂÃÂ¿Tienen valoraciones con estrellas?\n- ÃÂÃÂ¿Tienen precios en el snippet?\n- ÃÂÃÂ¿Polyplas aparece? ÃÂÃÂ¿En quÃÂÃÂ© posiciÃÂÃÂ³n?\n- ÃÂÃÂ¿QuÃÂÃÂ© tiene el competidor que Polyplas no tiene en el snippet?\n\nENTREGA: tabla con hallazgos + recomendaciÃÂÃÂ³n especÃÂÃÂ­fica para mejorar el snippet de Polyplas.\nESFUERZO: 1-2 horas.\nIMPACTO: informa los cambios de SEO de Mes 2 con datos reales del campo de batalla.",
-    "estado": "pendiente",
-    "aprobado": "2026-11-05T22:40:49.042Z"
+    "estado": "completada",
+    "aprobado": "2026-11-05T22:40:49.042Z",
+    "completado": "2026-11-05"
   },
   {
     "id": "cro::1793918458290",
@@ -288,8 +290,9 @@
     "what": "Auditar y reducir fricciÃÂ³n en el cotizador de planchas a medida Ã¢ÂÂ es el primer paso del embudo de mayor volumen",
     "why": "Planchas tiene la mayor trÃÂ¡fico orgÃÂ¡nico (8.525 impresiones). El cotizador es donde mÃÂ¡s se pierden clientes antes del checkout. Si logramos subir la conversiÃÂ³n general de 1,11% a 1,4% en Mes 1, el cotizador es el lever mÃÂ¡s directo ya que concentra el mayor volumen de sesiones.",
     "ficha": "QUÃÂ: Recorrer el cotizador de planchas a medida (escritorio + celular) y documentar cada punto de fricciÃÂ³n:\n1. ÃÂ¿CuÃÂ¡ntos pasos tiene hasta llegar al carrito?\n2. ÃÂ¿El usuario sabe el precio antes de agregar al carrito?\n3. ÃÂ¿Se puede usar sin registrarse?\n4. ÃÂ¿Hay mensajes de error confusos?\n5. ÃÂ¿El botÃÂ³n de acciÃÂ³n final es visible en mobile?\n\nLuego en GA4: revisar el funnel cotizador Ã¢ÂÂ add_to_cart Ã¢ÂÂ begin_checkout para ver en quÃÂ© paso se cae mÃÂ¡s gente.\n\nIMPACTO: El cotizador es el motor principal. Bajar 1 paso o hacer el precio mÃÂ¡s visible puede mover la conversiÃÂ³n en 0,2-0,3 pp.\nESFUERZO: 2 horas para auditar + proponer fixes.\nMEDICIÃÂN: conversiÃÂ³n general GA4 antes/despuÃÂ©s.",
-    "estado": "pendiente",
-    "aprobado": "2026-11-05T22:40:58.290Z"
+    "estado": "completada",
+    "aprobado": "2026-11-05T22:40:58.290Z",
+    "completado": "2026-11-05"
   },
   {
     "id": "seo::1793918464710",
@@ -297,8 +300,9 @@
     "what": "Optimizar title + meta de /planchas-acrilico/ â 8.525 impresiones desperdiciadas al 1,4% CTR",
     "why": "Segunda pÃ¡gina con mÃ¡s impresiones del sitio (8.525 en 28d) pero CTR de solo 1,4%. La consulta 'acrÃ­lico transparente' tiene 1.655 impresiones al 0,3% CTR. Pasar de 1,4% a 2,5% = +93 clics extra/mes sin mejorar posiciÃ³n. Planchas es el canal de volumen que financia el Mes 1.",
     "ficha": "QUÃ: Reescribir title y meta description de /categoria-producto/planchas-acrilico/.\n\nPASO 1 â ver queries reales en GSC para esta URL y ordenar por impresiones.\nPASO 2 â identificar las 3 consultas de mayor volumen que no estÃ¡n en el title/meta actual.\nPASO 3 â reescribir:\n  Title: 'Planchas de AcrÃ­lico Transparente a Medida Â· Desde [precio] | Polyplas'\n  Meta: 'Planchas de acrÃ­lico AA transparente, traslÃºcido y de colores. Corte a medida en Santiago. Importador directo â mejor precio Â· Retiro hoy Â· Despacho gratis RM.'\n\nARCHIVO: content/modulos/04-planchas-acrilico/_pagina.json\n\nIMPACTO: De 1,4% a 2,5% CTR = +93 clics/mes extras. A conversiÃ³n 1,4% = +1,3 ventas extra/mes.\nCONFIANZA: Alta â el title actual no incluye 'transparente' ni 'a medida' en posiciÃ³n prominente.\nMEDICIÃN: CTR en GSC filtrando por URL a 14 y 28 dÃ­as.",
-    "estado": "pendiente",
-    "aprobado": "2026-11-05T22:41:04.710Z"
+    "estado": "completada",
+    "aprobado": "2026-11-05T22:41:04.710Z",
+    "completado": "2026-11-05"
   },
   {
     "id": "seo::1793918488424",
@@ -306,7 +310,8 @@
     "what": "Enlace interno desde /tinas-de-hidromasaje/ hacia /cascos-de-tinas/ — acelera indexación de los cambios SEO recientes",
     "why": "Los cambios SEO de cascos (title/meta/B2B) se publicaron hoy. Un enlace interno desde la categoría tinas (14K impresiones, bien posicionada) acelera el descubrimiento y transfiere autoridad a cascos. Sin enlace interno, Google puede tardar 2-4 semanas en reindexar.",
     "ficha": "QUÉ: Agregar en /tinas-de-hidromasaje/ un enlace visible hacia /cascos-de-tinas/.\nTexto sugerido: '¿Buscas solo el casco sin motor? Ver Cascos de Tinas →'\nUbicar: al final de la tabla comparativa de modelos o en la sección de preguntas frecuentes.\n\nARCHIVO: content/modulos/10-tinas/07-compra-online-tinas-hidromasaje.html\n\nIMPACTO: Acelera reindexación post-cambios SEO de cascos. Canaliza tráfico de 'jacuzzi' hacia cascos.\nESFUERZO: 30 min.\nRIESGO: Mínimo — es contenido adicional, no reemplaza nada.",
-    "estado": "pendiente",
-    "aprobado": "2026-11-05T22:41:28.424Z"
+    "estado": "completada",
+    "aprobado": "2026-11-05T22:41:28.424Z",
+    "completado": "2026-11-05"
   }
 ]
