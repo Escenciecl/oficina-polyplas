@@ -51,8 +51,19 @@
     "what": "Novoacril vende corte láser a medida 100% online con entrega 5-8 días — Polyplas debe hacer visible su ventaja de entrega el mismo día / retiro hoy",
     "why": "novoacril.cl vende acrílico con corte a medida (recto y circular) y servicio láser online, con despacho en 5-8 días (relevado nov 2026). Polyplas ofrece retiro en Santiago Centro el mismo día y despacho en la RM — ventaja de velocidad que no está siendo comunicada en las fichas de planchas.",
     "ficha": "HALLAZGO: Novoacril.cl tiene un modelo 100% online de corte láser con tiempos de entrega de 5-8 días hábiles tras el pago. Precio del corte láser: desde $350 CLP/minuto.\n(Fuente: novoacril.cl/corte-laser-1 — relevado 2026-11-03)\n\nVENTAJA POLYPLAS NO COMUNICADA:\n• Retiro en Santiago Centro el MISMO DÍA (si el stock está disponible)\n• Despacho gratis en RM desde $350.000 (rápido, sin esperar 5-8 días)\n• 29 años como importadora directa (confianza vs un competidor online sin historia)\n\nACCIÓN PROPUESTA: Agregar en las fichas de planchas y en el configurador de corte a medida un mensaje visible:\n  \"Retiro hoy en Santiago Centro · Despacho RM gratis desde $350.000\"\nHoy ese mensaje puede estar en el topbar o en el footer, pero no en la ficha donde se decide la compra.\n\nIMPACTO: Un cliente que busca \"plancha acrílico 5mm a medida Santiago\" y encuentra a Novoacril con 5-8 días vs Polyplas con retiro hoy → la velocidad puede ser el factor decisivo.\nURGENCIA: Esta semana (cambio de texto en fichas, bajo riesgo).\nACCIÓN POR ÁREA: texto → UX/UI. SEO: agregar \"retiro hoy\" y \"despacho rápido\" como mensaje en meta description.\nFUENTE: novoacril.cl — relevado 2026-11-03.",
-    "estado": "pendiente",
-    "aprobado": "2026-11-04T22:31:44.802Z"
+    "estado": "completada",
+    "aprobado": "2026-11-04T22:31:44.802Z",
+    "completado": "2026-11-05T17:00:00.000Z",
+    "resultado": "Badge verde 'Retiro hoy en Santiago Centro · Despacho gratis en la RM desde $350.000' agregado al inicio de las fichas de PET y PETG. Las fichas de acrílico y el configurador de medidas ya lo tenían.",
+    "cambio": {
+      "antes": "Fichas de PET y PETG no mostraban la ventaja de velocidad frente a Novoacril (5-8 días de entrega)",
+      "despues": "Banner verde visible al entrar: '⚡ Retiro hoy en Santiago Centro · 🚚 Despacho gratis en la RM desde $350.000'",
+      "archivos": [
+        "content/modulos/05-planchas-pet/05-compra-planchas-de-pet-online-facil-rapi.html",
+        "content/modulos/06-planchas-petg/06-compra-planchas-de-petg-online-facil-rap.html"
+      ]
+    },
+    "presentado": false
   },
   {
     "id": "cro::1793892059334",
