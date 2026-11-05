@@ -294,6 +294,19 @@ kbd{font:600 10px var(--f-mono);border:1px solid var(--line);border-bottom-width
 .more-menu__item:hover{background:var(--bg)}
 .more-menu__item.active{color:#047857}
 .more-menu__sep{height:1px;background:var(--line);margin:4px 0}
+/* Historial de cambios */
+.hc-item{border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px;background:#fff}
+.hc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.hc-what{font:700 14px/1.35 var(--f-body);color:var(--ink);flex:1}
+.hc-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.hc-agent{font:700 11px var(--f-body);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.hc-fecha{font:500 11px var(--f-mono);color:var(--muted)}
+.hc-diff{background:var(--bg);border-radius:8px;padding:12px;font:12px/1.6 var(--f-mono);display:flex;flex-direction:column;gap:6px}
+.hc-antes{color:#b91c1c}
+.hc-despues{color:#047857}
+.hc-archivos{color:var(--muted);font-size:11px;border-top:1px solid var(--line);padding-top:8px;margin-top:4px}
+.hc-ver{font:600 12px var(--f-body);color:var(--accent);border:1px solid currentColor;border-radius:6px;padding:4px 10px;background:none;cursor:pointer;text-decoration:none}
+.hc-ver:hover{background:rgba(217,119,6,.07)}
 </style>
 </head>
 <body>
@@ -351,6 +364,11 @@ kbd{font:600 10px var(--f-mono);border:1px solid var(--line);border-bottom-width
         <div id="jefeProps"></div>
       </div>
       <div class="card">
+        <h2>Cambios aplicados</h2>
+        <p class="sub">Todo lo que se publicó en el sitio.</p>
+        <button class="btn primary" id="abrirHistorial" type="button" style="width:100%;margin-bottom:0">Ver qué cambió →</button>
+      </div>
+      <div class="card">
         <h2>Lo que está pasando</h2>
         <ul class="log" id="log"></ul>
       </div>
@@ -386,6 +404,21 @@ kbd{font:600 10px var(--f-mono);border:1px solid var(--line);border-bottom-width
     </div>
     <div class="call-chat" id="callChat"></div>
     <div class="call-actions" id="callActions"></div>
+  </div>
+</div>
+
+<div id="historialModal" class="reunion-overlay" hidden>
+  <div class="reunion-panel" style="max-width:680px">
+    <div class="reunion-hdr">
+      <div class="reunion-hdr-text">
+        <h2>Cambios aplicados al sitio</h2>
+        <p>Todo lo que se aprobó y publicó — con el antes y después de cada uno.</p>
+      </div>
+      <button class="btn close-btn" id="closeHistorial" type="button">Cerrar ×</button>
+    </div>
+    <div class="reunion-body" id="historialBody">
+      <p style="color:var(--muted);font-size:13px">Cargando…</p>
+    </div>
   </div>
 </div>
 
@@ -2212,6 +2245,62 @@ async function checkCompletedTasks(){
 
 setTimeout(checkCompletedTasks,5000);
 setInterval(checkCompletedTasks,60000);
+
+/* ---------- Historial de cambios ---------- */
+const AGENT_NAMES={med:'Medición',seo:'SEO',cro:'CRO',uxui:'UX/UI',intel:'Intel',ads:'Ads',vig:'Vigilante',tatis:'Tatis'};
+function formatFecha(iso){if(!iso)return '';try{return new Date(iso).toLocaleDateString('es-CL',{day:'numeric',month:'short',year:'numeric'})}catch(e){return iso}}
+
+async function abrirHistorial(){
+  const modal=document.getElementById('historialModal');
+  const body=document.getElementById('historialBody');
+  modal.hidden=false;
+  body.innerHTML='<p style="color:var(--muted);font-size:13px">Cargando…</p>';
+
+  const token=localStorage.getItem(GH_TOKEN_KEY);
+  let queue=[];
+  if(token){
+    try{
+      const file=await ghGet(GH_QUEUE_PATH,token);
+      if(file)queue=JSON.parse(atob(file.content.replace(/\n/g,'')));
+    }catch(e){}
+  }
+
+  const hechas=queue.filter(t=>t.estado==='completada').sort((a,b)=>new Date(b.completado||b.aprobado||0)-new Date(a.completado||a.aprobado||0));
+  if(!hechas.length){
+    body.innerHTML='<p class="empty">Aún no hay cambios registrados con detalle.</p>';
+    return;
+  }
+
+  body.innerHTML=hechas.map(t=>{
+    const cambio=t.cambio||{};
+    const agNombre=AGENT_NAMES[t.agente]||t.agente||'Agente';
+    const fecha=formatFecha(t.completado||t.aprobado);
+    const archivos=cambio.archivos&&cambio.archivos.length?'<div class="hc-archivos">Archivos: '+cambio.archivos.map(f=>'<code>'+f+'</code>').join(', ')+'</div>':'';
+    const diff=(cambio.antes||cambio.despues)?`
+      <div class="hc-diff">
+        ${cambio.antes?'<div class="hc-antes">❌ Antes: '+escHtml(cambio.antes)+'</div>':''}
+        ${cambio.despues?'<div class="hc-despues">✅ Después: '+escHtml(cambio.despues)+'</div>':''}
+        ${archivos}
+      </div>`:'';
+    return `<div class="hc-item">
+      <div class="hc-head">
+        <div class="hc-what">${escHtml(t.what)}</div>
+        <a class="hc-ver" href="https://polyplas.cl" target="_blank" rel="noopener">Ver sitio →</a>
+      </div>
+      <div class="hc-meta">
+        <span class="hc-agent">${escHtml(agNombre)}</span>
+        <span class="hc-fecha">${fecha}</span>
+        <span class="badge" style="color:var(--ok);border-color:var(--ok)">✓ Publicado</span>
+      </div>
+      ${diff}
+    </div>`;
+  }).join('<div style="height:12px"></div>');
+}
+
+function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+document.getElementById('abrirHistorial').addEventListener('click',abrirHistorial);
+document.getElementById('closeHistorial').addEventListener('click',()=>{document.getElementById('historialModal').hidden=true});
 
 /* reunión de inicio con minuta */
 const minEl=document.getElementById('minutaModal'),agentName=id=>(AGENTS.find(a=>a.id===id)||{name:id}).name;
