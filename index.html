@@ -517,6 +517,27 @@ const AGENTS=[
       objetivo:'medición',
       riesgo:'bajo',
       ficha:'QUÉ: Modificar el evento click_asistencia_flotante en pp-track.js (o en GTM) para que incluya un parámetro con la página y el producto de origen.\n\nCÓDIGO A MODIFICAR: public/legacy/pp-track.js o el módulo 00-flotantes/01-chat-maca.html.\n\nPARÁMETROS A AGREGAR:\n  page_path: window.location.pathname  (ej. "/tina-hidromasaje-queilen/")\n  product_category: la categoría de la página actual (ej. "Tinas Hidromasaje")\n  product_id: el SKU si está disponible en el contexto (ej. "TINA_queilen")\n\nIMPACTO:\n• Ads puede saber desde qué keyword/anuncio llegó el usuario que luego hizo clic en WhatsApp\n• CRO puede saber qué productos generan más consultas (¿falta información en la ficha?)\n• SEO puede saber qué páginas convierten vía WhatsApp vs compra directa\n\nRIESGO: BAJO — agregar parámetros a un evento existente no rompe el evento.\nTiempo de implementación: 1–2 horas.\nVERIFICACIÓN: con ?pp_debug=1 en una ficha de tinas, clic en WhatsApp → ppTrackLog debe mostrar el evento con los nuevos parámetros.'
+    },
+    {
+      what:'Verificar que el tracking de conversiones es correcto en las páginas de tinas y cascos — no podemos medir el impacto del Mes 1 si los datos son incorrectos',
+      why:'Todos los cambios del plan $8M se van a medir en GA4. Si el tracking de view_item, add_to_cart y purchase está roto o duplicado en las páginas de tinas o cascos, los KPIs del Mes 1 van a ser inútiles. Antes de optimizar es necesario confirmar que la medición es confiable.',
+      objetivo:'medición',
+      riesgo:'bajo',
+      ficha:'QUÉ: Con ?pp_debug=1 en las URLs clave, verificar que los eventos se disparan correctamente:
+
+1. /tina-hidromasaje-queilen/ → debe disparar view_item con modelo correcto
+2. /categoria-producto/tinas-de-hidromasaje/ → debe disparar view_item_list
+3. /cascos-de-tinas/ → debe disparar view_item_list
+4. Agregar al carrito una tina → verificar add_to_cart con precio correcto
+5. Llegar al checkout → verificar begin_checkout
+
+ADEMÁS: en GA4 → Explorar → Embudo, crear embudo:
+  Sesión → view_item (tinas) → add_to_cart → begin_checkout → purchase
+Registrar las tasas de conversión actuales en cada paso como LÍNEA BASE para medir el Mes 1.
+
+ENTREGA: reporte con tasa de conversión por etapa del embudo para tinas. Si hay bugs, reportar con detalle para que UX/UI los corrija.
+ESFUERZO: 2-3 horas.
+IMPACTO: sin medición confiable, no podemos validar si el Mes 1 se logró.'
     }
   ]},
  {id:'tatis',name:'Tatis',role:'Documentación',real:true,shirt:0xd05080,hair:0x2d1b00,skin:0xf0c8a0,
@@ -568,6 +589,28 @@ const AGENTS=[
       objetivo:'conversión',
       riesgo:'bajo',
       ficha:'HALLAZGO: Novoacril.cl tiene un modelo 100% online de corte láser con tiempos de entrega de 5-8 días hábiles tras el pago. Precio del corte láser: desde $350 CLP/minuto.\n(Fuente: novoacril.cl/corte-laser-1 — relevado 2026-11-03)\n\nVENTAJA POLYPLAS NO COMUNICADA:\n• Retiro en Santiago Centro el MISMO DÍA (si el stock está disponible)\n• Despacho gratis en RM desde $350.000 (rápido, sin esperar 5-8 días)\n• 29 años como importadora directa (confianza vs un competidor online sin historia)\n\nACCIÓN PROPUESTA: Agregar en las fichas de planchas y en el configurador de corte a medida un mensaje visible:\n  "Retiro hoy en Santiago Centro · Despacho RM gratis desde $350.000"\nHoy ese mensaje puede estar en el topbar o en el footer, pero no en la ficha donde se decide la compra.\n\nIMPACTO: Un cliente que busca "plancha acrílico 5mm a medida Santiago" y encuentra a Novoacril con 5-8 días vs Polyplas con retiro hoy → la velocidad puede ser el factor decisivo.\nURGENCIA: Esta semana (cambio de texto en fichas, bajo riesgo).\nACCIÓN POR ÁREA: texto → UX/UI. SEO: agregar "retiro hoy" y "despacho rápido" como mensaje en meta description.\nFUENTE: novoacril.cl — relevado 2026-11-03.'
+    },
+    {
+      what:'Auditar qué aparece en Google para \'jacuzzi Santiago\' y \'cúpula acrílico Santiago\' — entender por qué el CTR es tan bajo',
+      why:'La categoría tinas tiene 14.300 impresiones al 0,9% CTR a posición 8,2. El problema no es solo el title/meta — puede ser que los competidores en posición 1-5 tienen fichas de Google Shopping, valoraciones con estrellas, o snippets enriquecidos que hacen que Polyplas se vea genérica. Necesitamos saber qué está ganando la batalla visual en el SERP.',
+      objetivo:'intel',
+      riesgo:'bajo',
+      ficha:'QUÉ: Buscar en Google (modo incógnito, Santiago) las queries:
+1. \'jacuzzi Santiago\'
+2. \'tina hidromasaje precio Chile\'
+3. \'cúpula acrílico Santiago\'
+4. \'plancha acrílico a medida Santiago\'
+
+Para cada una, registrar:
+- ¿Qué aparece en posiciones 1-5? (marcas, URLs, tipo de resultado)
+- ¿Tienen valoraciones con estrellas?
+- ¿Tienen precios en el snippet?
+- ¿Polyplas aparece? ¿En qué posición?
+- ¿Qué tiene el competidor que Polyplas no tiene en el snippet?
+
+ENTREGA: tabla con hallazgos + recomendación específica para mejorar el snippet de Polyplas (schema markup, pricing, valoraciones).
+ESFUERZO: 1-2 horas.
+IMPACTO: informa los cambios de SEO de Mes 2 con datos reales del campo de batalla.'
     }
   ]},
  {id:'cro',name:'CRO',role:'Conversión',real:true,shirt:0x9b3b50,hair:0x2a1a12,skin:0xe8a888,
@@ -609,6 +652,42 @@ const AGENTS=[
       objetivo:'conversión',
       riesgo:'bajo',
       ficha:'QUÉ: Agregar en /tinas-de-hidromasaje/ una tabla comparativa con columnas: Modelo | Medidas | Jets | HP | Precio desde | Disponibilidad.\n\nPOR QUÉ (datos reales):\n• GA4: tinas → 445 visitas/28d, bounce 18,7% → ~83 usuarios salen sin interactuar\n• GSC: 29.315 imp/3m, CTR 1,1% — hay interés pero poca conversión desde búsqueda\n• El cliente busca "tina hidromasaje 150x150" y necesita comparar antes de hacer clic en cada ficha\n• Ticket ~$800K-$3M — la decisión requiere comparar características\n• CHC muestra tabla comparativa en sus tinas (ventaja actual del competidor)\n\nCONTENIDO DE LA TABLA (completar con datos reales):\nModelo | Medidas | Jets | HP | Precio desde | Disponibilidad\nQueilen | 150×150 cm | 12 | 0.75 | $479.990 | Retiro hoy\nCoinco | 160×160 cm | 16 | 1.0 | $649.990 | Retiro hoy\n... (5–7 modelos)\n\nIMPACTO ESTIMADO:\n• Si bounce baja de 18,7% a 12%: +31 usuarios/mes que siguen explorando\n• Conservador: -20% bounce | Esperado: -35% | Optimista: -50%\n• +2–6 ventas/mes estimadas al reducir indecisión en categoría\n\nCONFIANZA: Alta en que falta comparativa (validado por CHC y por bounce alto); media en impacto exacto.\nESFUERZO: 3–4 horas (diseño tabla + HTML + datos reales de cada modelo).\nRIESGO: BAJO — contenido nuevo en la categoría, no cambia URLs ni H1.\nCONFLICTO: NO pisa exp-001 (loading=eager está en fichas individuales, no en la categoría).\nMEDICIÓN: bounce rate /tinas-de-hidromasaje/ antes/después en GA4, mínimo 4 semanas.\nCOORDINACIÓN: datos reales de tabla (medidas, HP, jets) → confirmar con jefe antes de publicar.'
+    },
+    {
+      what:'Auditar y reducir fricción en el cotizador de planchas a medida — es el primer paso del embudo de mayor volumen',
+      why:'Planchas es la categoría de mayor tráfico orgánico (8.525 impresiones). El cotizador de planchas a medida es probablemente donde más se pierden clientes antes del checkout. Si logramos subir la conversión general de 1,11% a 1,4% en Mes 1, el cotizador es el lever más directo ya que concentra el mayor volumen de sesiones.',
+      objetivo:'conversión',
+      riesgo:'bajo',
+      ficha:'QUÉ: Recorrer el cotizador de planchas a medida (escritorio + celular) y documentar cada punto de fricción:
+1. ¿Cuántos pasos tiene hasta llegar al carrito?
+2. ¿El usuario sabe el precio antes de agregar al carrito?
+3. ¿Se puede usar sin registrarse?
+4. ¿Hay mensajes de error confusos?
+5. ¿El botón de acción final es visible en mobile?
+
+Luego en GA4: revisar el funnel cotizador → add_to_cart → begin_checkout para ver en qué paso se cae más gente.
+
+IMPACTO: El cotizador es el motor principal de ventas. Bajar 1 paso del flujo o hacer el precio más visible puede mover la conversión general del sitio en 0,2-0,3 pp.
+CONFIANZA: Alta en que hay fricción (1,11% conversión es baja para e-commerce con ticket alto).
+ESFUERZO: 2 horas para auditar + proponer fixes específicos en próxima sesión.
+MEDICIÓN: conversión general GA4 antes/después.'
+    },
+    {
+      what:'Agregar CTA de cotización en volumen en la página de cascos — capturar leads B2B que llegan del SEO nuevo',
+      why:'Los cambios SEO de cascos ahora apuntan a maestros/proyectos/obras. Pero si esos usuarios llegan a la página y no hay un CTA claro para cotizar en volumen, se van sin convertir. El SEO trae la visita; el CRO cierra la venta. Necesitamos un formulario o botón de cotización en volumen visible.',
+      objetivo:'conversión',
+      riesgo:'bajo',
+      ficha:'QUÉ: Agregar en /categoria-producto/cascos-de-tinas/ un CTA específico para compras en volumen:
+Opción A: Botón \'Cotizar 2+ unidades con factura\' que abre un formulario de WhatsApp con mensaje predefinido.
+Opción B: Formulario inline simple (nombre, empresa, cant. unidades, email).
+
+Ubicar: dentro del bloque \'Para proyectos, obras y maestros\' ya publicado (antes del párrafo de contacto).
+
+ARCHIVO: content/modulos/10b-cascos-de-tinas/06-preguntas-frecuentes-cascos-de-tinas.html
+
+IMPACTO: Captura leads B2B de alto valor (un proyecto de 3 cascos = $525.000 CLP). Sin este CTA, el tráfico SEO nuevo se pierde.
+ESFUERZO: 2 horas.
+RIESGO: Bajo — es contenido adicional en sección ya existente.'
     }
   ]},
  {id:'seo',name:'SEO',role:'Posicionamiento',real:true,shirt:0x2d6a4f,hair:0x5a3d2b,skin:0xc87850,
@@ -650,6 +729,58 @@ const AGENTS=[
       objetivo:'CTR',
       riesgo:'bajo',
       ficha:'QUÉ: Reescribir <title> y meta description de cada ficha individual de tina.\nURLs: /tina-hidromasaje-queilen/, /tina-hidromasaje-coinco/, /tina-hidromasaje-vilcun/, /tina-hidromasaje-antuco/, /tina-hidromasaje-kuyen-full/.\n\nPOR QUÉ:\n• El tráfico de /tinas-de-hidromasaje/ incluye queries de modelo específico ("tina 160x160", "tina queilen")\n• Las fichas individuales son donde se toma la decisión de compra — el título importa\n• Los títulos heredados de WordPress no incluyen: dimensión, jets, disponibilidad ("retiro hoy"), año\n• Schema Product (en props) mejora la apariencia visual; este cambio mejora el texto del snippet\n\nTÍTULO PROPUESTO (ejemplo Queilen):\n  Actual (inferido): "Tina de Hidromasaje Queilen | Polyplas"\n  Propuesto: "Tina Queilen [DIM] cm [N] Jets – Retiro Hoy Santiago | Polyplas"\n  (completar con medidas reales de cada modelo)\n\nMETA DESCRIPTION (ejemplo Queilen):\n  "Tina hidromasaje Queilen [DIM] cm, [N] jets, bomba [X] HP desde $[precio]. Retiro hoy Santiago Centro o despacho RM gratis desde $350.000."\n\nCONFIANZA: Alta — títulos genéricos son mejorables sin riesgo de posición.\nESFUERZO: 2–3 horas (5 fichas + revisar dimensiones y precios reales).\nRIESGO: BAJO — cambio solo en meta, NO toca H1 ni contenido visible. Reversible en <10 min.\nCONFLICTO: NO pisa exp-001 (loading=eager ya aplicado en estas páginas) ni exp-002 (planchas, no tinas).\nIMPLEMENTAR: después de que exp-001 tenga al menos 7 días — separar señales de cambio.\nMEDICIÓN: CTR por URL en GSC para cada ficha vs período previo, a 14 y 28 días.'
+    },
+    {
+      what:'Optimizar title + meta de /planchas-acrilico/ — 8.525 impresiones desperdiciadas al 1,4% CTR',
+      why:'Segunda página con más impresiones del sitio (8.525 en 28d) pero CTR de solo 1,4%. La consulta \'acrílico transparente\' tiene 1.655 impresiones al 0,3% CTR. Pasar de 1,4% a 2,5% = +93 clics extra/mes sin mejorar posición. Planchas es el canal de volumen que financia el Mes 1.',
+      objetivo:'CTR',
+      riesgo:'medio',
+      ficha:'QUÉ: Reescribir title y meta description de /categoria-producto/planchas-acrilico/.
+
+PASO 1 — ver las queries reales en GSC para esta URL (filtrar por página) y ordenar por impresiones.
+PASO 2 — identificar las 3 consultas de mayor volumen que no están en el title/meta actual.
+PASO 3 — reescribir:
+  Title propuesto: \'Planchas de Acrílico Transparente a Medida · Desde [precio] | Polyplas\'
+  Meta propuesta: \'Planchas de acrílico AA transparente, traslúcido y de colores. Corte a medida en Santiago. Importador directo — mejor precio · Retiro hoy · Despacho gratis RM.\'
+
+ARCHIVO: content/modulos/04-planchas-acrilico/_pagina.json
+
+IMPACTO ESTIMADO:
+• De 1,4% a 2,5% CTR = +93 clics/mes extras
+• A conversión 1,4% = +1,3 ventas extra/mes solo en esta página
+CONFIANZA: Alta — el title actual no incluye \'transparente\' ni \'a medida\' en posición prominente.
+MEDICIÓN: CTR en GSC filtrando por URL a 14 y 28 días.'
+    },
+    {
+      what:'Optimizar title + meta de /receptaculos-de-ducha-instalacion/ — 2.689 impresiones al 1% CTR',
+      why:'Página de guía con 2.689 impresiones y 27 clics (1% CTR). Es una página de contenido que atrae maestros e instaladores — exactamente el público B2B que compra cúpulas y cascos. Mejorar su CTR acerca tráfico calificado de alto AOV.',
+      objetivo:'CTR',
+      riesgo:'bajo',
+      ficha:'QUÉ: Revisar queries en GSC para /receptaculos-de-ducha-instalacion/ y reescribir title/meta.
+El title actual probablemente es genérico. Los maestros buscan \'receptáculo ducha precio\', \'base ducha instalación Santiago\'.
+
+Title propuesto: \'Receptáculo de Ducha · Guía de Instalación y Precios en Santiago | Polyplas\'
+Meta propuesta: \'Todo sobre receptáculos de ducha: dimensiones, instalación paso a paso y precios en Santiago. Importador directo con retiro y despacho gratis en la RM.\'
+
+ARCHIVO: buscar el módulo _pagina.json de la URL /receptaculos-de-ducha-instalacion/
+
+IMPACTO: De 1% a 2% CTR = +27 clics/mes. Tráfico de maestros/instaladores con alto potencial de cotización.
+MEDICIÓN: CTR en GSC a 14 y 28 días.'
+    },
+    {
+      what:'Enlace interno desde /tinas-de-hidromasaje/ hacia /cascos-de-tinas/ — acelera indexación de los cambios SEO recientes',
+      why:'Los cambios SEO de cascos (title/meta/B2B) se publicaron hoy. Google tiene que rastrear y reindexar. Un enlace interno desde la categoría tinas (que tiene 14K impresiones y ya está bien posicionada) acelera el descubrimiento y transfiere autoridad a cascos. Sin enlace interno, Google puede tardar 2-4 semanas en reindexar.',
+      objetivo:'SEO',
+      riesgo:'bajo',
+      ficha:'QUÉ: Agregar en la categoría /tinas-de-hidromasaje/ un enlace visible hacia /cascos-de-tinas/.
+Texto sugerido: \'¿Buscas solo el casco sin motor? Ver Cascos de Tinas →\'
+Ubicar: al final de la tabla comparativa de modelos o en la sección de preguntas frecuentes existente.
+
+ARCHIVO: content/modulos/10-tinas/07-compra-online-tinas-hidromasaje.html
+
+IMPACTO: Acelera reindexación post-cambios SEO de cascos. Canaliza tráfico de \'jacuzzi\' hacia cascos cuando el usuario no quiere el motor.
+ESFUERZO: 30 min.
+RIESGO: Mínimo — es contenido adicional, no reemplaza nada.'
     }
   ]},
  {id:'ads',name:'Ads',role:'Publicidad',real:true,shirt:0xb5771a,hair:0x111111,skin:0x7a4a2a,
@@ -691,6 +822,22 @@ const AGENTS=[
       objetivo:'CTR',
       riesgo:'bajo',
       ficha:'QUÉ: En Google Ads, agregar a las campañas de Search para planchas y tinas:\n\nCALLOUT EXTENSIONS (texto breve, no cliqueable, no afecta presupuesto ni aprendizaje):\n  "Retiro Hoy Santiago Centro"\n  "Importador Directo 29 Años"\n  "Despacho RM Gratis desde $350.000"\n  "Atención Personalizada al Instante"\n\nSITELINK EXTENSIONS (con URL, aumentan visibilidad del anuncio):\n  "Ver Tinas en Stock" → /categoria-producto/tinas-de-hidromasaje/\n  "Planchas a Medida" → /categoria-producto/planchas-acrilico/\n  "Contáctanos por WhatsApp" → (URL con mensaje predefinido)\n\nPOR QUÉ:\n• Intel verificó nov 2026: Novoacril anuncia en "plancha acrílico" con 5-8 días de entrega\n• Las extensiones permiten mostrar "Retiro Hoy" en el SERP de Ads sin cambiar la página de destino\n• Callouts aumentan visibilidad del anuncio y mejoran Quality Score sin costo por extensión\n• NO pisa ningún cambio de puja, presupuesto ni aprendizaje en curso\n\nIMPACTO ESTIMADO:\n• CTR anuncios típicamente mejora 10–20% con extensiones relevantes (benchmark Google Ads)\n• Paid Search actual: 1.408 sesiones/28d → si CTR mejora +12%: +169 sesiones/mes sin costo extra\n• Conservador: +5% CTR | Esperado: +12% | Optimista: +20%\n\nCONFIANZA: Alta — las extensiones de callout son estándar y sin downside.\n¿REINICIA APRENDIZAJE?: NO — las extensiones son aditivas, no afectan la optimización de puja.\nESFUERZO: 1 hora (crear y activar en Google Ads).\nRIESGO: BAJO — aditivo, no reemplaza nada existente. Desactivar en 5 min si se quiere revertir.\nFECHA DE EVALUACIÓN: +14 días — medir CTR anuncios en Search antes/después en Google Ads.'
+    },
+    {
+      what:'Revisar informe de términos de búsqueda y proponer reasignación de presupuesto hacia cúpulas y planchas alta intención',
+      why:'Paid Search trae 3.036 sesiones → ~$2.7M en 2 meses. Para Mes 1 el objetivo es hacerlo más rentable, no solo más grande. El plan especifica reasignar presupuesto hacia campañas de alta intención comercial (cúpulas y planchas). Pero primero necesitamos ver el informe de términos de búsqueda para identificar qué está gastando presupuesto sin convertir.',
+      objetivo:'eficiencia',
+      riesgo:'bajo',
+      ficha:'QUÉ: En Google Ads → Informe de términos de búsqueda, revisar los últimos 30 días:
+1. Identificar términos con >5 clics y 0 conversiones (posible derroche)
+2. Identificar las campañas de cúpulas y planchas: ¿cuánto presupuesto reciben vs. tinas?
+3. Proponer reasignación específica (% de presupuesto) hacia las campañas de mayor ROAS
+
+REGLA DE HIERRO: NO proponer ningún cambio de estrategia de puja ni de acciones de conversión — solo ajuste de distribución de presupuesto entre grupos de anuncios existentes.
+
+ENTREGA: tabla con los 10 términos de mayor gasto sin conversión (para agregar como negativos) + propuesta de reasignación de presupuesto entre campañas.
+ESFUERZO: 2 horas.
+IMPACTO: liberar presupuesto de términos que no convierten y redirigirlo a cúpulas puede subir el ROAS general del canal.'
     }
   ]},
  {id:'uxui',name:'UX/UI',role:'Diseño',real:true,shirt:0x7a4d88,hair:0xf5d0a9,skin:0xf0d0b0,
@@ -740,9 +887,71 @@ AGENTS.push(
  {id:'email',name:'PM Planchas',role:'Producto',real:true,shirt:0x3b82f6,hair:0x1a1a1a,skin:0xf0d0b0,
   tasks:['Diferenciando usos: Acrílico AA vs PA, PET, PETG y Policarbonato para SEO','Analizando fricciones en herramienta "Acrílico a Medida" para CRO','Mapeando regla de corte (10% recargo piezas distintas) para textos en checkout','Coordinando con Intel: ventajas vs DVP, Norglas y Novoacril en planchas','Definiendo mensajes clave para Ads B2B: talleres, arquitectos, industria'],props:[]},
  {id:'social',name:'PM Social',role:'Instagram',real:true,shirt:0xe879f9,hair:0x2d1b00,skin:0xd49060,
-  tasks:['Traduciendo catálogo técnico en contenido visual persuasivo para Instagram','Coordinando con PM Planchas: creativos sobre acrílico AA vs PA y cotizador','Detectando vacíos de contenido vs competencia (Intel) para capitalizar en redes','Pasando a SEO los temas más guardados/consultados en Instagram','Identificando Reels orgánicos de alto rendimiento para convertir con Ads'],props:[]},
+  tasks:['Traduciendo catálogo técnico en contenido visual persuasivo para Instagram','Coordinando con PM Planchas: creativos sobre acrílico AA vs PA y cotizador','Detectando vacíos de contenido vs competencia (Intel) para capitalizar en redes','Pasando a SEO los temas más guardados/consultados en Instagram','Identificando Reels orgánicos de alto rendimiento para convertir con Ads'],props:[
+    {
+      what:'Publicar primer contenido Instagram esta semana — antes/después de cúpula instalada con enlace al cotizador',
+      why:'Canal completamente inactivo. El plan $8M requiere que Social esté activo antes del Mes 2 (dic 2026). Las cúpulas son el producto más visual del catálogo y el que mejor funciona en Instagram (resultado de transformación inmediata, fácil de entender). Un solo post de antes/después con CTA al cotizador puede traer tráfico calificado.',
+      objetivo:'social',
+      riesgo:'bajo',
+      ficha:'QUÉ: Crear y publicar 1 post de antes/después para Instagram @polyplaschile esta semana.
+
+FORMATO SUGERIDO:
+- Carrusel 2-3 fotos: espacio sin cúpula (oscuro) → con cúpula instalada (iluminado con luz natural)
+- Texto: \'La luz natural cambia todo. Cúpulas de acrílico Polyplas — instalación en un día 🏠\'
+- CTA: \'Cotiza la tuya en el link de nuestra bio\'
+- Link en bio: polyplas.cl/categoria-producto/cupulas/
+- Hashtags: #cúpulas #iluminaciónnaturalchile #arquitecturachile #maestros #construcción
+
+FUENTE DE IMÁGENES: solicitar a Natalia fotos de instalaciones reales o usar fotos del catálogo web.
+
+IMPACTO: Activa el canal (actualmente en 0). Genera tráfico directo a cúpulas.
+ESFUERZO: 2-3 horas (copy + diseño + publicación).
+SIGUIENTE PASO: si el post funciona, crear calendario de contenido para dic 2026.'
+    },
+    {
+      what:'Crear calendario de contenido Instagram para diciembre 2026 — 8 posts alineados al plan $8M',
+      why:'Para que Social aporte a la meta del Mes 2 ($6.5M), el canal necesita ser consistente. Un post aislado no mueve el algoritmo. 8 posts en diciembre (2/semana) construyen el hábito del canal y generan la masa crítica de impresiones necesaria para atraer tráfico calificado hacia planchas, cúpulas y tinas.',
+      objetivo:'social',
+      riesgo:'bajo',
+      ficha:'QUÉ: Proponer 8 posts para Instagram en diciembre 2026, alineados a los productos de mayor AOV.
+
+EJE TEMÁTICO SUGERIDO:
+- Semana 1: Cúpulas (iluminación natural, instalación, antes/después)
+- Semana 2: Planchas acrílico (cotizador, casos de uso: letrero, terraza, muebles)
+- Semana 3: Tinas (bienestar en casa, \'tu propio spa\')
+- Semana 4: Cascos / proyectos (para maestros y constructoras)
+
+FORMATO: carrusel educativo + reels cortos (15s) funcionan mejor en 2026 en Instagram para productos industriales/hogar.
+
+CONDICIÓN: activar primero el primer post de cúpulas (task anterior) para validar el tono antes de comprometerse con el calendario.'
+    }
+  ]},
  {id:'copy',name:'PM Baños',role:'Producto',real:true,shirt:0xf59e0b,hair:0x4a3020,skin:0xc89060,
-  tasks:['Mapeando atributos de venta por modelo de tina (Queilen, Coinco, Vilcún, Antuco, Kuyen)','Entregando a SEO: ganchos de venta y diferenciadores por modelo','Revisando specs del catálogo vs lo publicado en el sitio','Detectando diferenciadores vs Novoacril para argumentos CRO','Coordinando con Intel: propuesta de valor cascos Queilen y Coinco'],props:[]},
+  tasks:['Mapeando atributos de venta por modelo de tina (Queilen, Coinco, Vilcún, Antuco, Kuyen)','Entregando a SEO: ganchos de venta y diferenciadores por modelo','Revisando specs del catálogo vs lo publicado en el sitio','Detectando diferenciadores vs Novoacril para argumentos CRO','Coordinando con Intel: propuesta de valor cascos Queilen y Coinco'],props:[
+    {
+      what:'Reescribir copy de fichas de cascos para diferenciar cliente residencial (bienestar) vs. constructor/maestro (proyecto)',
+      why:'Hoy los cascos tienen una sola voz en la ficha de producto: genérica. Después de los cambios SEO publicados, llegan dos tipos de usuarios: (1) persona que quiere remodelar su baño, (2) maestro/contratista que necesita 3 unidades con factura. Cada uno necesita un mensaje distinto para convertir. El copy actual no distingue entre ellos.',
+      objetivo:'conversión',
+      riesgo:'bajo',
+      ficha:'QUÉ: Proponer 2 versiones de copy para las fichas de cascos Queilen y Coinco:
+
+SEGMENTO RESIDENCIAL (cliente hogar):
+- Eje: \'El casco es el lienzo. Tú lo terminas como quieres.\'
+- Resaltar: personalización total, misma calidad que tina completa, precio accesible ($175.000)
+- CTA: \'Agregar al carrito\' (compra directa)
+
+SEGMENTO CONSTRUCTOR/MAESTRO:
+- Eje: \'El casco que eligen los constructores de Santiago.\'
+- Resaltar: factura disponible, 3-5 días hábiles para planificar la obra, descuento por volumen
+- CTA: \'Cotizar en volumen con factura\'
+
+ARCHIVOS: content/modulos/40-producto-casco-tina-queilen/ y /40-producto-casco-tina-coinco/
+
+FORMATO DE ENTREGA: proponer el copy en texto plano, Natalia aprueba, luego UX/UI implementa.
+ESFUERZO: 3 horas redacción.
+IMPACTO: aumenta conversión en ambos segmentos porque el mensaje es relevante para cada uno.'
+    }
+  ]},
  {id:'soporte',name:'PM Cúpulas',role:'Producto',real:true,shirt:0x10b981,hair:0xe8c87a,skin:0x8b5a3c,
   tasks:['Revisando specs de las 4 cúpulas vs lo publicado en el sitio','Entregando a SEO: términos correctos (tragaluz, claraboya, cúpula bronce)','Detectando fricción de vano vs medida para propuesta CRO','Coordinando con Intel: competidores que venden tragaluces','Definiendo mensajes clave para Ads: constructores, maestros, dueños de casa'],props:[]}
 );
