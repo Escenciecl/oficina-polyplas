@@ -35,7 +35,7 @@ Analiza rendimiento, detecta ángulos de venta, estructura argumentos comerciale
 1. **NO hacemos instalaciones** — Polyplas solo vende el producto, no ofrece ni sugiere servicio de instalación.
 2. **NO vendemos accesorios por separado** — los complementos se venden como producto completo, no en partes.
 3. **Canal de venta:** compra online en polyplas.cl o presencial en Santiago, Concha y Toro 1525.
-4. **Despacho:** gratis en la RM desde $350.000. Envío a regiones por transportista del cliente.
+4. **Despacho:** 3 a 5 días hábiles. Gratis en la RM desde $350.000. Envío a regiones por transportista del cliente.
 
 ---
 
