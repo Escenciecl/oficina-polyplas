@@ -1370,6 +1370,21 @@ log('Intel: agente activado — Competencia identificada: Norglas, CHC, DVP, Pol
 log('Medición: agente activado — Paso 0 urgente: purchase con value=$0 + transferencias sin purchase');
 log('Oficina abierta. 12 agentes — 2° piso abierto: PM Planchas · PM Social · PM Baños · PM Cúpulas.');
 log('Tatis activada — documentación en Confluence: moralesgarcianat.atlassian.net/wiki/spaces/PMP/folder/40206337');
+/* ---------- Recordatorio diario Google Ads ---------- */
+(function(){
+  const d=new Date(),h=d.getHours(),dow=d.getDay();
+  if(dow<1||dow>5||h<10||h>13)return;
+  const key='ads-reminder-'+d.toDateString();
+  if(localStorage.getItem(key))return;
+  setTimeout(()=>{
+    const ads=AGENTS.find(a=>a.id==='ads');
+    if(ads&&active(ads)){
+      say(ads,'¡Jefe! 📊 Recordatorio: revisemos Google Ads hoy. Abre Claude para analizar juntos.',12000);
+      log('Ads: 📊 recordatorio diario — revisa Google Ads hoy con Claude');
+      localStorage.setItem(key,'1');
+    }
+  },5000);
+})();
 /* ---------- Sala de revisión ---------- */
 function updateReunionCount(){renderProps();}
 
