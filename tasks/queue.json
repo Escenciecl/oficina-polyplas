@@ -1,5 +1,14 @@
 [
   {
+    "id": "uxui::1794010000000",
+    "agente": "uxui",
+    "what": "Agregar tracking a selectCorteOption — capturar elección 'iguales', 'distintos' y 'ninguno' en el recomendador de cortes",
+    "why": "Medición revisó GA4 (jun–oct 2026): conf_cortes_iguales (81 eventos) y conf_cortes_distintos (39) ya existen, pero falta conf_cortes_ninguno cuando el usuario elige 'sin corte'. Además, el evento existente no captura cambios de opinión (distintos → iguales). Con los 3 casos cubiertos, en 2 semanas tenemos el embudo completo del recomendador.",
+    "ficha": "QUÉ: En la función selectCorteOption (línea 6541 de content/modulos/04-planchas-acrilico/06-compra-planchas-de-acrilico-online-facil.html), agregar al FINAL de la función — después de updatePrice() y antes del if(opt==='none') — la siguiente línea:\n\n  window.ppPaso && window.ppPaso('conf_cortes_' + (opt === 'none' ? 'ninguno' : opt), 'acrilico', window._ppState || {});\n\nEso dispara:\n  conf_cortes_iguales   → cuando elige cortes iguales (ya existía, ahora más robusto)\n  conf_cortes_distintos → cuando elige cortes distintos (ya existía, ahora más robusto)\n  conf_cortes_ninguno   → cuando elige sin corte (NUEVO — faltaba)\n\nADEMÁS: ppPaso tiene deduplicación por clave (evento|linea|item_id). Para que capture cambios de opinión (iguales → distintos), hay que llamarlo sin la restricción de pasosHechos. Revisar si se debe usar window.dataLayer.push directamente en lugar de ppPaso, o limpiar la clave antes de cada llamada. Consultar con Medición antes de implementar.\n\nARCHIVO: content/modulos/04-planchas-acrilico/06-compra-planchas-de-acrilico-online-facil.html\nLÍNEA DE INSERCIÓN: después de línea 6586 (updatePrice())\n\nRIESGO: BAJO — solo agrega un evento al dataLayer. No toca lógica de precios ni flujo de compra.\nESFUERZO: 30 minutos.\nMEDICIÓN: Medición verifica con ?pp_debug=1 que los 3 eventos llegan correctamente antes de marcar como completada.",
+    "estado": "propuesta",
+    "aprobado": null
+  },
+  {
     "id": "uxui::1793827781819",
     "agente": "uxui",
     "what": "Agregar loading=\"eager\" y dimensiones a la imagen principal en fichas de tinas",
