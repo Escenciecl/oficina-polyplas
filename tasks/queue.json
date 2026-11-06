@@ -113,10 +113,8 @@
     "what": "Agregar ficha tÃ©cnica completa en pÃ¡ginas de tinas de hidromasaje",
     "why": "GA4: 445 visitas a tinas en 28 dÃ­as (156 usuarios Ãºnicos), bounce 18.7%. GSC: 29.315 impresiones, CTR 1.1%. Las tinas son el producto de mayor ticket y la ficha actual probablemente no da suficiente informaciÃ³n para decidir (medidas, instalaciÃ³n, garantÃ­a, consumo elÃ©ctrico).",
     "ficha": "QUÃ: Agregar a las fichas de tinas: tabla de especificaciones tÃ©cnicas (medidas externas/internas, peso, potencia, consumo elÃ©ctrico, nÃºmero de jets), requisitos de instalaciÃ³n (espacio mÃ­nimo, desagÃ¼e, elÃ©ctrico), plazo de despacho, garantÃ­a, y secciÃ³n de preguntas frecuentes.\n\nPOR QUÃ (datos reales):\nâ¢ GA4 panorÃ¡mico (28 dÃ­as): Tinas = 445 vistas, 156 usuarios activos, 2.4 mil eventos\nâ¢ GSC (3 meses): /tinas-de-hidromasaje/ â 29.315 imp, 334 clics, CTR 1.1%, pos 8.3\nâ¢ generate_lead (cotizaciones): 738 eventos en 5 meses â muchos probablemente piden info que ya deberÃ­a estar en la ficha\nâ¢ click_asistencia_flotante: 750 (WhatsApp) â Ã­dem\nâ¢ Las tinas tienen ticket ~17Ã mayor que planchas â la decisiÃ³n requiere mÃ¡s informaciÃ³n\n\nHIPÃTESIS: Si la ficha responde las preguntas de instalaciÃ³n, medidas y garantÃ­a, mÃ¡s usuarios deciden online (compra directa o cotizaciÃ³n formal) sin necesitar WhatsApp.\n\nIMPACTO ESTIMADO:\nâ¢ Sesiones en tinas: ~445 (28 dÃ­as)\nâ¢ Si conversiÃ³n sube de X% a X+1%: depende de conversiÃ³n actual (no disponible por pÃ¡gina todavÃ­a)\nâ¢ Pendiente: crear segmento GA4 tinas para medir conversiÃ³n base\nâ¢ Escenarios al tener datos: conservador +2 ventas/mes | esperado +5 | optimista +10\n\nCONFIANZA: Alta en que falta informaciÃ³n (validado por volumen de WhatsApp y leads); media en el impacto exacto.\nESFUERZO: 4â6 horas (redacciÃ³n + fotos + implementaciÃ³n).\nRIESGO: BAJO â contenido nuevo, no cambia estructura ni URLs.\nMÃTRICA PRINCIPAL: tasa generate_lead + compras directas en /tinas-de-hidromasaje/.\nMÃTRICA RESGUARDO: click_asistencia_flotante (esperamos que baje, no suba).\nMÃTODO: antes/despuÃ©s, medir 4 semanas.",
-    "estado": "completada",
-    "aprobado": "2026-11-05T15:25:11.343Z",
-    "completado": "2026-11-05",
-    "presentado": true
+    "estado": "rechazada",
+    "aprobado": "2026-11-05T15:25:11.343Z"
   },
   {
     "id": "ads::1793892372584",
@@ -124,10 +122,8 @@
     "what": "Agregar lista de tÃ©rminos negativos urgentes (bÃºsquedas no compradoras)",
     "why": "Con presupuesto de $1.800.000 CLP/mes, cada clic irrelevante quita presupuesto a leads reales. El catÃ¡logo de plÃ¡sticos industriales atrae bÃºsquedas de \"uÃ±as acrÃ­licas\", \"pintura acrÃ­lica\", \"manualidades\" y similares que nunca compran en Polyplas.",
     "ficha": "QUÃ: Agregar lista de negativos de concordancia amplia y de frase a todas las campaÃ±as de Search. Lista inicial sugerida:\nâ¢ uÃ±as, nail, manicure\nâ¢ pintura, barniz, esmalte\nâ¢ manualidades, artesanÃ­a, craft\nâ¢ resina, epoxi\nâ¢ lentes, anteojos, gafas\nâ¢ plÃ¡stico reciclado, pet botella\nâ¢ gratis, pdf, quÃ© es, para quÃ© sirve, historia\nâ¢ trabajo, empleo, sueldo\nâ¢ juguetes, juegos\nâ¢ acuario (salvo si venden para acuarios)\nVerificar antes en los informes de tÃ©rminos de bÃºsqueda que cada uno tenga impresiones reales en la cuenta.\n\nPOR QUÃ: Sin ver los tÃ©rminos de bÃºsqueda de la cuenta, estos son los irrelevantes mÃ¡s comunes en cuentas de plÃ¡sticos industriales (basado en el negocio). Con presupuesto ajustado, cada clic ahorrado se redirige a tÃ©rminos compradores.\n\nÂ¿REINICIA APRENDIZAJE?: No â las negativas no reinician el aprendizaje.\nIMPACTO ESTIMADO:\nâ¢ Si el 10% del gasto va a tÃ©rminos irrelevantes: libera ~180.000 CLP/mes\nâ¢ Redirigido a tÃ©rminos con CPL de 12.000 CLP = +15 cotizaciones extra/mes\nâ¢ Conservador: +5 | Esperado: +15 | Optimista: +25\nESFUERZO: 1â2 horas (revisar tÃ©rminos de bÃºsqueda + agregar lista).\nRIESGO: BAJO â reversible en 5 min. Riesgo menor: excluir algÃºn tÃ©rmino vÃ¡lido por error.\nMITIGACIÃN: Usar negativos de concordancia de frase (no exacta) para minimizar falsos positivos.\nFECHA EVALUACIÃN: +14 dÃ­as.",
-    "estado": "completada",
-    "aprobado": "2026-11-05T15:26:12.584Z",
-    "completado": "2026-11-05",
-    "presentado": true
+    "estado": "rechazada",
+    "aprobado": "2026-11-05T15:26:12.584Z"
   },
   {
     "id": "ads::1793898924933",
@@ -135,10 +131,8 @@
     "what": "Crear extensiones de anuncio con \"Retiro hoy Santiago Centro\" (callouts + sitelinks)",
     "why": "Intel (nov 2026): Novoacril despacha en 5-8 dÃ­as. Polyplas tiene retiro el mismo dÃ­a â ventaja real que no aparece en los anuncios actuales. Los callouts no requieren cambios en pÃ¡ginas de destino, no reinician aprendizaje y son completamente aditivos.",
     "ficha": "QUÃ: En Google Ads, agregar a las campaÃ±as de Search para planchas y tinas:\n\nCALLOUT EXTENSIONS (texto breve, no cliqueable, no afecta presupuesto ni aprendizaje):\n  \"Retiro Hoy Santiago Centro\"\n  \"Importador Directo 29 AÃ±os\"\n  \"Despacho RM Gratis desde $350.000\"\n  \"AtenciÃ³n Personalizada al Instante\"\n\nSITELINK EXTENSIONS (con URL, aumentan visibilidad del anuncio):\n  \"Ver Tinas en Stock\" â /categoria-producto/tinas-de-hidromasaje/\n  \"Planchas a Medida\" â /categoria-producto/planchas-acrilico/\n  \"ContÃ¡ctanos por WhatsApp\" â (URL con mensaje predefinido)\n\nPOR QUÃ:\nâ¢ Intel verificÃ³ nov 2026: Novoacril anuncia en \"plancha acrÃ­lico\" con 5-8 dÃ­as de entrega\nâ¢ Las extensiones permiten mostrar \"Retiro Hoy\" en el SERP de Ads sin cambiar la pÃ¡gina de destino\nâ¢ Callouts aumentan visibilidad del anuncio y mejoran Quality Score sin costo por extensiÃ³n\nâ¢ NO pisa ningÃºn cambio de puja, presupuesto ni aprendizaje en curso\n\nIMPACTO ESTIMADO:\nâ¢ CTR anuncios tÃ­picamente mejora 10â20% con extensiones relevantes (benchmark Google Ads)\nâ¢ Paid Search actual: 1.408 sesiones/28d â si CTR mejora +12%: +169 sesiones/mes sin costo extra\nâ¢ Conservador: +5% CTR | Esperado: +12% | Optimista: +20%\n\nCONFIANZA: Alta â las extensiones de callout son estÃ¡ndar y sin downside.\nÂ¿REINICIA APRENDIZAJE?: NO â las extensiones son aditivas, no afectan la optimizaciÃ³n de puja.\nESFUERZO: 1 hora (crear y activar en Google Ads).\nRIESGO: BAJO â aditivo, no reemplaza nada existente. Desactivar en 5 min si se quiere revertir.\nFECHA DE EVALUACIÃN: +14 dÃ­as â medir CTR anuncios en Search antes/despuÃ©s en Google Ads.",
-    "estado": "completada",
-    "aprobado": "2026-11-05T17:15:24.933Z",
-    "completado": "2026-11-05",
-    "presentado": true
+    "estado": "rechazada",
+    "aprobado": "2026-11-05T17:15:24.933Z"
   },
   {
     "id": "uxui::1793899310067",
@@ -146,10 +140,8 @@
     "what": "Paso 0: auditar FAB del carrito en celular â posible ocultamiento tras el header sticky",
     "why": "CÃ³digo real de carrito-y-pago.html: #ppGC-fab estÃ¡ fijo a top:20px + right:28px. El .pp-header sticky mide 84px (mainbar) + 36px (topbar). En mobile, cuando el usuario tiene Ã­tems en el carrito, el botÃ³n flotante puede quedar detrÃ¡s del header, haciÃ©ndolo invisible o parcialmente tapado.",
     "ficha": "QUÃ: Revisar en polyplas.cl desde un iPhone (375px) si el botÃ³n #ppGC-fab del carrito es visible cuando hay productos agregados. Verificar si hay conflicto de z-index entre el FAB (z-index:10001) y el header (z-index:1000) â z-index mayor deberÃ­a funcionar, pero el posicionamiento top:20px puede solapar con el logo y bÃºsqueda.\n\nCÃDIGO ACTUAL (carrito-y-pago.html):\n  #ppGC-fab { position:fixed; top:20px; right:28px; z-index:10001; ... }\n\nCÃDIGO ACTUAL (site.css):\n  .pp-header { position:sticky; top:calc(-1 * var(--pp-topbar-h)); } /* -36px */\n  .pp-mainbar__in { height:84px; }\n\nEN MOBILE: el topbar (36px) se oculta al hacer scroll (sticky top:-36px), pero la mainbar (84px) queda pegada arriba desde la posiciÃ³n 0. El FAB a top:20px quedarÃ­a a 20px del top del viewport, es decir, DENTRO de la mainbar de 84px. El usuario no lo ve.\n\nFIX PROPUESTO (si se confirma el bug):\n  #ppGC-fab { top: calc(var(--pp-header-h, 84px) + 12px); }\n  O ajustar a: top: 96px; en mobile.\n\nImpacto: cada usuario que agrega al carrito y no ve el botÃ³n para ir al checkout puede abandonar sin saberlo.\nConfianza: Media hasta confirmar con pantalla real â z-index 10001 es correcto, el riesgo es el posicionamiento top.\nEsfuerzo confirmado: 2 lÃ­neas de CSS. Esfuerzo auditorÃ­a: 30 min.\nRiesgo: BAJO â solo un atributo CSS top. Reversible en 5 min.",
-    "estado": "completada",
-    "aprobado": "2026-11-05T17:21:50.067Z",
-    "completado": "2026-11-05",
-    "presentado": true
+    "estado": "rechazada",
+    "aprobado": "2026-11-05T17:21:50.067Z"
   },
   {
     "id": "seo::1793917050737",
