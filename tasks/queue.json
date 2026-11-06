@@ -386,6 +386,15 @@
     "presentado": true
   },
   {
+    "id": "medicion::1794006000000",
+    "agente": "medicion",
+    "what": "Medir impacto de los 5 cambios UX del checkout (2026-11-06) en el funnel add_to_cart → begin_checkout",
+    "why": "El 2026-11-06 se implementaron 5 mejoras al flujo de compra: (1) precio del carrito visible en mobile, (2) header del modal con múltiples productos corregido, (3) toast de confirmación más largo con total del pedido, (4) aviso verde eliminado en comunas excluidas, (5) texto de factura simplificado. La baseline previa era 622 add_to_cart → 454 begin_checkout (27% abandono). Medición debe reportar si el embudo mejoró.",
+    "ficha": "QUÉ: Comparar el funnel add_to_cart → begin_checkout antes y después del 2026-11-06.\n\nARCHIVOS MODIFICADOS:\n- app/site.css (precio mobile)\n- content/modulos/00-flotantes/04-carrito-y-pago.html (modal header, aviso excluidas, factura)\n- content/modulos/04-planchas-acrilico/06-compra-planchas-de-acrilico-online-facil.html (toast)\n\nMÉTRICAS A MEDIR (en GA4):\n1. add_to_cart → begin_checkout: baseline 622→454 (73%). Objetivo: superar 78%.\n2. begin_checkout → purchase: revisar si también mejoró (reducción fricción en modal).\n3. Verificar con ?pp_debug=1 que el toast de planchas no rompió ningún evento en el funnel.\n4. Si hay datos de sesiones mobile disponibles: comparar engagement (time on page, clicks al carrito) antes/después del 2026-11-06.\n\nFECHAS:\n- Reporte a 14 días: 2026-11-20\n- Reporte a 28 días: 2026-12-04\n\nENTREGA: tabla con métricas antes/después por etapa del embudo. Veredicto: ¿funcionó? Sí / No / No concluyente (mínimo 100 eventos para ser concluyente).\n\nADEMÁS: verificar que el nuevo listener ppGCCartUpdate en el archivo de planchas no creó eventos duplicados en el dataLayer.",
+    "estado": "propuesta",
+    "aprobado": null
+  },
+  {
     "id": "ads::1793919869176",
     "agente": "ads",
     "what": "Revisar informe de tÃ©rminos de bÃºsqueda y proponer reasignaciÃ³n de presupuesto hacia cÃºpulas y planchas alta intenciÃ³n",
