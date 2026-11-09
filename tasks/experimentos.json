@@ -15,8 +15,16 @@
       "https://polyplas.cl/producto-casco-tina-queilen/"
     ],
     "url_muestra": "https://polyplas.cl/tina-hidromasaje-queilen/",
-    "metrica_primaria": { "tipo": "pagespeed", "indicador": "CLS", "objetivo": "< 0.1" },
-    "metrica_secundaria": { "tipo": "gsc", "indicador": "CTR", "objetivo": "> actual" },
+    "metrica_primaria": {
+      "tipo": "pagespeed",
+      "indicador": "CLS",
+      "objetivo": "< 0.1"
+    },
+    "metrica_secundaria": {
+      "tipo": "gsc",
+      "indicador": "CTR",
+      "objetivo": "> actual"
+    },
     "baseline": {
       "fecha": "2026-11-04",
       "herramienta": "lighthouse-cli",
@@ -44,8 +52,17 @@
       "https://polyplas.cl/categoria-producto/planchas-acrilico/"
     ],
     "url_muestra": "https://polyplas.cl/categoria-producto/planchas-acrilico/",
-    "metrica_primaria": { "tipo": "gsc", "indicador": "CTR", "objetivo": "> 2.0%", "baseline_valor": "1.4%" },
-    "metrica_secundaria": { "tipo": "gsc", "indicador": "clics", "objetivo": "> 326 (clics últimos 3 meses)" },
+    "metrica_primaria": {
+      "tipo": "gsc",
+      "indicador": "CTR",
+      "objetivo": "> 2.0%",
+      "baseline_valor": "1.4%"
+    },
+    "metrica_secundaria": {
+      "tipo": "gsc",
+      "indicador": "clics",
+      "objetivo": "> 326 (clics últimos 3 meses)"
+    },
     "control_url": "/guia-de-acrilicos/",
     "baseline": {
       "fecha": "2026-11-03",
@@ -60,6 +77,174 @@
     },
     "aplicado": "2026-11-04",
     "revisar_en": "2026-11-18",
+    "revisiones": [],
+    "estado": "pendiente"
+  },
+  {
+    "id": "exp-003",
+    "tarea_id": "ads::recurso-precios-generica",
+    "agente": "ads",
+    "cambio": "Recurso de precios en Campaña acrílico - Genérica: AA Transparente desde $28.322, PA Virgen desde $38.913, AA Colores desde $29.619, con enlaces filtrados",
+    "hipotesis": "Mostrar el precio antes del clic atrae a quien quiere comprar y filtra al curioso: suben las compras Webpay sin subir el costo por conversión",
+    "urls": [
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/?material=AA&color=clear",
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/?material=PA",
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/?material=AA"
+    ],
+    "metrica_primaria": {
+      "tipo": "google-ads",
+      "indicador": "compras Webpay de la campaña (30 días)",
+      "objetivo": "> 9",
+      "baseline_valor": "9"
+    },
+    "metrica_secundaria": {
+      "tipo": "google-ads",
+      "indicador": "clics e interacciones del recurso de precios; costo por conversión",
+      "objetivo": "costo/conv <= $10.998"
+    },
+    "reinicia_aprendizaje": "No",
+    "baseline": {
+      "fecha": "2026-11-06",
+      "herramienta": "google-ads-manual",
+      "nota": "Campaña acrílico - Genérica, últimos 30 días (8 oct - 6 nov 2026), antes de los cambios.",
+      "metricas": {
+        "costo_clp": 1688241,
+        "clics": 3093,
+        "impresiones": 17135,
+        "ctr": 0.1805,
+        "conversiones": 153.5,
+        "costo_por_conv_clp": 10998,
+        "compras_webpay": 9,
+        "valor_compras_clp": 775613,
+        "pct_impr_perdidas_presupuesto": 0.1711
+      }
+    },
+    "aplicado": "2026-11-07",
+    "revisar_en": "2026-11-21",
+    "revisar_final": "2026-12-07",
+    "revisiones": [],
+    "estado": "pendiente"
+  },
+  {
+    "id": "exp-004",
+    "tarea_id": "ads::sitelinks-compra-online",
+    "agente": "ads",
+    "cambio": "4 enlaces a sitio de campaña: Acrílico Transparente, Acrílico PA 100% Virgen, Acrílico 3 mm (categoría filtrada) y Acrílico a Medida (/acrilico-a-medida/)",
+    "hipotesis": "Llevar al cliente directo a la plancha filtrada o al cotizador acorta el camino a la compra: más compras Webpay con el mismo presupuesto",
+    "urls": [
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/?material=AA&color=clear",
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/?material=PA",
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/?material=todos&espesor=3mm",
+      "https://polyplas.cl/acrilico-a-medida/"
+    ],
+    "metrica_primaria": {
+      "tipo": "google-ads",
+      "indicador": "compras Webpay de la campaña (30 días)",
+      "objetivo": "> 9",
+      "baseline_valor": "9"
+    },
+    "metrica_secundaria": {
+      "tipo": "google-ads",
+      "indicador": "clics por enlace a sitio y CTR de la campaña",
+      "objetivo": "CTR >= 18%"
+    },
+    "reinicia_aprendizaje": "No (los recursos no son disparador según Google)",
+    "baseline": {
+      "fecha": "2026-11-06",
+      "herramienta": "google-ads-manual",
+      "nota": "Campaña acrílico - Genérica, últimos 30 días (8 oct - 6 nov 2026), antes de los cambios.",
+      "metricas": {
+        "costo_clp": 1688241,
+        "clics": 3093,
+        "impresiones": 17135,
+        "ctr": 0.1805,
+        "conversiones": 153.5,
+        "costo_por_conv_clp": 10998,
+        "compras_webpay": 9,
+        "valor_compras_clp": 775613,
+        "pct_impr_perdidas_presupuesto": 0.1711
+      }
+    },
+    "aplicado": "2026-11-09",
+    "revisar_en": "2026-11-23",
+    "revisar_final": "2026-12-09",
+    "revisiones": [],
+    "estado": "pendiente"
+  },
+  {
+    "id": "exp-005",
+    "tarea_id": "ads::rsa-compra-online",
+    "agente": "ads",
+    "cambio": "Segundo anuncio de búsqueda responsivo en [Acrílico Generico] con mensajes de compra online (Webpay, precio con IVA, retiro, corte gratis). El anuncio original no se tocó",
+    "hipotesis": "Un anuncio con mensaje de compra directa trae más compras Webpay por clic que el anuncio actual, sin bajar el CTR de forma relevante",
+    "urls": [
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/"
+    ],
+    "metrica_primaria": {
+      "tipo": "google-ads",
+      "indicador": "compras Webpay por anuncio y tasa de conversión",
+      "objetivo": "nuevo >= original"
+    },
+    "metrica_secundaria": {
+      "tipo": "google-ads",
+      "indicador": "CTR por anuncio",
+      "objetivo": "nuevo no más de 20% bajo el original (regla de pausa a los 7 días)",
+      "baseline_valor": "18.05% (anuncio original, 30 días)"
+    },
+    "reinicia_aprendizaje": "No (anuncios nuevos no son disparador según Google)",
+    "baseline": {
+      "fecha": "2026-11-06",
+      "herramienta": "google-ads-manual",
+      "nota": "Campaña acrílico - Genérica, últimos 30 días (8 oct - 6 nov 2026), antes de los cambios.",
+      "metricas": {
+        "costo_clp": 1688241,
+        "clics": 3093,
+        "impresiones": 17135,
+        "ctr": 0.1805,
+        "conversiones": 153.5,
+        "costo_por_conv_clp": 10998,
+        "compras_webpay": 9,
+        "valor_compras_clp": 775613,
+        "pct_impr_perdidas_presupuesto": 0.1711
+      }
+    },
+    "aplicado": "2026-11-09",
+    "revisar_en": "2026-11-16",
+    "revisar_final": "2026-12-09",
+    "revisiones": [],
+    "estado": "pendiente"
+  },
+  {
+    "id": "exp-006",
+    "tarea_id": "cro::checkout-paso3-paso4-nov06",
+    "agente": "cro",
+    "cambio": "Mejoras del checkout del 6 de noviembre (paso 3 rediseñado, región y comuna primero, RUT, despacho) + nombre del paso 4 visible en celular (7 nov)",
+    "hipotesis": "Un checkout más claro reduce el abandono entre agregar al carro y pagar",
+    "urls": [
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/"
+    ],
+    "metrica_primaria": {
+      "tipo": "ga4",
+      "indicador": "abandono add_to_cart -> begin_checkout -> purchase",
+      "objetivo": "< 27% de abandono antes del checkout",
+      "baseline_valor": "622 add_to_cart / 454 begin_checkout (27% abandono, 28 días)"
+    },
+    "metrica_secundaria": {
+      "tipo": "google-ads",
+      "indicador": "compras Webpay 2 semanas antes vs 2 semanas después",
+      "objetivo": "sube"
+    },
+    "baseline": {
+      "fecha": "2026-11-03",
+      "herramienta": "ga4-manual",
+      "nota": "Dato de GA4 del panel CRO, 28 días antes del cambio.",
+      "metricas": {
+        "add_to_cart": 622,
+        "begin_checkout": 454
+      }
+    },
+    "aplicado": "2026-11-06",
+    "revisar_en": "2026-11-20",
     "revisiones": [],
     "estado": "pendiente"
   }
