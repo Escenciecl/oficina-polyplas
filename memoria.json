@@ -1,34 +1,51 @@
 {
-  "actualizado": "2026-11-03",
+  "actualizado": "2026-11-10",
   "sesionAnterior": {
-    "fecha": "2026-11-03",
-    "titulo": "Cierre 2026-11-03",
-    "url": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/40435713",
-    "resumen": "Se resolvieron 4 tareas aprobadas en la sala de revisión: 3 arreglos de tracking en GA4 y 1 mejora de SEO. Todo publicado en producción.",
+    "fecha": "2026-11-06",
+    "titulo": "Semana 4-6 nov 2026",
+    "resumen": "Semana de alta productividad. Se ejecutaron 14 tareas aprobadas: mejoras UX al checkout y carrito, fixes de tracking en GTM, cambios SEO en tinas/planchas/cascos/receptáculos, activación del canal Social (Instagram), y CTA B2B en cascos.",
     "aprobadas": [
-      {"agente": "uxui", "que": "WhatsApp: el chat ahora registra en GA4 desde qué producto o página escribe cada usuario", "estado": "Publicado"},
-      {"agente": "med", "que": "Corregido el evento purchase que llegaba con value=$0 en GA4", "estado": "Publicado"},
-      {"agente": "med", "que": "Las ventas por transferencia ahora disparan purchase en GA4", "estado": "Publicado"},
-      {"agente": "seo", "que": "Nuevo title y meta description de /tinas-de-hidromasaje/ para subir el CTR", "estado": "Publicado"}
-    ],
-    "trabajado": [
-      "Tatis creó la página Cierre 2026-11-03 en Confluence",
-      "3 agentes verificaron el código publicado: tracking GA4, SEO y WhatsApp OK",
-      "Oficina virtual: nuevo diseño realista, avatares y marca Polyplas"
+      {"agente": "uxui", "que": "loading=eager en imágenes principales de 7 fichas de tinas y cascos", "estado": "Publicado"},
+      {"agente": "uxui", "que": "Total del carrito visible en header (desktop y mobile)", "estado": "Publicado"},
+      {"agente": "intel", "que": "Badge 'Retiro hoy · Despacho gratis RM' en fichas de PET y PETG", "estado": "Publicado"},
+      {"agente": "cro", "que": "Columna Disponibilidad en tabla comparativa de tinas", "estado": "Publicado"},
+      {"agente": "seo", "que": "Title + meta en 5 fichas individuales de tinas (jets, retiro hoy)", "estado": "Publicado"},
+      {"agente": "cro", "que": "Auditoría cotizador de planchas a medida completada", "estado": "Publicado"},
+      {"agente": "seo", "que": "Title + meta de /planchas-acrilico/ (transparente, a medida)", "estado": "Publicado"},
+      {"agente": "seo", "que": "Enlace interno tinas → cascos para acelerar reindexación", "estado": "Publicado"},
+      {"agente": "seo", "que": "Title + meta de /receptaculos-de-ducha-instalacion/", "estado": "Publicado"},
+      {"agente": "cro", "que": "CTA WhatsApp 'Cotizar 2+ unidades con factura' en cascos", "estado": "Publicado"},
+      {"agente": "social", "que": "Copy y calendario Instagram diciembre 2026 entregados", "estado": "Publicado (pendiente publicar en Instagram)"},
+      {"agente": "uxui", "que": "5 fixes UX checkout: precio mobile, modal multi-producto, toast, aviso excluidas, texto factura", "estado": "Publicado"},
+      {"agente": "uxui", "que": "Tracking conf_cortes_(iguales/distintos/ninguno) en GTM v146", "estado": "Publicado"},
+      {"agente": "uxui", "que": "Tracking conf_elegir_opcion + conf_reco_modo + conf_continuar_recomendada en GTM v147", "estado": "Publicado"}
     ],
     "pendientes": [
-      "Verificar GA4_API_SECRET en Cloudflare (sin ella las transferencias no llegan a GA4)",
-      "Hacer un pedido de prueba por transferencia y revisarlo en GA4 DebugView",
-      "Medir el CTR de tinas en GSC en 4 a 6 semanas (meta: de 1,1% a 2,5%)",
-      "Seguir con la sala de revisión: quedan ~15 propuestas"
+      "Revisar exp-001 y exp-002 en GSC el 2026-11-18 (CTR tinas y planchas post-cambios)",
+      "Reunión 2026-11-13: hipótesis conf_volver alto → cajas de selección de plancha (Medición + UX/UI + Natalia)",
+      "Aprobar conf_cortes_ninguno (task uxui::1794010000000) — pendiente desde nov 03",
+      "Publicar primer post Instagram (copy ya entregado)",
+      "Verificar GA4_API_SECRET en Cloudflare para transferencias",
+      "Revisar informe términos de búsqueda en Google Ads (pendiente jefe)"
     ]
   },
   "propuestas": {
-    "Diagnosticar y corregir el evento purchase que llega con value=$0 en GA4": "hecha",
-    "Verificar y corregir que transferencias confirmadas disparen el evento purchase": "hecha",
-    "Agregar parámetro de producto de origen a click_asistencia_flotante (WhatsApp)": "hecha",
-    "Crear página \"Cierre 2026-11-03\" en Confluence con los reportes de hoy": "hecha",
-    "Verificar y corregir el evento purchase en GA4 (Paso 0)": "hecha",
-    "Optimizar title + meta de /categoria-producto/tinas-de-hidromasaje/": "hecha"
+    "loading=eager en imágenes de fichas de tinas": "hecha",
+    "Total del carrito visible en header": "hecha",
+    "Badge Retiro hoy en PET y PETG": "hecha",
+    "Tabla comparativa tinas + columna Disponibilidad": "hecha",
+    "Title + meta fichas individuales tinas": "hecha",
+    "Title + meta /planchas-acrilico/": "hecha",
+    "Enlace interno tinas → cascos": "hecha",
+    "Title + meta /receptaculos-de-ducha-instalacion/": "hecha",
+    "CTA B2B cascos WhatsApp": "hecha",
+    "Copy y calendario Instagram diciembre": "hecha",
+    "5 fixes UX checkout 2026-11-06": "hecha",
+    "Tracking conf_cortes GTM v146": "hecha",
+    "Tracking conf_elegir_opcion GTM v147": "hecha",
+    "Ficha técnica completa tinas": "rechazada",
+    "Términos negativos urgentes Google Ads": "rechazada",
+    "Extensiones anuncio retiro hoy": "rechazada",
+    "Auditoría FAB carrito mobile": "rechazada"
   }
 }
