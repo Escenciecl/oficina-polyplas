@@ -323,5 +323,48 @@
     "revisar_final": "2027-03-07",
     "revisiones": [],
     "estado": "pendiente"
+  },
+  {
+    "id": "exp-008",
+    "tarea_id": "ads::recursos-stock-espesores",
+    "agente": "ads",
+    "cambio": "Recursos de campaña para empujar planchas gruesas en stock: precio (5 mm desde $66.640, 6 mm desde $78.540, 8 mm desde $105.315, 10 mm desde $178.500), 3 enlaces a sitio (5 mm, 6 mm, 8 y 10 mm) y 2 textos destacados (Stock 5, 6, 8 y 10 mm / Planchas Gruesas en Stock)",
+    "hipotesis": "La semana 2-6 nov faltaron ventas grandes de acrílico (5 de más de $300.000 vs 11 en 1-9 oct; ticket -23%). Mostrar que hay stock de espesores gruesos y su precio trae más ventas de ticket alto",
+    "urls": [
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/?material=todos&espesor=5mm",
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/?material=todos&espesor=6mm",
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/?material=todos&espesor=8mm",
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/?material=todos&espesor=10mm"
+    ],
+    "metrica_primaria": {
+      "tipo": "supabase",
+      "indicador": "venta acrílico por día hábil y ventas de más de $300.000",
+      "objetivo": "> $841.000/día y > 1 venta grande/día",
+      "baseline_valor": "2-6 nov: $4.206.999 en 5 días hábiles, 30 ventas, 5 de más de $300.000, ticket $140.233"
+    },
+    "metrica_secundaria": {
+      "tipo": "google-ads",
+      "indicador": "clics de los nuevos recursos y conversiones de búsquedas con 5/6/8/10 mm",
+      "objetivo": "conv. de búsquedas gruesas > 1 por semana"
+    },
+    "reinicia_aprendizaje": "No (recursos no son disparador; no se tocó puja, conversiones, presupuesto, palabras clave ni grupos)",
+    "baseline": {
+      "fecha": "2026-11-09",
+      "herramienta": "supabase + google-ads-manual",
+      "nota": "Comparación 1-9 oct (7 días hábiles) vs 2-6 nov (5 días hábiles). No llegó más basura: 0% del gasto en términos irrelevantes en ambos períodos.",
+      "metricas": {
+        "venta_acril_oct_dia": 1298000,
+        "venta_acril_nov_dia": 841000,
+        "ventas_grandes_oct": 11,
+        "ventas_grandes_nov": 5,
+        "conv_busquedas_gruesas_oct": 4,
+        "conv_busquedas_gruesas_nov": 1
+      }
+    },
+    "aplicado": "2026-11-09",
+    "revisar_en": "2026-11-23",
+    "revisar_final": "2026-12-09",
+    "revisiones": [],
+    "estado": "pendiente"
   }
 ]
