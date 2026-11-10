@@ -206,10 +206,12 @@
     "what": "Auditar y reducir fricciÃÂÃÂ³n en el cotizador de planchas a medida ÃÂ¢ÃÂÃÂ es el primer paso del embudo de mayor volumen",
     "why": "Planchas es la categorÃÂÃÂ­a de mayor trÃÂÃÂ¡fico orgÃÂÃÂ¡nico (8.525 impresiones). El cotizador de planchas a medida es probablemente donde mÃÂÃÂ¡s se pierden clientes antes del checkout. Si logramos subir la conversiÃÂÃÂ³n general de 1,11% a 1,4% en Mes 1, el cotizador es el lever mÃÂÃÂ¡s directo ya que concentra el mayor volumen de sesiones.",
     "ficha": "QUÃÂÃÂ: Recorrer el cotizador de planchas a medida (escritorio + celular) y documentar cada punto de fricciÃÂÃÂ³n:\n1. ÃÂÃÂ¿CuÃÂÃÂ¡ntos pasos tiene hasta llegar al carrito?\n2. ÃÂÃÂ¿El usuario sabe el precio antes de agregar al carrito?\n3. ÃÂÃÂ¿Se puede usar sin registrarse?\n4. ÃÂÃÂ¿Hay mensajes de error confusos?\n5. ÃÂÃÂ¿El botÃÂÃÂ³n de acciÃÂÃÂ³n final es visible en mobile?\n\nLuego en GA4: revisar el funnel cotizador ÃÂ¢ÃÂÃÂ add_to_cart ÃÂ¢ÃÂÃÂ begin_checkout para ver en quÃÂÃÂ© paso se cae mÃÂÃÂ¡s gente.\n\nIMPACTO: El cotizador es el motor principal de ventas. Bajar 1 paso del flujo o hacer el precio mÃÂÃÂ¡s visible puede mover la conversiÃÂÃÂ³n general del sitio en 0,2-0,3 pp.\nCONFIANZA: Alta en que hay fricciÃÂÃÂ³n (1,11% conversiÃÂÃÂ³n es baja para e-commerce con ticket alto).\nESFUERZO: 2 horas para auditar + proponer fixes especÃÂÃÂ­ficos en prÃÂÃÂ³xima sesiÃÂÃÂ³n.\nMEDICIÃÂÃÂN: conversiÃÂÃÂ³n general GA4 antes/despuÃÂÃÂ©s.",
-    "estado": "aprobada",
+    "estado": "completada",
     "aprobado": "2026-11-10T13:51:00Z",
     "nota_tatis": "2026-11-10: Duplicado de cro::1793918458290, que figura completada el 05-nov pero sin resultado ni registro. Se mantiene abierta porque no hay evidencia de la auditorÃ­a.",
-    "alcance_jefa": "Aprobada el 2026-11-10 con alcance ampliado: además del embudo del cotizador, revisar por qué bajaron las ventas grandes (>$300.000) y los cierres por WhatsApp de acrílico. Separar datos antes/después de los cambios del 6 y 9 de noviembre."
+    "alcance_jefa": "Aprobada el 2026-11-10 con alcance ampliado: además del embudo del cotizador, revisar por qué bajaron las ventas grandes (>$300.000) y los cierres por WhatsApp de acrílico. Separar datos antes/después de los cambios del 6 y 9 de noviembre.",
+    "completado": "2026-11-10T14:05:00Z",
+    "resultado": "Auditoría entregada en agentes/cro/AUDITORIA_COTIZADOR_2026-11-10.md. Hallazgo principal: la venta web de acrílico subió (sem. 2 nov: 8 órdenes, $871.442, +46% vs promedio); la caída está en mesón (-46% vs oct) y WhatsApp (-85%). 247 de 266 leads de WhatsApp de acrílico sin resultado registrado. El embudo por paso en GA4 quedó pendiente por falta de acceso. Salen 6 propuestas nuevas."
   },
   {
     "id": "cro::1793917050741",
@@ -440,5 +442,71 @@
       "despues": "Pendiente revision en Google Ads por jefe"
     },
     "presentado": true
+  },
+  {
+    "id": "medicion::1794318971907",
+    "agente": "medicion",
+    "meta8m": "Mes 1 — Conversión 1,11% → 1,4%",
+    "pilar": "Auditoría cotizador 2026-11-10",
+    "what": "Registrar el resultado de cada lead de WhatsApp (venta sí/no, monto y motivo si no compró)",
+    "why": "93% de los leads de WhatsApp de acrílico (247 de 266 desde el 1 sep) no tiene resultado registrado y 74% vienen de Google Ads. Sin esto no se puede explicar la caída de WhatsApp (-85% sem. 2 nov vs prom. oct) ni subir ventas offline a Ads.",
+    "ficha": "Ver P1 en agentes/cro/AUDITORIA_COTIZADOR_2026-11-10.md. ESFUERZO: bajo (proceso). RIESGO: nulo.",
+    "estado": "propuesta",
+    "aprobado": null
+  },
+  {
+    "id": "cro::1794318971908",
+    "agente": "cro",
+    "meta8m": "Mes 1 — Conversión 1,11% → 1,4%",
+    "pilar": "Auditoría cotizador 2026-11-10",
+    "what": "Recontactar las solicitudes de cotización de acrílico sin cierre de las últimas 4 semanas",
+    "why": "50 personas pidieron cotización desde la página de acrílico desde el 1 sep y solo 1 figura como venta.",
+    "ficha": "Ver P2 en la auditoría. IMPACTO: conservador ~$618.000, esperado ~$1.236.000, optimista ~$2.472.000 (ticket WhatsApp ~$309.000). ESFUERZO: 2-3 h. RIESGO: bajo.",
+    "estado": "propuesta",
+    "aprobado": null
+  },
+  {
+    "id": "medicion::1794318971909",
+    "agente": "medicion",
+    "meta8m": "Mes 1 — Conversión 1,11% → 1,4%",
+    "pilar": "Auditoría cotizador 2026-11-10",
+    "what": "Embudo por paso del cotizador de planchas en GA4, antes y después del 6 y 9 nov, celular vs escritorio",
+    "why": "Parte de la auditoría que quedó sin datos: no hay acceso a GA4 desde la sesión.",
+    "ficha": "Ver P3 en la auditoría. REQUISITO: la jefa saca o exporta el informe desde su GA4; no se conectan herramientas externas (decisión 10 nov).",
+    "estado": "propuesta",
+    "aprobado": null
+  },
+  {
+    "id": "uxui::1794318971910",
+    "agente": "uxui",
+    "meta8m": "Mes 1 — Conversión 1,11% → 1,4%",
+    "pilar": "Auditoría cotizador 2026-11-10",
+    "what": "Verificar en qué paso se dispara conf_pedido en acrílico, PET, PETG y policarbonato",
+    "why": "En el stepper antiguo se dispara desde el paso de espesor, pero la documentación dice que es al llegar a Pedido. Puede inflar el embudo.",
+    "ficha": "Ver P4 en la auditoría. ESFUERZO: 30 min con ?pp_debug=1. RIESGO: bajo.",
+    "estado": "propuesta",
+    "aprobado": null
+  },
+  {
+    "id": "uxui::1794318971911",
+    "agente": "uxui",
+    "meta8m": "Mes 1 — Conversión 1,11% → 1,4%",
+    "pilar": "Auditoría cotizador 2026-11-10",
+    "what": "Inventariar y ordenar los parches del cotizador de planchas (deuda técnica)",
+    "why": "El archivo tiene 12.530 líneas, 7 observadores, 61 temporizadores y 654 !important, con dos numeraciones de pasos. Más de 10 arreglos en 7 días; cada cambio puede romper otro.",
+    "ficha": "Ver P5 en la auditoría. ESFUERZO: alto. RIESGO: medio. Después de P1-P4.",
+    "estado": "propuesta",
+    "aprobado": null
+  },
+  {
+    "id": "medicion::1794318971912",
+    "agente": "medicion",
+    "meta8m": "Mes 1 — Conversión 1,11% → 1,4%",
+    "pilar": "Auditoría cotizador 2026-11-10",
+    "what": "Diagnosticar por qué cada orden Webpay se guarda dos veces en Supabase",
+    "why": "198 filas para 115 órdenes distintas en conversations: los reportes de venta web sobre esa tabla salen inflados.",
+    "ficha": "Ver P6 en la auditoría. ESFUERZO: 1 h de diagnóstico. No tocar la base sin aprobación.",
+    "estado": "propuesta",
+    "aprobado": null
   }
 ]
