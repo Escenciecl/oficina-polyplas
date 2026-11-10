@@ -15,8 +15,16 @@
       "https://polyplas.cl/producto-casco-tina-queilen/"
     ],
     "url_muestra": "https://polyplas.cl/tina-hidromasaje-queilen/",
-    "metrica_primaria": { "tipo": "pagespeed", "indicador": "CLS", "objetivo": "< 0.1" },
-    "metrica_secundaria": { "tipo": "gsc", "indicador": "CTR", "objetivo": "> actual" },
+    "metrica_primaria": {
+      "tipo": "pagespeed",
+      "indicador": "CLS",
+      "objetivo": "< 0.1"
+    },
+    "metrica_secundaria": {
+      "tipo": "gsc",
+      "indicador": "CTR",
+      "objetivo": "> actual"
+    },
     "baseline": {
       "fecha": "2026-11-04",
       "herramienta": "lighthouse-cli",
@@ -44,8 +52,17 @@
       "https://polyplas.cl/categoria-producto/planchas-acrilico/"
     ],
     "url_muestra": "https://polyplas.cl/categoria-producto/planchas-acrilico/",
-    "metrica_primaria": { "tipo": "gsc", "indicador": "CTR", "objetivo": "> 2.0%", "baseline_valor": "1.4%" },
-    "metrica_secundaria": { "tipo": "gsc", "indicador": "clics", "objetivo": "> 326 (clics últimos 3 meses)" },
+    "metrica_primaria": {
+      "tipo": "gsc",
+      "indicador": "CTR",
+      "objetivo": "> 2.0%",
+      "baseline_valor": "1.4%"
+    },
+    "metrica_secundaria": {
+      "tipo": "gsc",
+      "indicador": "clics",
+      "objetivo": "> 326 (clics últimos 3 meses)"
+    },
     "control_url": "/guia-de-acrilicos/",
     "baseline": {
       "fecha": "2026-11-03",
@@ -60,6 +77,293 @@
     },
     "aplicado": "2026-11-04",
     "revisar_en": "2026-11-18",
+    "revisiones": [],
+    "estado": "pendiente"
+  },
+  {
+    "id": "exp-003",
+    "tarea_id": "ads::recurso-precios-generica",
+    "agente": "ads",
+    "cambio": "Recurso de precios en Campaña acrílico - Genérica: AA Transparente desde $28.322, PA Virgen desde $38.913, AA Colores desde $29.619, con enlaces filtrados",
+    "hipotesis": "Mostrar el precio antes del clic atrae a quien quiere comprar y filtra al curioso: suben las compras Webpay sin subir el costo por conversión",
+    "urls": [
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/?material=AA&color=clear",
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/?material=PA",
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/?material=AA"
+    ],
+    "metrica_primaria": {
+      "tipo": "google-ads",
+      "indicador": "compras Webpay de la campaña (30 días)",
+      "objetivo": "> 9",
+      "baseline_valor": "9"
+    },
+    "metrica_secundaria": {
+      "tipo": "google-ads",
+      "indicador": "clics e interacciones del recurso de precios; costo por conversión",
+      "objetivo": "costo/conv <= $10.998"
+    },
+    "reinicia_aprendizaje": "No",
+    "baseline": {
+      "fecha": "2026-11-06",
+      "herramienta": "google-ads-manual",
+      "nota": "Campaña acrílico - Genérica, últimos 30 días (8 oct - 6 nov 2026), antes de los cambios.",
+      "metricas": {
+        "costo_clp": 1688241,
+        "clics": 3093,
+        "impresiones": 17135,
+        "ctr": 0.1805,
+        "conversiones": 153.5,
+        "costo_por_conv_clp": 10998,
+        "compras_webpay": 9,
+        "valor_compras_clp": 775613,
+        "pct_impr_perdidas_presupuesto": 0.1711
+      }
+    },
+    "aplicado": "2026-11-07",
+    "revisar_en": "2026-11-21",
+    "revisar_final": "2026-12-07",
+    "revisiones": [],
+    "estado": "pendiente"
+  },
+  {
+    "id": "exp-004",
+    "tarea_id": "ads::sitelinks-compra-online",
+    "agente": "ads",
+    "cambio": "4 enlaces a sitio de campaña: Acrílico Transparente, Acrílico PA 100% Virgen, Acrílico 3 mm (categoría filtrada) y Acrílico a Medida (/acrilico-a-medida/)",
+    "hipotesis": "Llevar al cliente directo a la plancha filtrada o al cotizador acorta el camino a la compra: más compras Webpay con el mismo presupuesto",
+    "urls": [
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/?material=AA&color=clear",
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/?material=PA",
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/?material=todos&espesor=3mm",
+      "https://polyplas.cl/acrilico-a-medida/"
+    ],
+    "metrica_primaria": {
+      "tipo": "google-ads",
+      "indicador": "compras Webpay de la campaña (30 días)",
+      "objetivo": "> 9",
+      "baseline_valor": "9"
+    },
+    "metrica_secundaria": {
+      "tipo": "google-ads",
+      "indicador": "clics por enlace a sitio y CTR de la campaña",
+      "objetivo": "CTR >= 18%"
+    },
+    "reinicia_aprendizaje": "No (los recursos no son disparador según Google)",
+    "baseline": {
+      "fecha": "2026-11-06",
+      "herramienta": "google-ads-manual",
+      "nota": "Campaña acrílico - Genérica, últimos 30 días (8 oct - 6 nov 2026), antes de los cambios.",
+      "metricas": {
+        "costo_clp": 1688241,
+        "clics": 3093,
+        "impresiones": 17135,
+        "ctr": 0.1805,
+        "conversiones": 153.5,
+        "costo_por_conv_clp": 10998,
+        "compras_webpay": 9,
+        "valor_compras_clp": 775613,
+        "pct_impr_perdidas_presupuesto": 0.1711
+      }
+    },
+    "aplicado": "2026-11-09",
+    "revisar_en": "2026-11-23",
+    "revisar_final": "2026-12-09",
+    "revisiones": [],
+    "estado": "pendiente"
+  },
+  {
+    "id": "exp-005",
+    "tarea_id": "ads::rsa-compra-online",
+    "agente": "ads",
+    "cambio": "Segundo anuncio de búsqueda responsivo en [Acrílico Generico] con mensajes de compra online (Webpay, precio con IVA, retiro, corte gratis). El anuncio original no se tocó",
+    "hipotesis": "Un anuncio con mensaje de compra directa trae más compras Webpay por clic que el anuncio actual, sin bajar el CTR de forma relevante",
+    "urls": [
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/"
+    ],
+    "metrica_primaria": {
+      "tipo": "google-ads",
+      "indicador": "compras Webpay por anuncio y tasa de conversión",
+      "objetivo": "nuevo >= original"
+    },
+    "metrica_secundaria": {
+      "tipo": "google-ads",
+      "indicador": "CTR por anuncio",
+      "objetivo": "nuevo no más de 20% bajo el original (regla de pausa a los 7 días)",
+      "baseline_valor": "18.05% (anuncio original, 30 días)"
+    },
+    "reinicia_aprendizaje": "No (anuncios nuevos no son disparador según Google)",
+    "baseline": {
+      "fecha": "2026-11-06",
+      "herramienta": "google-ads-manual",
+      "nota": "Campaña acrílico - Genérica, últimos 30 días (8 oct - 6 nov 2026), antes de los cambios.",
+      "metricas": {
+        "costo_clp": 1688241,
+        "clics": 3093,
+        "impresiones": 17135,
+        "ctr": 0.1805,
+        "conversiones": 153.5,
+        "costo_por_conv_clp": 10998,
+        "compras_webpay": 9,
+        "valor_compras_clp": 775613,
+        "pct_impr_perdidas_presupuesto": 0.1711
+      }
+    },
+    "aplicado": "2026-11-09",
+    "revisar_en": "2026-11-16",
+    "revisar_final": "2026-12-09",
+    "revisiones": [],
+    "estado": "pendiente"
+  },
+  {
+    "id": "exp-006",
+    "tarea_id": "cro::checkout-paso3-paso4-nov06",
+    "agente": "cro",
+    "cambio": "Mejoras del checkout del 6 de noviembre (paso 3 rediseñado, región y comuna primero, RUT, despacho) + nombre del paso 4 visible en celular (7 nov)",
+    "hipotesis": "Un checkout más claro reduce el abandono entre agregar al carro y pagar",
+    "urls": [
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/"
+    ],
+    "metrica_primaria": {
+      "tipo": "ga4",
+      "indicador": "abandono add_to_cart -> begin_checkout -> purchase",
+      "objetivo": "< 27% de abandono antes del checkout",
+      "baseline_valor": "622 add_to_cart / 454 begin_checkout (27% abandono, 28 días)"
+    },
+    "metrica_secundaria": {
+      "tipo": "google-ads",
+      "indicador": "compras Webpay 2 semanas antes vs 2 semanas después",
+      "objetivo": "sube"
+    },
+    "baseline": {
+      "fecha": "2026-11-03",
+      "herramienta": "ga4-manual",
+      "nota": "Dato de GA4 del panel CRO, 28 días antes del cambio.",
+      "metricas": {
+        "add_to_cart": 622,
+        "begin_checkout": 454
+      }
+    },
+    "aplicado": "2026-11-06",
+    "revisar_en": "2026-11-20",
+    "revisiones": [],
+    "estado": "pendiente"
+  },
+  {
+    "id": "exp-007",
+    "tarea_id": "ads::prueba-presupuesto-nov-2-1M",
+    "agente": "ads",
+    "cambio": "Prueba de presupuesto noviembre: total del mes ~$2.100.000. Paso 1: $57.000 -> $68.400/día (9-nov). Paso 2 propuesto: ~$81.200/día desde 16-nov",
+    "hipotesis": "Recuperar impresiones perdidas por presupuesto (17%) trae más clientes nuevos de planchas en la RM sin subir demasiado el costo por contacto",
+    "urls": [
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/"
+    ],
+    "metrica_primaria": {
+      "tipo": "planilla-seguimiento",
+      "indicador": "venta digital mensual sin IVA y clientes nuevos por semana",
+      "objetivo": "> $35,2M (oct) camino a $41M",
+      "baseline_valor": "$35,2M sin IVA, 166 clientes nuevos (oct)"
+    },
+    "metrica_secundaria": {
+      "tipo": "google-ads",
+      "indicador": "contactos, costo por contacto, % impresiones perdidas por presupuesto",
+      "objetivo": "perdidas por presupuesto < 10%, costo/contacto < $13.000"
+    },
+    "reinicia_aprendizaje": "No (cambios de presupuesto no activan aprendizaje según Google)",
+    "baseline": {
+      "fecha": "2026-11-09",
+      "herramienta": "google-ads-manual + planilla seguimiento",
+      "nota": "Gasto 1-9 nov: $402.593. 30 días previos: $1.688.241, 153,5 conv, $10.998/conv, 17,1% impr. perdidas por presupuesto. Inversión digital oct (planilla): $2.045.134.",
+      "metricas": {
+        "gasto_mtd_nov": 402593,
+        "presupuesto_dia_antes": 57000,
+        "presupuesto_dia_despues": 68400
+      }
+    },
+    "aplicado": "2026-11-09",
+    "revisar_en": "2026-11-16",
+    "revisar_final": "2026-12-07",
+    "revisiones": [],
+    "estado": "pendiente"
+  },
+  {
+    "id": "exp-009",
+    "tarea_id": "seo::meta-venta-organica-acrilico",
+    "agente": "seo",
+    "cambio": "Meta mensual de venta orgánica en planchas de acrílico (RM): ~$3,4M (oct) -> $5,5M sin IVA a feb-2027. Palancas: Google Maps, página /acrilico-transparente/, datos estructurados de producto en fichas",
+    "hipotesis": "Con presencia local y una página propia para 'acrílico transparente', los contactos orgánicos de acrílico suben de 112 a ~180 al mes",
+    "urls": [
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/"
+    ],
+    "metrica_primaria": {
+      "tipo": "planilla-leads",
+      "indicador": "contactos orgánicos de acrílico al mes (sin GCLID)",
+      "objetivo": "nov 120 · dic 135 · ene 155 · feb 180",
+      "baseline_valor": "112 (oct)"
+    },
+    "metrica_secundaria": {
+      "tipo": "estimacion",
+      "indicador": "venta orgánica = contactos x 13,6% x $221.700 sin IVA",
+      "objetivo": "nov $3,6M · dic $4,0M · ene $4,6M · feb $5,5M"
+    },
+    "baseline": {
+      "fecha": "2026-11-09",
+      "herramienta": "planilla Control Leads (Hoja 2) + panel SEO 3-nov",
+      "nota": "Sin GCLID incluye directo y referidos, no solo SEO. Cierre y ticket de abr-ago (cuando se marcaban ventas).",
+      "metricas": {
+        "contactos_organicos_acril_oct": 112,
+        "cierre": 0.136,
+        "ticket_sin_iva": 221700,
+        "posicion_planchas": 9.8,
+        "ctr_planchas": 0.014,
+        "ctr_acrilico_transparente": 0.004
+      }
+    },
+    "aplicado": "2026-11-09",
+    "revisar_en": "2026-12-07",
+    "revisar_final": "2027-03-07",
+    "revisiones": [],
+    "estado": "pendiente"
+  },
+  {
+    "id": "exp-008",
+    "tarea_id": "ads::recursos-stock-espesores",
+    "agente": "ads",
+    "cambio": "Recursos de campaña para empujar planchas gruesas en stock: precio (5 mm desde $66.640, 6 mm desde $78.540, 8 mm desde $105.315, 10 mm desde $178.500), 3 enlaces a sitio (5 mm, 6 mm, 8 y 10 mm) y 2 textos destacados (Stock 5, 6, 8 y 10 mm / Planchas Gruesas en Stock)",
+    "hipotesis": "La semana 2-6 nov faltaron ventas grandes de acrílico (5 de más de $300.000 vs 11 en 1-9 oct; ticket -23%). Mostrar que hay stock de espesores gruesos y su precio trae más ventas de ticket alto",
+    "urls": [
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/?material=todos&espesor=5mm",
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/?material=todos&espesor=6mm",
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/?material=todos&espesor=8mm",
+      "https://polyplas.cl/categoria-producto/planchas-acrilico/?material=todos&espesor=10mm"
+    ],
+    "metrica_primaria": {
+      "tipo": "supabase",
+      "indicador": "venta acrílico por día hábil y ventas de más de $300.000",
+      "objetivo": "> $841.000/día y > 1 venta grande/día",
+      "baseline_valor": "2-6 nov: $4.206.999 en 5 días hábiles, 30 ventas, 5 de más de $300.000, ticket $140.233"
+    },
+    "metrica_secundaria": {
+      "tipo": "google-ads",
+      "indicador": "clics de los nuevos recursos y conversiones de búsquedas con 5/6/8/10 mm",
+      "objetivo": "conv. de búsquedas gruesas > 1 por semana"
+    },
+    "reinicia_aprendizaje": "No (recursos no son disparador; no se tocó puja, conversiones, presupuesto, palabras clave ni grupos)",
+    "baseline": {
+      "fecha": "2026-11-09",
+      "herramienta": "supabase + google-ads-manual",
+      "nota": "Comparación 1-9 oct (7 días hábiles) vs 2-6 nov (5 días hábiles). No llegó más basura: 0% del gasto en términos irrelevantes en ambos períodos.",
+      "metricas": {
+        "venta_acril_oct_dia": 1298000,
+        "venta_acril_nov_dia": 841000,
+        "ventas_grandes_oct": 11,
+        "ventas_grandes_nov": 5,
+        "conv_busquedas_gruesas_oct": 4,
+        "conv_busquedas_gruesas_nov": 1
+      }
+    },
+    "aplicado": "2026-11-09",
+    "revisar_en": "2026-11-23",
+    "revisar_final": "2026-12-09",
     "revisiones": [],
     "estado": "pendiente"
   }

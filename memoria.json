@@ -1,51 +1,61 @@
 {
-  "actualizado": "2026-11-10",
+  "actualizado": "2026-11-09",
   "sesionAnterior": {
-    "fecha": "2026-11-06",
-    "titulo": "Semana 4-6 nov 2026",
-    "resumen": "Semana de alta productividad. Se ejecutaron 14 tareas aprobadas: mejoras UX al checkout y carrito, fixes de tracking en GTM, cambios SEO en tinas/planchas/cascos/receptáculos, activación del canal Social (Instagram), y CTA B2B en cascos.",
+    "fecha": "2026-11-09",
+    "titulo": "Cierre 2026-11-09",
+    "url": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/42205185",
+    "resumen": "Se investigó la caída de venta de acrílico del 2 al 6 de noviembre (unos $2,3M menos que en octubre, por menos ventas grandes y menos cierres por WhatsApp). Se publicaron recursos en Google Ads para planchas gruesas en stock sin tocar el aprendizaje, y se diseñaron 2 emails para los 103 compradores web de acrílico.",
     "aprobadas": [
-      {"agente": "uxui", "que": "loading=eager en imágenes principales de 7 fichas de tinas y cascos", "estado": "Publicado"},
-      {"agente": "uxui", "que": "Total del carrito visible en header (desktop y mobile)", "estado": "Publicado"},
-      {"agente": "intel", "que": "Badge 'Retiro hoy · Despacho gratis RM' en fichas de PET y PETG", "estado": "Publicado"},
-      {"agente": "cro", "que": "Columna Disponibilidad en tabla comparativa de tinas", "estado": "Publicado"},
-      {"agente": "seo", "que": "Title + meta en 5 fichas individuales de tinas (jets, retiro hoy)", "estado": "Publicado"},
-      {"agente": "cro", "que": "Auditoría cotizador de planchas a medida completada", "estado": "Publicado"},
-      {"agente": "seo", "que": "Title + meta de /planchas-acrilico/ (transparente, a medida)", "estado": "Publicado"},
-      {"agente": "seo", "que": "Enlace interno tinas → cascos para acelerar reindexación", "estado": "Publicado"},
-      {"agente": "seo", "que": "Title + meta de /receptaculos-de-ducha-instalacion/", "estado": "Publicado"},
-      {"agente": "cro", "que": "CTA WhatsApp 'Cotizar 2+ unidades con factura' en cascos", "estado": "Publicado"},
-      {"agente": "social", "que": "Copy y calendario Instagram diciembre 2026 entregados", "estado": "Publicado (pendiente publicar en Instagram)"},
-      {"agente": "uxui", "que": "5 fixes UX checkout: precio mobile, modal multi-producto, toast, aviso excluidas, texto factura", "estado": "Publicado"},
-      {"agente": "uxui", "que": "Tracking conf_cortes_(iguales/distintos/ninguno) en GTM v146", "estado": "Publicado"},
-      {"agente": "uxui", "que": "Tracking conf_elegir_opcion + conf_reco_modo + conf_continuar_recomendada en GTM v147", "estado": "Publicado"}
+      {
+        "agente": "ads",
+        "que": "exp-008: recursos de precio, enlaces y textos destacados para planchas de 5, 6, 8 y 10 mm en stock, más el texto \"Envío Gratis RM $350.000+\"",
+        "estado": "En revisión de Google"
+      },
+      {
+        "agente": "email",
+        "que": "Tabla de reemplazos de stock AA/PA para el chat, entregada a CRO",
+        "estado": "Publicado"
+      },
+      {
+        "agente": "social",
+        "que": "Rol ampliado a email marketing en Brevo, con lectura de Supabase solo de ventas web y stock",
+        "estado": "Publicado"
+      },
+      {
+        "agente": "social",
+        "que": "2 emails HTML: \"La plancha que más rinde\" (11 nov) y \"Envío gratis desde $350.000\" (13 nov), con UTM por bloque",
+        "estado": "Listos, por enviar"
+      }
+    ],
+    "trabajado": [
+      "Planilla de seguimiento semanal completada hasta la semana del 2 de noviembre",
+      "Diagnóstico con Supabase: no llegó más basura y los chats se mantuvieron estables",
+      "Error corregido: la hipótesis de falta de stock grueso era falsa (faltaban solo algunas medidas) y se retiraron las negativas antes de aplicarlas",
+      "Excel con 103 correos de compradores web de acrílico entregado a la jefa",
+      "Tatis documentó el cierre en Confluence y actualizó Cambios Implementados"
     ],
     "pendientes": [
-      "Revisar exp-001 y exp-002 en GSC el 2026-11-18 (CTR tinas y planchas post-cambios)",
-      "Reunión 2026-11-13: hipótesis conf_volver alto → cajas de selección de plancha (Medición + UX/UI + Natalia)",
-      "Aprobar conf_cortes_ninguno (task uxui::1794010000000) — pendiente desde nov 03",
-      "Publicar primer post Instagram (copy ya entregado)",
-      "Verificar GA4_API_SECRET en Cloudflare para transferencias",
-      "Revisar informe términos de búsqueda en Google Ads (pendiente jefe)"
+      "Enviar email 1 (11 nov) y email 2 (13 nov) en Brevo; medir a 7 días con utm_source=brevo",
+      "Subir a Google Ads las ventas offline desde el 22 de octubre",
+      "Corregir dirección a \"Santiago Concha 1525\" en los ROL.md de PM Social, PM Planchas, PM Cúpulas y PM Baños",
+      "Revisar exp-005 y exp-007 el 16 nov; exp-004 y exp-008 el 23 nov",
+      "Propuesta CRO/UX: guardar la UTM en cada orden Webpay",
+      "Por aprobar: usuario de solo lectura en Supabase para el PM Social",
+      "Avisar a PM Planchas y Ads cuando llegue reposición de PA transparente 5 y 6 mm",
+      "Paso 0 de Ads: auditar qué cuenta como conversión"
     ]
   },
   "propuestas": {
-    "loading=eager en imágenes de fichas de tinas": "hecha",
-    "Total del carrito visible en header": "hecha",
-    "Badge Retiro hoy en PET y PETG": "hecha",
-    "Tabla comparativa tinas + columna Disponibilidad": "hecha",
-    "Title + meta fichas individuales tinas": "hecha",
-    "Title + meta /planchas-acrilico/": "hecha",
-    "Enlace interno tinas → cascos": "hecha",
-    "Title + meta /receptaculos-de-ducha-instalacion/": "hecha",
-    "CTA B2B cascos WhatsApp": "hecha",
-    "Copy y calendario Instagram diciembre": "hecha",
-    "5 fixes UX checkout 2026-11-06": "hecha",
-    "Tracking conf_cortes GTM v146": "hecha",
-    "Tracking conf_elegir_opcion GTM v147": "hecha",
-    "Ficha técnica completa tinas": "rechazada",
-    "Términos negativos urgentes Google Ads": "rechazada",
-    "Extensiones anuncio retiro hoy": "rechazada",
-    "Auditoría FAB carrito mobile": "rechazada"
+    "Diagnosticar y corregir el evento purchase que llega con value=$0 en GA4": "hecha",
+    "Verificar y corregir que transferencias confirmadas disparen el evento purchase": "hecha",
+    "Agregar parámetro de producto de origen a click_asistencia_flotante (WhatsApp)": "hecha",
+    "Crear página \"Cierre 2026-11-03\" en Confluence con los reportes de hoy": "hecha",
+    "Verificar y corregir el evento purchase en GA4 (Paso 0)": "hecha",
+    "Optimizar title + meta de /categoria-producto/tinas-de-hidromasaje/": "hecha",
+    "Recursos en Google Ads para planchas gruesas en stock (exp-008)": "hecha",
+    "Tabla de reemplazos de stock AA/PA para el chat": "hecha",
+    "Ampliar rol PM Social a email marketing (Brevo)": "hecha",
+    "2 emails HTML para la base de compradores web de acrílico": "hecha",
+    "Negativas temporales para 5, 6 y 8 mm": "rechazada"
   }
 }
