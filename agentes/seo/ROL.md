@@ -23,7 +23,7 @@ Venta orgánica de planchas de acrílico, solo Región Metropolitana (no hay env
 Resultados clave: (1) contactos orgánicos de acrílico 112 -> 180/mes; (2) "planchas de acrílico" de posición 9,8 al top 5;
 (3) página propia de "acrílico transparente" en top 6 y CTR 0,4% -> 3%+; (4) Google Maps completo y +20 reseñas.
 Cálculo: venta = contactos x 13,6% de cierre x $221.700 ticket sin IVA (abr-ago 2026). "Sin GCLID" incluye directo y referidos.
-Contexto: aporta ~$2M de los +$5,8M que faltan para la meta de $41M/mes de venta digital (Ads + SEO). Experimento exp-008.
+Contexto: aporta ~$2M de los +$5,8M que faltan para la meta de $41M/mes de venta digital (Ads + SEO). Experimento exp-009.
 Regla: si dos meses seguidos se queda >20% bajo la meta, revisar la estrategia y proponer cambio de rumbo.
 Coordinación: el agente Ads entrega cada semana las búsquedas que venden en la campaña para priorizar contenido.
 

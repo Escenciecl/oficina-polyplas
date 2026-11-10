@@ -5,8 +5,10 @@
     "what": "Agregar tracking a selectCorteOption â capturar elecciÃ³n 'iguales', 'distintos' y 'ninguno' en el recomendador de cortes",
     "why": "MediciÃ³n revisÃ³ GA4 (junâoct 2026): conf_cortes_iguales (81 eventos) y conf_cortes_distintos (39) ya existen, pero falta conf_cortes_ninguno cuando el usuario elige 'sin corte'. AdemÃ¡s, el evento existente no captura cambios de opiniÃ³n (distintos â iguales). Con los 3 casos cubiertos, en 2 semanas tenemos el embudo completo del recomendador.",
     "ficha": "QUÃ: En la funciÃ³n selectCorteOption (lÃ­nea 6541 de content/modulos/04-planchas-acrilico/06-compra-planchas-de-acrilico-online-facil.html), agregar al FINAL de la funciÃ³n â despuÃ©s de updatePrice() y antes del if(opt==='none') â la siguiente lÃ­nea:\n\n  window.ppPaso && window.ppPaso('conf_cortes_' + (opt === 'none' ? 'ninguno' : opt), 'acrilico', window._ppState || {});\n\nEso dispara:\n  conf_cortes_iguales   â cuando elige cortes iguales (ya existÃ­a, ahora mÃ¡s robusto)\n  conf_cortes_distintos â cuando elige cortes distintos (ya existÃ­a, ahora mÃ¡s robusto)\n  conf_cortes_ninguno   â cuando elige sin corte (NUEVO â faltaba)\n\nADEMÃS: ppPaso tiene deduplicaciÃ³n por clave (evento|linea|item_id). Para que capture cambios de opiniÃ³n (iguales â distintos), hay que llamarlo sin la restricciÃ³n de pasosHechos. Revisar si se debe usar window.dataLayer.push directamente en lugar de ppPaso, o limpiar la clave antes de cada llamada. Consultar con MediciÃ³n antes de implementar.\n\nARCHIVO: content/modulos/04-planchas-acrilico/06-compra-planchas-de-acrilico-online-facil.html\nLÃNEA DE INSERCIÃN: despuÃ©s de lÃ­nea 6586 (updatePrice())\n\nRIESGO: BAJO â solo agrega un evento al dataLayer. No toca lÃ³gica de precios ni flujo de compra.\nESFUERZO: 30 minutos.\nMEDICIÃN: MediciÃ³n verifica con ?pp_debug=1 que los 3 eventos llegan correctamente antes de marcar como completada.",
-    "estado": "propuesta",
-    "aprobado": null
+    "estado": "completada",
+    "aprobado": "2026-11-10T13:35:00Z",
+    "completado": "2026-11-06T00:00:00Z",
+    "resultado": "Ya estaba ejecutada: commit 96ca5bd en Polyplas-web (06-nov) agrega conf_cortes_iguales/distintos/ninguno en selectCorteOption. Queda pendiente que Medición confirme con ?pp_debug=1 si la deduplicación de ppPaso bloquea los cambios de opinión."
   },
   {
     "id": "uxui::1793827781819",
@@ -175,8 +177,10 @@
     "what": "Optimizar title + meta de /receptaculos-de-ducha-instalacion/ Ã¢ÂÂ 2.689 impresiones al 1% CTR",
     "why": "PÃÂ¡gina de guÃÂ­a con 2.689 impresiones y 27 clics (1% CTR). Es una pÃÂ¡gina de contenido que atrae maestros e instaladores Ã¢ÂÂ exactamente el pÃÂºblico B2B que compra cÃÂºpulas y cascos. Mejorar su CTR acerca trÃÂ¡fico calificado de alto AOV.",
     "ficha": "QUÃÂ: Revisar queries en GSC para /receptaculos-de-ducha-instalacion/ y reescribir title/meta.\nEl title actual probablemente es genÃÂ©rico. Los maestros buscan 'receptÃÂ¡culo ducha precio', 'base ducha instalaciÃÂ³n Santiago'.\n\nTitle propuesto: 'ReceptÃÂ¡culo de Ducha ÃÂ· GuÃÂ­a de InstalaciÃÂ³n y Precios en Santiago | Polyplas'\nMeta propuesta: 'Todo sobre receptÃÂ¡culos de ducha: dimensiones, instalaciÃÂ³n paso a paso y precios en Santiago. Importador directo con retiro y despacho gratis en la RM.'\n\nARCHIVO: buscar el mÃÂ³dulo _pagina.json de la URL /receptaculos-de-ducha-instalacion/\n\nIMPACTO: De 1% a 2% CTR = +27 clics/mes. TrÃÂ¡fico de maestros/instaladores con alto potencial de cotizaciÃÂ³n.\nMEDICIÃÂN: CTR en GSC a 14 y 28 dÃÂ­as.",
-    "estado": "propuesta",
-    "aprobado": null
+    "estado": "completada",
+    "aprobado": "2026-11-10T13:35:00Z",
+    "completado": "2026-11-05T00:00:00Z",
+    "resultado": "Ya estaba ejecutada: commit eb622dd (05-nov). Duplicado de seo::1793919863874. Se mide como exp-005 según el commit."
   },
   {
     "id": "seo::1793917050739",
@@ -186,8 +190,10 @@
     "what": "Enlace interno desde /tinas-de-hidromasaje/ hacia /cascos-de-tinas/ Ã¢ÂÂ acelera indexaciÃÂ³n de los cambios SEO recientes",
     "why": "Los cambios SEO de cascos (title/meta/B2B) se publicaron hoy. Google tiene que rastrear y reindexar. Un enlace interno desde la categorÃÂ­a tinas (que tiene 14K impresiones y ya estÃÂ¡ bien posicionada) acelera el descubrimiento y transfiere autoridad a cascos. Sin enlace interno, Google puede tardar 2-4 semanas en reindexar.",
     "ficha": "QUÃÂ: Agregar en la categorÃÂ­a /tinas-de-hidromasaje/ un enlace visible hacia /cascos-de-tinas/.\nTexto sugerido: 'ÃÂ¿Buscas solo el casco sin motor? Ver Cascos de Tinas Ã¢ÂÂ'\nUbicar: al final de la tabla comparativa de modelos o en la secciÃÂ³n de preguntas frecuentes existente.\n\nARCHIVO: content/modulos/10-tinas/07-compra-online-tinas-hidromasaje.html\n\nIMPACTO: Acelera reindexaciÃÂ³n post-cambios SEO de cascos. Canaliza trÃÂ¡fico de 'jacuzzi' hacia cascos cuando el usuario no quiere el motor.\nESFUERZO: 30 min.\nRIESGO: MÃÂ­nimo Ã¢ÂÂ es contenido adicional, no reemplaza nada.",
-    "estado": "propuesta",
-    "aprobado": null
+    "estado": "completada",
+    "aprobado": "2026-11-10T13:35:00Z",
+    "completado": "2026-11-05T00:00:00Z",
+    "resultado": "Ya estaba ejecutada: commit ca6cbc2 (05-nov), enlace interno tinas → cascos. Duplicado de seo::1793918488424."
   },
   {
     "id": "cro::1793917050740",
@@ -198,7 +204,8 @@
     "why": "Planchas es la categorÃÂ­a de mayor trÃÂ¡fico orgÃÂ¡nico (8.525 impresiones). El cotizador de planchas a medida es probablemente donde mÃÂ¡s se pierden clientes antes del checkout. Si logramos subir la conversiÃÂ³n general de 1,11% a 1,4% en Mes 1, el cotizador es el lever mÃÂ¡s directo ya que concentra el mayor volumen de sesiones.",
     "ficha": "QUÃÂ: Recorrer el cotizador de planchas a medida (escritorio + celular) y documentar cada punto de fricciÃÂ³n:\n1. ÃÂ¿CuÃÂ¡ntos pasos tiene hasta llegar al carrito?\n2. ÃÂ¿El usuario sabe el precio antes de agregar al carrito?\n3. ÃÂ¿Se puede usar sin registrarse?\n4. ÃÂ¿Hay mensajes de error confusos?\n5. ÃÂ¿El botÃÂ³n de acciÃÂ³n final es visible en mobile?\n\nLuego en GA4: revisar el funnel cotizador Ã¢ÂÂ add_to_cart Ã¢ÂÂ begin_checkout para ver en quÃÂ© paso se cae mÃÂ¡s gente.\n\nIMPACTO: El cotizador es el motor principal de ventas. Bajar 1 paso del flujo o hacer el precio mÃÂ¡s visible puede mover la conversiÃÂ³n general del sitio en 0,2-0,3 pp.\nCONFIANZA: Alta en que hay fricciÃÂ³n (1,11% conversiÃÂ³n es baja para e-commerce con ticket alto).\nESFUERZO: 2 horas para auditar + proponer fixes especÃÂ­ficos en prÃÂ³xima sesiÃÂ³n.\nMEDICIÃÂN: conversiÃÂ³n general GA4 antes/despuÃÂ©s.",
     "estado": "propuesta",
-    "aprobado": null
+    "aprobado": null,
+    "nota_tatis": "2026-11-10: Duplicado de cro::1793918458290, que figura completada el 05-nov pero sin resultado ni registro. Se mantiene abierta porque no hay evidencia de la auditoría."
   },
   {
     "id": "cro::1793917050741",
@@ -208,8 +215,10 @@
     "what": "Agregar CTA de cotizaciÃÂ³n en volumen en la pÃÂ¡gina de cascos Ã¢ÂÂ capturar leads B2B que llegan del SEO nuevo",
     "why": "Los cambios SEO de cascos ahora apuntan a maestros/proyectos/obras. Pero si esos usuarios llegan a la pÃÂ¡gina y no hay un CTA claro para 'quiero 3 cascos con factura', se van sin convertir. El SEO trae la visita; el CRO cierra la venta. Necesitamos un formulario o botÃÂ³n de cotizaciÃÂ³n en volumen visible.",
     "ficha": "QUÃÂ: Agregar en /categoria-producto/cascos-de-tinas/ un CTA especÃÂ­fico para compras en volumen:\nOpciÃÂ³n A: BotÃÂ³n 'Cotizar 2+ unidades con factura' que abre un formulario de WhatsApp con mensaje predefinido.\nOpciÃÂ³n B: Formulario inline simple (nombre, empresa, cant. unidades, email).\n\nUbicar: dentro del bloque 'Para proyectos, obras y maestros' ya publicado (antes del pÃÂ¡rrafo de contacto).\n\nARCHIVO: content/modulos/10b-cascos-de-tinas/06-preguntas-frecuentes-cascos-de-tinas.html\n\nIMPACTO: Captura leads B2B de alto valor (un proyecto de 3 cascos = $525.000 CLP). Sin este CTA, el trÃÂ¡fico SEO nuevo se pierde.\nESFUERZO: 2 horas.\nRIESGO: Bajo Ã¢ÂÂ es contenido adicional en secciÃÂ³n ya existente.",
-    "estado": "propuesta",
-    "aprobado": null
+    "estado": "completada",
+    "aprobado": "2026-11-10T13:35:00Z",
+    "completado": "2026-11-05T00:00:00Z",
+    "resultado": "Ya estaba ejecutada: commit 30656f2 (05-nov), botón WhatsApp \"Cotizar 2+ unidades\" en bloque B2B de cascos. Duplicado de cro::1793919843660."
   },
   {
     "id": "social::1793917050742",
@@ -220,7 +229,8 @@
     "why": "Canal completamente inactivo. El plan $8M requiere que Social estÃÂ© activo antes del Mes 2 (dic 2026). Las cÃÂºpulas son el producto mÃÂ¡s visual del catÃÂ¡logo y el que mejor funciona en Instagram (resultado de transformaciÃÂ³n inmediata, fÃÂ¡cil de entender). Un solo post de antes/despuÃÂ©s con CTA al cotizador puede traer trÃÂ¡fico calificado.",
     "ficha": "QUÃÂ: Crear y publicar 1 post de antes/despuÃÂ©s para Instagram @polyplaschile esta semana.\n\nFORMATO SUGERIDO:\n- Carrusel 2-3 fotos: espacio sin cÃÂºpula (oscuro) Ã¢ÂÂ con cÃÂºpula instalada (iluminado con luz natural)\n- Texto: 'La luz natural cambia todo. CÃÂºpulas de acrÃÂ­lico Polyplas Ã¢ÂÂ instalaciÃÂ³n en un dÃÂ­a Ã°ÂÂÂ '\n- CTA: 'Cotiza la tuya en el link de nuestra bio'\n- Link en bio: polyplas.cl/categoria-producto/cupulas/\n- Hashtags: #cÃÂºpulas #iluminaciÃÂ³nnaturalchile #arquitecturachile #maestros #construcciÃÂ³n\n\nFUENTE DE IMÃÂGENES: solicitar a Natalia fotos de instalaciones reales o usar fotos del catÃÂ¡logo web.\n\nIMPACTO: Activa el canal (actualmente en 0). Genera trÃÂ¡fico directo a cÃÂºpulas.\nESFUERZO: 2-3 horas (copy + diseÃÂ±o + publicaciÃÂ³n).\nSIGUIENTE PASO: si el post funciona, crear calendario de contenido para dic 2026.",
     "estado": "propuesta",
-    "aprobado": null
+    "aprobado": null,
+    "nota_tatis": "2026-11-10: Duplicado de social::1793919625121: el copy se entregó el 05-nov, pero el post no se ha publicado."
   },
   {
     "id": "social::1793917050743",
@@ -231,7 +241,8 @@
     "why": "Para que Social aporte a la meta del Mes 2 ($6.5M), el canal necesita ser consistente. Un post aislado no mueve el algoritmo. 8 posts en diciembre (2/semana) construyen el hÃÂ¡bito del canal y generan la masa crÃÂ­tica de impresiones necesaria para atraer trÃÂ¡fico calificado hacia planchas, cÃÂºpulas y tinas.",
     "ficha": "QUÃÂ: Proponer 8 posts para Instagram en diciembre 2026, alineados a los productos de mayor AOV.\n\nEJE TEMÃÂTICO SUGERIDO:\n- Semana 1: CÃÂºpulas (iluminaciÃÂ³n natural, instalaciÃÂ³n, antes/despuÃÂ©s)\n- Semana 2: Planchas acrÃÂ­lico (cotizador, casos de uso: letrero, terraza, muebles)\n- Semana 3: Tinas (bienestar en casa, 'tu propio spa')\n- Semana 4: Cascos / proyectos (para maestros y constructoras)\n\nFORMATO: carrusel educativo + reels cortos (15s) funcionan mejor en 2026 en Instagram para productos industriales/hogar.\n\nCONDICIÃÂN: activar primero el primer post de cÃÂºpulas (task anterior) para validar el tono antes de comprometerse con el calendario.",
     "estado": "propuesta",
-    "aprobado": null
+    "aprobado": null,
+    "nota_tatis": "2026-11-10: Duplicado de social::1793919852258: calendario entregado el 05-nov, pendiente publicar."
   },
   {
     "id": "copy::1793917050744",
@@ -253,7 +264,8 @@
     "why": "La categorÃÂ­a tinas tiene 14.300 impresiones al 0,9% CTR a posiciÃÂ³n 8,2. El problema no es solo el title/meta Ã¢ÂÂ puede ser que los competidores en posiciÃÂ³n 1-5 tienen fichas de Google Shopping, valoraciones con estrellas, o snippets enriquecidos que hacen que Polyplas se vea genÃÂ©rica. Necesitamos saber quÃÂ© estÃÂ¡ ganando la batalla visual en el SERP.",
     "ficha": "QUÃÂ: Buscar en Google (modo incÃÂ³gnito, Santiago) las queries:\n1. 'jacuzzi Santiago'\n2. 'tina hidromasaje precio Chile'\n3. 'cÃÂºpula acrÃÂ­lico Santiago'\n4. 'plancha acrÃÂ­lico a medida Santiago'\n\nPara cada una, registrar:\n- ÃÂ¿QuÃÂ© aparece en posiciones 1-5? (marcas, URLs, tipo de resultado)\n- ÃÂ¿Tienen valoraciones con estrellas?\n- ÃÂ¿Tienen precios en el snippet?\n- ÃÂ¿Polyplas aparece? ÃÂ¿En quÃÂ© posiciÃÂ³n?\n- ÃÂ¿QuÃÂ© tiene el competidor que Polyplas no tiene en el snippet?\n\nENTREGA: tabla con hallazgos + recomendaciÃÂ³n especÃÂ­fica para mejorar el snippet de Polyplas (schema markup, pricing, valoraciones).\nESFUERZO: 1-2 horas.\nIMPACTO: informa los cambios de SEO de Mes 2 con datos reales del campo de batalla.",
     "estado": "propuesta",
-    "aprobado": null
+    "aprobado": null,
+    "nota_tatis": "2026-11-10: Duplicado de intel::1793918449042, que figura completada el 05-nov sin resultado ni registro. Se mantiene abierta."
   },
   {
     "id": "medicion::1793917050746",
@@ -264,7 +276,8 @@
     "why": "Todos los cambios del plan $8M se van a medir en GA4. Si el tracking de view_item, add_to_cart y purchase estÃÂ¡ roto o duplicado en las pÃÂ¡ginas de tinas o cascos, los KPIs del Mes 1 van a ser inÃÂºtiles. Antes de optimizar es necesario confirmar que la mediciÃÂ³n es confiable.",
     "ficha": "QUÃÂ: Con ?pp_debug=1 en las URLs clave, verificar que los eventos se disparan correctamente:\n\n1. /tina-hidromasaje-queilen/ Ã¢ÂÂ debe disparar view_item con modelo correcto\n2. /categoria-producto/tinas-de-hidromasaje/ Ã¢ÂÂ debe disparar view_item_list\n3. /cascos-de-tinas/ Ã¢ÂÂ debe disparar view_item_list\n4. Agregar al carrito una tina Ã¢ÂÂ verificar add_to_cart con precio correcto\n5. Llegar al checkout Ã¢ÂÂ verificar begin_checkout\n\nADEMÃÂS: en GA4 Ã¢ÂÂ Explorar Ã¢ÂÂ Embudo, crear embudo:\n  SesiÃÂ³n Ã¢ÂÂ view_item (tinas) Ã¢ÂÂ add_to_cart Ã¢ÂÂ begin_checkout Ã¢ÂÂ purchase\nRegistrar las tasas de conversiÃÂ³n actuales en cada paso como LÃÂNEA BASE para medir el Mes 1.\n\nENTREGA: reporte con tasa de conversiÃÂ³n por etapa del embudo para tinas. Si hay bugs, reportar con detalle para que UX/UI los corrija.\nESFUERZO: 2-3 horas.\nIMPACTO: sin mediciÃÂ³n confiable, no podemos validar si el Mes 1 se logrÃÂ³.",
     "estado": "propuesta",
-    "aprobado": null
+    "aprobado": null,
+    "nota_tatis": "2026-11-10: Duplicado de med::1793918378031, que figura completada el 05-nov sin resultado ni registro. Se mantiene abierta."
   },
   {
     "id": "ads::1793917050747",
@@ -275,7 +288,8 @@
     "why": "Paid Search trae 3.036 sesiones Ã¢ÂÂ ~$2.7M en 2 meses. Para Mes 1 el objetivo es hacerlo mÃÂ¡s rentable, no solo mÃÂ¡s grande. El plan especifica reasignar presupuesto hacia campaÃÂ±as de alta intenciÃÂ³n comercial (cÃÂºpulas y planchas). Pero primero necesitamos ver el informe de tÃÂ©rminos de bÃÂºsqueda para identificar quÃÂ© estÃÂ¡ gastando presupuesto sin convertir.",
     "ficha": "QUÃÂ: En Google Ads Ã¢ÂÂ Informe de tÃÂ©rminos de bÃÂºsqueda, revisar los ÃÂºltimos 30 dÃÂ­as:\n1. Identificar tÃÂ©rminos con >5 clics y 0 conversiones (posible derroche)\n2. Identificar las campaÃÂ±as de cÃÂºpulas y planchas: ÃÂ¿cuÃÂ¡nto presupuesto reciben vs. tinas?\n3. Proponer reasignaciÃÂ³n especÃÂ­fica (% de presupuesto) hacia las campaÃÂ±as de mayor ROAS\n\nREGLA DE HIERRO: NO proponer ningÃÂºn cambio de estrategia de puja ni de acciones de conversiÃÂ³n Ã¢ÂÂ solo ajuste de distribuciÃÂ³n de presupuesto entre grupos de anuncios existentes.\n\nENTREGA: tabla con los 10 tÃÂ©rminos de mayor gasto sin conversiÃÂ³n (para agregar como negativos) + propuesta de reasignaciÃÂ³n de presupuesto entre campaÃÂ±as.\nESFUERZO: 2 horas.\nIMPACTO: liberar presupuesto de tÃÂ©rminos que no convierten y redirigirlo a cÃÂºpulas puede subir el ROAS general del canal.",
     "estado": "propuesta",
-    "aprobado": null
+    "aprobado": null,
+    "nota_tatis": "2026-11-10: Duplicado de ads::1793919869176, cerrada el 05-nov como \"pendiente revisión en Google Ads por jefe\". El análisis no se ha hecho. Se mantiene abierta; no mover presupuesto antes del 23-nov (exp-004 y exp-008)."
   },
   {
     "id": "med::1793918378031",
