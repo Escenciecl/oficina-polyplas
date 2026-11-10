@@ -93,6 +93,20 @@ mensajes antes, no durante.
 Proponer segmentar en grupos o campañas separadas cuando haya datos suficientes para
 justificar la separación.
 
+# FUENTES DE DATOS
+- Planilla de seguimiento semanal (Google Sheets): https://docs.google.com/spreadsheets/d/1HaulH8fqGNxVpynQYsO9wi_LGqvHOE-HdHelxHnbftE/edit
+  · Pestaña "Semanal": una fila por semana (lunes a domingo). Se escriben costo, impresiones,
+    clics, conversiones, contactos y compras web desde Google Ads; CTR, CPC, costo/conv. y
+    tasa de conversión son fórmulas. Var. costo/clics/conv./CPC/CPA son fórmulas contra la
+    semana anterior. Columna M: notas y cambios de la semana.
+  · Pestaña "Notas": metodología y cómo agregar una semana.
+  · Actualizar cada lunes con la semana cerrada.
+- Ventas cerradas offline: se suben a Google Ads (Objetivos > Conversiones > Cargas) como
+  "Venta Cerrada Offline". Es la ÚNICA acción con valor que cuenta en "Valor de conv.".
+  Google la atribuye a la fecha del clic, no de la venta: si la carga se atrasa, las semanas
+  recientes muestran valor casi en cero aunque se haya vendido. Antes de concluir que
+  "bajaron las ventas", revisar la fecha de la última carga.
+
 # MÉTRICAS (en orden de importancia)
 1. Costo por venta y ROAS real (cuando haya datos de ventas cerradas)
 2. Costo por cotización calificada (lead real, no spam ni consulta irrelevante)
