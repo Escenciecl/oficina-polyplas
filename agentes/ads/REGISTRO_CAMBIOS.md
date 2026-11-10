@@ -7,6 +7,7 @@ Cada cambio implementado se registra aquí. Incluir si reinicia el aprendizaje.
 | 2026-11-07 | Recurso de precios: AA Transparente $28.322, PA Virgen $38.913, AA Colores $29.619, con enlaces filtrados (exp-003) | Campaña acrílico - Genérica | No | Jefe | Pendiente 2026-11-21 | Pendiente 2026-12-07 |
 | 2026-11-09 | 4 enlaces a sitio de compra online: Transparente, PA Virgen, 3 mm, Acrílico a Medida (exp-004) | Campaña acrílico - Genérica | No | Jefe | Pendiente 2026-11-23 | Pendiente 2026-12-09 |
 | 2026-11-09 | Segundo anuncio responsivo orientado a compra online; el original sin cambios (exp-005) | [Acrílico Generico] | No | Jefe | Pendiente 2026-11-16 | Pendiente 2026-12-09 |
+| 2026-11-09 | Recursos stock espesores: precio 5/6/8/10 mm, 3 enlaces a sitio (5 mm, 6 mm, 8 y 10 mm) y 2 textos destacados (exp-008). Motivo: caída de ventas grandes de acrílico 2-6 nov | Campaña acrílico - Genérica | No | Jefe | Pendiente 2026-11-23 | Pendiente 2026-12-09 |
 
 > Agente activado el 2026-11-03. Paso 0 pendiente: auditar qué cuenta como conversión en Google Ads y cruzar con click_asistencia_flotante de GA4.
 > Regla de oro: la campaña NUNCA se pausa. Todo cambio importante requiere aprobación.
