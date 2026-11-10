@@ -9,6 +9,7 @@ Cada cambio implementado se registra aquí. Incluir si reinicia el aprendizaje.
 | 2026-11-09 | Segundo anuncio responsivo orientado a compra online; el original sin cambios (exp-005) | [Acrílico Generico] | No | Jefe | Pendiente 2026-11-16 | Pendiente 2026-12-09 |
 | 2026-11-09 | Recursos stock espesores: precio 5/6/8/10 mm, 3 enlaces a sitio (5 mm, 6 mm, 8 y 10 mm) y 2 textos destacados (exp-008). Motivo: caída de ventas grandes de acrílico 2-6 nov | Campaña acrílico - Genérica | No | Jefe | Pendiente 2026-11-23 | Pendiente 2026-12-09 |
 | 2026-11-09 | Reunión con PM Planchas: tabla de reemplazos de stock para el chat (vía CRO). Texto destacado "Envío Gratis RM $350.000+" creado (en revisión de Google) | Campaña acrílico - Genérica | No | Jefe | — | — |
+| 2026-11-10 | Ajuste de franjas horarias en la plataforma para cuidar el presupuesto mensual. ⚠️ Detalles exactos (horas y tipo de ajuste) pendientes de confirmar con la jefa. | Campaña acrílico - Genérica | No | Jefa | Pendiente confirmar | — |
 
 > Agente activado el 2026-11-03. Paso 0 pendiente: auditar qué cuenta como conversión en Google Ads y cruzar con click_asistencia_flotante de GA4.
 > Regla de oro: la campaña NUNCA se pausa. Todo cambio importante requiere aprobación.
