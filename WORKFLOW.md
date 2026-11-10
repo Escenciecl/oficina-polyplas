@@ -108,7 +108,7 @@ Cada cambio al sitio queda en:
 | PM Baños | Real | A pedido — entrega insumos a SEO, CRO, Intel y Ads |
 | PM Cúpulas | Real | A pedido — entrega insumos a SEO, CRO, Intel y Ads |
 | PM Planchas | Real | A pedido — entrega insumos a SEO, CRO, Intel y Ads |
-| PM Social | Real | A pedido — estrategia Instagram, coordina con SEO, Ads y Tatis |
+| PM Social | Real | A pedido — estrategia Instagram y email marketing (Brevo), coordina con SEO, Ads, PM Planchas y Tatis |
 
 ---
 
