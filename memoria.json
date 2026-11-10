@@ -1,26 +1,48 @@
 {
-  "actualizado": "2026-11-03",
+  "actualizado": "2026-11-09",
   "sesionAnterior": {
-    "fecha": "2026-11-03",
-    "titulo": "Cierre 2026-11-03",
-    "url": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/40435713",
-    "resumen": "Se resolvieron 4 tareas aprobadas en la sala de revisión: 3 arreglos de tracking en GA4 y 1 mejora de SEO. Todo publicado en producción.",
+    "fecha": "2026-11-09",
+    "titulo": "Cierre 2026-11-09",
+    "url": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/42205185",
+    "resumen": "Se investigó la caída de venta de acrílico del 2 al 6 de noviembre (unos $2,3M menos que en octubre, por menos ventas grandes y menos cierres por WhatsApp). Se publicaron recursos en Google Ads para planchas gruesas en stock sin tocar el aprendizaje, y se diseñaron 2 emails para los 103 compradores web de acrílico.",
     "aprobadas": [
-      {"agente": "uxui", "que": "WhatsApp: el chat ahora registra en GA4 desde qué producto o página escribe cada usuario", "estado": "Publicado"},
-      {"agente": "med", "que": "Corregido el evento purchase que llegaba con value=$0 en GA4", "estado": "Publicado"},
-      {"agente": "med", "que": "Las ventas por transferencia ahora disparan purchase en GA4", "estado": "Publicado"},
-      {"agente": "seo", "que": "Nuevo title y meta description de /tinas-de-hidromasaje/ para subir el CTR", "estado": "Publicado"}
+      {
+        "agente": "ads",
+        "que": "exp-008: recursos de precio, enlaces y textos destacados para planchas de 5, 6, 8 y 10 mm en stock, más el texto \"Envío Gratis RM $350.000+\"",
+        "estado": "En revisión de Google"
+      },
+      {
+        "agente": "email",
+        "que": "Tabla de reemplazos de stock AA/PA para el chat, entregada a CRO",
+        "estado": "Publicado"
+      },
+      {
+        "agente": "social",
+        "que": "Rol ampliado a email marketing en Brevo, con lectura de Supabase solo de ventas web y stock",
+        "estado": "Publicado"
+      },
+      {
+        "agente": "social",
+        "que": "2 emails HTML: \"La plancha que más rinde\" (11 nov) y \"Envío gratis desde $350.000\" (13 nov), con UTM por bloque",
+        "estado": "Listos, por enviar"
+      }
     ],
     "trabajado": [
-      "Tatis creó la página Cierre 2026-11-03 en Confluence",
-      "3 agentes verificaron el código publicado: tracking GA4, SEO y WhatsApp OK",
-      "Oficina virtual: nuevo diseño realista, avatares y marca Polyplas"
+      "Planilla de seguimiento semanal completada hasta la semana del 2 de noviembre",
+      "Diagnóstico con Supabase: no llegó más basura y los chats se mantuvieron estables",
+      "Error corregido: la hipótesis de falta de stock grueso era falsa (faltaban solo algunas medidas) y se retiraron las negativas antes de aplicarlas",
+      "Excel con 103 correos de compradores web de acrílico entregado a la jefa",
+      "Tatis documentó el cierre en Confluence y actualizó Cambios Implementados"
     ],
     "pendientes": [
-      "Verificar GA4_API_SECRET en Cloudflare (sin ella las transferencias no llegan a GA4)",
-      "Hacer un pedido de prueba por transferencia y revisarlo en GA4 DebugView",
-      "Medir el CTR de tinas en GSC en 4 a 6 semanas (meta: de 1,1% a 2,5%)",
-      "Seguir con la sala de revisión: quedan ~15 propuestas"
+      "Enviar email 1 (11 nov) y email 2 (13 nov) en Brevo; medir a 7 días con utm_source=brevo",
+      "Subir a Google Ads las ventas offline desde el 22 de octubre",
+      "Corregir dirección a \"Santiago Concha 1525\" en los ROL.md de PM Social, PM Planchas, PM Cúpulas y PM Baños",
+      "Revisar exp-005 y exp-007 el 16 nov; exp-004 y exp-008 el 23 nov",
+      "Propuesta CRO/UX: guardar la UTM en cada orden Webpay",
+      "Por aprobar: usuario de solo lectura en Supabase para el PM Social",
+      "Avisar a PM Planchas y Ads cuando llegue reposición de PA transparente 5 y 6 mm",
+      "Paso 0 de Ads: auditar qué cuenta como conversión"
     ]
   },
   "propuestas": {
@@ -29,6 +51,11 @@
     "Agregar parámetro de producto de origen a click_asistencia_flotante (WhatsApp)": "hecha",
     "Crear página \"Cierre 2026-11-03\" en Confluence con los reportes de hoy": "hecha",
     "Verificar y corregir el evento purchase en GA4 (Paso 0)": "hecha",
-    "Optimizar title + meta de /categoria-producto/tinas-de-hidromasaje/": "hecha"
+    "Optimizar title + meta de /categoria-producto/tinas-de-hidromasaje/": "hecha",
+    "Recursos en Google Ads para planchas gruesas en stock (exp-008)": "hecha",
+    "Tabla de reemplazos de stock AA/PA para el chat": "hecha",
+    "Ampliar rol PM Social a email marketing (Brevo)": "hecha",
+    "2 emails HTML para la base de compradores web de acrílico": "hecha",
+    "Negativas temporales para 5, 6 y 8 mm": "rechazada"
   }
 }
