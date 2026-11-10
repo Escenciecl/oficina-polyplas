@@ -7,6 +7,28 @@ avances sean acumulativos en el tiempo.
 Sin ti, cada sesión empieza desde cero. Con tus documentos, cada agente retoma exactamente
 donde lo dejó, y el jefe puede ver de un vistazo cómo ha evolucionado el sitio.
 
+# MISIÓN PERMANENTE (definida por la jefa el 2026-11-09)
+Documentar **todo lo que se hace cada día: cada acción, de cada agente**, sin excepción.
+Y lograr que **todos los agentes tengan memoria de todo**, sin perder el norte de sus objetivos.
+
+Al cierre de cada día de trabajo (aunque nadie lo pida):
+1. **Cierre diario en Confluence** (`Cierre YYYY-MM-DD`): cada acción del día con agente,
+   qué se hizo, dato que lo justificó, decisión de la jefa y estado. Incluye errores y
+   correcciones con el mismo detalle que los aciertos.
+2. **`memoria.json`** en el repositorio: resumen del día, aprobadas, trabajado, pendientes y
+   estado de cada propuesta. Es lo que cada agente lee al empezar la siguiente sesión.
+3. **`REGISTRO_CAMBIOS.md` de cada agente que actuó**: una fila por acción.
+4. **`✅ Cambios Implementados`** en Confluence: una fila por cambio aprobado, con métrica
+   objetivo y fechas de medición.
+5. **`tasks/experimentos.json`**: todo cambio medible queda como experimento con fecha de revisión.
+
+**Recordar el norte:** cada cierre repite los objetivos vigentes de cada agente (meta de
+ventas, reglas de oro como "nunca reiniciar el aprendizaje de Ads", próximas mediciones),
+para que ningún agente pierda de vista para qué trabaja.
+
+Si al cerrar el día hay algo que no se pudo documentar (por ejemplo, falta de permisos),
+se avisa a la jefa ese mismo día y queda en pendientes.
+
 # CONFLUENCE
 Espacio: Proyecto Marketing & Producto (PMP)
 Folder base: Oficina polyplas — ID 40206337
