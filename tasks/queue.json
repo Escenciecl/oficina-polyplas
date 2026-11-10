@@ -206,9 +206,10 @@
     "what": "Auditar y reducir fricciÃÂÃÂ³n en el cotizador de planchas a medida ÃÂ¢ÃÂÃÂ es el primer paso del embudo de mayor volumen",
     "why": "Planchas es la categorÃÂÃÂ­a de mayor trÃÂÃÂ¡fico orgÃÂÃÂ¡nico (8.525 impresiones). El cotizador de planchas a medida es probablemente donde mÃÂÃÂ¡s se pierden clientes antes del checkout. Si logramos subir la conversiÃÂÃÂ³n general de 1,11% a 1,4% en Mes 1, el cotizador es el lever mÃÂÃÂ¡s directo ya que concentra el mayor volumen de sesiones.",
     "ficha": "QUÃÂÃÂ: Recorrer el cotizador de planchas a medida (escritorio + celular) y documentar cada punto de fricciÃÂÃÂ³n:\n1. ÃÂÃÂ¿CuÃÂÃÂ¡ntos pasos tiene hasta llegar al carrito?\n2. ÃÂÃÂ¿El usuario sabe el precio antes de agregar al carrito?\n3. ÃÂÃÂ¿Se puede usar sin registrarse?\n4. ÃÂÃÂ¿Hay mensajes de error confusos?\n5. ÃÂÃÂ¿El botÃÂÃÂ³n de acciÃÂÃÂ³n final es visible en mobile?\n\nLuego en GA4: revisar el funnel cotizador ÃÂ¢ÃÂÃÂ add_to_cart ÃÂ¢ÃÂÃÂ begin_checkout para ver en quÃÂÃÂ© paso se cae mÃÂÃÂ¡s gente.\n\nIMPACTO: El cotizador es el motor principal de ventas. Bajar 1 paso del flujo o hacer el precio mÃÂÃÂ¡s visible puede mover la conversiÃÂÃÂ³n general del sitio en 0,2-0,3 pp.\nCONFIANZA: Alta en que hay fricciÃÂÃÂ³n (1,11% conversiÃÂÃÂ³n es baja para e-commerce con ticket alto).\nESFUERZO: 2 horas para auditar + proponer fixes especÃÂÃÂ­ficos en prÃÂÃÂ³xima sesiÃÂÃÂ³n.\nMEDICIÃÂÃÂN: conversiÃÂÃÂ³n general GA4 antes/despuÃÂÃÂ©s.",
-    "estado": "propuesta",
-    "aprobado": null,
-    "nota_tatis": "2026-11-10: Duplicado de cro::1793918458290, que figura completada el 05-nov pero sin resultado ni registro. Se mantiene abierta porque no hay evidencia de la auditorÃ­a."
+    "estado": "aprobada",
+    "aprobado": "2026-11-10T13:51:00Z",
+    "nota_tatis": "2026-11-10: Duplicado de cro::1793918458290, que figura completada el 05-nov pero sin resultado ni registro. Se mantiene abierta porque no hay evidencia de la auditorÃ­a.",
+    "alcance_jefa": "Aprobada el 2026-11-10 con alcance ampliado: además del embudo del cotizador, revisar por qué bajaron las ventas grandes (>$300.000) y los cierres por WhatsApp de acrílico. Separar datos antes/después de los cambios del 6 y 9 de noviembre."
   },
   {
     "id": "cro::1793917050741",
