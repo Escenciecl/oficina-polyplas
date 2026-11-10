@@ -115,9 +115,11 @@ oficina-polyplas/
 ├── index.html              — La oficina 3D completa (HTML + Three.js)
 ├── WORKFLOW.md             — Reglas de flujo y cadencia de reportes
 ├── COMO_FUNCIONA.md        — Esta guía
-├── memoria.json            — Contexto de sesión anterior para los agentes
+├── memoria.json            — Resumen de la ÚLTIMA sesión (punto de entrada rápido)
+├── historial.json          — Registro ACUMULATIVO de todas las sesiones (nunca se borra)
 ├── tasks/
-│   └── queue.json          — Cola de propuestas (pendiente / completada)
+│   ├── queue.json          — Cola de propuestas (pendiente / completada)
+│   └── experimentos.json   — Experimentos activos con baseline y fechas de revisión
 └── agentes/
     ├── seo/
     │   ├── ROL.md          — Quién es el agente, qué sabe, qué reglas sigue
@@ -133,6 +135,21 @@ oficina-polyplas/
     ├── email/              — PM Planchas
     └── social/             — PM Social
 ```
+
+### Cómo funciona la memoria entre sesiones
+
+El sistema tiene tres capas de memoria, cada una con un propósito distinto:
+
+| Archivo | Para qué | Se sobrescribe |
+|---------|----------|---------------|
+| `memoria.json` | Arranque rápido: resumen de la última sesión, pendientes urgentes | Sí, en cada cierre |
+| `historial.json` | Hilo completo: todas las sesiones desde el 3-nov, con cambios, alertas y pendientes | No — solo se agrega |
+| Confluence (`Cierre YYYY-MM-DD`) | Detalle narrativo completo de cada sesión | No — una página por día |
+| `agentes/*/REGISTRO_CAMBIOS.md` | Historial de cambios de cada agente | No — solo se agrega |
+
+**Al inicio de cada sesión**, Tatis lee `historial.json` para tener contexto de todo lo que se hizo. Si hay algo que no quedó documentado (sesión cerrada sin cierre formal), lo recupera del historial de git y lo agrega retroactivamente.
+
+**Regla de Tatis:** al cerrar cualquier sesión de trabajo, aunque sea corta, actualiza `historial.json` con una entrada del día. Nunca dejar una sesión sin registro.
 
 ### En `Polyplas-web/`
 ```

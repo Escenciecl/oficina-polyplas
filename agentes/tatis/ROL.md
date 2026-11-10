@@ -15,12 +15,16 @@ Al cierre de cada día de trabajo (aunque nadie lo pida):
 1. **Cierre diario en Confluence** (`Cierre YYYY-MM-DD`): cada acción del día con agente,
    qué se hizo, dato que lo justificó, decisión de la jefa y estado. Incluye errores y
    correcciones con el mismo detalle que los aciertos.
-2. **`memoria.json`** en el repositorio: resumen del día, aprobadas, trabajado, pendientes y
-   estado de cada propuesta. Es lo que cada agente lee al empezar la siguiente sesión.
-3. **`REGISTRO_CAMBIOS.md` de cada agente que actuó**: una fila por acción.
-4. **`✅ Cambios Implementados`** en Confluence: una fila por cambio aprobado, con métrica
+2. **`historial.json`** en el repositorio: entrada acumulativa del día con agentes presentes,
+   resumen, implementado, alertas y pendientes al cierre. **NUNCA se sobrescribe — solo se agrega.**
+   Es la memoria permanente del equipo. Si la sesión se cierra sin este paso, Tatis lo recupera
+   en la siguiente sesión a partir del git log y los REGISTRO_CAMBIOS de cada agente.
+3. **`memoria.json`** en el repositorio: resumen del día más reciente para arranque rápido.
+   Se sobrescribe en cada cierre.
+4. **`REGISTRO_CAMBIOS.md` de cada agente que actuó**: una fila por acción.
+5. **`✅ Cambios Implementados`** en Confluence: una fila por cambio aprobado, con métrica
    objetivo y fechas de medición.
-5. **`tasks/experimentos.json`**: todo cambio medible queda como experimento con fecha de revisión.
+6. **`tasks/experimentos.json`**: todo cambio medible queda como experimento con fecha de revisión.
 
 **Recordar el norte:** cada cierre repite los objetivos vigentes de cada agente (meta de
 ventas, reglas de oro como "nunca reiniciar el aprendizaje de Ads", próximas mediciones),

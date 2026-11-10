@@ -1,0 +1,115 @@
+[
+  {
+    "fecha": "2026-11-03",
+    "titulo": "Sesión de activación — Paso 0",
+    "url_confluence": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/40337425",
+    "agentes_presentes": ["medicion", "cro", "seo", "uxui", "tatis"],
+    "resumen": "Primera sesión. Se configuró la estructura de Confluence y la oficina 3D. Paso 0 de medición: se diagnosticó que purchase llega con value=$0 en GA4 y que las transferencias probablemente no disparan el evento. CRO identificó 73% de abandono entre add_to_cart y begin_checkout. SEO optimizó title+meta de /tinas-de-hidromasaje/.",
+    "implementado": [
+      "cro: aviso de opciones de despacho en carrito (exp: revisar 17-nov)",
+      "seo: title+meta /tinas-de-hidromasaje/ (exp: revisar 17-nov)",
+      "medicion: diagnóstico inicial del embudo (Paso 0 iniciado)"
+    ],
+    "pendientes_al_cierre": [
+      "Verificar purchase con value real en GA4",
+      "Verificar transferencias disparando purchase",
+      "Agregar parámetro de producto a click_asistencia_flotante"
+    ]
+  },
+  {
+    "fecha": "2026-11-04",
+    "titulo": "SEO planchas + UX tinas",
+    "url_confluence": null,
+    "agentes_presentes": ["seo", "uxui"],
+    "resumen": "SEO optimizó title+meta de /planchas-acrilico/ (exp-002). UX/UI agregó loading=eager en imágenes de tinas (exp-001, CLS ya en 0.0).",
+    "implementado": [
+      "seo: title+meta /planchas-acrilico/ (baseline: CTR 1.4%, objetivo ≥2.5%, revisar 18-nov)",
+      "uxui: loading=eager en 7 fichas de tinas (exp-001, revisar 18-nov)"
+    ],
+    "pendientes_al_cierre": []
+  },
+  {
+    "fecha": "2026-11-05",
+    "titulo": "CRO tinas + cascos B2B",
+    "url_confluence": null,
+    "agentes_presentes": ["cro"],
+    "resumen": "CRO agregó columna Disponibilidad/Retiro hoy en tabla comparativa de tinas y botón WhatsApp de cotización B2B en /cascos-de-tinas/.",
+    "implementado": [
+      "cro: columna disponibilidad en /tinas-de-hidromasaje/ (revisar 19-nov)",
+      "cro: botón WhatsApp B2B en /cascos-de-tinas/ (revisar 19-nov)"
+    ],
+    "pendientes_al_cierre": []
+  },
+  {
+    "fecha": "2026-11-06",
+    "titulo": "Mejoras checkout + nombre paso 4",
+    "url_confluence": null,
+    "agentes_presentes": ["cro", "uxui"],
+    "resumen": "5 mejoras al checkout: precio del carrito visible en mobile, header del modal con múltiples productos, toast de confirmación, aviso de comunas excluidas, campo de factura. Al día siguiente (7 nov) se hizo visible el nombre del paso 4 en celular.",
+    "implementado": [
+      "cro+uxui: 5 mejoras checkout (exp-006, revisar 20-nov)",
+      "uxui: nombre paso 4 visible en celular (7-nov)"
+    ],
+    "pendientes_al_cierre": []
+  },
+  {
+    "fecha": "2026-11-07",
+    "titulo": "Ads recurso de precios",
+    "url_confluence": null,
+    "agentes_presentes": ["ads"],
+    "resumen": "Ads agregó recurso de precios en campaña Genérica: AA Transparente $28.322, PA Virgen $38.913, AA Colores $29.619, con enlaces filtrados. No reinicia aprendizaje.",
+    "implementado": [
+      "ads: recurso de precios en campaña Genérica (exp-003, revisar 21-nov)"
+    ],
+    "pendientes_al_cierre": []
+  },
+  {
+    "fecha": "2026-11-09",
+    "titulo": "Diagnóstico caída acrílico + emails + presupuesto Ads",
+    "url_confluence": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/42205185",
+    "agentes_presentes": ["ads", "medicion", "social", "cro", "tatis"],
+    "resumen": "Se investigó la caída de venta de acrílico de la semana del 2-6 nov (~$2,3M menos que oct). La causa es menos ventas grandes y menos cierres por WhatsApp, no más basura en Ads ni menos chats. Ads subió presupuesto de $57.000 a $68.400/día (+20%, exp-007), agregó 4 enlaces a sitio (exp-004) y segundo anuncio RSA (exp-005), y recursos de stock espesores (exp-008). PM Social diseñó 2 emails HTML para 103 compradores web de acrílico.",
+    "implementado": [
+      "ads: 4 sitelinks compra online (exp-004, revisar 23-nov)",
+      "ads: segundo RSA orientado a compra online (exp-005, revisar 16-nov)",
+      "ads: recursos stock espesores 5/6/8/10 mm (exp-008, revisar 23-nov)",
+      "ads: presupuesto $57k→$68.4k/día (exp-007, revisar 16-nov)",
+      "social: rol ampliado a email marketing (Brevo)",
+      "social: 2 emails HTML listos para enviar (email1: 11-nov, email2: 13-nov)",
+      "social: tabla de reemplazos stock AA/PA para el chat"
+    ],
+    "pendientes_al_cierre": [
+      "Enviar email 1 (11-nov) y email 2 (13-nov) en Brevo",
+      "Subir ventas offline desde el 22 de octubre a Google Ads",
+      "Corregir dirección 'Santiago Concha 1525' en ROL.md de PM Social, PM Planchas, PM Cúpulas y PM Baños",
+      "Paso 0 Ads: auditar qué cuenta como conversión"
+    ]
+  },
+  {
+    "fecha": "2026-11-10",
+    "titulo": "Auditoría cotizador + fix conf_pedido + ajuste horarios Ads",
+    "url_confluence": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/42565633",
+    "agentes_presentes": ["cro", "seo", "ads", "medicion", "tatis"],
+    "resumen": "CRO auditó el cotizador de planchas: la caída de ventas está en mesón (−46% vs oct) y WhatsApp (−85%), no en la web (que subió +46%). 93% de los leads de WhatsApp de acrílico no tiene resultado registrado. Se corrigió conf_pedido que disparaba en paso 3 en vez de paso 5 — eliminaba conversiones falsas de GA4. Ads ajustó horarios para cuidar el presupuesto. SEO cerró exp-002 (revisar 18-nov).",
+    "implementado": [
+      "cro: fix conf_pedido — dispara en paso 5, no paso 3, en 4 módulos (acrílico, PET, PETG, PC) + ppGuard",
+      "ads: ajuste de franjas horarias para cuidar presupuesto (detalles pendientes de confirmar)",
+      "seo: cierre propuesta exp-002 /planchas-acrilico/ (en curso, revisar 18-nov)"
+    ],
+    "alertas": [
+      "⚠️ PUNTO DE QUIEBRE 10-nov: conf_pedido corregido. Conversiones de Google Ads van a bajar porque antes el contador estaba inflado. No interpretar como problema de campaña. No tocar nada hasta 15-nov."
+    ],
+    "pendientes_al_cierre": [
+      "Medición: verificar conf_pedido con ?pp_debug=1 en los 4 módulos",
+      "Ads: confirmar detalles del ajuste de horarios (horas y tipo de ajuste)",
+      "Enviar email 1 (11-nov) y email 2 (13-nov) en Brevo",
+      "Subir ventas offline desde el 22-oct a Google Ads",
+      "Revisar exp-005 y exp-007 el 16-nov; exp-002 el 18-nov; exp-004 y exp-008 el 23-nov",
+      "P1: registrar resultado leads WhatsApp",
+      "P2: seguir 50 cotizaciones sin cierre",
+      "P3: embudo cotizador GA4 (requiere export de la jefa)",
+      "P4: verificar conf_pedido en 4 módulos",
+      "P6: órdenes Webpay duplicadas en Supabase"
+    ]
+  }
+]
