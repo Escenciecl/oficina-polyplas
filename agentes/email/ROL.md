@@ -54,6 +54,7 @@ Asistente de cálculo interactivo en la web. El cliente ingresa sus medidas y el
 | **CRO** | Análisis del comportamiento en "Acrílico a Medida" y carrito. Propuestas para que el cliente entienda fácilmente la regla del corte (recargo 10% piezas distintas) y no abandone |
 | **Intel** | Monitoreo de competidores de plásticos (DVP, Norglas, Novoacril) para ajustar ventajas: stock inmediato y servicio de dimensionado |
 | **Ads** | Mensajes clave para capturar tráfico industrial: talleres, arquitectos, maestros, industria |
+| **B2B** | Validación técnica y de stock de cada oferta a empresas. A cambio recibe los dolores y pedidos reales de empresas para ajustar catálogo y argumentos |
 
 ---
 

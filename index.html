@@ -823,12 +823,14 @@ AGENTS.push(
     }
   ]},
  {id:'soporte',name:'PM Cúpulas',role:'Producto',real:true,shirt:0x10b981,hair:0xe8c87a,skin:0x8b5a3c,
-  tasks:['Revisando specs de las 4 cúpulas vs lo publicado en el sitio','Entregando a SEO: términos correctos (tragaluz, claraboya, cúpula bronce)','Detectando fricción de vano vs medida para propuesta CRO','Coordinando con Intel: competidores que venden tragaluces','Definiendo mensajes clave para Ads: constructores, maestros, dueños de casa'],props:[]}
+  tasks:['Revisando specs de las 4 cúpulas vs lo publicado en el sitio','Entregando a SEO: términos correctos (tragaluz, claraboya, cúpula bronce)','Detectando fricción de vano vs medida para propuesta CRO','Coordinando con Intel: competidores que venden tragaluces','Definiendo mensajes clave para Ads: constructores, maestros, dueños de casa'],props:[]},
+ {id:'b2b',name:'B2B',role:'Empresas',real:true,shirt:0x0f766e,hair:0x2a1a12,skin:0xe0b090,
+  tasks:['Mapeando dolores de empresas con su proveedor de planchas: stock, plazos, corte, factura','Revisando empresas que compraron una sola vez en la web para convertirlas en cuentas','Validando con PM Planchas la oferta para fábricas de letreros y exhibidores','Preparando lista de prospectos: constructoras, POP, mueblerías e industria','Cruzando con Intel qué ofrecen DVP, Norglas y Novoacril a empresas'],props:[]}
 );
 const DESK_X=[-10,-6,-2,2];
 AGENTS.forEach((a,i)=>{const row=i<4?0:1;a.desk={x:DESK_X[i%4],z:row?3.2:-3.2,row};a.seat={x:a.desk.x,z:row?1.8:-1.8}});
 const Y_F2=3.5;
-const F2_DESK_X=[-8,-3,2,7];
+const F2_DESK_X=[-10,-5.5,-1,3.5,8];
 AGENTS.slice(8).forEach((a,i)=>{a.desk={x:F2_DESK_X[i],z:-5,row:0,y:Y_F2};a.seat={x:F2_DESK_X[i],z:-3.5,y:Y_F2}});
 const SEATS=[{x:7.4,z:-4},{x:10.6,z:-4},{x:9,z:-5.6},{x:9,z:-2.4}];
 const BOSS_SPOT={x:9,z:2.6};
@@ -1447,7 +1449,7 @@ log('Ads: agente activado — Paso 0 pendiente: auditar conversiones en Google A
 log('UX/UI: agente activado — Paso 0 pendiente: auditar carrito y fichas de tinas en mobile');
 log('Intel: agente activado — Competencia identificada: Norglas, CHC, DVP, Polymershapes, Novoacril');
 log('Medición: agente activado — Paso 0 urgente: purchase con value=$0 + transferencias sin purchase');
-log('Oficina abierta. 12 agentes — 2° piso abierto: PM Planchas · PM Social · PM Baños · PM Cúpulas.');
+log('Oficina abierta. 13 agentes — 2° piso: PM Planchas · PM Social · PM Baños · PM Cúpulas · B2B.');
 log('Tatis activada — documentación en Confluence: moralesgarcianat.atlassian.net/wiki/spaces/PMP/folder/40206337');
 /* ---------- Recordatorio diario Google Ads ---------- */
 (function(){

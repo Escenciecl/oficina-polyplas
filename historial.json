@@ -111,5 +111,27 @@
       "P4: verificar conf_pedido en 4 módulos",
       "P6: órdenes Webpay duplicadas en Supabase"
     ]
+  },
+  {
+    "fecha": "2026-11-11",
+    "titulo": "Corrección alerta conf_pedido + cierre Paso 0 Ads",
+    "agentes_presentes": [
+      "tatis",
+      "ads"
+    ],
+    "resumen": "La jefa aclaró que las conversiones de Google Ads son solo generate_lead (contacto) y purchase. conf_pedido NO es conversión en Ads, así que el fix del 10-nov no baja las conversiones de la campaña ni reinicia el aprendizaje. Corrige la alerta del 10-nov, que estaba mal redactada. El ajuste de horarios de Ads tampoco reinicia el aprendizaje.",
+    "implementado": [
+      "tatis: corrección de la alerta del 10-nov en memoria.json, historial.json y REGISTRO_CAMBIOS de Ads"
+    ],
+    "alertas": [
+      "CORRECCIÓN a la alerta del 10-nov: el fix de conf_pedido solo afecta el conteo en GA4 (estaba inflado). Las conversiones de Google Ads (generate_lead y purchase) no cambian por ese fix. Igual no tocar la campaña hasta el 15-nov para medir limpio el ajuste de horarios y los experimentos en curso."
+    ],
+    "pendientes_al_cierre": [
+      "Ads: confirmar detalles del ajuste de horarios (horas y tipo de ajuste)",
+      "Medición: verificar conf_pedido con ?pp_debug=1 en los 4 módulos (impacta GA4, no Ads)",
+      "Medición: confirmar que generate_lead no esté duplicado (153,5 conversiones vs 9 compras Webpay en la línea base)",
+      "Enviar email 1 (11-nov) y email 2 (13-nov) en Brevo",
+      "Subir ventas offline desde el 22-oct a Google Ads"
+    ]
   }
 ]

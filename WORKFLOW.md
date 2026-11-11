@@ -109,6 +109,7 @@ Cada cambio al sitio queda en:
 | PM Cúpulas | Real | A pedido — entrega insumos a SEO, CRO, Intel y Ads |
 | PM Planchas | Real | A pedido — entrega insumos a SEO, CRO, Intel y Ads |
 | PM Social | Real | A pedido — estrategia Instagram y email marketing (Brevo), coordina con SEO, Ads, PM Planchas y Tatis |
+| B2B | Real | Semanal — capta empresas como clientes recurrentes de planchas (acrílico, PET, PETG, policarbonato); identifica dolores y se retroalimenta de PM Planchas |
 
 ---
 
