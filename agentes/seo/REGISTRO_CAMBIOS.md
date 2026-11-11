@@ -6,6 +6,7 @@ Cada cambio implementado se registra aquí con fecha, URL afectada y resultado m
 |-------|--------|---------------|--------|-------------|--------------|--------------|--------------|
 | 2026-11-03 | Optimizar title + meta description | /categoria-producto/tinas-de-hidromasaje/ | Medio | Jefe | — | — | — |
 | 2026-11-04/05 | Optimizar title + meta description (exp-002) | /categoria-producto/planchas-acrilico/ | Bajo | Jefa | revisar 2026-11-18 | — | — |
+| 2026-11-10 | Nueva página SEO transaccional (exp-009) | /acrilico-transparente/ (nueva) | Bajo | Jefe | revisar 2026-11-24 | revisar 2026-12-08 | — |
 
 **Detalle del cambio 2026-11-03:**
 - Title: "Tinas de Hidromasaje y Jacuzzi 1 y 2 Personas desde $479.990" → "Tinas de Hidromasaje y Jacuzzi desde $479.990 · Retiro hoy en Santiago"
@@ -20,3 +21,12 @@ Cada cambio implementado se registra aquí con fecha, URL afectada y resultado m
 - Baseline: 8.525 impresiones en 28 días, CTR 1,4%. Objetivo: CTR ≥ 2,5%.
 - Registrado por Tatis el 2026-11-10 al cerrar la propuesta seo::1793917050737, que había quedado abierta en la bandeja.
 - Ojo: esta URL era el control del cambio de tinas del 03-nov; desde el 04-nov ya no sirve como control.
+
+**Detalle del cambio 2026-11-10 (exp-009):**
+- Keyword objetivo: "acrílico transparente" — 1.270 impresiones/mes, CTR 0.3% (4 clics), posición media sin página propia
+- Página nueva: /acrilico-transparente/ — H1, tabla espesores con precios reales (data-crm-desde), usos industriales, comparativa vs vidrio, 5 FAQs
+- Schema: BreadcrumbList + FAQPage (candidato a rich results)
+- WhatsApp con ref pp-at01 para tracking de leads por canal
+- Commit: 07ae94d en Polyplas-web
+- Objetivo: posición top 6 y CTR ≥ 3% en 56 días → ~38 clics/mes adicionales
+- Medir: GSC impressiones + CTR + posición en /acrilico-transparente/. Control: /guia-de-acrilicos/ (sin cambios)
