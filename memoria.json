@@ -1,59 +1,67 @@
 {
-  "actualizado": "2026-11-10",
-  "sesionAnterior": {
-    "fecha": "2026-11-10",
-    "titulo": "Cierre 2026-11-10",
-    "url": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/42565633",
-    "resumen": "CRO auditó el cotizador de planchas: la caída de ventas está en mesón (−46%) y WhatsApp (−85%), no en la web. Se corrigió conf_pedido que disparaba en paso 3 en vez de paso 5 (eliminaba conversiones falsas en GA4). Ads ajustó horarios para cuidar el presupuesto. SEO cerró la propuesta de title+meta de /planchas-acrilico/ (exp-002, revisar 18-nov). 6 propuestas nuevas en la bandeja.",
-    "aprobadas": [
-      {
-        "agente": "cro",
-        "que": "fix(cotizador): conf_pedido corregido — dispara en paso 5, no paso 3, en los 4 módulos. + ppGuard",
-        "estado": "Implementado — pendiente verificación con ?pp_debug=1"
-      },
-      {
-        "agente": "ads",
-        "que": "Ajuste de franjas horarias para cuidar el presupuesto mensual",
-        "estado": "Implementado — detalles exactos pendientes de confirmar con la jefa"
-      }
-    ],
-    "trabajado": [
-      "Auditoría cotizador + caída ventas: la web subió ($871.442 semana 2-nov vs $596.096 promedio). La caída es del mesón y WhatsApp.",
-      "247 de 266 leads de WhatsApp de acrílico sin resultado registrado (93%). 74% vienen de Google Ads.",
-      "50 solicitudes de cotización de acrílico con solo 1 venta registrada — oportunidad de recuperación.",
-      "Órdenes Webpay duplicadas en Supabase (198 filas para 115 órdenes) — reportes inflados.",
-      "SEO cerró propuesta seo::1793917050737 (exp-002 en curso, revisar 18-nov).",
-      "Tatis creó Cierre 2026-11-10 en Confluence y actualizó REGISTRO_CAMBIOS de Ads y memoria.json."
-    ],
-    "pendientes": [
-      "⚠️ ALERTA: conf_pedido corregido el 10-nov — conversiones de Ads van a bajar. Es esperado. No tocar nada hasta 15-nov (5 días de datos limpios).",
-      "Confirmar detalles del ajuste de horarios de Ads (horas afectadas y tipo de ajuste)",
-      "Medición verificar conf_pedido con ?pp_debug=1 en los 4 módulos",
-      "Enviar email 1 (11 nov) y email 2 (13 nov) en Brevo",
-      "Subir ventas offline desde el 22 de octubre a Google Ads",
-      "Revisar exp-005 y exp-007 el 16 nov; exp-002 el 18 nov; exp-004 y exp-008 el 23 nov",
-      "Corregir dirección a 'Santiago Concha 1525' en ROL.md de PM Social, PM Planchas, PM Cúpulas y PM Baños",
-      "Avisar a PM Planchas y Ads cuando llegue reposición de PA transparente 5 y 6 mm"
-    ]
-  },
-  "propuestas": {
-    "Diagnosticar y corregir el evento purchase que llega con value=$0 en GA4": "hecha",
-    "Verificar y corregir que transferencias confirmadas disparen el evento purchase": "hecha",
-    "Agregar parámetro de producto de origen a click_asistencia_flotante (WhatsApp)": "hecha",
-    "Crear página 'Cierre 2026-11-03' en Confluence con los reportes de hoy": "hecha",
-    "Verificar y corregir el evento purchase en GA4 (Paso 0)": "hecha",
-    "Optimizar title + meta de /categoria-producto/tinas-de-hidromasaje/": "hecha",
-    "Recursos en Google Ads para planchas gruesas en stock (exp-008)": "hecha",
-    "Tabla de reemplazos de stock AA/PA para el chat": "hecha",
-    "Ampliar rol PM Social a email marketing (Brevo)": "hecha",
-    "2 emails HTML para la base de compradores web de acrílico": "hecha",
-    "Negativas temporales para 5, 6 y 8 mm": "rechazada",
-    "fix(cotizador): conf_pedido corregido en 4 módulos + ppGuard": "hecha",
-    "P1 — Registrar resultado de cada lead de WhatsApp (venta sí/no, monto, motivo)": "pendiente",
-    "P2 — Seguir 50 cotizaciones de acrílico sin cierre": "pendiente",
-    "P3 — Embudo cotizador por paso en GA4 (requiere export GA4 de la jefa)": "pendiente",
-    "P4 — Verificar conf_pedido con ?pp_debug=1 en los 4 módulos": "pendiente",
-    "P5 — Deuda técnica del cotizador (parches, timers, !important)": "pendiente",
-    "P6 — Órdenes Webpay duplicadas en Supabase": "pendiente"
-  }
+ "actualizado": "2026-11-11",
+ "sesionAnterior": {
+  "fecha": "2026-11-10",
+  "titulo": "Cierre 2026-11-10",
+  "url": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/42565633",
+  "resumen": "CRO auditó el cotizador de planchas: la caída de ventas está en mesón (−46%) y WhatsApp (−85%), no en la web. Se corrigió conf_pedido que disparaba en paso 3 en vez de paso 5 (eliminaba conversiones falsas en GA4). Ads ajustó horarios para cuidar el presupuesto. SEO cerró la propuesta de title+meta de /planchas-acrilico/ (exp-002, revisar 18-nov). 6 propuestas nuevas en la bandeja.",
+  "aprobadas": [
+   {
+    "agente": "cro",
+    "que": "fix(cotizador): conf_pedido corregido — dispara en paso 5, no paso 3, en los 4 módulos. + ppGuard",
+    "estado": "Implementado — pendiente verificación con ?pp_debug=1 (afecta solo GA4, no Google Ads)"
+   },
+   {
+    "agente": "ads",
+    "que": "Ajuste de franjas horarias para cuidar el presupuesto mensual",
+    "estado": "Implementado — detalles exactos pendientes de confirmar con la jefa"
+   }
+  ],
+  "trabajado": [
+   "Auditoría cotizador + caída ventas: la web subió ($871.442 semana 2-nov vs $596.096 promedio). La caída es del mesón y WhatsApp.",
+   "247 de 266 leads de WhatsApp de acrílico sin resultado registrado (93%). 74% vienen de Google Ads.",
+   "50 solicitudes de cotización de acrílico con solo 1 venta registrada — oportunidad de recuperación.",
+   "Órdenes Webpay duplicadas en Supabase (198 filas para 115 órdenes) — reportes inflados.",
+   "SEO cerró propuesta seo::1793917050737 (exp-002 en curso, revisar 18-nov).",
+   "Tatis creó Cierre 2026-11-10 en Confluence y actualizó REGISTRO_CAMBIOS de Ads y memoria.json."
+  ],
+  "pendientes": [
+   "CORREGIDO 11-nov: el fix de conf_pedido NO afecta Google Ads. Las conversiones de Ads son solo generate_lead (contacto) y purchase. conf_pedido solo baja en GA4, donde estaba inflado. No tocar la campaña hasta 15-nov para medir limpio el ajuste de horarios y los experimentos.",
+   "Confirmar detalles del ajuste de horarios de Ads (horas afectadas y tipo de ajuste)",
+   "Medición verificar conf_pedido con ?pp_debug=1 en los 4 módulos",
+   "Enviar email 1 (11 nov) y email 2 (13 nov) en Brevo",
+   "Subir ventas offline desde el 22 de octubre a Google Ads",
+   "Revisar exp-005 y exp-007 el 16 nov; exp-002 el 18 nov; exp-004 y exp-008 el 23 nov",
+   "Corregir dirección a 'Santiago Concha 1525' en ROL.md de PM Social, PM Planchas, PM Cúpulas y PM Baños",
+   "Avisar a PM Planchas y Ads cuando llegue reposición de PA transparente 5 y 6 mm"
+  ]
+ },
+ "propuestas": {
+  "Diagnosticar y corregir el evento purchase que llega con value=$0 en GA4": "hecha",
+  "Verificar y corregir que transferencias confirmadas disparen el evento purchase": "hecha",
+  "Agregar parámetro de producto de origen a click_asistencia_flotante (WhatsApp)": "hecha",
+  "Crear página 'Cierre 2026-11-03' en Confluence con los reportes de hoy": "hecha",
+  "Verificar y corregir el evento purchase en GA4 (Paso 0)": "hecha",
+  "Optimizar title + meta de /categoria-producto/tinas-de-hidromasaje/": "hecha",
+  "Recursos en Google Ads para planchas gruesas en stock (exp-008)": "hecha",
+  "Tabla de reemplazos de stock AA/PA para el chat": "hecha",
+  "Ampliar rol PM Social a email marketing (Brevo)": "hecha",
+  "2 emails HTML para la base de compradores web de acrílico": "hecha",
+  "Negativas temporales para 5, 6 y 8 mm": "rechazada",
+  "fix(cotizador): conf_pedido corregido en 4 módulos + ppGuard": "hecha",
+  "P1 — Registrar resultado de cada lead de WhatsApp (venta sí/no, monto, motivo)": "pendiente",
+  "P2 — Seguir 50 cotizaciones de acrílico sin cierre": "pendiente",
+  "P3 — Embudo cotizador por paso en GA4 (requiere export GA4 de la jefa)": "pendiente",
+  "P4 — Verificar conf_pedido con ?pp_debug=1 en los 4 módulos": "pendiente",
+  "P5 — Deuda técnica del cotizador (parches, timers, !important)": "pendiente",
+  "P6 — Órdenes Webpay duplicadas en Supabase": "pendiente"
+ },
+ "conversionesGoogleAds": {
+  "principales": [
+   "generate_lead (contacto)",
+   "purchase"
+  ],
+  "confirmado": "2026-11-11 por la jefa",
+  "nota": "conf_pedido no es conversión en Ads. Cambiar estas acciones reinicia el aprendizaje (pasó el 4-nov): prohibido."
+ }
 }
