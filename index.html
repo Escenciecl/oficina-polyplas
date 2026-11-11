@@ -46,8 +46,6 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .lbl .nm{font:700 11px var(--f-body);background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:0 6px}
 .lbl.me .nm{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 .lbl.off{opacity:.4}
-.floor-btn{font-size:12px!important;font-weight:700}
-.floor-btn.on{background:var(--accent,#d97706)!important;color:#fff!important;border-color:transparent!important}
 .bub{background:var(--bubble);color:var(--bubble-ink);border-radius:10px;padding:5px 9px;font-size:12px;font-weight:600;max-width:200px;white-space:normal;text-align:center;box-shadow:var(--shadow);position:relative;line-height:1.3}
 .bub::after{content:"";position:absolute;left:50%;top:100%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--bubble)}
 .hint{position:absolute;left:12px;top:12px;font-size:12px;font-weight:600;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 10px;color:var(--muted);max-width:calc(100% - 120px)}
@@ -192,7 +190,6 @@ h1 small{-webkit-text-fill-color:var(--muted);font-size:13px;letter-spacing:0}
 .stage{border:1px solid rgba(255,255,255,.95);box-shadow:var(--shadow),0 0 0 1px rgba(15,27,42,.04)}
 .hint,.legend,.zoom .btn{background:rgba(255,255,255,.82)!important;border-color:rgba(15,27,42,.08)!important;color:var(--muted)!important;backdrop-filter:blur(10px)}
 .zoom .btn{color:var(--ink)!important}
-.zoom .btn.floor-btn.on{background:#c2410c!important;color:#fff!important;border-color:#c2410c!important}
 .near{background:rgba(255,255,255,.88);border-color:rgba(255,255,255,.95);backdrop-filter:blur(14px);box-shadow:var(--shadow)}
 .lbl .nm{background:rgba(255,255,255,.92);border-color:rgba(15,27,42,.08);color:var(--ink);box-shadow:0 2px 8px rgba(15,27,42,.08)}
 .lbl.me .nm{background:var(--ink);color:#fff;border-color:var(--ink)}
@@ -337,7 +334,7 @@ kbd{font:600 10px var(--f-mono);border:1px solid var(--line);border-bottom-width
     <section class="stage" id="stage" aria-label="Oficina en 3D">
       <div class="labels" id="labels"></div>
       <div class="hint" id="hint">Haz clic en un agente para hablar con él · muévete con las flechas o toca el piso.</div>
-      <div class="zoom"><button class="btn" id="zin" type="button" aria-label="Acercar">+</button><button class="btn" id="zout" type="button" aria-label="Alejar">−</button><button class="btn floor-btn" id="vf1" type="button" aria-label="Ver 1° piso" title="1° piso: marketing y datos">P1</button><button class="btn floor-btn" id="vf2" type="button" aria-label="Ver 2° piso" title="2° piso: PMs de producto y B2B">P2</button></div>
+      <div class="zoom"><button class="btn" id="zin" type="button" aria-label="Acercar">+</button><button class="btn" id="zout" type="button" aria-label="Alejar">−</button></div>
       <div class="legend"><span><i class="dot"></i>Trabajando</span><span><i class="dot" style="background:var(--accent)"></i>Reunión</span><span><i class="dot" style="background:var(--warn)"></i>Espera aprobación</span></div>
       <div class="fp-hud" id="fpHud">
         <div class="fp-top"><span class="fp-tag">Exploración</span><span class="fp-keys"><kbd>WASD</kbd>moverse · <kbd>←→</kbd>girar · <kbd>Shift</kbd>correr · <kbd>E</kbd>avance · <kbd>Q</kbd>llamada · <kbd>Esc</kbd>salir</span></div>
@@ -849,8 +846,8 @@ stage.prepend(renderer.domElement);
 const cam=new THREE.OrthographicCamera(-1,1,1,-1,0.1,200);
 cam.position.set(15,20,21);cam.lookAt(0,1.5,0);
 const fpCam=new THREE.PerspectiveCamera(70,1,.05,120);
-let zoom=1,fpMode=false;
-function resize(){const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);const a=w/h;const vh=Math.max(16,31/a)/zoom;cam.top=vh/2;cam.bottom=-vh/2;cam.left=-vh*a/2;cam.right=vh*a/2;cam.updateProjectionMatrix();fpCam.aspect=a;fpCam.updateProjectionMatrix()}
+let zoom=1,fpMode=false,viewScale=1;
+function resize(){const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);const a=w/h;const vh=Math.max(16,31/a)*viewScale/zoom;cam.top=vh/2;cam.bottom=-vh/2;cam.left=-vh*a/2;cam.right=vh*a/2;cam.updateProjectionMatrix();fpCam.aspect=a;fpCam.updateProjectionMatrix()}
 new ResizeObserver(resize).observe(stage);
 
 const BG=0xe6e9ec;
@@ -1312,8 +1309,8 @@ renderer.domElement.addEventListener('pointerdown',e=>{
   if(fpMode)return;
   const r=renderer.domElement.getBoundingClientRect();ndc.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);
   ray.setFromCamera(ndc,cam);if(ray.intersectObject(siteScreen).length){openWeb();return}
-  if(meFloor!==viewFloor)return;
-  if(meFloor===1){const h2=ray.intersectObject(floor2)[0];if(h2){let to={x:THREE.MathUtils.clamp(h2.point.x,-12.4,12.4),z:THREE.MathUtils.clamp(h2.point.z,-8.6,8.4)};
+  if(viewFloor!==2&&meFloor!==viewFloor)return;
+  if(meFloor===1){const h2=ray.intersectObject(floor2)[0];if(h2){const o=offOf(1);let to={x:THREE.MathUtils.clamp(h2.point.x-o.x,-12.4,12.4),z:THREE.MathUtils.clamp(h2.point.z-o.z,-8.6,8.4)};
     if(inHole(to.x,to.z))to.x=10.1;
     const cruza=(me.pos.x>10.2||to.x>10.2)&&((me.pos.z<-3.2&&to.z>1.9)||(me.pos.z>1.9&&to.z<-3.2));
     me.path=cruza?[{x:10,z:me.pos.z},{x:10,z:to.z},to]:[to];}return}
@@ -1328,7 +1325,8 @@ function freeRoute(from,to){
 }
 /* la vista sigue al jefe cuando cambia de piso por la escalera */
 let lastMeFloor=0;
-function syncMeView(){const st=inHole(me.pos.x,me.pos.z);if(meFloor!==lastMeFloor){lastMeFloor=meFloor;setView(meFloor)}
+function syncMeView(){const st=inHole(me.pos.x,me.pos.z);if(meFloor!==lastMeFloor){lastMeFloor=meFloor;if(viewFloor!==2)setView(meFloor)}
+  if(viewFloor===2){me.g.visible=true;return}
   me.g.visible=st||meFloor===viewFloor;if(!me.g.visible)me.lbl.style.visibility='hidden'}
 function moveMe(dt){
   let vx=0,vz=0;
@@ -1355,15 +1353,20 @@ const demo=false;let paused=false,pending=[],meetingBusy=false,meFloor=0;
 /* Vista por piso: en la vista aérea se muestra un piso a la vez */
 let viewFloor=0;
 const agFloor=a=>a.desk.y?1:0;
-const onView=a=>fpMode||agFloor(a)===viewFloor;
+const onView=a=>fpMode||viewFloor===2||agFloor(a)===viewFloor;
+/* en la vista de ambos pisos el 2° piso se dibuja elevado y hacia el fondo, para ver los dos a la vez */
+const EXPL=new THREE.Vector3(0,9,-13),ZERO=new THREE.Vector3();
+const offOf=fl=>(!fpMode&&viewFloor===2&&fl===1)?EXPL:ZERO;
 const F1_SAVED=new Map();
 function showFloor1(on){scene.children.forEach(o=>{if(o===F2||o===STAIRS||o===floor2||o.isLight||o===me.g)return;
   if(!on){if(!F1_SAVED.has(o))F1_SAVED.set(o,o.visible);o.visible=false}
   else if(F1_SAVED.has(o)){o.visible=F1_SAVED.get(o);F1_SAVED.delete(o)}})}
-function setView(f){viewFloor=f;F2.visible=fpMode||f===1;showFloor1(fpMode||f===0);
-  cam.position.set(15,20+f*Y_F2,21);cam.lookAt(0,1.5+f*Y_F2,0);
-  ['vf1','vf2'].forEach((id,i)=>{const b=document.getElementById(id);if(b){b.classList.toggle('on',i===f);b.setAttribute('aria-pressed',String(i===f))}});
-  applyMode()}
+function setView(f){viewFloor=f;const both=!fpMode&&f===2;
+  F2.visible=fpMode||f!==0;showFloor1(fpMode||f!==1);STAIRS.visible=fpMode||!both;
+  const o=offOf(1);F2.position.copy(o);floor2.position.set(o.x,Y_F2+o.y,o.z);
+  if(both){cam.position.set(15,21+EXPL.y/2,21+EXPL.z/2);cam.lookAt(0,2.5+EXPL.y/2,EXPL.z/2);viewScale=1.9}
+  else{const y=f===1?Y_F2:0;cam.position.set(15,20+y,21);cam.lookAt(0,1.5+y,0);viewScale=1}
+  resize();applyMode()}
 const rnd=a=>a[Math.floor(Math.random()*a.length)];
 const wait=ms=>new Promise(r=>setTimeout(r,ms));
 const now=()=>new Date().toLocaleTimeString('es-CL',{hour:'2-digit',minute:'2-digit'});
@@ -1458,8 +1461,6 @@ function applyMode(){
 
 document.getElementById('zin').onclick=()=>{zoom=Math.min(2.2,zoom*1.2);resize()};
 document.getElementById('zout').onclick=()=>{zoom=Math.max(.7,zoom/1.2);resize()};
-document.getElementById('vf1').onclick=()=>setView(0);
-document.getElementById('vf2').onclick=()=>setView(1);
 
 /* cercanía */
 const nearEl=document.getElementById('near');let nearA=null;
@@ -1473,23 +1474,23 @@ function checkNear(){
 /* ---------- loop ---------- */
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const v=new THREE.Vector3();let last=performance.now(),tAll=0;
-function placeLabel(p,lift,camera){camera=camera||cam;v.set(p.pos.x,(p.pos.y||0)+lift,p.pos.z).project(camera);const w=stage.clientWidth,h=stage.clientHeight;p.lbl.style.left=((v.x+1)/2*w)+'px';p.lbl.style.top=((1-v.y)/2*h)+'px';
+function placeLabel(p,lift,camera){camera=camera||cam;const o=offOf(p===me?meFloor:agFloor(p));v.set(p.pos.x+o.x,(p.pos.y||0)+lift+o.y,p.pos.z+o.z).project(camera);const w=stage.clientWidth,h=stage.clientHeight;p.lbl.style.left=((v.x+1)/2*w)+'px';p.lbl.style.top=((1-v.y)/2*h)+'px';
   let vis=v.z>-1&&v.z<1&&Math.abs(v.x)<1.2&&Math.abs(v.y)<1.3;
   if(camera!==cam){const d=Math.hypot(p.pos.x-fpPos.x,p.pos.z-fpPos.z);vis=vis&&d<11;p.lbl.style.opacity=vis?Math.max(.4,1-d/13).toFixed(2):''}
   p.lbl.style.visibility=vis?'':'hidden'}
 function frame(t){
   const dt=Math.min(.05,(t-last)/1000);last=t;tAll+=dt;
-  AGENTS.forEach(a=>{const moving=step(a,dt);a.g.position.copy(a.pos);
+  AGENTS.forEach(a=>{const moving=step(a,dt);a.g.position.copy(a.pos).add(offOf(agFloor(a)));
     if(!moving){let d=a.face-a.g.rotation.y;d=Math.atan2(Math.sin(d),Math.cos(d));a.g.rotation.y+=d*Math.min(1,dt*6)}
     animPerson(a,moving,!moving&&isSitting(a),dt,tAll);
     a.status.position.y=2.1+(reduce?0:Math.sin(tAll*3+a.desk.x)*.04);
     placeLabel(a,2.25);if(!onView(a))a.lbl.style.visibility='hidden'});
-  const mm=moveMe(dt);me.g.position.copy(me.pos);animPerson(me,mm,false,dt,tAll);placeLabel(me,2.1);syncMeView();
+  const mm=moveMe(dt);me.g.position.copy(me.pos).add(offOf(meFloor));animPerson(me,mm,false,dt,tAll);placeLabel(me,2.1);syncMeView();
   checkNear();
   renderer.render(scene,cam);requestAnimationFrame(frame);
 }
 const approvedSet=new Set();
-resize();renderTeam();setView(0);renderProps();
+resize();renderTeam();setView(2);renderProps();
 log('Vigilante: tarea diaria creada, ronda cada mañana a las 8:08');
 log('SEO: agente activado — primera auditoría pendiente de acceso a GSC y GA4');
 log('CRO: agente activado — Paso 0 pendiente: verificar evento purchase en GA4');
@@ -1983,7 +1984,7 @@ fpEls.joy.addEventListener('pointerup',endJoy);fpEls.joy.addEventListener('point
 function moveJoy(e){const r=fpEls.joy.getBoundingClientRect(),R=r.width/2;let x=e.clientX-r.left-R,y=e.clientY-r.top-R;const d=Math.hypot(x,y);if(d>R){x*=R/d;y*=R/d}
   joy.x=x/R;joy.y=y/R;fpEls.knob.style.transform='translate('+x+'px,'+y+'px)'}
 
-function setFPScene(on){F2.visible=on||viewFloor===1;applyMode();
+function setFPScene(on){setView(viewFloor);
   fpOnly.forEach(m=>m.visible=on);
   scene.fog=on?new THREE.Fog(new THREE.Color(BG).convertSRGBToLinear(),18,45):null;
   stage.classList.toggle('fp',on);
@@ -2006,7 +2007,7 @@ function exitFP(){
   fpEls.btn.classList.remove('active');fpEls.btn.textContent='1ª Persona';
   fpEls.hint.classList.remove('vis');fpEls.cross.classList.remove('target');
   AGENTS.forEach(a=>{a.lbl.style.opacity=''});
-  setFPScene(false);nearA=undefined;lastMeFloor=meFloor;setView(meFloor);
+  setFPScene(false);nearA=undefined;lastMeFloor=meFloor;setView(viewFloor);
 }
 fpEls.btn.onclick=()=>{closeMoreMenu();fpMode?exitFP():enterFP()};
 
@@ -2081,7 +2082,7 @@ function drawMap(){
 frame=function(t){
   const dt=Math.min(.05,(t-last)/1000);last=t;tAll+=dt;
   const camNow=fpMode?fpCam:cam;
-  AGENTS.forEach(a=>{const moving=step(a,dt);a.g.position.copy(a.pos);
+  AGENTS.forEach(a=>{const moving=step(a,dt);a.g.position.copy(a.pos).add(offOf(agFloor(a)));
     if(!moving){let d=a.face-a.g.rotation.y;d=Math.atan2(Math.sin(d),Math.cos(d));a.g.rotation.y+=d*Math.min(1,dt*6)}
     animPerson(a,moving,!moving&&isSitting(a),dt,tAll);
     a.status.position.y=2.1+(reduce?0:Math.sin(tAll*3+a.desk.x)*.04);
@@ -2092,7 +2093,7 @@ frame=function(t){
     moveFP(dt);fpTarget();drawMap();
     renderer.render(scene,fpCam);
   } else {
-    const mm=moveMe(dt);me.g.position.copy(me.pos);animPerson(me,mm,false,dt,tAll);placeLabel(me,2.1);syncMeView();
+    const mm=moveMe(dt);me.g.position.copy(me.pos).add(offOf(meFloor));animPerson(me,mm,false,dt,tAll);placeLabel(me,2.1);syncMeView();
     checkNear();
     renderer.render(scene,cam);
   }
