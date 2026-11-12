@@ -40,3 +40,24 @@ El nombre del fabricante **no se publica**, para no entregárselo a la competenc
 1. Ficha del opal: transmisión de luz por espesor (3, 4, 5 mm).
 2. Tolerancia de espesor.
 3. Un informe de ensayo más reciente (2024–2026).
+
+---
+
+## Datos del sitio web del fabricante (revisado el 12-nov-2026)
+
+| Dato | Lo que publica el fabricante |
+|------|------------------------------|
+| **Tolerancia de espesor** (A / B / C) | 3 mm: ±0,5 / ±0,6 / ±0,8 · 4 mm: ±0,6 / ±0,7 / ±0,8 · 5 mm: ±0,6 / ±0,7 / ±0,8 · 6 mm: ±0,7 / ±0,8 / ±0,9 · 8 mm: ±0,8 / ±0,9 / ±1,0 · 10 mm: ±0,9 / ±1,1 / ±1,2 mm. **No sabemos qué clase compramos** → preguntar |
+| **Film protector** | Sí: "no retirar el film protector antes de usar la plancha"; lo destacan como de alta calidad (no dicen si es por ambas caras) |
+| **Opal (乳白)** | Solo dicen "buena difusión y transmisión de la luz, se usa en lámparas y cajas de luz". **Sin % de transmisión** |
+| **UV** | "Excelente resistencia UV e intemperie, uso exterior en clima tropical y frío". Virgen: "al menos 5 años sin amarillear". Reciclado: "transmisión menor a 80%, amarillea fácil". Es una afirmación del fabricante, no un ensayo |
+| **Materia prima** | 100% virgen importada (Mitsubishi y Lucite), sin reciclado |
+| **Colores que fabrica** | Transparente, transparentes de color, opal, colores opacos, negro, **espejo (oro, plata, rojo, azul, verde, bronce; 2–6 mm)**, alto impacto; **fabrica colores a pedido según muestra** |
+| **Espesores** | 2 a 100 mm |
+| **Termoformado** | 140–180 °C en horno · doblado en línea con resistencia: 100–110 °C |
+| **Dilatación** | 7×10⁻⁵ m/m·K: una plancha de 1 m que pasa de 15 a 42 °C crece 1,89 mm → **dejar holgura en el marco y hacer las perforaciones ovaladas** |
+| **Limpieza** | Paño suave con agua y jabón al 1% |
+| **Certificados publicados** | Fuego (2015), propiedades físicas (2011), amarilleo de 150 h (2011), sustancias REACH (2013), seguridad alimentaria (2013). **Ninguno de 2024–2026** |
+
+**Siguen pendientes con el fabricante:** % de transmisión del opal por espesor · qué clase de tolerancia compramos · un informe de ensayo reciente.
+**Oportunidad:** el fabricante produce colores translúcidos y espejos de color a pedido → si una fábrica de letreros los necesita, se pueden importar.
