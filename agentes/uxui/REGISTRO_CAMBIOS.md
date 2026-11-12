@@ -18,3 +18,4 @@ Cada cambio implementado se registra aquí con el archivo modificado, el motivo 
 > Regla: ningún cambio al checkout, header o footer sin aprobación explícita. Todo cambio de CSS incluye el bloque de código exacto en la propuesta.
 > Medición pendiente: Agente Medición tiene tarea asignada (2026-11-06) para medir impacto de los cambios de checkout a 14 y 28 días.
 > Revisión programada 2026-11-13: hipótesis conf_volver alto → cajas de selección de plancha. Medición + UX/UI + Natalia.
+| 2026-11-12 | Mejoras UX publicadas (PR #5 Polyplas-web): puntos 1–6, 8 y 9 de REVISION_LANDINGS_B2B_2026-11-12.md. Pendiente punto 7 (foto en el hero, esperando fotos de la jefa). Medir a 28 días: exposición de #reunion, clics por botón, lead_b2b/sesiones | ✅ Publicado | Medir 2026-12-10 |
