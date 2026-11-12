@@ -27,7 +27,7 @@ Las preguntas 1 a 5 se responden en GA4. La 6 necesita cerrar el ciclo fuera de 
 2. **Nunca enviar datos personales a GA4** (nombre, empresa, RUT, teléfono, correo, texto del comentario): lo prohíben las políticas de Google.
    Solo se envían categorías (industria, rango de consumo, tipo de reunión) y si un campo se llenó (sí/no).
 3. **Consentimiento:** si la persona rechaza las cookies, GA4 no registra nada. Los números de GA4 van a ser **menores** que los leads reales; por eso el ciclo cerrado de la sección 4 es la fuente de verdad.
-4. **`lead_b2b` en Google Ads, solo como conversión secundaria** (observación). Así no afecta las pujas ni el aprendizaje. Se decide con el Agente Ads.
+4. **`lead_b2b` NO se importa a Google Ads** (actualizado el 12-nov): agregar acciones de conversión está prohibido por la regla de aprendizaje, y nada se toca en Ads sin autorización explícita de la jefa.
 
 ---
 
@@ -94,7 +94,7 @@ Requiere actualizar la política de privacidad, porque se guardarían datos de c
 1. **GTM:** una sola etiqueta "GA4 – Eventos B2B" con un activador para todo evento que empiece con `b2b_` más `lead_b2b`, que reenvíe los parámetros.
 2. **GA4 → Dimensiones personalizadas** (alcance evento): `landing`, `variante`, `seccion`, `cta_posicion`, `campo`, `bloque`, `industria`, `consumo`, `tipo_reunion`, `fabrica`, `llego_por`, `lead_id`, `campos_faltantes`, `ultimo_campo`. Son 14 de las 50 disponibles.
    Métricas personalizadas: `segundos_formulario`, `opcionales_llenos`.
-3. **Evento clave en GA4:** `lead_b2b`. En Google Ads, solo como **secundaria**.
+3. **Evento clave en GA4:** `lead_b2b`. No se importa a Google Ads.
 4. **Control de calidad:** probar con `?pp_debug=1`, revisar en "DebugView" de GA4 que cada evento llegue una sola vez y sin datos personales, en escritorio y en celular.
 
 ---
@@ -139,7 +139,7 @@ Ejemplo: si la tasa de inicio del formulario es 5% y queremos detectar una mejor
 | Guardar el formulario en Supabase (opcional) | Claude, si la jefa aprueba | 2 h + política de privacidad |
 | Control de calidad en DebugView | Medición | 1 h |
 
-**Decisiones de la jefa:** (1) aprobar el plan · (2) ¿guardar el formulario en Supabase? · (3) ¿`lead_b2b` como conversión secundaria en Google Ads?
+**Decisiones de la jefa:** (1) aprobar el plan · (2) ¿guardar el formulario en Supabase? · (3) Google Ads: descartado por la regla de aprendizaje.
 
 ---
 
@@ -152,7 +152,7 @@ Ejemplo: si la tasa de inicio del formulario es 5% y queremos detectar una mejor
 ✅ **GA4 (12-nov):** 12 dimensiones nuevas (landing, variante, seccion, cta_posicion, campo, llego_por, consumo, tipo_reunion, fabrica, lead_id, campos_faltantes, ultimo_campo) + se reutilizan `orden` y `pregunta`, que ya existían. Se omitieron `industria` (= landing) y `bloque` (se deduce de campo). **Cupo: 47 de 50 dimensiones de evento.** 2 métricas: segundos_formulario y opcionales_llenos. Eventos b2b_* confirmados en Tiempo real.
 ⏳ **`lead_b2b` como evento clave:** GA4 solo permite marcarlo (estrella en Administrar → Eventos) cuando llegue el primer lead real.
 ✅ **Chat general oculto en las landings B2B** (PR #8) y enlace "Toca aquí" excluido del interceptor de WhatsApp de GTM (PR #7): todo contacto de las landings va al +56 9 6435 6986.
-⏳ **Google Ads:** `lead_b2b` como conversión **secundaria**, cuando ya aparezca en GA4 (unos días después de configurar GTM).
+🚫 **Google Ads:** `lead_b2b` no se importa (regla de aprendizaje; nada en Ads sin autorización de la jefa).
 
 ### Cómo vienen los eventos en el dataLayer
 ```

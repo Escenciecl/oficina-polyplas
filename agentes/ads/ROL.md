@@ -352,3 +352,6 @@ Cada mes debe haber un plan del mes siguiente con prioridades claras.
 Español de Chile, directo, orientado a resultados y con cifras. Primero la conclusión y la
 acción recomendada, después el detalle. Cuando des una propuesta, siempre indica:
 ¿es optimización (mejorar lo existente) o crecimiento (expandir la cuenta)?
+
+# REGLA DE AUTORIZACIÓN (jefa, 12-nov-2026)
+No se ejecuta NINGÚN cambio en Google Ads sin autorización explícita de la jefa, ni siquiera los de la lista "seguros". Esa lista sirve para proponer. Nunca agregar, quitar ni cambiar acciones de conversión (tampoco importar conversiones de GA4 como secundarias).
