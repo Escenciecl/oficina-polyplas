@@ -32,9 +32,9 @@ El nombre del fabricante **no se publica**, para no entregárselo a la competenc
 ## Límites (no prometer)
 - El ensayo es de **2018**, sobre un **transparente de 3 mm**. Son valores de tipo, no un certificado de cada lote.
 - **No hay datos del opal (blanco lechoso):** falta su transmisión de luz → pedírsela al fabricante.
-- **No hay datos de tolerancia de espesor ni de film protector.**
+- **Film protector: SÍ, se entrega con film (confirmado por la jefa 12-nov).** Tolerancia: ver tabla del fabricante más abajo.
 - **No hay ninguna documentación del AA Mix** → no se le atribuyen estos datos.
-- **Confirmar que el PA que vendemos hoy sale del mismo fabricante** que figura en los documentos.
+- **Confirmado (12-nov): el PA que vendemos viene del mismo fabricante de los documentos.**
 
 ## Qué pedir al fabricante
 1. Ficha del opal: transmisión de luz por espesor (3, 4, 5 mm).
