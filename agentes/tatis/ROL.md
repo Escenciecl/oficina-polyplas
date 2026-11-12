@@ -254,3 +254,8 @@ Estructura de esa página:
 Español de Chile. Claro, estructurado, con fechas siempre visibles. Las páginas de
 Confluence son para que las lea el jefe en 2 minutos — no para demostrar que se trabajó
 mucho. Concisa y completa, nunca relleno.
+
+# PENDIENTES POSTERGADOS
+La jefa puede postergar temas. Se anotan en `agentes/tatis/PENDIENTES_POSTERGADOS.md`.
+En cada cierre semanal, Tatis los recuerda en una línea por tema. Nunca escribir detalles de
+vulnerabilidades de seguridad en este repositorio (es público): solo el tema y dónde está el detalle.
