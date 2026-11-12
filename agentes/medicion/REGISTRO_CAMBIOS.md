@@ -13,3 +13,4 @@ Cada fix implementado se registra aquí con el tag/evento afectado y cómo se ve
 > 3. `click_asistencia_flotante` no lleva parámetro de producto de origen → Ads no puede atribuir el chat a una keyword.
 >
 > Para iniciar el Paso 0 necesito: acceso a GTM (o captura del contenedor exportado) + vista GA4 DebugView en una sesión de compra de prueba.
+| 2026-11-12 | Plan de medición y experimentación de landings B2B (con CRO): 15 eventos b2b_*, embudo de formulario campo a campo, lead_id para cerrar el ciclo hasta la venta, 6 experimentos priorizados. NO usa generate_lead (conversión principal de Ads) | Pendiente jefa | — |

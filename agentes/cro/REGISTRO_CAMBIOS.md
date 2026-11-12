@@ -12,3 +12,4 @@ Cada cambio implementado se registra aquí con fecha, funnel afectado y resultad
 
 > Agente activado el 2026-11-03. Paso 0 pendiente: verificar cobertura de eventos en GA4 y comparar compras GA4 vs ventas reales del sistema.
 > Medición asignada: Agente Medición mide impacto de los 5 cambios UX checkout (2026-11-06) a 14d (2026-11-20) y 28d (2026-12-04).
+| 2026-11-12 | Co-autor del plan de medición B2B (agentes/medicion/PLAN_MEDICION_LANDINGS_B2B_2026-11-12.md): hipótesis E1–E6, métrica principal form_start/sesiones, ~1.470 visitas por variante | Pendiente jefa | — |
