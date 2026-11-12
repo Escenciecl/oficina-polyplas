@@ -5,6 +5,11 @@ Meta pedida por la jefa: **2 cuentas recurrentes que compren $5.000.000+ al mes 
 
 ---
 
+## 0. Regla definida por la jefa (12-nov)
+Las empresas grandes **no compran online**: piden muestras, presupuesto formal y condiciones.
+Toda página B2B termina en el **formulario de lead**. Dolores por industria y diseño del formulario:
+`DOLORES_INDUSTRIAS_VOLUMEN_2026-11-12.md`.
+
 ## 1. Punto de partida (datos reales, Supabase, pedidos web pagados may–nov 2026)
 
 | Dato | Valor |
