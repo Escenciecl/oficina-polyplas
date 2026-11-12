@@ -140,3 +140,35 @@ Ejemplo: si la tasa de inicio del formulario es 5% y queremos detectar una mejor
 | Control de calidad en DebugView | Medición | 1 h |
 
 **Decisiones de la jefa:** (1) aprobar el plan · (2) ¿guardar el formulario en Supabase? · (3) ¿`lead_b2b` como conversión secundaria en Google Ads?
+
+---
+
+## 9. Estado de implementación (12-nov-2026)
+
+✅ **Publicado en el sitio** (PR #6 Polyplas-web): los 15 eventos, el código de lead y el respaldo en Supabase.
+✅ **Supabase:** tabla nueva `b2b_leads`. Desde la web solo se puede **insertar**: no se puede leer con la llave pública y las columnas de seguimiento quedan bloqueadas. **No se modificó ninguna tabla existente.**
+✅ **Política de privacidad:** dos viñetas nuevas sobre formularios de empresas.
+⏳ **GTM y GA4:** los eventos ya llegan al `dataLayer`, pero **no llegan a GA4 hasta configurar GTM** (pasos abajo).
+⏳ **Google Ads:** `lead_b2b` como conversión **secundaria**, cuando ya aparezca en GA4 (unos días después de configurar GTM).
+
+### Cómo vienen los eventos en el dataLayer
+```
+dataLayer.push({ b2b: null });                       // reseteo (evita arrastrar parámetros)
+dataLayer.push({ event: 'b2b_cta_click', b2b: { landing:'pop', variante:'control', lead_id:'B2B-XXXXXX', cta_posicion:'hero' } });
+```
+Debug: agrega `?pp_debug=1` a la URL y mira la consola (`[b2b] …`).
+
+### Pasos en GTM (contenedor GTM-N7VSCSBW)
+1. **Variables** → Nueva → *Variable de capa de datos* (versión 2), una por parámetro:
+   `b2b.landing`, `b2b.variante`, `b2b.lead_id`, `b2b.referrer_tipo`, `b2b.profundidad`, `b2b.seccion`, `b2b.orden`, `b2b.cta_posicion`, `b2b.pregunta`, `b2b.destino`, `b2b.llego_por`, `b2b.primer_campo`, `b2b.campo`, `b2b.campo_orden`, `b2b.bloque`, `b2b.campos_faltantes`, `b2b.intento`, `b2b.ultimo_campo`, `b2b.campos_llenos`, `b2b.segundos_formulario`, `b2b.industria`, `b2b.consumo`, `b2b.tipo_reunion`, `b2b.fabrica`, `b2b.opcionales_llenos`, `b2b.con_comentario`, `b2b.intentos`, `b2b.cta_origen`.
+2. **Activador** → *Evento personalizado* → nombre del evento `^(b2b_.*|lead_b2b)$` con "Usar coincidencia de expresiones regulares".
+3. **Etiqueta** → *Google Analytics: evento de GA4* → ID de medición de la propiedad → nombre del evento `{{Event}}` → un parámetro por cada variable del paso 1 (mismo nombre, sin `b2b.`). Activador del paso 2.
+4. **Vista previa** (Tag Assistant) en `/acrilico-para-exhibidores-pop/?pp_debug=1`: recorrer la página y enviar un formulario de prueba (después se borra la fila en Supabase). **Publicar.**
+
+### Pasos en GA4
+1. Administrar → *Definiciones personalizadas* → crear las dimensiones (alcance evento): `landing`, `variante`, `seccion`, `cta_posicion`, `campo`, `bloque`, `industria`, `consumo`, `tipo_reunion`, `fabrica`, `llego_por`, `lead_id`, `campos_faltantes`, `ultimo_campo`. Métricas: `segundos_formulario`, `opcionales_llenos`.
+2. Administrar → *Eventos* → cuando aparezca `lead_b2b`, marcarlo como **evento clave**.
+3. Exploraciones → *Embudo*: `b2b_landing_view` → `b2b_section_view (seccion=dolores)` → `b2b_form_view` → `b2b_form_start` → `b2b_field_done (campo=consumo)` → `lead_b2b`, desglosado por `landing` y dispositivo.
+
+### Seguimiento de leads (jefa)
+Supabase → Table Editor → `b2b_leads`. Cada lead trae su código `B2B-XXXXXX` (el mismo que llega en el WhatsApp). Completar: `whatsapp_recibido`, `reunion_agendada`, `reunion_hecha`, `cotizacion_monto`, `primer_pedido_monto`, `segunda_compra_90d`, `motivo_perdida`, `notas`.

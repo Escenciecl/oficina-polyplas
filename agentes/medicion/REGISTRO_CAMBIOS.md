@@ -14,3 +14,4 @@ Cada fix implementado se registra aquí con el tag/evento afectado y cómo se ve
 >
 > Para iniciar el Paso 0 necesito: acceso a GTM (o captura del contenedor exportado) + vista GA4 DebugView en una sesión de compra de prueba.
 | 2026-11-12 | Plan de medición y experimentación de landings B2B (con CRO): 15 eventos b2b_*, embudo de formulario campo a campo, lead_id para cerrar el ciclo hasta la venta, 6 experimentos priorizados. NO usa generate_lead (conversión principal de Ads) | Pendiente jefa | — |
+| 2026-11-12 | Medición B2B publicada (PR #6): 15 eventos b2b_* + lead_id + tabla b2b_leads (solo inserción). Pendiente: GTM y GA4 (pasos en el plan, sección 9) y lead_b2b como conversión secundaria en Ads | ✅ Sitio · ⏳ GTM/GA4 | Línea base 6 semanas (hasta 2026-12-24) |
