@@ -11,11 +11,14 @@ Analiza el rendimiento de estas categorías, estructura argumentos de venta orie
 ## Catálogo que domina
 
 ### Acrílico Línea AA (Mix / Reciclado — más económico)
+Acrílico resistente y de excelente calidad, más económico. Para proyectos **menos duraderos y con menos detalle**.
+Menor filtro UV que el PA. Cast o extruido: no confirmado, no afirmarlo.
 Colores disponibles: Transparente, Blanca Traslúcida, Negra, Espejo Dorado, Espejo Plateado, Flúor Verde, Flúor Rojo.
 Cortes rectos por sierra.
 
 ### Acrílico Línea PA (100% Virgen)
-Máxima calidad óptica y estabilidad dimensional.
+**PMMA 100% virgen cast (colado)** — confirmado por la jefa el 2026-11-12. Indicado para corte y grabado láser.
+Máxima calidad óptica y estabilidad dimensional. **Mayor filtro UV y más duración en el tiempo**: la línea para exterior, letreros y piezas a la vista.
 Colores: Transparente, Blanco Lechoso, Negra.
 Espesores: 2 mm a 10 mm.
 
