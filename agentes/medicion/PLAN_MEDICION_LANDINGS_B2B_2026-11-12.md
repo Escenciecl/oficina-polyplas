@@ -148,7 +148,10 @@ Ejemplo: si la tasa de inicio del formulario es 5% y queremos detectar una mejor
 ✅ **Publicado en el sitio** (PR #6 Polyplas-web): los 15 eventos, el código de lead y el respaldo en Supabase.
 ✅ **Supabase:** tabla nueva `b2b_leads`. Desde la web solo se puede **insertar**: no se puede leer con la llave pública y las columnas de seguimiento quedan bloqueadas. **No se modificó ninguna tabla existente.**
 ✅ **Política de privacidad:** dos viñetas nuevas sobre formularios de empresas.
-⏳ **GTM y GA4:** los eventos ya llegan al `dataLayer`, pero **no llegan a GA4 hasta configurar GTM** (pasos abajo).
+✅ **GTM publicado (12-nov):** versión "B2B landings - eventos de medicion": 28 variables, 1 activador, 1 etiqueta GA4. Importado con "Combinar + renombrar": 0 elementos existentes modificados. Probado en Tag Assistant.
+✅ **GA4 (12-nov):** 12 dimensiones nuevas (landing, variante, seccion, cta_posicion, campo, llego_por, consumo, tipo_reunion, fabrica, lead_id, campos_faltantes, ultimo_campo) + se reutilizan `orden` y `pregunta`, que ya existían. Se omitieron `industria` (= landing) y `bloque` (se deduce de campo). **Cupo: 47 de 50 dimensiones de evento.** 2 métricas: segundos_formulario y opcionales_llenos. Eventos b2b_* confirmados en Tiempo real.
+⏳ **`lead_b2b` como evento clave:** GA4 solo permite marcarlo (estrella en Administrar → Eventos) cuando llegue el primer lead real.
+✅ **Chat general oculto en las landings B2B** (PR #8) y enlace "Toca aquí" excluido del interceptor de WhatsApp de GTM (PR #7): todo contacto de las landings va al +56 9 6435 6986.
 ⏳ **Google Ads:** `lead_b2b` como conversión **secundaria**, cuando ya aparezca en GA4 (unos días después de configurar GTM).
 
 ### Cómo vienen los eventos en el dataLayer
