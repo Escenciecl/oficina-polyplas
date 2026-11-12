@@ -124,3 +124,41 @@ mamparas → m² y fecha de instalación · construcción → nombre de la obra,
 - [ ] Muestrario de colores y espesores disponible
 - [ ] Qué fichas técnicas y certificados existen (policarbonato, PETG, grado alimentario)
 - [ ] Stock y capacidad de corte en serie para cuentas de ~100 planchas al mes
+
+---
+
+## Reunión B2B + PM Planchas (12-nov): producto y la industria más probable para $5M/mes en acrílico
+
+**Stock de acrílico al 12-nov (Supabase `pp_stock`, a precio de lista):**
+
+| Línea | Planchas | Valor |
+|-------|---------:|------:|
+| PA transparente | 1.251 | $75,6M |
+| PA blanco lechoso | 1.074 | $94,7M |
+| AA transparente | 970 | $107,5M |
+| AA blanca traslúcida | 693 | $63,4M |
+| AA flúor verde + rojo | 100 | $4,9M |
+| AA negra | 10 | $0,6M |
+
+A precio de lista, $5M al mes equivalen a **unas 50 a 90 planchas**. En total hay stock de sobra; el riesgo
+está en **formatos puntuales** (PA transparente 5 y 6 mm en varias medidas, ver `agentes/cro/REEMPLAZOS_STOCK_2026-11-09.md`)
+y en el **negro** (solo 10 planchas). **PET y PETG no aparecen en `pp_stock`**, y el policarbonato está sin precio cargado.
+
+**Correcciones de PM Planchas a este mapa:**
+- Polyplas corta **solo recto con sierra** (sin láser ni curvas, pieza mínima 30×30). Las industrias de volumen
+  cortan en su propio láser o CNC: **quieren plancha completa**, que es justo lo que vendemos. El corte es un extra.
+- **AA es mezcla o reciclado.** En láser y en piezas a la vista puede dar bordes y transparencia irregulares → a estas
+  cuentas se les ofrece **PA**. AA solo para piezas ocultas o de bajo costo.
+- PETG es de grado alimenticio según el catálogo, pero no hay stock cargado: **no se ofrece a industria ni POP hasta confirmar.**
+
+**Ranking de industrias para una cuenta de $5M/mes en acrílico:**
+
+1. **Fabricantes de exhibidores y POP para cadenas** (supermercados, farmacias, cosmética, licores).
+   Es el mayor consumo de acrílico transparente que existe; compran todo el año por campañas y cortan en su propio láser.
+   Encaja con nuestro stock más grande: **2.221 planchas transparentes** (PA + AA).
+2. **Fábricas de letreros luminosos y señalética corporativa** (rollout y mantención de letreros de cadenas).
+   Su material estrella es el **blanco lechoso PA, donde tenemos 1.074 planchas**. Además, ya son las empresas que repiten compra en nuestros datos.
+3. Habilitación comercial y mueblería para cadenas: compran mucho, pero por proyecto, no todos los meses.
+4. Construcción e industria: consumen más policarbonato, PET y PETG que acrílico. **No sirven para la meta en acrílico.**
+
+**Siguiente paso:** las páginas SEO 1 y 2 (POP y letreros) van primero; mamparas, construcción e industria quedan para después.
