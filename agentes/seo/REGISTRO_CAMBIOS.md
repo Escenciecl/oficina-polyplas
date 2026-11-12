@@ -30,3 +30,4 @@ Cada cambio implementado se registra aquí con fecha, URL afectada y resultado m
 - Commit: 07ae94d en Polyplas-web
 - Objetivo: posición top 6 y CTR ≥ 3% en 56 días → ~38 clics/mes adicionales
 - Medir: GSC impressiones + CTR + posición en /acrilico-transparente/. Control: /guia-de-acrilicos/ (sin cambios)
+| 2026-11-12 | 2 landings B2B nuevas (PR #2 Polyplas-web): /acrilico-para-exhibidores-pop/ y /acrilico-para-letreros-luminosos/. Title + description + FAQPage. Riesgo bajo (solo páginas nuevas). Próximo: enlaces internos desde categoría planchas (riesgo medio, aparte) y medir impresiones a 28 y 56 días | Pendiente merge | Medir 2026-12-10 y 2027-01-07 |
