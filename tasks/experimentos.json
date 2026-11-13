@@ -123,7 +123,8 @@
   "revisar_en": "2026-11-21",
   "revisar_final": "2026-12-07",
   "revisiones": [],
-  "estado": "pendiente"
+  "estado": "pendiente",
+  "notas": "13-nov: desde el cambio de despacho (exp-012) el valor de compra en GA4 incluye el despacho pagado ($19.000/$30.000) y el despacho aparece como artículo. Comparar por número de compras o restar la línea DESPACHO hasta que Medición corrija la medición."
  },
  {
   "id": "exp-004",
@@ -169,7 +170,8 @@
   "revisar_en": "2026-11-23",
   "revisar_final": "2026-12-09",
   "revisiones": [],
-  "estado": "pendiente"
+  "estado": "pendiente",
+  "notas": "13-nov: desde el cambio de despacho (exp-012) el valor de compra en GA4 incluye el despacho pagado ($19.000/$30.000) y el despacho aparece como artículo. Comparar por número de compras o restar la línea DESPACHO hasta que Medición corrija la medición."
  },
  {
   "id": "exp-005",
@@ -212,7 +214,8 @@
   "revisar_en": "2026-11-16",
   "revisar_final": "2026-12-09",
   "revisiones": [],
-  "estado": "pendiente"
+  "estado": "pendiente",
+  "notas": "13-nov: desde el cambio de despacho (exp-012) el valor de compra en GA4 incluye el despacho pagado ($19.000/$30.000) y el despacho aparece como artículo. Comparar por número de compras o restar la línea DESPACHO hasta que Medición corrija la medición."
  },
  {
   "id": "exp-006",
@@ -246,7 +249,8 @@
   "aplicado": "2026-11-06",
   "revisar_en": "2026-11-20",
   "revisiones": [],
-  "estado": "pendiente"
+  "estado": "pendiente",
+  "notas": "13-nov: el despacho por zonas (exp-012) cambió el paso 3 del checkout a mitad de la ventana de medición (6→20 nov). Medir solo 6–12 nov para este experimento; lo posterior corresponde a exp-012."
  },
  {
   "id": "exp-007",
@@ -283,7 +287,8 @@
   "revisar_en": "2026-11-16",
   "revisar_final": "2026-12-07",
   "revisiones": [],
-  "estado": "pendiente"
+  "estado": "pendiente",
+  "notas": "13-nov: desde el cambio de despacho (exp-012) el valor de compra en GA4 incluye el despacho pagado ($19.000/$30.000) y el despacho aparece como artículo. Comparar por número de compras o restar la línea DESPACHO hasta que Medición corrija la medición."
  },
  {
   "id": "exp-009",
@@ -365,7 +370,8 @@
   "revisar_en": "2026-11-23",
   "revisar_final": "2026-12-09",
   "revisiones": [],
-  "estado": "pendiente"
+  "estado": "pendiente",
+  "notas": "13-nov: el despacho gratis bajó a $200.000 (exp-012); la métrica 'ventas de más de $300.000' puede moverse por el nuevo umbral, no por los recursos de campaña. 13-nov: desde el cambio de despacho (exp-012) el valor de compra en GA4 incluye el despacho pagado ($19.000/$30.000) y el despacho aparece como artículo. Comparar por número de compras o restar la línea DESPACHO hasta que Medición corrija la medición."
  },
  {
   "id": "exp-010",
@@ -430,5 +436,39 @@
   "revisar_final": "2026-11-27",
   "revisiones": [],
   "estado": "programado"
+ },
+ {
+  "id": "exp-012",
+  "tarea_id": "cro::despacho-zonas",
+  "agente": "cro",
+  "cambio": "Despacho gratis baja de $350.000 a $200.000 (solo Zona 1 dentro de Vespucio y Zona 2; 15 comunas sin despacho) y plazo visible. El despacho pagado ($19.000/$30.000) se publicó el 13-nov a las 15:29 y se suspendió el mismo día por equipo reducido (PR #12): bajo $200.000 solo retiro en tienda. PR #11 y #12 de Polyplas-web",
+  "hipotesis": "Bajar el despacho gratis a $200.000 (igual que Norglas) da una meta alcanzable: sube el % de pedidos ≥ $200.000 y el ticket promedio (base $83.000), y reduce el abandono en el paso 3 de quienes buscan despacho",
+  "urls": [
+   "Checkout global (todas las páginas de producto)",
+   "/terminos-y-condiciones/"
+  ],
+  "metrica_primaria": {
+   "tipo": "ga4+supabase",
+   "indicador": "% de pedidos web ≥ $200.000 y ticket promedio",
+   "objetivo": "ticket promedio ≥ $95.000",
+   "baseline_valor": "Pendiente: Medición lo saca de GA4/Supabase, 16-oct a 12-nov"
+  },
+  "metrica_secundaria": {
+   "tipo": "ga4",
+   "indicador": "Tasa paso 3 → compra; abandonos pago_cierra en 'datos'; pago_entrega_vista con motivo bajo_umbral (cuántos quieren despacho y no llegan al monto); shipping_tier despacho_gratis vs retiro_tienda",
+   "objetivo": "+10% relativo en paso 3 → compra"
+  },
+  "reinicia_aprendizaje": "No (no toca Google Ads)",
+  "baseline": {
+   "fecha": "2026-11-12",
+   "herramienta": "ga4 + supabase (pedidos web)",
+   "periodo": "2026-10-16 a 2026-11-12"
+  },
+  "aplicado": "2026-11-13",
+  "revisar_en": "2026-11-27",
+  "revisar_final": "2026-12-11",
+  "revisiones": [],
+  "estado": "programado",
+  "notas": "El evento pago_entrega_vista ya no envía motivo 'bajo_umbral' (ahora hay despacho bajo el umbral): comparar el motivo 'comuna_sin_despacho' solo desde el 13-nov. Confusores: equipo reducido por ausencia de Nico (despacho gradual), exp-005 de Ads se evalúa el 16-nov. Probado por la jefa en vivo el 13-nov con pedidos de prueba por transferencia (excluirlos del conteo). | Riesgo de medición: valor de compra incluye despacho (ver registro de Medición 13-nov). Prueba en producción OK 13-nov 16:01: transferencia, Estación Central Zona 1, $28.322 + despacho $19.000 = $47.322, verificado por el servidor (excluir de la medición). Texto destacado de Google Ads 'Envío Gratis RM $350.000+' actualizado por la jefa el 13-nov. | 13-nov tarde: despacho pagado suspendido. Medir desde la publicación del PR #12. Cuando se reactive el despacho pagado, abrir un experimento nuevo (no mezclar con este)."
  }
 ]

@@ -25,7 +25,7 @@ Analiza el rendimiento de estos productos, estructura argumentos de venta basado
 2. **Vida útil:** estimada hasta 3 años con buen mantenimiento. Protección UV evita amarillamiento.
 3. **Medición del vano:** el cliente debe medir la abertura del techo (el "vano") y comprar una cúpula de mayor dimensión para que la pestaña de 50–60 mm apoye y selle correctamente.
 4. **Compatibilidad:** techos de zinc, pizarreño y teja.
-5. **Canal de venta:** compra online en polyplas.cl o presencial en Santiago, Concha y Toro 1525. Retiro rápido o despacho RM desde $350.000.
+5. **Canal de venta:** compra online en polyplas.cl o presencial en Santiago, Santiago Concha 1525. Retiro rápido o despacho gratis desde $200.000 solo en Zona 1 (dentro de Vespucio) y Zona 2; bajo $200.000 solo retiro en tienda (despacho pagado $19.000/$30.000 suspendido desde el 13-nov por equipo reducido) (15 comunas lejanas sin despacho).
 
 ---
 

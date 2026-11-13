@@ -17,7 +17,7 @@ Fuente: tabla `pp_stock` de Supabase al 9 nov 2026. Revisar stock antes de confi
 - Si el cliente necesita PA sí o sí, ofrecer el espesor siguiente en PA que tenga stock.
 
 ## Argumentos para subir el ticket
-- Despacho gratis en la RM desde $350.000 (verificar comuna en el checkout). Casi toda plancha de 8–10 mm, y las de 5–6 mm en formato grande, lo alcanzan con una sola plancha.
+- Despacho gratis desde $200.000 solo en Zona 1 y Zona 2; bajo $200.000 solo retiro (despacho pagado suspendido desde 13-nov) *(regla vigente desde el 13-nov-2026; antes: gratis desde $350.000)*. Verificar comuna en el checkout (15 comunas lejanas sin despacho). Muchas planchas de 6–10 mm alcanzan los $200.000 con una sola plancha.
 - Corte gratis si todas las piezas son iguales (10% de recargo si son distintas). Clave para talleres y señaléticas.
 
 ## Pendiente

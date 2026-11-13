@@ -20,3 +20,6 @@ Campaña acrílico - Genérica, 8 oct - 6 nov 2026: costo $1.688.241 · 3.093 cl
 
 ## Regla de conclusión
 Cada cambio se cierra con una de tres conclusiones: **Funcionó**, **No funcionó** o **Sin datos suficientes** (con la cifra que lo justifica). Lo que no funcionó se revierte o se pausa y se anota igual que lo que sí.
+| 2026-11-13 | Carga offline en "Venta Cerrada Offline - Todos los registros de Venta Cerrada Offline" (cuenta Polyplas Ltda): 2 ventas cerradas por WhatsApp con GCLID, 9-nov $109.242 y 11-nov $432.627 (con IVA). Pendiente: facturas de Surik (21-oct a 3-nov) y otras ventas desde el 22-oct | Cuenta (conversiones offline) | No (solo carga de datos en acción existente) | Jefa (la subió ella) | Pendiente | Pendiente |
+| 2026-11-13 | PENDIENTE (no ejecutado): el texto destacado 'Envío Gratis RM $350.000+' (creado 9-nov) quedó desactualizado; el sitio ahora dice despacho gratis desde $200.000 y despacho pagado desde $19.000. Editar un texto destacado no reinicia el aprendizaje | Campaña acrílico - Genérica (recursos) | No | Pendiente autorización jefa | — | — |
+| 2026-11-13 | Texto destacado 'Envío Gratis RM $350.000+' actualizado por la jefa a la nueva regla de despacho (edición de recurso, no reinicia el aprendizaje) | Campaña acrílico - Genérica (recursos) | No | Jefa (lo hizo ella) | — | — |

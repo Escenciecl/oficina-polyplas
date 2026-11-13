@@ -48,7 +48,7 @@ La prioridad 1 sigue siendo **letreros, POP y exhibidores**: ya son quienes repi
   "proveedor de acrílico", "distribuidor de acrílico Santiago", "acrílico por mayor",
   "planchas de acrílico al por mayor", "importador de acrílico Chile", "proveedor de policarbonato".
 - **Contenido**: importador directo desde 1997, stock en Santiago, corte en serie, factura,
-  despacho gratis en la RM desde $350.000, un proveedor para acrílico/PET/PETG/policarbonato.
+  despacho gratis desde $200.000 solo en Zona 1 (dentro de Vespucio) y Zona 2; bajo $200.000 solo retiro en tienda (despacho pagado $19.000/$30.000 suspendido desde el 13-nov por equipo reducido) *(regla vigente desde el 13-nov-2026; antes: gratis desde $350.000)*, un proveedor para acrílico/PET/PETG/policarbonato.
 - **Conversión**: formulario de **cotización por volumen** (RUT, rubro, consumo mensual estimado,
   materiales y espesores) más WhatsApp directo a una persona de ventas empresa.
 

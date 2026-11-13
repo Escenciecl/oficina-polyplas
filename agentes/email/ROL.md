@@ -45,7 +45,7 @@ Asistente de cálculo interactivo en la web. El cliente ingresa sus medidas y el
    - Corte **GRATIS** si todas las piezas son iguales.
    - **10% de recargo** sobre el valor neto si las piezas son distintas.
 3. **Cotizador:** el cliente puede simular su pedido en polyplas.cl antes de comprar.
-4. **Despacho:** gratis en la RM desde $350.000. Fuera de RM: el cliente coordina retiro con su transportista en Santiago, Concha y Toro 1525.
+4. **Despacho:** Despacho gratis en Santiago desde $200.000 (Zona 1 y 2); bajo ese monto, retiro en tienda. No ofrecer despacho pagado (suspendido desde el 13-nov). Pedidos de la mañana salen en la tarde. Fuera de RM: el cliente coordina retiro con su transportista en Santiago, Santiago Concha 1525.
 
 ---
 

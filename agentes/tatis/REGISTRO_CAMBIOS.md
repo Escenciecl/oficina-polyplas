@@ -9,3 +9,7 @@
 > Agente activada el 2026-11-03.
 > Confluence conectado: moralesgarcianat.atlassian.net/wiki/spaces/PMP/folder/40206337
 > Estructura inicial de páginas pendiente de crear en primera sesión.
+| 2026-11-13 | Registrado exp-012 (despacho por zonas, publicado 13-nov, PR #11) en tasks/experimentos.json y en el registro de CRO. ROL de 9 agentes actualizados a la nueva regla de despacho y a la dirección Santiago Concha 1525. Pendiente: fila en '✅ Cambios Implementados' y Cierre 2026-11-13 en Confluence | Pendiente (Confluence) | Pedidos de prueba de la jefa por transferencia: excluir de la medición |
+| 2026-11-13 | Despacho pagado suspendido (PR #12): actualizados ROL de 9 agentes, documentos B2B y de reemplazos, memoria.json y exp-012 (ahora mide solo el umbral $200.000). Recordar reactivarlo cuando llegue la tercera persona | Pendiente (Confluence) | — |
+| 2026-11-13 | Despacho administrable desde el CRM: PR #14 (Polyplas-web) + PR #1 (CRM, pestaña Despachos). PR #13 cerrado. Pendientes actualizados | Pendiente (Confluence) | Publicar en orden: #12 → #14 → CRM #1 |
+| 2026-11-13 | Publicados PR #12 y #14 (Polyplas-web) y PR #1 (CRM, pestaña Despachos). Verificado en vivo: sin despacho pagado; 1 plancha → solo retiro; 3 planchas → despacho gratis en Zona 1 y 2; Buin → solo retiro. CRM con pestaña Despachos en línea | ✅ | Confluence pendiente |

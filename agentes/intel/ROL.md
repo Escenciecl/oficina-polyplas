@@ -11,15 +11,50 @@ Conviertes esa información en decisiones concretas de precio, producto y comuni
 # COMPETENCIA DIRECTA POR LÍNEA DE NEGOCIO
 
 ## Línea 1: Planchas de acrílico, PET, PETG, policarbonato (corte a medida)
-Competidores a monitorear semanalmente:
+### Competencia DIRECTA (prioridad 1, definida por la jefa el 2026-11-13)
+Estos cuatro se revisan primero y con más detalle cada semana (precio, despacho, stock,
+mensaje, ofertas). Cualquier movimiento de ellos se reporta aunque sea pequeño.
 
 | Competidor | URL | Tipo | Alcance |
 |-----------|-----|------|---------|
 | Norglas | norglas.cl | Tienda física + online | Santiago (3 locales), envío nacional |
+| Bold Plásticos | boldplasticos.cl | Distribuidor (multinacional brasileña), tienda web + cotización WhatsApp | Sedes en Pudahuel y Concepción; despacho día siguiente RM y Concepción |
+| Dibco | dibco.cl | Distribuidor/importador gráfico desde 1978; web solo cotizador, sin precios | Casa matriz Pudahuel + sucursal Patronato |
+| Induacril | induacril.cl | Tienda física + online | Santiago (2 locales), corte CNC/láser |
+
+### Competencia secundaria (prioridad 2, revisión quincenal)
+
+| Competidor | URL | Tipo | Alcance |
+|-----------|-----|------|---------|
 | Polymershapes | polymershapes.cl | Distribuidor B2B online | Nacional, >236 productos |
 | DVP | dvp.cl | Ferretería online grande | Nacional, precios con descuento frecuente |
-| Induacril | induacril.cl | Tienda física + online | Santiago (2 locales), corte CNC/láser |
 | Novoacril | novoacril.cl | 100% online, corte láser | Gran Santiago + regiones |
+
+### Ficha de los competidores directos nuevos (relevado 2026-11-13)
+**Bold Plásticos** (boldplasticos.cl)
+- Multinacional brasileña, 25 años, tiendas en Brasil y Colombia. En Chile: Santiago y Concepción.
+- Catálogo: acrílico cast cristal/colores/opal (2-20 mm) + línea económica "Eco BOLD",
+  policarbonato alveolar/macizo/ondulado, ACM, PETG, PVC espumado, PP alveolar, UHMW, lonas.
+- Precios publicados con IVA incluido (listado de categoría, 13-nov):
+  acrílico cast cristal 3 mm 1220×2440 $70.120; 6 mm 1220×2440 $140.240;
+  opal 3 mm 1220×2440 $70.120; colores 3 mm 1220×2440 $94.312;
+  policarbonato alveolar cristal 4 mm 2100×2900 $30.412; 10 mm 2100×2900 $68.464.
+- Corte: solo menciona "precisión en corte láser" como atributo; no hay servicio de corte a medida publicado.
+- Despacho: "al día siguiente en Santiago RM y Concepción"; costos no publicados.
+- B2B: sin precios por volumen; todo por "Cotizar por WhatsApp". Segmentos: comunicación visual,
+  industrial, construcción.
+- Ojo: compite directo con nuestro PA (cast) y con el blanco lechoso (su "opal").
+
+**Dibco** (dibco.cl)
+- Distribuidor desde 1978, foco gráfica/comunicación visual, sublimación, seguridad vial;
+  distribuye 3M, Avery Dennison, Tesa, Siser.
+- Acrílico blanco/negro/transparente 2-10 mm, formatos 1,25×1,85 / 1,25×2,45 / 1,85×2,45 / 2,05×3,05 m.
+  Además PVC foam, PS foam, PAI, ACM, PP alveolar, cartones. Sin policarbonato, PET ni PETG visibles.
+- Precios: no publicados (web es cotizador "Añadir a tu cotización") → dato de posicionamiento B2B.
+- Corte: NO corta acrílico (lo dice su FAQ). Diferencial claro de Polyplas.
+- Despacho: no publicado. Pago a convenir, acepta cheque a fecha y cobranza (crédito a empresas).
+- Clientes: imprentas, rotulación, letreros, POP, carrocerías → mismo público de nuestras landings B2B
+  (exhibidores POP, letreros luminosos, por mayor).
 
 Benchmark de precios ACTUALES relevados (nov 2026):
 - **Acrílico transparente 3mm (1,22×2,44m)**: Polymershapes $84.380, DVP ~$70k+
@@ -27,7 +62,7 @@ Benchmark de precios ACTUALES relevados (nov 2026):
 - **Acrílico transparente 5mm (1,22×2,44m)**: DVP $82.990, Polymershapes $70.080
 - **Corte láser a medida**: Novoacril desde $350 CLP/minuto, corte recto desde $8.265
 Nota: ninguno de los competidores en planchas ofrece el mismo modelo de "importador directo +
-corte incluido + despacho gratis RM desde $350K" que Polyplas. Ese diferencial debe estar
+corte incluido + despacho gratis desde $200K en Santiago (desde 13-nov; despacho pagado suspendido)" que Polyplas. Ese diferencial debe estar
 visible en el sitio y en los anuncios.
 
 ## Línea 2: Tinas de hidromasaje

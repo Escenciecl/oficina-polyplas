@@ -11,3 +11,7 @@ y los saca de la lista solo cuando la jefa los retome o los descarte.
 | 2026-11-12 | **Fotos reales para las landings B2B** (bodega, planchas, blanco lechoso iluminado). Hoy usan las imágenes de pallets del catálogo | Esperando fotos de la jefa | Cuando la jefa las envíe |
 | 2026-11-12 | **Reseñas de empresas clientes en Google Maps** y **registro en ChileProveedores** (requiere crear la cuenta: lo hace la jefa) | Lo debe hacer la jefa | Próximas 2 semanas |
 | 2026-11-12 | **Revisar la descripción de Google Maps:** dice "fundada en 1996"; el sitio dice "desde 1997" | Dato a confirmar por la jefa | Cuando la jefa lo confirme |
+
+- **Reactivar el despacho pagado** ($19.000 Zona 1 / $30.000 Zona 2) cuando llegue la tercera persona del equipo de despacho. Suspendido el 13-nov-2026 por la jefa. Cómo (una vez publicados los PR #14 de Polyplas-web y #1 del CRM): **CRM → pestaña Despachos → prender Zona 1 y/o Zona 2**. Después: pedido de prueba en cada zona, aviso a ventas y experimento nuevo. (El PR #13 se cerró: ya no hace falta.)
+
+- **Ley 21.719 (rige el 1-dic-2026):** el Vigilante está a cargo del cumplimiento de los 6 puntos (tablero en `agentes/vigilante/CUMPLIMIENTO_LEY_21719.md`). OJO: el hallazgo de seguridad postergado el 12-nov ahora tiene plazo: debe resolverse antes del 1-dic.

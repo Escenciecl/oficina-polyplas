@@ -487,7 +487,50 @@ if(!window.THREE){stage.insertAdjacentHTML('beforeend','<div class="fallback">No
 
 const AGENTS=[
  {id:'vig',name:'Vigilante',role:'Vigilancia',real:true,shirt:0xc9524a,hair:0x3b2a1e,skin:0xf4c4a0,
-  tasks:['Revisando precios de tinas','Chequeando que Webpay responda','Comparando portada con ayer','Probando botón de WhatsApp','Todo en orden en cúpulas'],props:[]},
+  tasks:['Revisando que todos los botones, filtros y flujos funcionen (48 páginas OK hoy)','Cumplimiento Ley 21.719: 0 de 6 puntos en verde (rige el 1-dic-2026)','Probando configurador, cotiza por medidas y checkout hasta antes de pagar','Revisando qué scripts cargan antes de aceptar cookies','Probando botón de WhatsApp'],props:[
+    {
+      what:'Resolver el hallazgo de seguridad pendiente antes del 1-dic (Ley 21.719, punto 5)',
+      why:'Es el riesgo más alto: la jefa lo postergó el 12-nov, pero la Ley 21.719 rige el 1-dic-2026 y exige medidas de seguridad proporcionales al riesgo. Sin esto no se puede decir que Polyplas cumple.',
+      objetivo:'cumplimiento',
+      riesgo:'alto',
+      ficha:'QUÉ: Corregir el hallazgo de seguridad registrado en PENDIENTES_POSTERGADOS (detalle técnico solo en privado, no en este repositorio público).\nPLAZO: antes del 1 de diciembre de 2026.\nIMPACTO: ninguno en Google Ads ni en el aprendizaje.\nVER: agentes/vigilante/CUMPLIMIENTO_LEY_21719.md, punto 5.'
+    },
+    {
+      what:'Banner de cookies con categorías y bloqueo de scripts hasta aceptar (Ley 21.719, punto 2)',
+      why:'Hoy el banner no tiene categorías y Meta Pixel, Contentsquare y los rastreadores de clics cargan aunque el usuario no haya aceptado. La ley exige rechazar tan fácil como aceptar, categorías separadas y bloquear el seguimiento hasta el consentimiento.',
+      objetivo:'cumplimiento',
+      riesgo:'medio',
+      ficha:'QUÉ:\n1. Banner nuevo: Aceptar / Rechazar / Configurar con el mismo peso visual y 3 categorías (necesarias, analíticas, publicitarias).\n2. Tag Manager: cada etiqueta con su categoría de consentimiento (Meta y Google Ads = publicitarias; GA4, Contentsquare y rastreadores de clics = analíticas).\n3. Enlace permanente \'Configurar cookies\' en el footer.\n4. Conteo anónimo de decisiones (acepta / rechaza / ignora).\nIMPACTO: no reinicia el aprendizaje de Ads, pero bajarán las conversiones medidas (las ventas reales se siguen viendo en el CRM). Avisar a Ads y Medición antes de publicar.\nREQUIERE REVISIÓN LEGAL: si Google puede quedar en modo avanzado (señales sin cookies) o debe bloquearse por completo.'
+    },
+    {
+      what:'Crear privacidad@polyplas.cl y el proceso para responder derechos ARSOP en 30 días (punto 4)',
+      why:'Hoy la política dice \'canal de atención o correo corporativo\', sin un canal concreto ni proceso. La ley exige un canal directo y visible y responder dentro del plazo legal.',
+      objetivo:'cumplimiento',
+      riesgo:'bajo',
+      ficha:'QUÉ:\n1. Correo privacidad@polyplas.cl visible en la política y el footer.\n2. Procedimiento escrito: quién recibe, cómo se verifica la identidad, dónde buscar los datos (CRM, Supabase, Brevo, planillas, correos), plantilla de respuesta y registro de solicitudes.\nPLAZO DE RESPUESTA: máximo 30 días.'
+    },
+    {
+      what:'Casilla desmarcada de opt-in para ofertas y listas de Brevo solo con consentimiento (punto 1)',
+      why:'No existe forma de que el cliente acepte recibir ofertas, y hay campañas a clientes sin opt-in registrado. Desde el 1-dic el marketing necesita consentimiento libre e inequívoco.',
+      objetivo:'cumplimiento',
+      riesgo:'medio',
+      ficha:'QUÉ:\n1. Casilla desmarcada \'Quiero recibir ofertas y novedades de Polyplas por correo\' en checkout, cuenta y formularios B2B; guardar fecha, texto aceptado y origen.\n2. Brevo: lista separada \'con consentimiento\'; las campañas de marketing van solo a esa lista.\nREQUIERE REVISIÓN LEGAL: si a empresas que ya compraron se les puede escribir por interés legítimo.'
+    },
+    {
+      what:'Reescribir la política de privacidad con plazos, terceros y derechos completos (punto 3)',
+      why:'La política actual existe y está en el footer, pero no dice cuánto tiempo se guardan los datos, no nombra a los terceros (Transbank, Cloudflare, Supabase, Brevo, Google, Meta, Contentsquare, couriers), no menciona el RUT ni los derechos de portabilidad y bloqueo.',
+      objetivo:'cumplimiento',
+      riesgo:'bajo',
+      ficha:'QUÉ: Borrador del Vigilante con: datos recolectados (incluido RUT), finalidades, plazos de conservación, terceros con nombre y para qué, transferencias internacionales, responsable y canal ARSOP, derechos completos.\nFLUJO: borrador → revisión legal → publicación.'
+    },
+    {
+      what:'Protocolo de brechas e inventario de acuerdos con proveedores (DPA) (puntos 5 y 6)',
+      why:'No existe un protocolo escrito para avisar a la Agencia y a los afectados si hay una filtración, ni un inventario de los acuerdos de tratamiento de datos con los proveedores que procesan datos de clientes.',
+      objetivo:'cumplimiento',
+      riesgo:'bajo',
+      ficha:'QUÉ:\n1. Protocolo de una página: detectar, contener, evaluar riesgo, avisar a la Agencia y a los afectados (plazo de referencia 72 horas, confirmar con abogado), registrar.\n2. Inventario de proveedores y su DPA: Supabase, Cloudflare, Transbank, Google, Meta, Brevo, Contentsquare, correo transaccional, courier.\n3. Doble factor en todas las cuentas con acceso a datos de clientes.'
+    }
+  ]},
  {id:'med',name:'Medición',role:'Analytics',real:true,shirt:0x2563a8,hair:0x1c1c1c,skin:0xd49060,
   tasks:[
     'Paso 0: diagnosticando por qué purchase llega con value=$0 en filas individuales de GA4 (total acumulado sí muestra ingresos)',

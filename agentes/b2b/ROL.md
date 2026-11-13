@@ -26,7 +26,7 @@ Por cada segmento y por cada empresa prospecto, respondes siempre estas 4 pregun
 | Dolor | Cómo se nota | Cómo puede responder Polyplas |
 |-------|--------------|------------------------------|
 | **Quiebre de stock** del proveedor | "No hay 5 mm hasta el próximo mes" | Importador directo desde 1997, stock en Santiago. Confirmar stock real con PM Planchas antes de prometer |
-| **Plazos de entrega largos** | Proyectos detenidos esperando material | Retiro inmediato en Concha y Toro 1525 · despacho gratis en la RM desde $350.000 |
+| **Plazos de entrega largos** | Proyectos detenidos esperando material | Retiro inmediato en Santiago Concha 1525 · despacho gratis en Santiago desde $200.000 (bajo ese monto, retiro en tienda) |
 | **Tienen que cortar ellos** (merma, mano de obra, sierra propia) | Compran plancha entera y pierden material | Corte a medida con sierra: **gratis** si todas las piezas son iguales, +10% si son distintas. El cliente recibe piezas listas |
 | **Precio poco claro**, cotizaciones que demoran días | Correos y llamadas para saber un precio | Precios publicados en polyplas.cl y cotizador en línea con resultado inmediato |
 | **Calidad irregular** (amarillea, se raya, burbujas) | Reclamos de su propio cliente final | Línea PA 100% virgen para trabajos exigentes; línea AA para costo. PM Planchas define cuál corresponde |

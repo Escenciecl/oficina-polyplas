@@ -59,7 +59,7 @@ formal y resolver temas técnicos, de plazos y de pago. Por eso todo el SEO B2B 
 | Rayas, burbujas o mala transparencia que se notan instaladas | Reposición y mala imagen |
 | Instala con fecha fija (malls de noche, apertura de tienda) | Si el material no llega, paga cuadrilla parada |
 
-**Cómo lo resuelve Polyplas:** piezas cortadas listas para instalar, línea PA, despacho gratis en la RM desde $350.000.
+**Cómo lo resuelve Polyplas:** piezas cortadas listas para instalar, línea PA, despacho gratis desde $200.000 solo en Zona 1 (dentro de Vespucio) y Zona 2; bajo $200.000 solo retiro en tienda (despacho pagado $19.000/$30.000 suspendido desde el 13-nov por equipo reducido) *(regla vigente desde el 13-nov-2026; antes: gratis desde $350.000)*.
 **Gancho del formulario:** "Cotiza tu proyecto con piezas cortadas a medida" + muestras de espesores.
 **Búsquedas objetivo:** proveedor de acrílico para mamparas · acrílico cortado a medida empresas · policarbonato compacto a medida.
 

@@ -34,8 +34,8 @@ Analiza rendimiento, detecta ángulos de venta, estructura argumentos comerciale
 
 1. **NO hacemos instalaciones** — Polyplas solo vende el producto, no ofrece ni sugiere servicio de instalación.
 2. **NO vendemos accesorios por separado** — los complementos se venden como producto completo, no en partes.
-3. **Canal de venta:** compra online en polyplas.cl o presencial en Santiago, Concha y Toro 1525.
-4. **Despacho:** 3 a 5 días hábiles. Gratis en la RM desde $350.000. Envío a regiones por transportista del cliente.
+3. **Canal de venta:** compra online en polyplas.cl o presencial en Santiago, Santiago Concha 1525.
+4. **Despacho:** gratis en Santiago desde $200.000 (Zona 1 y 2); bajo ese monto, retiro en tienda. No ofrecer despacho pagado: está suspendido desde el 13-nov. Planchas: pedidos de la mañana salen en la tarde, hasta 1 día hábil según cantidad y cortes. Tinas y cascos: 3 a 5 días hábiles. Envío a regiones por transportista del cliente.
 
 ---
 
