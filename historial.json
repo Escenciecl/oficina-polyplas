@@ -1,137 +1,206 @@
 [
-  {
-    "fecha": "2026-11-03",
-    "titulo": "Sesión de activación — Paso 0",
-    "url_confluence": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/40337425",
-    "agentes_presentes": ["medicion", "cro", "seo", "uxui", "tatis"],
-    "resumen": "Primera sesión. Se configuró la estructura de Confluence y la oficina 3D. Paso 0 de medición: se diagnosticó que purchase llega con value=$0 en GA4 y que las transferencias probablemente no disparan el evento. CRO identificó 73% de abandono entre add_to_cart y begin_checkout. SEO optimizó title+meta de /tinas-de-hidromasaje/.",
-    "implementado": [
-      "cro: aviso de opciones de despacho en carrito (exp: revisar 17-nov)",
-      "seo: title+meta /tinas-de-hidromasaje/ (exp: revisar 17-nov)",
-      "medicion: diagnóstico inicial del embudo (Paso 0 iniciado)"
-    ],
-    "pendientes_al_cierre": [
-      "Verificar purchase con value real en GA4",
-      "Verificar transferencias disparando purchase",
-      "Agregar parámetro de producto a click_asistencia_flotante"
-    ]
-  },
-  {
-    "fecha": "2026-11-04",
-    "titulo": "SEO planchas + UX tinas",
-    "url_confluence": null,
-    "agentes_presentes": ["seo", "uxui"],
-    "resumen": "SEO optimizó title+meta de /planchas-acrilico/ (exp-002). UX/UI agregó loading=eager en imágenes de tinas (exp-001, CLS ya en 0.0).",
-    "implementado": [
-      "seo: title+meta /planchas-acrilico/ (baseline: CTR 1.4%, objetivo ≥2.5%, revisar 18-nov)",
-      "uxui: loading=eager en 7 fichas de tinas (exp-001, revisar 18-nov)"
-    ],
-    "pendientes_al_cierre": []
-  },
-  {
-    "fecha": "2026-11-05",
-    "titulo": "CRO tinas + cascos B2B",
-    "url_confluence": null,
-    "agentes_presentes": ["cro"],
-    "resumen": "CRO agregó columna Disponibilidad/Retiro hoy en tabla comparativa de tinas y botón WhatsApp de cotización B2B en /cascos-de-tinas/.",
-    "implementado": [
-      "cro: columna disponibilidad en /tinas-de-hidromasaje/ (revisar 19-nov)",
-      "cro: botón WhatsApp B2B en /cascos-de-tinas/ (revisar 19-nov)"
-    ],
-    "pendientes_al_cierre": []
-  },
-  {
-    "fecha": "2026-11-06",
-    "titulo": "Mejoras checkout + nombre paso 4",
-    "url_confluence": null,
-    "agentes_presentes": ["cro", "uxui"],
-    "resumen": "5 mejoras al checkout: precio del carrito visible en mobile, header del modal con múltiples productos, toast de confirmación, aviso de comunas excluidas, campo de factura. Al día siguiente (7 nov) se hizo visible el nombre del paso 4 en celular.",
-    "implementado": [
-      "cro+uxui: 5 mejoras checkout (exp-006, revisar 20-nov)",
-      "uxui: nombre paso 4 visible en celular (7-nov)"
-    ],
-    "pendientes_al_cierre": []
-  },
-  {
-    "fecha": "2026-11-07",
-    "titulo": "Ads recurso de precios",
-    "url_confluence": null,
-    "agentes_presentes": ["ads"],
-    "resumen": "Ads agregó recurso de precios en campaña Genérica: AA Transparente $28.322, PA Virgen $38.913, AA Colores $29.619, con enlaces filtrados. No reinicia aprendizaje.",
-    "implementado": [
-      "ads: recurso de precios en campaña Genérica (exp-003, revisar 21-nov)"
-    ],
-    "pendientes_al_cierre": []
-  },
-  {
-    "fecha": "2026-11-09",
-    "titulo": "Diagnóstico caída acrílico + emails + presupuesto Ads",
-    "url_confluence": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/42205185",
-    "agentes_presentes": ["ads", "medicion", "social", "cro", "tatis"],
-    "resumen": "Se investigó la caída de venta de acrílico de la semana del 2-6 nov (~$2,3M menos que oct). La causa es menos ventas grandes y menos cierres por WhatsApp, no más basura en Ads ni menos chats. Ads subió presupuesto de $57.000 a $68.400/día (+20%, exp-007), agregó 4 enlaces a sitio (exp-004) y segundo anuncio RSA (exp-005), y recursos de stock espesores (exp-008). PM Social diseñó 2 emails HTML para 103 compradores web de acrílico.",
-    "implementado": [
-      "ads: 4 sitelinks compra online (exp-004, revisar 23-nov)",
-      "ads: segundo RSA orientado a compra online (exp-005, revisar 16-nov)",
-      "ads: recursos stock espesores 5/6/8/10 mm (exp-008, revisar 23-nov)",
-      "ads: presupuesto $57k→$68.4k/día (exp-007, revisar 16-nov)",
-      "social: rol ampliado a email marketing (Brevo)",
-      "social: 2 emails HTML listos para enviar (email1: 11-nov, email2: 13-nov)",
-      "social: tabla de reemplazos stock AA/PA para el chat"
-    ],
-    "pendientes_al_cierre": [
-      "Enviar email 1 (11-nov) y email 2 (13-nov) en Brevo",
-      "Subir ventas offline desde el 22 de octubre a Google Ads",
-      "Corregir dirección 'Santiago Concha 1525' en ROL.md de PM Social, PM Planchas, PM Cúpulas y PM Baños",
-      "Paso 0 Ads: auditar qué cuenta como conversión"
-    ]
-  },
-  {
-    "fecha": "2026-11-10",
-    "titulo": "Auditoría cotizador + fix conf_pedido + ajuste horarios Ads",
-    "url_confluence": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/42565633",
-    "agentes_presentes": ["cro", "seo", "ads", "medicion", "tatis"],
-    "resumen": "CRO auditó el cotizador de planchas: la caída de ventas está en mesón (−46% vs oct) y WhatsApp (−85%), no en la web (que subió +46%). 93% de los leads de WhatsApp de acrílico no tiene resultado registrado. Se corrigió conf_pedido que disparaba en paso 3 en vez de paso 5 — eliminaba conversiones falsas de GA4. Ads ajustó horarios para cuidar el presupuesto. SEO cerró exp-002 (revisar 18-nov).",
-    "implementado": [
-      "cro: fix conf_pedido — dispara en paso 5, no paso 3, en 4 módulos (acrílico, PET, PETG, PC) + ppGuard",
-      "ads: ajuste de franjas horarias para cuidar presupuesto (detalles pendientes de confirmar)",
-      "seo: cierre propuesta exp-002 /planchas-acrilico/ (en curso, revisar 18-nov)"
-    ],
-    "alertas": [
-      "⚠️ PUNTO DE QUIEBRE 10-nov: conf_pedido corregido. Conversiones de Google Ads van a bajar porque antes el contador estaba inflado. No interpretar como problema de campaña. No tocar nada hasta 15-nov."
-    ],
-    "pendientes_al_cierre": [
-      "Medición: verificar conf_pedido con ?pp_debug=1 en los 4 módulos",
-      "Ads: confirmar detalles del ajuste de horarios (horas y tipo de ajuste)",
-      "Enviar email 1 (11-nov) y email 2 (13-nov) en Brevo",
-      "Subir ventas offline desde el 22-oct a Google Ads",
-      "Revisar exp-005 y exp-007 el 16-nov; exp-002 el 18-nov; exp-004 y exp-008 el 23-nov",
-      "P1: registrar resultado leads WhatsApp",
-      "P2: seguir 50 cotizaciones sin cierre",
-      "P3: embudo cotizador GA4 (requiere export de la jefa)",
-      "P4: verificar conf_pedido en 4 módulos",
-      "P6: órdenes Webpay duplicadas en Supabase"
-    ]
-  },
-  {
-    "fecha": "2026-11-11",
-    "titulo": "Corrección alerta conf_pedido + cierre Paso 0 Ads",
-    "agentes_presentes": [
-      "tatis",
-      "ads"
-    ],
-    "resumen": "La jefa aclaró que las conversiones de Google Ads son solo generate_lead (contacto) y purchase. conf_pedido NO es conversión en Ads, así que el fix del 10-nov no baja las conversiones de la campaña ni reinicia el aprendizaje. Corrige la alerta del 10-nov, que estaba mal redactada. El ajuste de horarios de Ads tampoco reinicia el aprendizaje.",
-    "implementado": [
-      "tatis: corrección de la alerta del 10-nov en memoria.json, historial.json y REGISTRO_CAMBIOS de Ads"
-    ],
-    "alertas": [
-      "CORRECCIÓN a la alerta del 10-nov: el fix de conf_pedido solo afecta el conteo en GA4 (estaba inflado). Las conversiones de Google Ads (generate_lead y purchase) no cambian por ese fix. Igual no tocar la campaña hasta el 15-nov para medir limpio el ajuste de horarios y los experimentos en curso."
-    ],
-    "pendientes_al_cierre": [
-      "Ads: confirmar detalles del ajuste de horarios (horas y tipo de ajuste)",
-      "Medición: verificar conf_pedido con ?pp_debug=1 en los 4 módulos (impacta GA4, no Ads)",
-      "Medición: confirmar que generate_lead no esté duplicado (153,5 conversiones vs 9 compras Webpay en la línea base)",
-      "Enviar email 1 (11-nov) y email 2 (13-nov) en Brevo",
-      "Subir ventas offline desde el 22-oct a Google Ads"
-    ]
-  }
+ {
+  "fecha": "2026-11-03",
+  "titulo": "Sesión de activación — Paso 0",
+  "url_confluence": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/40337425",
+  "agentes_presentes": [
+   "medicion",
+   "cro",
+   "seo",
+   "uxui",
+   "tatis"
+  ],
+  "resumen": "Primera sesión. Se configuró la estructura de Confluence y la oficina 3D. Paso 0 de medición: se diagnosticó que purchase llega con value=$0 en GA4 y que las transferencias probablemente no disparan el evento. CRO identificó 73% de abandono entre add_to_cart y begin_checkout. SEO optimizó title+meta de /tinas-de-hidromasaje/.",
+  "implementado": [
+   "cro: aviso de opciones de despacho en carrito (exp: revisar 17-nov)",
+   "seo: title+meta /tinas-de-hidromasaje/ (exp: revisar 17-nov)",
+   "medicion: diagnóstico inicial del embudo (Paso 0 iniciado)"
+  ],
+  "pendientes_al_cierre": [
+   "Verificar purchase con value real en GA4",
+   "Verificar transferencias disparando purchase",
+   "Agregar parámetro de producto a click_asistencia_flotante"
+  ]
+ },
+ {
+  "fecha": "2026-11-04",
+  "titulo": "SEO planchas + UX tinas",
+  "url_confluence": null,
+  "agentes_presentes": [
+   "seo",
+   "uxui"
+  ],
+  "resumen": "SEO optimizó title+meta de /planchas-acrilico/ (exp-002). UX/UI agregó loading=eager en imágenes de tinas (exp-001, CLS ya en 0.0).",
+  "implementado": [
+   "seo: title+meta /planchas-acrilico/ (baseline: CTR 1.4%, objetivo ≥2.5%, revisar 18-nov)",
+   "uxui: loading=eager en 7 fichas de tinas (exp-001, revisar 18-nov)"
+  ],
+  "pendientes_al_cierre": []
+ },
+ {
+  "fecha": "2026-11-05",
+  "titulo": "CRO tinas + cascos B2B",
+  "url_confluence": null,
+  "agentes_presentes": [
+   "cro"
+  ],
+  "resumen": "CRO agregó columna Disponibilidad/Retiro hoy en tabla comparativa de tinas y botón WhatsApp de cotización B2B en /cascos-de-tinas/.",
+  "implementado": [
+   "cro: columna disponibilidad en /tinas-de-hidromasaje/ (revisar 19-nov)",
+   "cro: botón WhatsApp B2B en /cascos-de-tinas/ (revisar 19-nov)"
+  ],
+  "pendientes_al_cierre": []
+ },
+ {
+  "fecha": "2026-11-06",
+  "titulo": "Mejoras checkout + nombre paso 4",
+  "url_confluence": null,
+  "agentes_presentes": [
+   "cro",
+   "uxui"
+  ],
+  "resumen": "5 mejoras al checkout: precio del carrito visible en mobile, header del modal con múltiples productos, toast de confirmación, aviso de comunas excluidas, campo de factura. Al día siguiente (7 nov) se hizo visible el nombre del paso 4 en celular.",
+  "implementado": [
+   "cro+uxui: 5 mejoras checkout (exp-006, revisar 20-nov)",
+   "uxui: nombre paso 4 visible en celular (7-nov)"
+  ],
+  "pendientes_al_cierre": []
+ },
+ {
+  "fecha": "2026-11-07",
+  "titulo": "Ads recurso de precios",
+  "url_confluence": null,
+  "agentes_presentes": [
+   "ads"
+  ],
+  "resumen": "Ads agregó recurso de precios en campaña Genérica: AA Transparente $28.322, PA Virgen $38.913, AA Colores $29.619, con enlaces filtrados. No reinicia aprendizaje.",
+  "implementado": [
+   "ads: recurso de precios en campaña Genérica (exp-003, revisar 21-nov)"
+  ],
+  "pendientes_al_cierre": []
+ },
+ {
+  "fecha": "2026-11-09",
+  "titulo": "Diagnóstico caída acrílico + emails + presupuesto Ads",
+  "url_confluence": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/42205185",
+  "agentes_presentes": [
+   "ads",
+   "medicion",
+   "social",
+   "cro",
+   "tatis"
+  ],
+  "resumen": "Se investigó la caída de venta de acrílico de la semana del 2-6 nov (~$2,3M menos que oct). La causa es menos ventas grandes y menos cierres por WhatsApp, no más basura en Ads ni menos chats. Ads subió presupuesto de $57.000 a $68.400/día (+20%, exp-007), agregó 4 enlaces a sitio (exp-004) y segundo anuncio RSA (exp-005), y recursos de stock espesores (exp-008). PM Social diseñó 2 emails HTML para 103 compradores web de acrílico.",
+  "implementado": [
+   "ads: 4 sitelinks compra online (exp-004, revisar 23-nov)",
+   "ads: segundo RSA orientado a compra online (exp-005, revisar 16-nov)",
+   "ads: recursos stock espesores 5/6/8/10 mm (exp-008, revisar 23-nov)",
+   "ads: presupuesto $57k→$68.4k/día (exp-007, revisar 16-nov)",
+   "social: rol ampliado a email marketing (Brevo)",
+   "social: 2 emails HTML listos para enviar (email1: 11-nov, email2: 13-nov)",
+   "social: tabla de reemplazos stock AA/PA para el chat"
+  ],
+  "pendientes_al_cierre": [
+   "Enviar email 1 (11-nov) y email 2 (13-nov) en Brevo",
+   "Subir ventas offline desde el 22 de octubre a Google Ads",
+   "Corregir dirección 'Santiago Concha 1525' en ROL.md de PM Social, PM Planchas, PM Cúpulas y PM Baños",
+   "Paso 0 Ads: auditar qué cuenta como conversión"
+  ]
+ },
+ {
+  "fecha": "2026-11-10",
+  "titulo": "Auditoría cotizador + fix conf_pedido + ajuste horarios Ads",
+  "url_confluence": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/42565633",
+  "agentes_presentes": [
+   "cro",
+   "seo",
+   "ads",
+   "medicion",
+   "tatis"
+  ],
+  "resumen": "CRO auditó el cotizador de planchas: la caída de ventas está en mesón (−46% vs oct) y WhatsApp (−85%), no en la web (que subió +46%). 93% de los leads de WhatsApp de acrílico no tiene resultado registrado. Se corrigió conf_pedido que disparaba en paso 3 en vez de paso 5 — eliminaba conversiones falsas de GA4. Ads ajustó horarios para cuidar el presupuesto. SEO cerró exp-002 (revisar 18-nov).",
+  "implementado": [
+   "cro: fix conf_pedido — dispara en paso 5, no paso 3, en 4 módulos (acrílico, PET, PETG, PC) + ppGuard",
+   "ads: ajuste de franjas horarias para cuidar presupuesto (detalles pendientes de confirmar)",
+   "seo: cierre propuesta exp-002 /planchas-acrilico/ (en curso, revisar 18-nov)"
+  ],
+  "alertas": [
+   "⚠️ PUNTO DE QUIEBRE 10-nov: conf_pedido corregido. Conversiones de Google Ads van a bajar porque antes el contador estaba inflado. No interpretar como problema de campaña. No tocar nada hasta 15-nov."
+  ],
+  "pendientes_al_cierre": [
+   "Medición: verificar conf_pedido con ?pp_debug=1 en los 4 módulos",
+   "Ads: confirmar detalles del ajuste de horarios (horas y tipo de ajuste)",
+   "Enviar email 1 (11-nov) y email 2 (13-nov) en Brevo",
+   "Subir ventas offline desde el 22-oct a Google Ads",
+   "Revisar exp-005 y exp-007 el 16-nov; exp-002 el 18-nov; exp-004 y exp-008 el 23-nov",
+   "P1: registrar resultado leads WhatsApp",
+   "P2: seguir 50 cotizaciones sin cierre",
+   "P3: embudo cotizador GA4 (requiere export de la jefa)",
+   "P4: verificar conf_pedido en 4 módulos",
+   "P6: órdenes Webpay duplicadas en Supabase"
+  ]
+ },
+ {
+  "fecha": "2026-11-11",
+  "titulo": "Corrección alerta conf_pedido + cierre Paso 0 Ads",
+  "agentes_presentes": [
+   "tatis",
+   "ads"
+  ],
+  "resumen": "La jefa aclaró que las conversiones de Google Ads son solo generate_lead (contacto) y purchase. conf_pedido NO es conversión en Ads, así que el fix del 10-nov no baja las conversiones de la campaña ni reinicia el aprendizaje. Corrige la alerta del 10-nov, que estaba mal redactada. El ajuste de horarios de Ads tampoco reinicia el aprendizaje.",
+  "implementado": [
+   "tatis: corrección de la alerta del 10-nov en memoria.json, historial.json y REGISTRO_CAMBIOS de Ads"
+  ],
+  "alertas": [
+   "CORRECCIÓN a la alerta del 10-nov: el fix de conf_pedido solo afecta el conteo en GA4 (estaba inflado). Las conversiones de Google Ads (generate_lead y purchase) no cambian por ese fix. Igual no tocar la campaña hasta el 15-nov para medir limpio el ajuste de horarios y los experimentos en curso."
+  ],
+  "pendientes_al_cierre": [
+   "Ads: confirmar detalles del ajuste de horarios (horas y tipo de ajuste)",
+   "Medición: verificar conf_pedido con ?pp_debug=1 en los 4 módulos (impacta GA4, no Ads)",
+   "Medición: confirmar que generate_lead no esté duplicado (153,5 conversiones vs 9 compras Webpay en la línea base)",
+   "Enviar email 1 (11-nov) y email 2 (13-nov) en Brevo",
+   "Subir ventas offline desde el 22-oct a Google Ads"
+  ]
+ },
+ {
+  "fecha": "2026-11-12",
+  "titulo": "Estrategia B2B: 3 landings + SEO + medición + reactivación Brevo",
+  "agentes_presentes": [
+   "b2b",
+   "pm-planchas",
+   "seo",
+   "cro",
+   "uxui",
+   "medicion",
+   "tatis",
+   "intel"
+  ],
+  "resumen": "Día dedicado a captar empresas de alto volumen (meta: 2 cuentas de $5M/mes) y a subir la venta de planchas web hacia $8M/mes. Se publicaron 3 páginas B2B con formulario de reunión con muestras (WhatsApp de la jefa +56 9 6435 6986), se midió todo en GTM/GA4, se aplicó la estrategia SEO con datos de Search Console y se programó un correo personalizado de recompra a 32 empresas para el 13-nov 9:30. Hallazgos: 1-12 nov es el mejor período web desde que se partió (real $3.642.701; $1.410.121 en planchas), 6 pedidos duplicados en el CRM desde el 11-nov, y Norglas cobra menos despacho que Polyplas.",
+  "implementado": [
+   "b2b+pm-planchas+seo: landings /acrilico-para-exhibidores-pop/, /acrilico-para-letreros-luminosos/ y /acrilico-por-mayor/ (PR #2-#10 Polyplas-web). Formulario = agendar reunión con muestras (las muestras no se regalan), llega al WhatsApp de la jefa",
+   "pm-planchas: PA = PMMA 100% virgen cast (confirmado con certificados del fabricante, sin publicar su nombre); AA Mix más económico; ficha técnica PA en las landings; film protector confirmado",
+   "uxui: botón fijo en celular, CTA intermedios, formulario en 3 bloques, confirmación tras enviar; chat general y 'Cómo comprar online' ocultos solo en páginas B2B",
+   "medicion+cro: 15 eventos b2b_* + lead_b2b con lead_id; tabla nueva b2b_leads en Supabase (solo inserción); GTM publicado (28 variables, 1 activador, 1 etiqueta GA4, importado con Combinar); GA4: 12 dimensiones + 2 métricas (cupo 47/50)",
+   "seo: indexación solicitada para las 3 URL B2B; 'blanco lechoso' como término principal (0 búsquedas de 'opal'); enlaces internos desde guías, acrílico transparente y categoría; Google Maps: categoría 'Mayorista de plástico' agregada",
+   "cro: enlace 'Toca aquí' excluido del interceptor GTM de WhatsApp (data-pp-interceptado)",
+   "pm-social/b2b: campaña Brevo #29 'Reactivación empresas planchas · 13-nov' programada 13-nov 09:30, 28 destinatarios (lista #19), correo personalizado con enlace directo a recomprar en la web; 32/32 contactos verificados",
+   "intel: Norglas despacho Santiago $19.990 (<$200.000) y $1.000 (>= $200.000); regiones por Starken ($27.744 Viña, $37.071 Concepción, $46.949 Puerto Montt)"
+  ],
+  "alertas": [
+   "CRM: 6 pedidos Webpay duplicados desde el 11-nov (misma orden y autorización): inflan el CRM en $1.235.353. Investigar antes de reportar ventas",
+   "Sitio: enlaces directos a productos PA (#color=…&mat=PA) abren el configurador en blanco; ~230 planchas PA blanco lechoso 3 mm con stock no se ofrecen en la web",
+   "Ads: NADA en Google Ads sin autorización explícita de la jefa; lead_b2b NO se importa a Ads",
+   "Despacho: Norglas es más barato que Polyplas ($30.000 informado) y su casi-gratis parte en $200.000 vs $350.000"
+  ],
+  "pendientes_al_cierre": [
+   "13-nov 09:30: revisar envío y resultados de la campaña Brevo #29 (aperturas, clics, compras con utm_campaign=reactivacion_empresas_nov26)",
+   "Jefa: fotos reales para las landings; reseñas de empresas en Google Maps; registro en ChileProveedores; confirmar año de fundación (1996 vs 1997)",
+   "Jefa: decidir si lleva a gerencia la propuesta de despacho (umbral $200.000 o tarifa ~$20.000)",
+   "Investigar duplicados de pedidos (11-nov) y el enlace PA roto / formatos PA no visibles (con CRO/UX, sin romper el configurador)",
+   "lead_b2b como evento clave en GA4 cuando llegue el primer lead real",
+   "Cierre de noviembre: plan de 12 días hábiles (carros abandonados $2,1 M, 51 leads de recontacto, fábricas de letreros con blanco lechoso)",
+   "SEO: mediciones 26-nov, 10-dic y 7-ene",
+   "Postergado (lista de Tatis): seguridad de Supabase y de repositorios"
+  ]
+ }
 ]

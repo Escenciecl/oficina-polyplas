@@ -1,39 +1,36 @@
 {
- "actualizado": "2026-11-11",
+ "actualizado": "2026-11-12",
  "sesionAnterior": {
-  "fecha": "2026-11-10",
-  "titulo": "Cierre 2026-11-10",
-  "url": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/42565633",
-  "resumen": "CRO auditó el cotizador de planchas: la caída de ventas está en mesón (−46%) y WhatsApp (−85%), no en la web. Se corrigió conf_pedido que disparaba en paso 3 en vez de paso 5 (eliminaba conversiones falsas en GA4). Ads ajustó horarios para cuidar el presupuesto. SEO cerró la propuesta de title+meta de /planchas-acrilico/ (exp-002, revisar 18-nov). 6 propuestas nuevas en la bandeja.",
+  "fecha": "2026-11-12",
+  "titulo": "Cierre 2026-11-12 · Estrategia B2B, SEO, medición y reactivación Brevo",
+  "url": "(Confluence: Cierre 2026-11-12)",
+  "resumen": "Día dedicado a captar empresas de alto volumen (meta: 2 cuentas de $5M/mes) y a subir la venta de planchas web hacia $8M/mes. Se publicaron 3 páginas B2B con formulario de reunión con muestras (WhatsApp de la jefa +56 9 6435 6986), se midió todo en GTM/GA4, se aplicó la estrategia SEO con datos de Search Console y se programó un correo personalizado de recompra a 32 empresas para el 13-nov 9:30. Hallazgos: 1-12 nov es el mejor período web desde que se partió (real $3.642.701; $1.410.121 en planchas), 6 pedidos duplicados en el CRM desde el 11-nov, y Norglas cobra menos despacho que Polyplas.",
   "aprobadas": [
    {
-    "agente": "cro",
-    "que": "fix(cotizador): conf_pedido corregido — dispara en paso 5, no paso 3, en los 4 módulos. + ppGuard",
-    "estado": "Implementado — pendiente verificación con ?pp_debug=1 (afecta solo GA4, no Google Ads)"
-   },
-   {
-    "agente": "ads",
-    "que": "Ajuste de franjas horarias para cuidar el presupuesto mensual",
-    "estado": "Implementado — detalles exactos pendientes de confirmar con la jefa"
+    "agente": "jefa",
+    "que": "3 landings B2B, mejoras UX, medición GTM/GA4, estrategia SEO completa, campaña Brevo #29",
+    "estado": "Publicado / programado 13-nov 09:30"
    }
   ],
   "trabajado": [
-   "Auditoría cotizador + caída ventas: la web subió ($871.442 semana 2-nov vs $596.096 promedio). La caída es del mesón y WhatsApp.",
-   "247 de 266 leads de WhatsApp de acrílico sin resultado registrado (93%). 74% vienen de Google Ads.",
-   "50 solicitudes de cotización de acrílico con solo 1 venta registrada — oportunidad de recuperación.",
-   "Órdenes Webpay duplicadas en Supabase (198 filas para 115 órdenes) — reportes inflados.",
-   "SEO cerró propuesta seo::1793917050737 (exp-002 en curso, revisar 18-nov).",
-   "Tatis creó Cierre 2026-11-10 en Confluence y actualizó REGISTRO_CAMBIOS de Ads y memoria.json."
+   "b2b+pm-planchas+seo: landings /acrilico-para-exhibidores-pop/, /acrilico-para-letreros-luminosos/ y /acrilico-por-mayor/ (PR #2-#10 Polyplas-web). Formulario = agendar reunión con muestras (las muestras no se regalan), llega al WhatsApp de la jefa",
+   "pm-planchas: PA = PMMA 100% virgen cast (confirmado con certificados del fabricante, sin publicar su nombre); AA Mix más económico; ficha técnica PA en las landings; film protector confirmado",
+   "uxui: botón fijo en celular, CTA intermedios, formulario en 3 bloques, confirmación tras enviar; chat general y 'Cómo comprar online' ocultos solo en páginas B2B",
+   "medicion+cro: 15 eventos b2b_* + lead_b2b con lead_id; tabla nueva b2b_leads en Supabase (solo inserción); GTM publicado (28 variables, 1 activador, 1 etiqueta GA4, importado con Combinar); GA4: 12 dimensiones + 2 métricas (cupo 47/50)",
+   "seo: indexación solicitada para las 3 URL B2B; 'blanco lechoso' como término principal (0 búsquedas de 'opal'); enlaces internos desde guías, acrílico transparente y categoría; Google Maps: categoría 'Mayorista de plástico' agregada",
+   "cro: enlace 'Toca aquí' excluido del interceptor GTM de WhatsApp (data-pp-interceptado)",
+   "pm-social/b2b: campaña Brevo #29 'Reactivación empresas planchas · 13-nov' programada 13-nov 09:30, 28 destinatarios (lista #19), correo personalizado con enlace directo a recomprar en la web; 32/32 contactos verificados",
+   "intel: Norglas despacho Santiago $19.990 (<$200.000) y $1.000 (>= $200.000); regiones por Starken ($27.744 Viña, $37.071 Concepción, $46.949 Puerto Montt)"
   ],
   "pendientes": [
-   "CORREGIDO 11-nov: el fix de conf_pedido NO afecta Google Ads. Las conversiones de Ads son solo generate_lead (contacto) y purchase. conf_pedido solo baja en GA4, donde estaba inflado. No tocar la campaña hasta 15-nov para medir limpio el ajuste de horarios y los experimentos.",
-   "Confirmar detalles del ajuste de horarios de Ads (horas afectadas y tipo de ajuste)",
-   "Medición verificar conf_pedido con ?pp_debug=1 en los 4 módulos",
-   "Enviar email 1 (11 nov) y email 2 (13 nov) en Brevo",
-   "Subir ventas offline desde el 22 de octubre a Google Ads",
-   "Revisar exp-005 y exp-007 el 16 nov; exp-002 el 18 nov; exp-004 y exp-008 el 23 nov",
-   "Corregir dirección a 'Santiago Concha 1525' en ROL.md de PM Social, PM Planchas, PM Cúpulas y PM Baños",
-   "Avisar a PM Planchas y Ads cuando llegue reposición de PA transparente 5 y 6 mm"
+   "13-nov 09:30: revisar envío y resultados de la campaña Brevo #29 (aperturas, clics, compras con utm_campaign=reactivacion_empresas_nov26)",
+   "Jefa: fotos reales para las landings; reseñas de empresas en Google Maps; registro en ChileProveedores; confirmar año de fundación (1996 vs 1997)",
+   "Jefa: decidir si lleva a gerencia la propuesta de despacho (umbral $200.000 o tarifa ~$20.000)",
+   "Investigar duplicados de pedidos (11-nov) y el enlace PA roto / formatos PA no visibles (con CRO/UX, sin romper el configurador)",
+   "lead_b2b como evento clave en GA4 cuando llegue el primer lead real",
+   "Cierre de noviembre: plan de 12 días hábiles (carros abandonados $2,1 M, 51 leads de recontacto, fábricas de letreros con blanco lechoso)",
+   "SEO: mediciones 26-nov, 10-dic y 7-ene",
+   "Postergado (lista de Tatis): seguridad de Supabase y de repositorios"
   ]
  },
  "propuestas": {
@@ -63,5 +60,15 @@
   ],
   "confirmado": "2026-11-11 por la jefa",
   "nota": "conf_pedido no es conversión en Ads. Cambiar estas acciones reinicia el aprendizaje (pasó el 4-nov): prohibido."
+ },
+ "metas": {
+  "planchas_web_mensual": "$8.000.000 (meta jefa); noviembre realista ~$5M si se ejecuta el plan de cierre",
+  "b2b": "2 cuentas recurrentes de $5M/mes",
+  "reglas": [
+   "Nada en Google Ads sin autorización explícita de la jefa",
+   "B2B siempre por formulario/reunión, no carrito",
+   "PA = cast; nunca decir que AA es cast",
+   "Sin datos personales ni detalles de seguridad en este repositorio público"
+  ]
  }
 }

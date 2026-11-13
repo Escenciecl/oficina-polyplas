@@ -4,6 +4,7 @@
 |-------|--------------------------|-------------------|-------|
 | 2026-11-09 | Cierre 2026-11-09 (creada) · Cambios Implementados (fila exp-008) · memoria.json · ROL.md (misión permanente) | https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/42205185 | Caída acrílico 2-6 nov, exp-008, reemplazos de stock, PM Social + email, 2 emails. La jefa define la misión: documentar cada acción del día y mantener la memoria de todos los agentes |
 | 2026-11-12 | Nueva lista PENDIENTES_POSTERGADOS.md: seguridad de Supabase, seguridad de los repositorios y lead_b2b como evento clave. La jefa los posterga; Tatis los recuerda en cada cierre semanal | agentes/tatis/PENDIENTES_POSTERGADOS.md | Sin detalles técnicos de seguridad en el repositorio (es público) |
+| 2026-11-12 | Cierre del día documentado: historial.json, memoria.json (con metas y reglas), experimentos exp-010 (SEO B2B) y exp-011 (Brevo reactivación), Confluence Cierre 2026-11-12 | ✅ | — |
 
 > Agente activada el 2026-11-03.
 > Confluence conectado: moralesgarcianat.atlassian.net/wiki/spaces/PMP/folder/40206337
