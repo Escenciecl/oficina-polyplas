@@ -1,17 +1,32 @@
 # Cumplimiento Ley 21.719 — Tablero del Vigilante
 
 **Rige desde:** 1 de diciembre de 2026 · **Diagnóstico inicial:** 13 de noviembre de 2026 (revisión en vivo de polyplas.cl, código del sitio y Tag Manager publicado)
-**Estado:** 0 de 6 puntos en verde · 4 parciales · 2 sin cumplir
+**Estado (13-nov, noche):** 1 de 6 puntos en verde · 4 parciales · 1 sin cumplir
 
 > ⚠️ Este tablero no es asesoría legal. Lo marcado "requiere revisión legal" debe confirmarlo un abogado.
 
 | # | Punto | Estado |
-|---|---|---|
+|
+## Avance 13-nov-2026 (noche)
+**Punto 2 — Cookies: 🟢 publicado y verificado en vivo**
+- Aviso nuevo: Rechazar todo / Aceptar todo / Configurar con el mismo peso; 3 categorías; mensaje corto y detalle en "Configurar".
+- "Configurar cookies" en el pie de todas las páginas; retirar el consentimiento borra las cookies de esa categoría; la decisión dura 12 meses.
+- Registro anónimo de cada decisión en Supabase (tabla `consentimientos`, sin IP ni datos personales).
+- Política de privacidad, sección 4 (`#cookies`): tabla con cada cookie, proveedor, finalidad y duración.
+- Tag Manager v154: **Google (GA4 y Ads) en modo avanzado** — sin cookies ni datos personales antes de aceptar, solo señales anónimas (verificado `gcs=G100`). **Meta, Hotjar, interceptor de WhatsApp, WEB_APP_URL y guardado de correo/teléfono del checkout bloqueados hasta aceptar** (verificado).
+- Ya no tapa "Continuar a cortes".
+- → *Requiere revisión legal:* modo avanzado de Google (señales sin cookies antes del consentimiento).
+
+**Punto 5 — Seguridad:** hallazgo del 12-nov resuelto sin pérdida de datos (detalle solo en privado). CRM con usuarios propios de Supabase.
+
+**Medición/Ads:** desde el 13-nov bajan las conversiones observadas en GA4/Ads (Google modela las faltantes en unos días) y Meta mide solo a quien acepta. La cifra oficial de ventas es el CRM.
+
+---|---|---|
 | 1 | Consentimiento válido (sin casillas premarcadas, opt-in para marketing) | 🟡 Parcial |
-| 2 | Banner de cookies con rechazo real, categorías y bloqueo de scripts | 🔴 No cumple |
+| 2 | Banner de cookies con rechazo real, categorías y bloqueo de scripts | 🟢 Cumple (13-nov) |
 | 3 | Política de tratamiento de datos completa y visible | 🟡 Parcial |
 | 4 | Canal y proceso ARSOP+ (30 días) | 🔴 No cumple |
-| 5 | Seguridad y contratos con proveedores (DPA) | 🟡 Parcial |
+| 5 | Seguridad y contratos con proveedores (DPA) | 🟡 Parcial (seguridad de la base de datos resuelta 13-nov; faltan DPA y doble factor) |
 | 6 | Protocolo de respuesta ante brechas | 🟡 Parcial (no existe protocolo escrito) |
 
 ---
