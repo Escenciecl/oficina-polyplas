@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-12",
+ "actualizado": "2026-11-13",
  "sesionAnterior": {
   "fecha": "2026-11-12",
   "titulo": "Cierre 2026-11-12 · Estrategia B2B, SEO, medición y reactivación Brevo",
@@ -69,6 +69,22 @@
    "B2B siempre por formulario/reunión, no carrito",
    "PA = cast; nunca decir que AA es cast",
    "Sin datos personales ni detalles de seguridad en este repositorio público"
+  ]
+ },
+ "retomarManana": {
+  "fecha": "2026-11-14",
+  "contexto": "Cumplimiento Ley 21.719. Hecho el 13-nov: seguridad de la base de datos (resuelta) y cookies (publicado). Ver agentes/vigilante/CUMPLIMIENTO_LEY_21719.md",
+  "siguiente": [
+   "Punto 1: casilla desmarcada de ofertas en checkout, cuenta y formularios B2B + listas de Brevo solo con consentimiento",
+   "Punto 4: correo privacidad@polyplas.cl, formulario 'Ejercer mis derechos' y proceso de respuesta en 30 días",
+   "Punto 3: reescribir la política completa (responsable, RUT, plazos, terceros, transferencias) → abogado",
+   "Puntos 5 y 6: inventario de proveedores con DPA, doble factor y protocolo de brechas",
+   "Prueba automática del Vigilante (postergada)"
+  ],
+  "reglas": [
+   "No perder ni cambiar ventas ni estados del CRM",
+   "Nada en Google Ads sin autorización de la jefa",
+   "Sin detalles de seguridad en este repositorio público"
   ]
  }
 }

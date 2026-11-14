@@ -202,5 +202,34 @@
    "SEO: mediciones 26-nov, 10-dic y 7-ene",
    "Postergado (lista de Tatis): seguridad de Supabase y de repositorios"
   ]
+ },
+ {
+  "fecha": "2026-11-13",
+  "titulo": "Ley 21.719 (noche): seguridad de la base de datos y cookies en regla",
+  "agentes_presentes": [
+   "vigilante",
+   "medicion",
+   "ads",
+   "tatis"
+  ],
+  "resumen": "La jefa pide cumplir la Ley 21.719 (rige 1-dic-2026) sin perder datos de campañas. Se resolvió el hallazgo de seguridad postergado del 12-nov (detalle solo en privado) sin perder ni cambiar datos: 1.800 conversaciones intactas. Se publicó el aviso de cookies nuevo con categorías y registro anónimo, la política de cookies detallada y Tag Manager con consentimiento por etiqueta: Google en modo avanzado (señales sin cookies), Meta, Hotjar y rastreo de WhatsApp bloqueados hasta aceptar.",
+  "implementado": [
+   "Seguridad: CRM con usuario propio de Supabase (jefa y contacto@polyplas.cl); chat del sitio lee solo su conversación; servidor usa llave secreta (PR #15 Polyplas-web, PR #2 CRM). Permisos aplicados por la jefa en Supabase",
+   "Cookies: aviso Rechazar/Aceptar/Configurar del mismo peso, 3 categorías, enlace 'Configurar cookies' en el pie, decisión 12 meses, ya no tapa 'Continuar a cortes' (PR #16, #17, #18)",
+   "Registro anónimo de consentimientos en Supabase (tabla consentimientos, sin IP ni datos personales)",
+   "Política de privacidad sección 4 (#cookies): tabla de cookies, señales sin cookies de Google",
+   "Tag Manager v152-v154: consentimiento por etiqueta; Google en modo avanzado; Meta/Hotjar/interceptor WhatsApp/WEB_APP_URL/UPD guardar datos bloqueados hasta aceptar. Sin cambios en conversiones, pujas ni campañas"
+  ],
+  "alertas": [
+   "Medición y Ads: desde el 13-nov GA4 y Google Ads miden menos conversiones observadas (modeladas en unos días). Meta mide solo a quien acepta. No es caída de ventas: la cifra oficial es el CRM",
+   "Modo avanzado de Google: la ley no lo aclara; confirmar con abogado"
+  ],
+  "pendientes_al_cierre": [
+   "Prueba automática diaria del Vigilante (postergada, rama vigilante-pruebas en el computador de la jefa)",
+   "Ley 21.719 puntos 1, 3, 4, 5 y 6: casilla opt-in y Brevo, política completa, correo privacidad@ y proceso ARSOP, DPA de proveedores, protocolo de brechas",
+   "Activar 'Leaked password protection' en Supabase (Authentication > Settings)",
+   "Vigilar la próxima confirmación de transferencia (usa la llave secreta del servidor)",
+   "Abogado: confirmar modo avanzado de Google y texto de la política"
+  ]
  }
 ]
