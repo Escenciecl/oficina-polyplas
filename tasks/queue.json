@@ -512,5 +512,14 @@
     "ficha": "QUÉ (con UX/UI y Medición):\n1. Página de gracias: 'Guarda esta compra en tu cuenta' con el correo ya escrito; solo falta la contraseña. Webpay y transferencia.\n2. Mi cuenta suma las compras anteriores hechas como invitado con el mismo correo (solo correo confirmado).\n3. Texto del formulario con el beneficio.\n4. Eventos cuenta_ofrecida, cuenta_rechazada y sign_up.\nNO toca checkout, precios ni pago. Casilla de ofertas desmarcada (Ley 21.719).\nANTES DE PUBLICAR: ejecutar supabase/cuentas-compras-anteriores.sql y crear activadores en GTM.\nSIGUIENTE: Repetir pedido (A), y al final checkout con datos guardados (F, requiere aprobación de checkout).\nMEDIR: % de compras con sesión y recompra a 60/90 días; línea base 5%.\nPR: https://github.com/Escenciecl/Polyplas-web/pull/21\n\nESTADO 16-nov: PR #21 aprobado y publicado (verificado en vivo). SQL ejecutado en Supabase 16-nov y verificado. FALTA: activadores GTM (Medición). Revisión de resultados: 2026-12-16.",
     "estado": "completada",
     "aprobado": "2026-11-16T19:57:03Z"
+  },
+  {
+    "id": "uxui::1794880000000",
+    "agente": "uxui",
+    "what": "Ingreso claro y accesible: botón 'Ingresar' y pestañas Ingresar / Crear cuenta (PR #22)",
+    "why": "Con cuenta ya creada, la cabecera solo decía 'Crear cuenta' y llevaba al registro; para entrar había que encontrar un enlace pequeño. En celular el aviso de cookies tapaba el botón del formulario.",
+    "ficha": "QUÉ (con CRO):\n1. Cabecera: 'Ingresar' abre directo en Ingresar a tu cuenta.\n2. Pestañas Ingresar | Crear cuenta; el correo se mantiene. Si la cuenta ya existe, pasa solo a Ingresar.\n3. '¿Olvidaste tu contraseña?' junto a la contraseña + Mostrar/Ocultar.\n4. Accesibilidad WCAG 2.2: foco dentro del modal, Escape, flechas en pestañas, errores anunciados, foco visible, contraste de campos 3,4:1, letra 16px, botón cerrar 44px.\n5. El formulario queda encima del aviso de cookies en celular.\nMEDIR: evento login (nuevo) y sign_up.\nNO toca checkout, pago ni base de datos.\nSIGUIENTE: funcionalidad de la cuenta (Repetir pedido, datos de factura guardados).\nPR: https://github.com/Escenciecl/Polyplas-web/pull/22",
+    "estado": "propuesta",
+    "aprobado": null
   }
 ]
