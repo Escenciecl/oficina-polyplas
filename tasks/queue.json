@@ -536,8 +536,8 @@
     "agente": "uxui",
     "what": "Pago con datos de la cuenta ya llenados (clientes con sesión) — PR #25",
     "why": "Al repetir un pedido o comprar con sesión había que escribir de nuevo todos los datos en 'Datos y envío', el paso donde más clientes se van (59% de pedidos son de empresas).",
-    "ficha": "APROBADO por la jefa 16-nov (sin alterar el flujo actual).\nQUÉ (con CRO): con sesión y compra anterior, 'Datos y envío' se llena con los datos de esa compra (solo campos vacíos) + aviso con 'Borrar datos'. Repetir pedido usa los datos de ese pedido.\nSIN SESIÓN: no cambia nada. Validaciones, entrega y pago sin cambios.\nMEDIR: checkout_autocompletado, checkout_datos_borrados; abandono del paso 3 con sesión vs sin sesión.\nHALLAZGO APARTE: comuna de facturación oculta queda en 'Santiago' en el flujo normal (empresa + RM + otra comuna); revisar.\nPR: https://github.com/Escenciecl/Polyplas-web/pull/25",
-    "estado": "propuesta",
-    "aprobado": null
+    "ficha": "APROBADO por la jefa 16-nov (sin alterar el flujo actual).\nQUÉ (con CRO): con sesión y compra anterior, 'Datos y envío' se llena con los datos de esa compra (solo campos vacíos) + aviso con 'Borrar datos'. Repetir pedido usa los datos de ese pedido.\nSIN SESIÓN: no cambia nada. Validaciones, entrega y pago sin cambios.\nMEDIR: checkout_autocompletado, checkout_datos_borrados; abandono del paso 3 con sesión vs sin sesión.\nHALLAZGO APARTE: comuna de facturación oculta queda en 'Santiago' en el flujo normal (empresa + RM + otra comuna); revisar.\nPR: https://github.com/Escenciecl/Polyplas-web/pull/25\n\nESTADO 16-nov: PR #25 publicado; verificado en vivo (sitio y carro).",
+    "estado": "completada",
+    "aprobado": "2026-11-16T20:50:45Z"
   }
 ]
