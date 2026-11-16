@@ -1,36 +1,23 @@
 {
- "actualizado": "2026-11-13",
+ "actualizado": "2026-11-16",
  "sesionAnterior": {
-  "fecha": "2026-11-12",
-  "titulo": "Cierre 2026-11-12 · Estrategia B2B, SEO, medición y reactivación Brevo",
-  "url": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/43384833",
-  "resumen": "Día dedicado a captar empresas de alto volumen (meta: 2 cuentas de $5M/mes) y a subir la venta de planchas web hacia $8M/mes. Se publicaron 3 páginas B2B con formulario de reunión con muestras (WhatsApp de la jefa +56 9 6435 6986), se midió todo en GTM/GA4, se aplicó la estrategia SEO con datos de Search Console y se programó un correo personalizado de recompra a 32 empresas para el 13-nov 9:30. Hallazgos: 1-12 nov es el mejor período web desde que se partió (real $3.642.701; $1.410.121 en planchas), 6 pedidos duplicados en el CRM desde el 11-nov, y Norglas cobra menos despacho que Polyplas.",
+  "fecha": "2026-11-16",
+  "titulo": "Cierre 2026-11-16 · Ley 21.719, revisión semanal de Google Ads y pedidos web en un solo registro",
+  "url": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/43843585",
+  "resumen": "Se revisó el estado de la Ley 21.719 y el informe para el abogado (al día, con 3 contradicciones por corregir antes de enviarlo). Revisión semanal de Google Ads leyendo la cuenta: semana 9-15 nov con 41 conversiones (+24%) a $11.038 c/u; el presupuesto se subió a $68.400/día el 9-nov y el mes cerraría ~$1,81-1,85M (decisión pendiente). Ventas web 9-15 nov: 13 (9 Webpay + 4 transferencias); Ads solo atribuye 1. Los pedidos ya guardan su origen (confirmado con un pedido del 16-nov desde Google Ads). Pedidos duplicados resueltos en la base de datos: un pedido = un registro, sin borrar datos ni tocar el sitio.",
   "aprobadas": [
    {
     "agente": "jefa",
-    "que": "3 landings B2B, mejoras UX, medición GTM/GA4, estrategia SEO completa, campaña Brevo #29",
-    "estado": "Publicado / programado 13-nov 09:30"
+    "que": "Pedidos web en un solo registro (base de datos) + vistas de reporte sin doble conteo",
+    "estado": "Aplicado 16-nov (SQL en Supabase) y verificado con prueba simulada"
    }
   ],
   "trabajado": [
-   "b2b+pm-planchas+seo: landings /acrilico-para-exhibidores-pop/, /acrilico-para-letreros-luminosos/ y /acrilico-por-mayor/ (PR #2-#10 Polyplas-web). Formulario = agendar reunión con muestras (las muestras no se regalan), llega al WhatsApp de la jefa",
-   "pm-planchas: PA = PMMA 100% virgen cast (confirmado con certificados del fabricante, sin publicar su nombre); AA Mix más económico; ficha técnica PA en las landings; film protector confirmado",
-   "uxui: botón fijo en celular, CTA intermedios, formulario en 3 bloques, confirmación tras enviar; chat general y 'Cómo comprar online' ocultos solo en páginas B2B",
-   "medicion+cro: 15 eventos b2b_* + lead_b2b con lead_id; tabla nueva b2b_leads en Supabase (solo inserción); GTM publicado (28 variables, 1 activador, 1 etiqueta GA4, importado con Combinar); GA4: 12 dimensiones + 2 métricas (cupo 47/50)",
-   "seo: indexación solicitada para las 3 URL B2B; 'blanco lechoso' como término principal (0 búsquedas de 'opal'); enlaces internos desde guías, acrílico transparente y categoría; Google Maps: categoría 'Mayorista de plástico' agregada",
-   "cro: enlace 'Toca aquí' excluido del interceptor GTM de WhatsApp (data-pp-interceptado)",
-   "pm-social/b2b: campaña Brevo #29 'Reactivación empresas planchas · 13-nov' programada 13-nov 09:30, 28 destinatarios (lista #19), correo personalizado con enlace directo a recomprar en la web; 32/32 contactos verificados",
-   "intel: Norglas despacho Santiago $19.990 (<$200.000) y $1.000 (>= $200.000); regiones por Starken ($27.744 Viña, $37.071 Concepción, $46.949 Puerto Montt)"
-  ],
-  "pendientes": [
-   "13-nov 09:30: revisar envío y resultados de la campaña Brevo #29 (aperturas, clics, compras con utm_campaign=reactivacion_empresas_nov26)",
-   "Jefa: fotos reales para las landings; reseñas de empresas en Google Maps; registro en ChileProveedores; confirmar año de fundación (1996 vs 1997)",
-   "RESUELTO 13-nov: Fredy aprobó despacho por zonas ($19.000 / $30.000, gratis desde $200.000). Publicado el 13-nov (PR #11), exp-012. Mismo día la jefa SUSPENDE el despacho pagado (renunció quien hacía los fletes): bajo $200.000 solo retiro; gratis desde $200.000 en Zona 1 y 2 sigue (PR #12). Reactivar al llegar la tercera persona",
-   "Investigar duplicados de pedidos (11-nov) y el enlace PA roto / formatos PA no visibles (con CRO/UX, sin romper el configurador)",
-   "lead_b2b como evento clave en GA4 cuando llegue el primer lead real",
-   "Cierre de noviembre: plan de 12 días hábiles (carros abandonados $2,1 M, 51 leads de recontacto, fábricas de letreros con blanco lechoso)",
-   "SEO: mediciones 26-nov, 10-dic y 7-ene",
-   "Postergado (lista de Tatis): seguridad de Supabase y de repositorios"
+   "vigilante: estado Ley 21.719 revisado; informe para abogado al día; correo a Fredy con contexto y multas (hasta 5.000/10.000/20.000 UTM, a confirmar por abogado)",
+   "ads: revisión semanal en la cuenta (solo lectura): 9-15 nov costo $452.544, 783 clics, CTR 22,1%, 41 conv., $11.038/conv., 21,7% impr. perdidas por presupuesto; aprendizaje terminado; 521 términos sin irrelevantes; exp-005 sin datos suficientes (peor que el original)",
+   "ads: presupuesto subido de $57.000 a $68.400/día el 9-nov (no estaba registrado); gasto 1-16 nov $875.257",
+   "medicion+cro: los pedidos ya guardan su origen (canal, campaña y código de clic con consentimiento) desde el 15-nov",
+   "medicion+cro: duplicados de pedidos Webpay explicados (servidor + página de gracias) y resueltos en la base: la segunda copia completa la primera; vistas pedidos_web y ventas_por_campana cuentan cada orden una vez; 9 duplicados históricos anotados, nada borrado"
   ]
  },
  "propuestas": {
@@ -51,7 +38,7 @@
   "P3 — Embudo cotizador por paso en GA4 (requiere export GA4 de la jefa)": "pendiente",
   "P4 — Verificar conf_pedido con ?pp_debug=1 en los 4 módulos": "pendiente",
   "P5 — Deuda técnica del cotizador (parches, timers, !important)": "pendiente",
-  "P6 — Órdenes Webpay duplicadas en Supabase": "pendiente"
+  "P6 — Órdenes Webpay duplicadas en Supabase": "hecha"
  },
  "conversionesGoogleAds": {
   "principales": [
@@ -72,19 +59,18 @@
   ]
  },
  "retomarManana": {
-  "fecha": "2026-11-14",
-  "contexto": "Cumplimiento Ley 21.719. Hecho el 13-nov: seguridad de la base de datos (resuelta) y cookies (publicado). Ver agentes/vigilante/CUMPLIMIENTO_LEY_21719.md",
+  "fecha": "2026-11-17",
+  "contexto": "Ver Cierre 2026-11-16 en Confluence",
   "siguiente": [
-   "Punto 1: casilla desmarcada de ofertas en checkout, cuenta y formularios B2B + listas de Brevo solo con consentimiento",
-   "Punto 4: correo privacidad@polyplas.cl, formulario 'Ejercer mis derechos' y proceso de respuesta en 30 días",
-   "Punto 3: reescribir la política completa (responsable, RUT, plazos, terceros, transferencias) → abogado",
-   "Puntos 5 y 6: inventario de proveedores con DPA, doble factor y protocolo de brechas",
-   "Prueba automática del Vigilante (postergada)"
+   "Revisar el primer pedido web nuevo: una sola fila y con origen",
+   "Ads: evaluar ajustes de puja por día (7 días); jefa decide presupuesto (a) $62.000/día o (b) mantener $68.400",
+   "Ads: subir ventas offline desde el 22-oct (incluye Surik); verificar si 'Compra' está entre los objetivos de la campaña (solo lectura)",
+   "Ley 21.719: corregir 3 contradicciones del informe y enviarlo a Fredy y al abogado; doble factor cPanel; contratos Transbank, cPanel y transportistas; invitación Brevo a suscribirse antes del 1-dic"
   ],
   "reglas": [
-   "No perder ni cambiar ventas ni estados del CRM",
+   "Contar pedidos por número de orden (vista pedidos_web), nunca filas de conversations",
    "Nada en Google Ads sin autorización de la jefa",
-   "Sin detalles de seguridad en este repositorio público"
+   "Sin datos personales ni detalles de seguridad en este repositorio público"
   ]
  }
 }

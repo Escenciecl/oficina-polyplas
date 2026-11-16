@@ -231,5 +231,55 @@
    "Vigilar la próxima confirmación de transferencia (usa la llave secreta del servidor)",
    "Abogado: confirmar modo avanzado de Google y texto de la política"
   ]
+ },
+ {
+  "fecha": "2026-11-15",
+  "titulo": "Ley 21.719: puntos 1, 3, 4, 5 y 6 y medición propia sin cookies (registro retroactivo)",
+  "agentes_presentes": [
+   "vigilante",
+   "medicion",
+   "tatis"
+  ],
+  "resumen": "Casilla de ofertas desmarcada en checkout, cuenta y formularios B2B; política de privacidad reescrita con razón social y RUT; página Ejercer mis derechos; lista Brevo con consentimiento (id 20); protocolo de brechas, inventario de proveedores (DPA) y procedimiento de derechos. Medición propia: cada pedido, chat y lead guarda su origen.",
+  "implementado": [
+   "PR #19 y #20 Polyplas-web",
+   "Documentos del Vigilante: CUMPLIMIENTO_LEY_21719.md, PROTOCOLO_BRECHAS.md, INVENTARIO_PROVEEDORES_DPA.md, PROCEDIMIENTO_DERECHOS.md",
+   "Informe para el abogado (PDF, 9 preguntas)"
+  ],
+  "alertas": [
+   "Sin cierre en Confluence ese día: se registra en Cierre 2026-11-16"
+  ],
+  "pendientes_al_cierre": [
+   "Revisión legal (9 preguntas)",
+   "Doble factor cPanel y contratos Transbank, cPanel y transportistas"
+  ]
+ },
+ {
+  "fecha": "2026-11-16",
+  "titulo": "Cierre 2026-11-16 · Ley 21.719, revisión semanal de Google Ads y pedidos web en un solo registro",
+  "agentes_presentes": [
+   "vigilante",
+   "ads",
+   "medicion",
+   "cro",
+   "tatis"
+  ],
+  "resumen": "Se revisó el estado de la Ley 21.719 y el informe para el abogado (al día, con 3 contradicciones por corregir antes de enviarlo). Revisión semanal de Google Ads leyendo la cuenta: semana 9-15 nov con 41 conversiones (+24%) a $11.038 c/u; el presupuesto se subió a $68.400/día el 9-nov y el mes cerraría ~$1,81-1,85M (decisión pendiente). Ventas web 9-15 nov: 13 (9 Webpay + 4 transferencias); Ads solo atribuye 1. Los pedidos ya guardan su origen (confirmado con un pedido del 16-nov desde Google Ads). Pedidos duplicados resueltos en la base de datos: un pedido = un registro, sin borrar datos ni tocar el sitio.",
+  "implementado": [
+   "Base de datos: pedidos web en un solo registro (la segunda copia de una orden completa la primera; mensajes al mismo pedido). Aplicado por la jefa en Supabase. Sin cambios en el sitio",
+   "Vistas pedidos_web y ventas_por_campana sin doble conteo; 9 duplicados históricos anotados en pedidos_alias (nada borrado)",
+   "Confluence: Cierre 2026-11-16 y Cambios Implementados al día (incluye 9, 13 y 15-nov)"
+  ],
+  "alertas": [
+   "Reportes: contar pedidos con la vista pedidos_web o por número de orden",
+   "Ads: presupuesto proyecta ~$1,81-1,85M vs tope $1,8M",
+   "GA4/Ads miden menos conversiones observadas desde el 13-nov (aviso de cookies); cifra oficial = CRM"
+  ],
+  "pendientes_al_cierre": [
+   "Revisar el primer pedido web nuevo: una sola fila y con origen",
+   "Ads: evaluar ajustes de puja por día (7 días); jefa decide presupuesto (a) $62.000/día o (b) mantener $68.400",
+   "Ads: subir ventas offline desde el 22-oct (incluye Surik); verificar si 'Compra' está entre los objetivos de la campaña (solo lectura)",
+   "Ley 21.719: corregir 3 contradicciones del informe y enviarlo a Fredy y al abogado; doble factor cPanel; contratos Transbank, cPanel y transportistas; invitación Brevo a suscribirse antes del 1-dic"
+  ]
  }
 ]
