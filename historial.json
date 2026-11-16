@@ -299,7 +299,10 @@
       "PR #23 Repetir pedido",
       "PR #25 pago con datos de la cuenta",
       "PR #26/#27 bugs de ingreso, aviso del carro, contraseña nueva",
-      "Supabase: SMTP Brevo + 4 plantillas en español + límite 100/hora"
+      "Supabase: SMTP Brevo + 4 plantillas en español + límite 100/hora",
+      "Orden de GitHub: solo main en sitio y oficina",
+      "Continuidad única en memoria.json + Cierre de Confluence",
+      "Mapa del sistema (artifact privado)"
     ],
     "alertas": [
       "No desactivar 'Enable custom SMTP' en Supabase",
@@ -307,7 +310,9 @@
       "Comuna de facturación a veces queda 'Santiago'"
     ],
     "pendientes_al_cierre": [
-      "GTM eventos nuevos",
+      "GTM 8 eventos",
+      "Prueba diaria del Vigilante",
+      "Seguridad postergada antes del 1-dic",
       "Estado del pedido y documentos en Mi cuenta",
       "Mis datos personales: espera abogado"
     ],

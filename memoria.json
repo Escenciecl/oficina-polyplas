@@ -51,7 +51,10 @@
       "cro+medicion: causa raíz del abandono en 'Datos y envío': 8 de cada 10 solo tienen retiro en tienda (bajo $200.000 / fuera de RM) y se van antes de escribir sus datos; 93% de los pedidos web son retiro. Decisión de la jefa el 30-nov",
       "cro+uxui+medicion: cuentas y recompra (PR #21–#27), base: 6 de 120 clientes web recompran (5%)",
       "uxui: correos de cuenta por Brevo (Supabase SMTP propio, 4 plantillas en español); NO desactivar 'Enable custom SMTP' (borra plantillas)",
-      "vigilante: 'Mis datos personales' en Mi cuenta queda en espera de revisión del abogado (decisión jefa)"
+      "vigilante: 'Mis datos personales' en Mi cuenta queda en espera de revisión del abogado (decisión jefa)",
+      "orden: copias locales iguales a GitHub; 21 ramas viejas borradas en GitHub (sitio y oficina quedan solo con main); respaldo local en rama respaldo-local-2026-11-16",
+      "continuidad: memoria.json es el único 'dónde quedamos' para Cowork y Claude Code; bandeja con acentos reparados; DONDE_QUEDAMOS.md eliminado",
+      "mapa del sistema (artifact privado de la jefa): https://claude.ai/artifact/2BZfkJxwP4KR9VfnxdC7YP — 5 capas, recorridos, agentes y 7 mejoras priorizadas"
     ]
   },
   "propuestas": {
@@ -104,7 +107,10 @@
       "Ley 21.719: corregir 3 contradicciones del informe y enviarlo a Fredy y al abogado; doble factor cPanel; contratos Transbank, cPanel y transportistas; invitación Brevo a suscribirse antes del 1-dic",
       "30-nov: revisión CRO+Medición del checkout (exp-006, exp-012 y causa raíz 'solo retiro') para decidir propuestas",
       "Siguiente en cuentas: estado del pedido en Mi cuenta y documentos para descargar",
-      "UX/UI: comuna de facturación que a veces queda 'Santiago' (empresa + RM + otra comuna)"
+      "UX/UI: comuna de facturación que a veces queda 'Santiago' (empresa + RM + otra comuna)",
+      "Mejoras ALTA del mapa: (1) GTM 8 eventos, (2) terminar prueba diaria del Vigilante (rama vigilante-pruebas, ~/Polyplas-web-vig), (3) revisión de seguridad postergada del 12-nov antes del 1-dic",
+      "Mejoras MEDIA: comprobantes de compra también por Brevo (toca el pago: aprobación), estado del pedido en Mi cuenta, informe semanal GA4/Ads sin capturas",
+      "Mejora BAJA: archivar repos viejos (Agente-google-ads, Agente-de-seo, pruebas, panel-ventas-polyplas vacío)"
     ],
     "reglas": [
       "Contar pedidos por número de orden (vista pedidos_web), nunca filas de conversations",
