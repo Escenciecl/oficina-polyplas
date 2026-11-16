@@ -250,7 +250,7 @@
   "revisar_en": "2026-11-20",
   "revisiones": [],
   "estado": "pendiente",
-  "notas": "13-nov: el despacho por zonas (exp-012) cambió el paso 3 del checkout a mitad de la ventana de medición (6→20 nov). Medir solo 6–12 nov para este experimento; lo posterior corresponde a exp-012."
+  "notas": "13-nov: el despacho por zonas (exp-012) cambió el paso 3 del checkout a mitad de la ventana de medición (6→20 nov). Medir solo 6–12 nov para este experimento; lo posterior corresponde a exp-012. | 16-nov (CRO+Medición): sin datos suficientes. Pedidos reales 6-12 nov 1,7/día vs 1,0/día antes (p≈0,06; confundido con presupuesto Ads del 9-nov). La métrica original (abandono antes del checkout) ya no sirve: begin_checkout se dispara casi siempre al abrir el pago. 'Llenó datos de envío/empezó a pagar' 54%→22%: el abandono se adelantó porque ahora se ve 'solo retiro' al elegir comuna. Decisión 30-nov."
  },
  {
   "id": "exp-007",
@@ -286,7 +286,12 @@
   "aplicado": "2026-11-09",
   "revisar_en": "2026-11-16",
   "revisar_final": "2026-12-07",
-  "revisiones": [],
+  "revisiones": [
+   {
+    "fecha": "2026-11-16",
+    "resultado": "9-15 nov: 41 conv. (+24%), $11.038/conv. (meta < $13.000), impr. perdidas por presupuesto 21,7% (meta < 10%). Gasto 1-16 nov $875.257. Paso 2 (~$81.200/día) pendiente de decisión de la jefa."
+   }
+  ],
   "estado": "pendiente",
   "notas": "13-nov: desde el cambio de despacho (exp-012) el valor de compra en GA4 incluye el despacho pagado ($19.000/$30.000) y el despacho aparece como artículo. Comparar por número de compras o restar la línea DESPACHO hasta que Medición corrija la medición."
  },
@@ -469,6 +474,6 @@
   "revisar_final": "2026-12-11",
   "revisiones": [],
   "estado": "programado",
-  "notas": "El evento pago_entrega_vista ya no envía motivo 'bajo_umbral' (ahora hay despacho bajo el umbral): comparar el motivo 'comuna_sin_despacho' solo desde el 13-nov. Confusores: equipo reducido por ausencia de Nico (despacho gradual), exp-005 de Ads se evalúa el 16-nov. Probado por la jefa en vivo el 13-nov con pedidos de prueba por transferencia (excluirlos del conteo). | Riesgo de medición: valor de compra incluye despacho (ver registro de Medición 13-nov). Prueba en producción OK 13-nov 16:01: transferencia, Estación Central Zona 1, $28.322 + despacho $19.000 = $47.322, verificado por el servidor (excluir de la medición). Texto destacado de Google Ads 'Envío Gratis RM $350.000+' actualizado por la jefa el 13-nov. | 13-nov tarde: despacho pagado suspendido. Medir desde la publicación del PR #12. Cuando se reactive el despacho pagado, abrir un experimento nuevo (no mezclar con este)."
+  "notas": "El evento pago_entrega_vista ya no envía motivo 'bajo_umbral' (ahora hay despacho bajo el umbral): comparar el motivo 'comuna_sin_despacho' solo desde el 13-nov. Confusores: equipo reducido por ausencia de Nico (despacho gradual), exp-005 de Ads se evalúa el 16-nov. Probado por la jefa en vivo el 13-nov con pedidos de prueba por transferencia (excluirlos del conteo). | Riesgo de medición: valor de compra incluye despacho (ver registro de Medición 13-nov). Prueba en producción OK 13-nov 16:01: transferencia, Estación Central Zona 1, $28.322 + despacho $19.000 = $47.322, verificado por el servidor (excluir de la medición). Texto destacado de Google Ads 'Envío Gratis RM $350.000+' actualizado por la jefa el 13-nov. | 13-nov tarde: despacho pagado suspendido. Medir desde la publicación del PR #12. Cuando se reactive el despacho pagado, abrir un experimento nuevo (no mezclar con este). | 16-nov: 4 pedidos en 4 días; con ~1,5 pedidos/día no será estadísticamente concluyente a 14 ni 28 días. Evaluar con reglas: pedidos/día (CRM, por número de orden), mediana del ticket y % inicio de pago→compra en medición propia. Decisión 30-nov."
  }
 ]
