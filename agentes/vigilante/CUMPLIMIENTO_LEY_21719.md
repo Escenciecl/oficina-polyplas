@@ -1,7 +1,7 @@
 # Cumplimiento Ley 21.719 — Tablero del Vigilante
 
 **Rige desde:** 1 de diciembre de 2026 · **Diagnóstico inicial:** 13 de noviembre de 2026 (revisión en vivo de polyplas.cl, código del sitio y Tag Manager publicado)
-**Estado (15-nov):** 4 de 6 puntos en verde · 2 parciales (dependen de la jefa: aceptar DPA, doble factor, RUT y revisión legal)
+**Estado (16-nov):** 5 de 6 puntos implementados y publicados · punto 5 parcial (falta doble factor en correo cPanel y contratos con Transbank, cPanel y transportistas) · pendiente revisión legal (informe con 9 preguntas, por enviar)
 
 > ⚠️ Este tablero no es asesoría legal. Lo marcado "requiere revisión legal" debe confirmarlo un abogado.
 
@@ -29,11 +29,11 @@
 **Medición/Ads:** desde el 13-nov bajan las conversiones observadas en GA4/Ads (Google modela las faltantes en unos días) y Meta mide solo a quien acepta. La cifra oficial de ventas es el CRM.
 
 ---|---|---|
-| 1 | Consentimiento válido (sin casillas premarcadas, opt-in para marketing) | 🟢 Cumple en el sitio (15-nov) · falta lista de Brevo con consentimiento |
+| 1 | Consentimiento válido (sin casillas premarcadas, opt-in para marketing) | 🟢 Cumple (15-nov) · lista Brevo con consentimiento creada (id 20) · falta criterio para contactos antiguos (pregunta al abogado) |
 | 2 | Banner de cookies con rechazo real, categorías y bloqueo de scripts | 🟢 Cumple (13-nov) |
-| 3 | Política de tratamiento de datos completa y visible | 🟢 Publicada (15-nov) · falta RUT y revisión legal |
+| 3 | Política de tratamiento de datos completa y visible | 🟢 Publicada (15-nov) con razón social y RUT · falta revisión legal |
 | 4 | Canal y proceso ARSOP+ (30 días) | 🟢 Cumple (15-nov): /ejercer-mis-derechos/ + PROCEDIMIENTO_DERECHOS.md |
-| 5 | Seguridad y contratos con proveedores (DPA) | 🟡 Parcial: seguridad resuelta; inventario listo (INVENTARIO_PROVEEDORES_DPA.md); falta que la jefa acepte los DPA y active doble factor |
+| 5 | Seguridad y contratos con proveedores (DPA) | 🟡 Parcial: seguridad resuelta; DPA verificados (Supabase, Cloudflare, Brevo, Google Analytics, Contentsquare); doble factor activo salvo correo cPanel; faltan contratos Transbank, cPanel y transportistas |
 | 6 | Protocolo de respuesta ante brechas | 🟢 Protocolo escrito (15-nov): PROTOCOLO_BRECHAS.md · confirmar plazo con abogado |
 
 ---
