@@ -36,7 +36,7 @@ No se espera a "estar seguros".
 7. **Revisión posterior (dentro de 14 días):** qué falló, qué se cambió, quién lo revisa.
 
 ## 4. Plantilla A — Aviso a la Agencia (borrador)
-- Responsable: Polyplas Ltda, RUT [RUT], Santiago Concha 1525, Santiago. Contacto: polyplaschile@gmail.com.
+- Responsable: Manufactura De Plásticos Polyplas Limitada, RUT 78.844.390-0, Santiago Concha 1525, Santiago. Contacto: polyplaschile@gmail.com.
 - Fecha y hora del incidente y de su detección:
 - Descripción de lo ocurrido:
 - Datos y número aproximado de personas afectadas:
