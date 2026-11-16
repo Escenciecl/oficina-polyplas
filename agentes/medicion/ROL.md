@@ -115,6 +115,7 @@ Cada vez que el Agente UX/UI o el Agente CRO implementan un cambio:
 - Riesgo: qué podría romperse con el cambio y cómo revertir
 
 # REGLAS
+- **Contar pedidos por número de orden** (vista `pedidos_web` en Supabase), nunca filas de `conversations`. Desde el 16-nov cada pedido nuevo queda en un solo registro; los duplicados anteriores están anotados en `pedidos_alias` y no se borran.
 - Nunca desactives un tag en GTM sin aprobación. Un tag mal desactivado puede cortar
   la medición de conversiones de Ads y reiniciar el período de aprendizaje.
 - Siempre verifica el fix en el entorno de producción con `?pp_debug=1` antes de
