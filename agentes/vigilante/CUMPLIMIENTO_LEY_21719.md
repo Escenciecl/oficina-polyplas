@@ -141,3 +141,5 @@
 
 ## Impacto en Google Ads y medición
 Bloquear Meta y Google Ads hasta el consentimiento **no reinicia el aprendizaje** (no se tocan acciones de conversión, puja ni campañas), pero **bajará la cantidad de conversiones medidas**. Medición y Ads deben saberlo antes de publicar para no leerlo como caída de ventas. Las ventas reales se siguen midiendo en el CRM.
+
+> **16-nov-2026 — Decisión de la jefa:** "Mis datos personales" en Mi cuenta (descargar, corregir, borrar datos, activar/desactivar ofertas) queda **EN ESPERA de revisión de un abogado**. No construir hasta tener su visto bueno.
