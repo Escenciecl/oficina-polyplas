@@ -1,78 +1,118 @@
 {
- "actualizado": "2026-11-16",
- "sesionAnterior": {
-  "fecha": "2026-11-16",
-  "titulo": "Cierre 2026-11-16 · Ley 21.719, revisión semanal de Google Ads y pedidos web en un solo registro",
-  "url": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/43843585",
-  "resumen": "Se revisó el estado de la Ley 21.719 y el informe para el abogado (al día, con 3 contradicciones por corregir antes de enviarlo). Revisión semanal de Google Ads leyendo la cuenta: semana 9-15 nov con 41 conversiones (+24%) a $11.038 c/u; el presupuesto va en $68.400/día (exp-007, meta del mes ~$2,1M); falta decidir el paso 2 (~$81.200/día). Ventas web 9-15 nov: 13 (9 Webpay + 4 transferencias); Ads solo atribuye 1. Los pedidos ya guardan su origen (confirmado con un pedido del 16-nov desde Google Ads). Pedidos duplicados resueltos en la base de datos: un pedido = un registro, sin borrar datos ni tocar el sitio.",
-  "aprobadas": [
-   {
-    "agente": "jefa",
-    "que": "Pedidos web en un solo registro (base de datos) + vistas de reporte sin doble conteo",
-    "estado": "Aplicado 16-nov (SQL en Supabase) y verificado con prueba simulada"
-   }
-  ],
-  "trabajado": [
-   "vigilante: estado Ley 21.719 revisado; informe para abogado al día; correo a Fredy con contexto y multas (hasta 5.000/10.000/20.000 UTM, a confirmar por abogado)",
-   "ads: revisión semanal en la cuenta (solo lectura): 9-15 nov costo $452.544, 783 clics, CTR 22,1%, 41 conv., $11.038/conv., 21,7% impr. perdidas por presupuesto; aprendizaje terminado; 521 términos sin irrelevantes; exp-005 sin datos suficientes (peor que el original)",
-   "ads: presupuesto $68.400/día desde el 9-nov = paso 1 de exp-007 (meta ~$2,1M en noviembre); paso 2 pendiente; gasto 1-16 nov $875.257",
-   "medicion+cro: los pedidos ya guardan su origen (canal, campaña y código de clic con consentimiento) desde el 15-nov",
-   "medicion+cro: duplicados de pedidos Webpay explicados (servidor + página de gracias) y resueltos en la base: la segunda copia completa la primera; vistas pedidos_web y ventas_por_campana cuentan cada orden una vez; 9 duplicados históricos anotados, nada borrado",
-   "cro+medicion: causa raíz del abandono en 'Datos y envío': 8 de cada 10 solo tienen retiro en tienda (bajo $200.000 / fuera de RM) y se van antes de escribir sus datos; 93% de los pedidos web son retiro. Decisión de la jefa el 30-nov"
-  ]
- },
- "propuestas": {
-  "Diagnosticar y corregir el evento purchase que llega con value=$0 en GA4": "hecha",
-  "Verificar y corregir que transferencias confirmadas disparen el evento purchase": "hecha",
-  "Agregar parámetro de producto de origen a click_asistencia_flotante (WhatsApp)": "hecha",
-  "Crear página 'Cierre 2026-11-03' en Confluence con los reportes de hoy": "hecha",
-  "Verificar y corregir el evento purchase en GA4 (Paso 0)": "hecha",
-  "Optimizar title + meta de /categoria-producto/tinas-de-hidromasaje/": "hecha",
-  "Recursos en Google Ads para planchas gruesas en stock (exp-008)": "hecha",
-  "Tabla de reemplazos de stock AA/PA para el chat": "hecha",
-  "Ampliar rol PM Social a email marketing (Brevo)": "hecha",
-  "2 emails HTML para la base de compradores web de acrílico": "hecha",
-  "Negativas temporales para 5, 6 y 8 mm": "rechazada",
-  "fix(cotizador): conf_pedido corregido en 4 módulos + ppGuard": "hecha",
-  "P1 — Registrar resultado de cada lead de WhatsApp (venta sí/no, monto, motivo)": "pendiente",
-  "P2 — Seguir 50 cotizaciones de acrílico sin cierre": "pendiente",
-  "P3 — Embudo cotizador por paso en GA4 (requiere export GA4 de la jefa)": "pendiente",
-  "P4 — Verificar conf_pedido con ?pp_debug=1 en los 4 módulos": "pendiente",
-  "P5 — Deuda técnica del cotizador (parches, timers, !important)": "pendiente",
-  "P6 — Órdenes Webpay duplicadas en Supabase": "hecha"
- },
- "conversionesGoogleAds": {
-  "principales": [
-   "generate_lead (contacto)",
-   "purchase"
-  ],
-  "confirmado": "2026-11-11 por la jefa",
-  "nota": "conf_pedido no es conversión en Ads. Cambiar estas acciones reinicia el aprendizaje (pasó el 4-nov): prohibido."
- },
- "metas": {
-  "planchas_web_mensual": "$8.000.000 (meta jefa); noviembre realista ~$5M si se ejecuta el plan de cierre",
-  "b2b": "2 cuentas recurrentes de $5M/mes",
-  "reglas": [
-   "Nada en Google Ads sin autorización explícita de la jefa",
-   "B2B siempre por formulario/reunión, no carrito",
-   "PA = cast; nunca decir que AA es cast",
-   "Sin datos personales ni detalles de seguridad en este repositorio público"
-  ]
- },
- "retomarManana": {
-  "fecha": "2026-11-17",
-  "contexto": "Ver Cierre 2026-11-16 en Confluence",
-  "siguiente": [
-   "Revisar el primer pedido web nuevo: una sola fila y con origen",
-   "Ads: evaluar ajustes de puja por día (7 días); jefa decide si aplica el paso 2 de exp-007 (~$81.200/día)",
-   "Ads: subir ventas offline desde el 22-oct (incluye Surik); verificar si 'Compra' está entre los objetivos de la campaña (solo lectura)",
-   "Ley 21.719: corregir 3 contradicciones del informe y enviarlo a Fredy y al abogado; doble factor cPanel; contratos Transbank, cPanel y transportistas; invitación Brevo a suscribirse antes del 1-dic",
-   "30-nov: revisión CRO+Medición del checkout (exp-006, exp-012 y causa raíz 'solo retiro') para decidir propuestas"
-  ],
-  "reglas": [
-   "Contar pedidos por número de orden (vista pedidos_web), nunca filas de conversations",
-   "Nada en Google Ads sin autorización de la jefa",
-   "Sin datos personales ni detalles de seguridad en este repositorio público"
-  ]
- }
+  "actualizado": "2026-11-16",
+  "sesionAnterior": {
+    "fecha": "2026-11-16",
+    "titulo": "Cierre 2026-11-16 · Ley 21.719, Google Ads, pedidos en un solo registro y (tarde) cuentas y recompra",
+    "url": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/43843585",
+    "resumen": "Se revisó el estado de la Ley 21.719 y el informe para el abogado (al día, con 3 contradicciones por corregir antes de enviarlo). Revisión semanal de Google Ads leyendo la cuenta: semana 9-15 nov con 41 conversiones (+24%) a $11.038 c/u; el presupuesto va en $68.400/día (exp-007, meta del mes ~$2,1M); falta decidir el paso 2 (~$81.200/día). Ventas web 9-15 nov: 13 (9 Webpay + 4 transferencias); Ads solo atribuye 1. Los pedidos ya guardan su origen (confirmado con un pedido del 16-nov desde Google Ads). Pedidos duplicados resueltos en la base de datos: un pedido = un registro, sin borrar datos ni tocar el sitio. TARDE (Claude Code): 7 mejoras de cuentas y recompra publicadas (PR #21–#27): crear cuenta en la página de gracias, Mi cuenta suma compras anteriores del mismo correo, ingreso claro y accesible, Repetir pedido en un clic, pago con datos de la cuenta ya llenados, cabecera 'Hola, nombre' y aviso 'Tu pedido sigue en el carro'. Correos de las cuentas en español por Brevo (ventas@polyplas.cl), límite 100/hora (antes 2/hora).",
+    "aprobadas": [
+      {
+        "agente": "jefa",
+        "que": "Pedidos web en un solo registro (base de datos) + vistas de reporte sin doble conteo",
+        "estado": "Aplicado 16-nov (SQL en Supabase) y verificado con prueba simulada"
+      },
+      {
+        "agente": "cro",
+        "que": "Cuentas para recompra: crear cuenta en gracias + compras anteriores (PR #21)",
+        "estado": "Publicado 16-nov"
+      },
+      {
+        "agente": "uxui",
+        "que": "Ingreso claro y accesible + botón azul (PR #22, #24)",
+        "estado": "Publicado 16-nov"
+      },
+      {
+        "agente": "cro",
+        "que": "Repetir pedido en un clic (PR #23)",
+        "estado": "Publicado 16-nov"
+      },
+      {
+        "agente": "uxui",
+        "que": "Pago con datos de la cuenta ya llenados, solo con sesión (PR #25)",
+        "estado": "Publicado 16-nov (checkout aprobado por la jefa)"
+      },
+      {
+        "agente": "uxui",
+        "que": "Bugs de ingreso, cabecera, aviso del carro y contraseña nueva (PR #26, #27)",
+        "estado": "Publicado 16-nov"
+      },
+      {
+        "agente": "uxui",
+        "que": "Correos de cuenta en español por Brevo",
+        "estado": "Configurado y probado 16-nov"
+      }
+    ],
+    "trabajado": [
+      "vigilante: estado Ley 21.719 revisado; informe para abogado al día; correo a Fredy con contexto y multas (hasta 5.000/10.000/20.000 UTM, a confirmar por abogado)",
+      "ads: revisión semanal en la cuenta (solo lectura): 9-15 nov costo $452.544, 783 clics, CTR 22,1%, 41 conv., $11.038/conv., 21,7% impr. perdidas por presupuesto; aprendizaje terminado; 521 términos sin irrelevantes; exp-005 sin datos suficientes (peor que el original)",
+      "ads: presupuesto $68.400/día desde el 9-nov = paso 1 de exp-007 (meta ~$2,1M en noviembre); paso 2 pendiente; gasto 1-16 nov $875.257",
+      "medicion+cro: los pedidos ya guardan su origen (canal, campaña y código de clic con consentimiento) desde el 15-nov",
+      "medicion+cro: duplicados de pedidos Webpay explicados (servidor + página de gracias) y resueltos en la base: la segunda copia completa la primera; vistas pedidos_web y ventas_por_campana cuentan cada orden una vez; 9 duplicados históricos anotados, nada borrado",
+      "cro+medicion: causa raíz del abandono en 'Datos y envío': 8 de cada 10 solo tienen retiro en tienda (bajo $200.000 / fuera de RM) y se van antes de escribir sus datos; 93% de los pedidos web son retiro. Decisión de la jefa el 30-nov",
+      "cro+uxui+medicion: cuentas y recompra (PR #21–#27), base: 6 de 120 clientes web recompran (5%)",
+      "uxui: correos de cuenta por Brevo (Supabase SMTP propio, 4 plantillas en español); NO desactivar 'Enable custom SMTP' (borra plantillas)",
+      "vigilante: 'Mis datos personales' en Mi cuenta queda en espera de revisión del abogado (decisión jefa)"
+    ]
+  },
+  "propuestas": {
+    "Diagnosticar y corregir el evento purchase que llega con value=$0 en GA4": "hecha",
+    "Verificar y corregir que transferencias confirmadas disparen el evento purchase": "hecha",
+    "Agregar parámetro de producto de origen a click_asistencia_flotante (WhatsApp)": "hecha",
+    "Crear página 'Cierre 2026-11-03' en Confluence con los reportes de hoy": "hecha",
+    "Verificar y corregir el evento purchase en GA4 (Paso 0)": "hecha",
+    "Optimizar title + meta de /categoria-producto/tinas-de-hidromasaje/": "hecha",
+    "Recursos en Google Ads para planchas gruesas en stock (exp-008)": "hecha",
+    "Tabla de reemplazos de stock AA/PA para el chat": "hecha",
+    "Ampliar rol PM Social a email marketing (Brevo)": "hecha",
+    "2 emails HTML para la base de compradores web de acrílico": "hecha",
+    "Negativas temporales para 5, 6 y 8 mm": "rechazada",
+    "fix(cotizador): conf_pedido corregido en 4 módulos + ppGuard": "hecha",
+    "P1 — Registrar resultado de cada lead de WhatsApp (venta sí/no, monto, motivo)": "pendiente",
+    "P2 — Seguir 50 cotizaciones de acrílico sin cierre": "pendiente",
+    "P3 — Embudo cotizador por paso en GA4 (requiere export GA4 de la jefa)": "pendiente",
+    "P4 — Verificar conf_pedido con ?pp_debug=1 en los 4 módulos": "pendiente",
+    "P5 — Deuda técnica del cotizador (parches, timers, !important)": "pendiente",
+    "P6 — Órdenes Webpay duplicadas en Supabase": "hecha"
+  },
+  "conversionesGoogleAds": {
+    "principales": [
+      "generate_lead (contacto)",
+      "purchase"
+    ],
+    "confirmado": "2026-11-11 por la jefa",
+    "nota": "conf_pedido no es conversión en Ads. Cambiar estas acciones reinicia el aprendizaje (pasó el 4-nov): prohibido."
+  },
+  "metas": {
+    "planchas_web_mensual": "$8.000.000 (meta jefa); noviembre realista ~$5M si se ejecuta el plan de cierre",
+    "b2b": "2 cuentas recurrentes de $5M/mes",
+    "reglas": [
+      "Nada en Google Ads sin autorización explícita de la jefa",
+      "B2B siempre por formulario/reunión, no carrito",
+      "PA = cast; nunca decir que AA es cast",
+      "Sin datos personales ni detalles de seguridad en este repositorio público"
+    ]
+  },
+  "retomarManana": {
+    "fecha": "2026-11-17",
+    "contexto": "Ver Cierre 2026-11-16 en Confluence",
+    "siguiente": [
+      "Medición: activadores GTM de login, sign_up, repetir_pedido, checkout_autocompletado, checkout_datos_borrados, aviso_carro, cuenta_ofrecida, cuenta_rechazada",
+      "Revisar el primer pedido web nuevo: una sola fila, con origen y (si tenía sesión) guardado en su cuenta",
+      "Revisar el primer comprobante pagado: trae el botón 'Repetir este pedido'",
+      "Ads: evaluar ajustes de puja por día (7 días); jefa decide si aplica el paso 2 de exp-007 (~$81.200/día)",
+      "Ads: subir ventas offline desde el 22-oct (incluye Surik); verificar si 'Compra' está entre los objetivos de la campaña (solo lectura)",
+      "Ley 21.719: corregir 3 contradicciones del informe y enviarlo a Fredy y al abogado; doble factor cPanel; contratos Transbank, cPanel y transportistas; invitación Brevo a suscribirse antes del 1-dic",
+      "30-nov: revisión CRO+Medición del checkout (exp-006, exp-012 y causa raíz 'solo retiro') para decidir propuestas",
+      "Siguiente en cuentas: estado del pedido en Mi cuenta y documentos para descargar",
+      "UX/UI: comuna de facturación que a veces queda 'Santiago' (empresa + RM + otra comuna)"
+    ],
+    "reglas": [
+      "Contar pedidos por número de orden (vista pedidos_web), nunca filas de conversations",
+      "Nada en Google Ads sin autorización de la jefa",
+      "Sin datos personales ni detalles de seguridad en este repositorio público",
+      "Al empezar (Cowork o Claude Code): poner al día los repos y leer memoria.json; al terminar: 'reunión de cierre' (memoria.json + Confluence)",
+      "No desactivar 'Enable custom SMTP' en Supabase (borra las plantillas en español)",
+      "'Mis datos personales' (Ley 21.719) en espera del abogado: no construir"
+    ]
+  }
 }
