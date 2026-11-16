@@ -527,8 +527,8 @@
     "agente": "cro",
     "what": "Repetir pedido en un clic desde Mi cuenta y desde el correo de comprobante (PR #23)",
     "why": "Los que vuelven a comprar son casi todos empresas de acrílico con corte (11 de 12 pedidos) y 5 de 6 vuelven dentro de 7 días. Volver a armar el pedido y las medidas de corte es lo más pesado.",
-    "ficha": "QUÉ (con UX/UI y Medición):\n1. Mi cuenta: tarjeta 'Tu último pedido' con botón grande + botón en cada compra.\n2. Un clic: mismo pedido y medidas de corte al carro, carro abierto listo para pagar.\n3. Precio y stock de hoy (CRM + verificación del servidor, sin cambios).\n4. Lo no disponible se avisa y se pide por WhatsApp con mensaje listo.\n5. Correo de comprobante pagado: botón 'Repetir este pedido' (si no ingresó, se recuerda 7 días).\nMEDIR: evento repetir_pedido → purchase; recompra 60/90 días (base 5%).\nNO toca checkout, pago, verificación de precios ni base de datos.\nPR: https://github.com/Escenciecl/Polyplas-web/pull/23",
-    "estado": "propuesta",
-    "aprobado": null
+    "ficha": "QUÉ (con UX/UI y Medición):\n1. Mi cuenta: tarjeta 'Tu último pedido' con botón grande + botón en cada compra.\n2. Un clic: mismo pedido y medidas de corte al carro, carro abierto listo para pagar.\n3. Precio y stock de hoy (CRM + verificación del servidor, sin cambios).\n4. Lo no disponible se avisa y se pide por WhatsApp con mensaje listo.\n5. Correo de comprobante pagado: botón 'Repetir este pedido' (si no ingresó, se recuerda 7 días).\nMEDIR: evento repetir_pedido → purchase; recompra 60/90 días (base 5%).\nNO toca checkout, pago, verificación de precios ni base de datos.\nPR: https://github.com/Escenciecl/Polyplas-web/pull/23\n\nESTADO 16-nov: PR #23 aprobado y publicado; Mi cuenta verificado en vivo. El botón del correo sale con el próximo comprobante pagado (revisar el primero).",
+    "estado": "completada",
+    "aprobado": "2026-11-16T20:26:17Z"
   }
 ]
