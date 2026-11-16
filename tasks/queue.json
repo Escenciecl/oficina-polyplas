@@ -518,8 +518,8 @@
     "agente": "uxui",
     "what": "Ingreso claro y accesible: botón 'Ingresar' y pestañas Ingresar / Crear cuenta (PR #22)",
     "why": "Con cuenta ya creada, la cabecera solo decía 'Crear cuenta' y llevaba al registro; para entrar había que encontrar un enlace pequeño. En celular el aviso de cookies tapaba el botón del formulario.",
-    "ficha": "QUÉ (con CRO):\n1. Cabecera: 'Ingresar' abre directo en Ingresar a tu cuenta.\n2. Pestañas Ingresar | Crear cuenta; el correo se mantiene. Si la cuenta ya existe, pasa solo a Ingresar.\n3. '¿Olvidaste tu contraseña?' junto a la contraseña + Mostrar/Ocultar.\n4. Accesibilidad WCAG 2.2: foco dentro del modal, Escape, flechas en pestañas, errores anunciados, foco visible, contraste de campos 3,4:1, letra 16px, botón cerrar 44px.\n5. El formulario queda encima del aviso de cookies en celular.\nMEDIR: evento login (nuevo) y sign_up.\nNO toca checkout, pago ni base de datos.\nSIGUIENTE: funcionalidad de la cuenta (Repetir pedido, datos de factura guardados).\nPR: https://github.com/Escenciecl/Polyplas-web/pull/22",
-    "estado": "propuesta",
-    "aprobado": null
+    "ficha": "QUÉ (con CRO):\n1. Cabecera: 'Ingresar' abre directo en Ingresar a tu cuenta.\n2. Pestañas Ingresar | Crear cuenta; el correo se mantiene. Si la cuenta ya existe, pasa solo a Ingresar.\n3. '¿Olvidaste tu contraseña?' junto a la contraseña + Mostrar/Ocultar.\n4. Accesibilidad WCAG 2.2: foco dentro del modal, Escape, flechas en pestañas, errores anunciados, foco visible, contraste de campos 3,4:1, letra 16px, botón cerrar 44px.\n5. El formulario queda encima del aviso de cookies en celular.\nMEDIR: evento login (nuevo) y sign_up.\nNO toca checkout, pago ni base de datos.\nSIGUIENTE: funcionalidad de la cuenta (Repetir pedido, datos de factura guardados).\nPR: https://github.com/Escenciecl/Polyplas-web/pull/22\n\nESTADO 16-nov: PR #22 aprobado y publicado; verificado en vivo en polyplas.cl.",
+    "estado": "completada",
+    "aprobado": "2026-11-16T20:17:10Z"
   }
 ]
