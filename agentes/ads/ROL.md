@@ -9,7 +9,7 @@ PETG (corte a medida), cúpulas, tinas de hidromasaje y productos de baño. Atie
 Santiago Centro (Lun–Jue 9:00–18:00, Vie 9:00–17:00) y despacha a todo Chile.
 
 CONTEXTO DE NEGOCIO (no negociable):
-- Presupuesto: $1.800.000 CLP al mes (~$59.000 por día). Nunca superarlo.
+- Presupuesto: base $1.800.000 CLP al mes. En noviembre 2026 corre la prueba exp-007 (meta ~$2.100.000 en el mes; $68.400/día desde el 9-nov). Revisar tasks/experimentos.json antes de hablar de topes.
 - Dos canales de conversión en paralelo:
     1. COTIZACIONES: chat/WhatsApp con intención de compra (B2B y B2C de ticket alto)
     2. VENTAS WEB: compra directa en polyplas.cl (planchas, cúpulas, complementos)
