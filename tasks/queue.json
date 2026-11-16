@@ -530,5 +530,14 @@
     "ficha": "QUÉ (con UX/UI y Medición):\n1. Mi cuenta: tarjeta 'Tu último pedido' con botón grande + botón en cada compra.\n2. Un clic: mismo pedido y medidas de corte al carro, carro abierto listo para pagar.\n3. Precio y stock de hoy (CRM + verificación del servidor, sin cambios).\n4. Lo no disponible se avisa y se pide por WhatsApp con mensaje listo.\n5. Correo de comprobante pagado: botón 'Repetir este pedido' (si no ingresó, se recuerda 7 días).\nMEDIR: evento repetir_pedido → purchase; recompra 60/90 días (base 5%).\nNO toca checkout, pago, verificación de precios ni base de datos.\nPR: https://github.com/Escenciecl/Polyplas-web/pull/23\n\nESTADO 16-nov: PR #23 aprobado y publicado; Mi cuenta verificado en vivo. El botón del correo sale con el próximo comprobante pagado (revisar el primero).",
     "estado": "completada",
     "aprobado": "2026-11-16T20:26:17Z"
+  },
+  {
+    "id": "uxui::1794900000000",
+    "agente": "uxui",
+    "what": "Pago con datos de la cuenta ya llenados (clientes con sesión) — PR #25",
+    "why": "Al repetir un pedido o comprar con sesión había que escribir de nuevo todos los datos en 'Datos y envío', el paso donde más clientes se van (59% de pedidos son de empresas).",
+    "ficha": "APROBADO por la jefa 16-nov (sin alterar el flujo actual).\nQUÉ (con CRO): con sesión y compra anterior, 'Datos y envío' se llena con los datos de esa compra (solo campos vacíos) + aviso con 'Borrar datos'. Repetir pedido usa los datos de ese pedido.\nSIN SESIÓN: no cambia nada. Validaciones, entrega y pago sin cambios.\nMEDIR: checkout_autocompletado, checkout_datos_borrados; abandono del paso 3 con sesión vs sin sesión.\nHALLAZGO APARTE: comuna de facturación oculta queda en 'Santiago' en el flujo normal (empresa + RM + otra comuna); revisar.\nPR: https://github.com/Escenciecl/Polyplas-web/pull/25",
+    "estado": "propuesta",
+    "aprobado": null
   }
 ]
