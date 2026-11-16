@@ -264,7 +264,7 @@
    "cro",
    "tatis"
   ],
-  "resumen": "Se revisó el estado de la Ley 21.719 y el informe para el abogado (al día, con 3 contradicciones por corregir antes de enviarlo). Revisión semanal de Google Ads leyendo la cuenta: semana 9-15 nov con 41 conversiones (+24%) a $11.038 c/u; el presupuesto se subió a $68.400/día el 9-nov y el mes cerraría ~$1,81-1,85M (decisión pendiente). Ventas web 9-15 nov: 13 (9 Webpay + 4 transferencias); Ads solo atribuye 1. Los pedidos ya guardan su origen (confirmado con un pedido del 16-nov desde Google Ads). Pedidos duplicados resueltos en la base de datos: un pedido = un registro, sin borrar datos ni tocar el sitio.",
+  "resumen": "Se revisó el estado de la Ley 21.719 y el informe para el abogado (al día, con 3 contradicciones por corregir antes de enviarlo). Revisión semanal de Google Ads leyendo la cuenta: semana 9-15 nov con 41 conversiones (+24%) a $11.038 c/u; el presupuesto va en $68.400/día (exp-007, meta del mes ~$2,1M); falta decidir el paso 2 (~$81.200/día). Ventas web 9-15 nov: 13 (9 Webpay + 4 transferencias); Ads solo atribuye 1. Los pedidos ya guardan su origen (confirmado con un pedido del 16-nov desde Google Ads). Pedidos duplicados resueltos en la base de datos: un pedido = un registro, sin borrar datos ni tocar el sitio.",
   "implementado": [
    "Base de datos: pedidos web en un solo registro (la segunda copia de una orden completa la primera; mensajes al mismo pedido). Aplicado por la jefa en Supabase. Sin cambios en el sitio",
    "Vistas pedidos_web y ventas_por_campana sin doble conteo; 9 duplicados históricos anotados en pedidos_alias (nada borrado)",
@@ -272,14 +272,15 @@
   ],
   "alertas": [
    "Reportes: contar pedidos con la vista pedidos_web o por número de orden",
-   "Ads: presupuesto proyecta ~$1,81-1,85M vs tope $1,8M",
+   "Ads: proyección ~$1,81-1,85M, dentro de la meta de exp-007 (~$2,1M); corregido el mismo día un tope erróneo de $1,8M",
    "GA4/Ads miden menos conversiones observadas desde el 13-nov (aviso de cookies); cifra oficial = CRM"
   ],
   "pendientes_al_cierre": [
    "Revisar el primer pedido web nuevo: una sola fila y con origen",
-   "Ads: evaluar ajustes de puja por día (7 días); jefa decide presupuesto (a) $62.000/día o (b) mantener $68.400",
+   "Ads: evaluar ajustes de puja por día (7 días); jefa decide si aplica el paso 2 de exp-007 (~$81.200/día)",
    "Ads: subir ventas offline desde el 22-oct (incluye Surik); verificar si 'Compra' está entre los objetivos de la campaña (solo lectura)",
-   "Ley 21.719: corregir 3 contradicciones del informe y enviarlo a Fredy y al abogado; doble factor cPanel; contratos Transbank, cPanel y transportistas; invitación Brevo a suscribirse antes del 1-dic"
+   "Ley 21.719: corregir 3 contradicciones del informe y enviarlo a Fredy y al abogado; doble factor cPanel; contratos Transbank, cPanel y transportistas; invitación Brevo a suscribirse antes del 1-dic",
+   "30-nov: revisión CRO+Medición del checkout (exp-006, exp-012 y causa raíz 'solo retiro') para decidir propuestas"
   ]
  }
 ]
