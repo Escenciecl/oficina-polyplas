@@ -1,12 +1,19 @@
 # Cumplimiento Ley 21.719 — Tablero del Vigilante
 
 **Rige desde:** 1 de diciembre de 2026 · **Diagnóstico inicial:** 13 de noviembre de 2026 (revisión en vivo de polyplas.cl, código del sitio y Tag Manager publicado)
-**Estado (13-nov, noche):** 1 de 6 puntos en verde · 4 parciales · 1 sin cumplir
+**Estado (15-nov):** 4 de 6 puntos en verde · 2 parciales (dependen de la jefa: aceptar DPA, doble factor, RUT y revisión legal)
 
 > ⚠️ Este tablero no es asesoría legal. Lo marcado "requiere revisión legal" debe confirmarlo un abogado.
 
 | # | Punto | Estado |
 |
+## Avance 15-nov-2026 (publicado, PR #19)
+- **Punto 1:** casilla "Quiero recibir ofertas" opcional y desmarcada en checkout, creación de cuenta y 3 formularios B2B. Cada "sí" queda en Supabase (`consentimientos_ofertas`: fecha, texto, origen). Pendiente: lista de Brevo "Ofertas · con consentimiento" (id en `BREVO_LISTA_OFERTAS`) y pausar desde el 1-dic las ofertas a quien no aceptó (antes, correo invitando a suscribirse).
+- **Punto 3:** política de privacidad reescrita (12 secciones). Falta el RUT (marcado en la página) y revisión de un abogado.
+- **Punto 4:** página /ejercer-mis-derechos/ con folio y plazo de 30 días; aviso a polyplaschile@gmail.com y acuse a la persona; registro en `solicitudes_derechos`. Procedimiento en `PROCEDIMIENTO_DERECHOS.md`.
+- **Puntos 5 y 6:** `INVENTARIO_PROVEEDORES_DPA.md` y `PROTOCOLO_BRECHAS.md`.
+- Verificado en vivo: página de derechos, enlace en el pie, endpoints activos, política con 12 secciones, casillas desmarcadas.
+
 ## Avance 13-nov-2026 (noche)
 **Punto 2 — Cookies: 🟢 publicado y verificado en vivo**
 - Aviso nuevo: Rechazar todo / Aceptar todo / Configurar con el mismo peso; 3 categorías; mensaje corto y detalle en "Configurar".
@@ -22,12 +29,12 @@
 **Medición/Ads:** desde el 13-nov bajan las conversiones observadas en GA4/Ads (Google modela las faltantes en unos días) y Meta mide solo a quien acepta. La cifra oficial de ventas es el CRM.
 
 ---|---|---|
-| 1 | Consentimiento válido (sin casillas premarcadas, opt-in para marketing) | 🟡 Parcial |
+| 1 | Consentimiento válido (sin casillas premarcadas, opt-in para marketing) | 🟢 Cumple en el sitio (15-nov) · falta lista de Brevo con consentimiento |
 | 2 | Banner de cookies con rechazo real, categorías y bloqueo de scripts | 🟢 Cumple (13-nov) |
-| 3 | Política de tratamiento de datos completa y visible | 🟡 Parcial |
-| 4 | Canal y proceso ARSOP+ (30 días) | 🔴 No cumple |
-| 5 | Seguridad y contratos con proveedores (DPA) | 🟡 Parcial (seguridad de la base de datos resuelta 13-nov; faltan DPA y doble factor) |
-| 6 | Protocolo de respuesta ante brechas | 🟡 Parcial (no existe protocolo escrito) |
+| 3 | Política de tratamiento de datos completa y visible | 🟢 Publicada (15-nov) · falta RUT y revisión legal |
+| 4 | Canal y proceso ARSOP+ (30 días) | 🟢 Cumple (15-nov): /ejercer-mis-derechos/ + PROCEDIMIENTO_DERECHOS.md |
+| 5 | Seguridad y contratos con proveedores (DPA) | 🟡 Parcial: seguridad resuelta; inventario listo (INVENTARIO_PROVEEDORES_DPA.md); falta que la jefa acepte los DPA y active doble factor |
+| 6 | Protocolo de respuesta ante brechas | 🟢 Protocolo escrito (15-nov): PROTOCOLO_BRECHAS.md · confirmar plazo con abogado |
 
 ---
 
