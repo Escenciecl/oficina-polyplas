@@ -91,7 +91,7 @@
       "Seguridad pendiente antes del 1-dic (detalle solo en privado); después, fase 2 del carrito (carros guardados 30 días)",
       "Vigilante: terminar la prueba diaria (rama vigilante-pruebas, ~/Polyplas-web-vig)",
       "Ideas a evaluar: comprobantes por Brevo, estado del pedido en Mi cuenta, comuna de facturación 'Santiago', archivar repos viejos",
-      "Google Maps: corregir la descripción a 'desde 1997' (dice 1996). Jefa confirmó 1997 el 17-nov"
+      "Año de fundación: es 1996 (jefa 17-nov). Google Maps OK; el sitio dice 'desde 1997' / '29 años' en varias páginas: corregir si la jefa aprueba"
     ],
     "reglas": [
       "Contar pedidos por número de orden (vista pedidos_web), nunca filas de conversations",
@@ -104,7 +104,7 @@
       "GTM: importar siempre con Combinar + renombrar (por defecto viene Sobrescribir)",
       "Repos del sitio y de la oficina son públicos: nada de datos personales ni detalles de seguridad en PR, commits u oficina",
       "No proponer fotos reales para landings B2B ni reseñas de empresas / ChileProveedores (descartado por la jefa 17-nov)",
-      "Polyplas funciona desde 1997 (confirmado por la jefa)"
+      "Polyplas funciona desde 1996 (confirmado por la jefa 17-nov); nunca escribir 1997"
     ]
   }
 }

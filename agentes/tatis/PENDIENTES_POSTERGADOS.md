@@ -14,6 +14,6 @@ y los saca de la lista solo cuando la jefa los retome o los descarte.
 - **Ley 21.719 (rige el 1-dic-2026):** el Vigilante está a cargo del cumplimiento de los 6 puntos (tablero en `agentes/vigilante/CUMPLIMIENTO_LEY_21719.md`). El hallazgo de seguridad del 12-nov quedó resuelto el 13-nov.
 
 ## Resueltos
-- **17-nov-2026 · Año de fundación:** la jefa confirma que Polyplas funciona **desde 1997**. Falta corregir la descripción de Google Maps (dice 1996).
+- **17-nov-2026 · Año de fundación:** la jefa confirma que Polyplas funciona **desde 1996**. Google Maps está correcto; el sitio y los textos de los agentes dicen 1997 (y "29 años"): por corregir si la jefa lo aprueba.
 - **17-nov-2026 · Descartados por ahora (jefa):** fotos reales para las landings B2B (no hay fotos) y reseñas de empresas en Google Maps + registro en ChileProveedores. No volver a proponer salvo que la jefa lo retome.
 - **13-nov-2026 · Seguridad de la base de datos (Supabase):** resuelta sin romper el chat ni el CRM y sin perder datos. Detalle solo en privado (repositorio público). Queda: activar "Leaked password protection" en Supabase.
