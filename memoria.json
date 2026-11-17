@@ -90,7 +90,8 @@
       "30-nov: revisión CRO+Medición del checkout (exp-006, exp-012, 'solo retiro')",
       "Seguridad pendiente antes del 1-dic (detalle solo en privado); después, fase 2 del carrito (carros guardados 30 días)",
       "Vigilante: terminar la prueba diaria (rama vigilante-pruebas, ~/Polyplas-web-vig)",
-      "Ideas a evaluar: comprobantes por Brevo, estado del pedido en Mi cuenta, comuna de facturación 'Santiago', archivar repos viejos"
+      "Ideas a evaluar: comprobantes por Brevo, estado del pedido en Mi cuenta, comuna de facturación 'Santiago', archivar repos viejos",
+      "Google Maps: corregir la descripción a 'desde 1997' (dice 1996). Jefa confirmó 1997 el 17-nov"
     ],
     "reglas": [
       "Contar pedidos por número de orden (vista pedidos_web), nunca filas de conversations",
@@ -101,7 +102,9 @@
       "'Mis datos personales' (Ley 21.719) en espera del abogado: no construir",
       "No tocar el recargo del 10 % ni las reglas de corte sin que la jefa lo pida",
       "GTM: importar siempre con Combinar + renombrar (por defecto viene Sobrescribir)",
-      "Repos del sitio y de la oficina son públicos: nada de datos personales ni detalles de seguridad en PR, commits u oficina"
+      "Repos del sitio y de la oficina son públicos: nada de datos personales ni detalles de seguridad en PR, commits u oficina",
+      "No proponer fotos reales para landings B2B ni reseñas de empresas / ChileProveedores (descartado por la jefa 17-nov)",
+      "Polyplas funciona desde 1997 (confirmado por la jefa)"
     ]
   }
 }
