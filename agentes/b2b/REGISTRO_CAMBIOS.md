@@ -11,3 +11,4 @@
 
 > Línea base (pedidos web may–nov 2026): 71 pedidos de empresas, 66 RUT distintos, $8.053.487. Casi no hay recompra de empresas.
 > Regla: ningún envío a empresas sin aprobación de la jefa. Toda oferta validada con PM Planchas.
+| 2026-11-17 | Revisión de la prospección de octubre (Confluence 'Prospectos B2B Acrílico – Santiago'): 40 correos, 3 respuestas (Creaciones Publicitarias, Luz & Arte, 4M), sin cierre pese a la insistencia de la jefa. Decisión: no más prospección saliente; foco en captación entrante (landings + compradores empresa de la web) | Prospectos octubre | — | — | Jefa | Cerrado |
