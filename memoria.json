@@ -2,9 +2,9 @@
   "actualizado": "2026-11-17",
   "sesionAnterior": {
     "fecha": "2026-11-17",
-    "titulo": "Cierre 2026-11-17 · Mi cuenta (Cowork) + venta asistida, carro compartido y cortes en el carro (Claude Code)",
+    "titulo": "Cierre 2026-11-17 · Mi cuenta (Cowork) + venta asistida, carro compartido, Ads, B2B entrante, 1996, SEO top 5 y Panel Polyplas (Claude Code)",
     "url": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/44269569",
-    "resumen": "Mañana (Cowork): Mi cuenta solo historial con 'Tu última compra fue…' (PR #28), 'Eliminar mi cuenta' Ley 21.719 (PR #29, #30), GTM v155 con 8 eventos de cuentas. Tarde (Claude Code): enlaces con pedido armado para que clientes mayores solo paguen, en planchas de acrílico, PET, PETG, policarbonato y acrílico a medida (PR #31, #34, #35, #36; la dirección se actualiza sola, incluye opción recomendada); medición venta_asistida sin pasos conf_/med_ (sitio + GTM v156); compartir carrito con canal carro_compartido (PR #37, #38) y eventos a GA4 (GTM v157); el carro muestra los cortes (PR #39). Landings B2B indexadas, 0 leads aún (no concluyente). Medición verificó en vivo: sin page_view extra, Ads intacto.",
+    "resumen": "Mañana (Cowork): Mi cuenta solo historial con 'Tu última compra fue…' (PR #28), 'Eliminar mi cuenta' Ley 21.719 (PR #29, #30), GTM v155 con 8 eventos de cuentas. Tarde (Claude Code): enlaces con pedido armado para que clientes mayores solo paguen, en planchas de acrílico, PET, PETG, policarbonato y acrílico a medida (PR #31, #34, #35, #36; la dirección se actualiza sola, incluye opción recomendada); medición venta_asistida sin pasos conf_/med_ (sitio + GTM v156); compartir carrito con canal carro_compartido (PR #37, #38) y eventos a GA4 (GTM v157); el carro muestra los cortes (PR #39). Landings B2B indexadas, 0 leads aún (no concluyente). Medición verificó en vivo: sin page_view extra, Ads intacto. NOCHE: Ads se mantiene en $68.400/día (decisión jefa; gasto 1-17 nov $1.027.869; total nov ≈ $1,92M); ventas offline al día (última carga 13-nov). B2B: solo captación entrante (sin prospección saliente); landings indexadas, 0 leads aún. Fundación desde 1996 (PR #40). /acrilico-transparente/ con compra directa, entrega clara y FAQ GEO (PR #41). Tarea SEO de la jefa: top 5 en búsquedas de compra de acrílico (diagnóstico: canibalización categoría vs página dedicada, 76% celular, 23 enlaces externos). Panel Polyplas en vivo: https://claude.ai/artifact/7wLWL9WCzqi2ftWB2DrEeF.",
     "aprobadas": [
       {
         "agente": "uxui",
@@ -30,6 +30,31 @@
         "agente": "medicion",
         "que": "GTM v157: carro_compartir y carro_compartido_abierto a GA4",
         "estado": "Publicado 17-nov"
+      },
+      {
+        "agente": "ads",
+        "que": "Mantener presupuesto $68.400/día (exp-007 paso 2 no aplicado)",
+        "estado": "Decisión jefa 17-nov"
+      },
+      {
+        "agente": "b2b",
+        "que": "Solo captación entrante; sin prospección saliente",
+        "estado": "Decisión jefa 17-nov"
+      },
+      {
+        "agente": "seo",
+        "que": "Fundación 1996 en el sitio (PR #40) y conversión de /acrilico-transparente/ (PR #41)",
+        "estado": "Publicado 17-nov"
+      },
+      {
+        "agente": "medicion",
+        "que": "Panel Polyplas en vivo (reemplaza informe en Confluence)",
+        "estado": "Publicado 17-nov"
+      },
+      {
+        "agente": "seo",
+        "que": "Tarea: top 5 en Google para acrílico",
+        "estado": "En curso"
       }
     ],
     "trabajado": [
@@ -86,7 +111,6 @@
       "Panel Polyplas (https://claude.ai/artifact/7wLWL9WCzqi2ftWB2DrEeF): fuente común para todos los agentes; revisar cada lunes. Search Console se actualiza a mano (foto); Ads no está conectado",
       "GA4 > Eventos: confirmar los 8 eventos de cuentas (v155) y carro_compartir / carro_compartido_abierto (v157); confirmar que no hay conf_ en sesiones venta_asistida — jefa 17-nov: se revisa en la fecha correspondiente",
       "SEO 18-nov: revisión a 14 días de la categoría planchas (exp-002); 24-nov acrílico transparente; 26-nov landings B2B — jefa 17-nov: se revisa en la fecha correspondiente",
-      "Revisar el primer pedido web nuevo: una sola fila, con origen y (si tenía sesión) en su cuenta; primer comprobante con 'Repetir este pedido'",
       "Ads: DECISIÓN JEFA 17-nov: se mantiene $68.400/día (no se aplica el paso 2 de exp-007). Subir presupuesto junto con reactivar el despacho pagado cuando llegue la persona de despacho. Total nov ≈ $1.920.000. Ventas offline al día (última carga 13-nov).",
       "Ley 21.719: EN ESPERA del abogado (jefa 17-nov); no proponer hasta que haya novedades. Pendientes: corregir 3 contradicciones del informe y enviarlo a Fredy y al abogado; doble factor cPanel; contratos Transbank, cPanel y transportistas; invitación Brevo antes del 1-dic",
       "30-nov: revisión CRO+Medición del checkout (exp-006, exp-012, 'solo retiro')",
@@ -94,7 +118,10 @@
       "Vigilante: terminar la prueba diaria (rama vigilante-pruebas, ~/Polyplas-web-vig)",
       "Ideas a evaluar: comprobantes por Brevo, estado del pedido en Mi cuenta, comuna de facturación 'Santiago', archivar repos viejos",
       "Año de fundación: es 1996 (jefa 17-nov). Google Maps OK; el sitio dice 'desde 1997' / '29 años' en varias páginas: corregir si la jefa aprueba",
-      "B2B (decisión jefa 17-nov): solo captación entrante (que las empresas lleguen solas). Próximo: aviso 'cotización por volumen' para compradores empresa en gracias/comprobante; landings B2B se revisan el 26-nov"
+      "B2B (decisión jefa 17-nov): solo captación entrante (que las empresas lleguen solas). Próximo: aviso 'cotización por volumen' para compradores empresa en gracias/comprobante; landings B2B se revisan el 26-nov",
+      "Pendiente de la jefa (cuando quiera): página para el jefe con 'programa empresa' de costo $0",
+      "Pendiente de la jefa (cuando quiera): FAQ de /acrilico-transparente/ dice '1 corte de adaptación gratuito' (la regla es iguales gratis, distintas +10%): ¿se corrige?",
+      "Ventas fuera de la web en el CRM muy bajas la semana 9-15 nov ($327.726 vs ~$4,2M): revisar si falta registrarlas"
     ],
     "reglas": [
       "Contar pedidos por número de orden (vista pedidos_web), nunca filas de conversations",

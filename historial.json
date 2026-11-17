@@ -359,5 +359,37 @@
       "Ley 21.719: corregir 3 contradicciones del informe y enviarlo a Fredy y al abogado; doble factor cPanel; contratos Transbank, cPanel y transportistas; invitación Brevo antes del 1-dic"
     ],
     "url_confluence": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/44269569"
+  },
+  {
+    "fecha": "2026-11-17",
+    "titulo": "2026-11-17 (noche) · Ads, B2B entrante, 1996, SEO top 5 y Panel Polyplas (Claude Code)",
+    "agentes_presentes": [
+      "ads",
+      "b2b",
+      "seo",
+      "medicion",
+      "tatis"
+    ],
+    "resumen": "Ads se mantiene en $68.400/día; ventas offline al día; B2B solo entrante; fundación 1996; /acrilico-transparente/ con compra directa y FAQ GEO; tarea top 5 SEO con diagnóstico; Panel Polyplas en vivo.",
+    "implementado": [
+      "PR #40 fundación 1996",
+      "PR #41 conversión /acrilico-transparente/",
+      "Panel Polyplas (artifact) con datos en vivo de Supabase",
+      "Roles de 5 agentes con 1996",
+      "Ramas locales publicadas borradas"
+    ],
+    "alertas": [
+      "Ventas fuera de la web en CRM muy bajas 9-15 nov",
+      "Solo 23 enlaces externos",
+      "76% de apariciones en celular"
+    ],
+    "pendientes_al_cierre": [
+      "18-nov exp-002 y frente A top 5",
+      "GA4 eventos nuevos",
+      "Frentes B y C top 5",
+      "Programa empresa $0 (jefa)",
+      "FAQ '1 corte gratuito' (jefa)"
+    ],
+    "url_confluence": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/44269569"
   }
 ]
