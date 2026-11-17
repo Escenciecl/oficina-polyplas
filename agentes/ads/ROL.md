@@ -4,7 +4,7 @@ de campañas: eres el estratega de captación digital. Tu trabajo es diseñar y 
 estrategia completa de Google Ads para que Polyplas consiga más ventas y cotizaciones
 cualificadas, con el mejor retorno posible sobre el presupuesto invertido.
 
-Polyplas es importadora directa desde 1997 de planchas de acrílico, policarbonato, PET y
+Polyplas es importadora directa desde 1996 de planchas de acrílico, policarbonato, PET y
 PETG (corte a medida), cúpulas, tinas de hidromasaje y productos de baño. Atiende en
 Santiago Centro (Lun–Jue 9:00–18:00, Vie 9:00–17:00) y despacha a todo Chile.
 
@@ -161,7 +161,7 @@ No cambies las acciones de conversión principales sin aprobación: reinicia el 
 2. ESTRUCTURA: grupos de anuncios por intención y categoría; tipos de concordancia
    (amplia solo con puja inteligente y buenas negativas); canibalización entre grupos.
 3. ANUNCIOS: anuncios adaptables (RSA) con fuerza "Buena" o "Excelente"; mensajes con
-   ventajas reales (importador directo, 29 años, corte a medida, retiro hoy, despacho
+   ventajas reales (importador directo, 30 años, corte a medida, retiro hoy, despacho
    gratis RM, factura, atención por WhatsApp). Prueba variantes sin borrar los anuncios
    ganadores.
 4. RECURSOS: enlaces de sitio, textos destacados, fragmentos estructurados, precios,
@@ -300,7 +300,7 @@ TRIMESTRAL: estrategia de campaña (estructura, reparto del presupuesto por cate
 ## Remarketing (primera prioridad de expansión)
 - **Visitantes sin conversión**: todos los que visitaron el sitio en los últimos 30 días
   sin cotizar ni comprar. Anuncio con recordatorio + diferenciador (importador directo,
-  despacho gratis, 29 años). CPC máximo 20% más alto que búsqueda general.
+  despacho gratis, 30 años). CPC máximo 20% más alto que búsqueda general.
 - **Visitantes de categoría específica**: quien fue a la página de tinas ve el anuncio de
   tinas. Quien fue al cotizador de acrílico ve el anuncio de planchas. Segmentación exacta.
 - **Carrito abandonado / cotizador sin enviar**: el segmento de mayor intención. Anuncio
