@@ -481,6 +481,8 @@ kbd{font:600 10px var(--f-mono);border:1px solid var(--line);border-bottom-width
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
+function ghText(b64){return decodeURIComponent(escape(atob(b64.replace(/\n/g,''))))}
+
 (function(){
 const stage=document.getElementById('stage'),labelsEl=document.getElementById('labels');
 if(!window.THREE){stage.insertAdjacentHTML('beforeend','<div class="fallback">No se pudo cargar el motor 3D. Revisa tu conexión y recarga la página.</div>');return}
@@ -1795,7 +1797,7 @@ async function openCallMedicion(a){
   const n=a.props.length;
   const token=localStorage.getItem(GH_TOKEN_KEY);
   let exps=[];
-  if(token){const file=await ghGet(GH_EXP_PATH,token);if(file){try{exps=JSON.parse(atob(file.content.replace(/\n/g,'')))}catch(e){}}}
+  if(token){const file=await ghGet(GH_EXP_PATH,token);if(file){try{exps=JSON.parse(ghText(file.content))}catch(e){}}}
   const hoy=new Date();
   const vencidos=exps.filter(e=>e.estado==='pendiente'&&new Date(e.revisar_en)<=hoy);
   const conResult=exps.filter(e=>['mejoro','degrado','igual'].includes(e.estado));
@@ -2198,7 +2200,7 @@ async function pushToQueue(agentId,proposal){
   try{
     const file=await ghGet(GH_QUEUE_PATH,token);
     let sha,current=[];
-    if(file){sha=file.sha;try{current=JSON.parse(atob(file.content.replace(/\n/g,'')))}catch(e){}}
+    if(file){sha=file.sha;try{current=JSON.parse(ghText(file.content))}catch(e){}}
     const entry={id:agentId+'::'+Date.now(),agente:agentId,what:proposal.what,why:proposal.why||'',ficha:proposal.ficha||'',estado:'pendiente',aprobado:new Date().toISOString()};
     current.push(entry);
     const body={message:'tarea aprobada: '+proposal.what.slice(0,72),content:btoa(unescape(encodeURIComponent(JSON.stringify(current,null,2))))};
@@ -2245,7 +2247,7 @@ document.getElementById('checkQueue').onclick=async()=>{
   const file=await ghGet(GH_QUEUE_PATH,token);
   if(!file){el.textContent='No se pudo leer el queue';return}
   try{
-    const q=JSON.parse(atob(file.content.replace(/\n/g,'')));
+    const q=JSON.parse(ghText(file.content));
     const pending=q.filter(t=>t.estado==='pendiente');
     el.textContent=pending.length?pending.length+' tarea(s) pendiente(s): '+pending.map(t=>t.what.slice(0,40)).join(' · '):'Sin tareas pendientes ✓';
   }catch(e){el.textContent='Error leyendo queue'}
@@ -2341,7 +2343,7 @@ document.getElementById('resultadosBtn').onclick=async()=>{
   const file=await ghGet(GH_EXP_PATH,token);
   if(!file){body.innerHTML='<div class="exp-empty">Sin experimentos aún. Se crean automáticamente al completar tareas.</div>';return}
   let exps=[];
-  try{exps=JSON.parse(atob(file.content.replace(/\n/g,'')))}catch(e){body.innerHTML='<div class="exp-empty" style="color:var(--bad)">Error leyendo experimentos.</div>';return}
+  try{exps=JSON.parse(ghText(file.content))}catch(e){body.innerHTML='<div class="exp-empty" style="color:var(--bad)">Error leyendo experimentos.</div>';return}
   if(!exps.length){body.innerHTML='<div class="exp-empty">Sin experimentos aún.</div>';return}
   document.getElementById('expCount').textContent=exps.length;
   body.innerHTML='';
@@ -2356,7 +2358,7 @@ setTimeout(async()=>{
   const file=await ghGet(GH_EXP_PATH,token);
   if(!file)return;
   try{
-    const exps=JSON.parse(atob(file.content.replace(/\n/g,'')));
+    const exps=JSON.parse(ghText(file.content));
     if(exps.length)document.getElementById('expCount').textContent=exps.length;
     const hoy=new Date();
     const vencidos=exps.filter(e=>e.estado==='pendiente'&&new Date(e.revisar_en)<=hoy);
@@ -2422,7 +2424,7 @@ async function checkCompletedTasks(){
   const file=await ghGet(GH_QUEUE_PATH,token);
   if(!file)return;
   let queue;
-  try{queue=JSON.parse(atob(file.content.replace(/\n/g,'')))}catch(e){return}
+  try{queue=JSON.parse(ghText(file.content))}catch(e){return}
   const nuevos=queue.filter(t=>t.estado==='completada'&&!t.presentado);
   if(!nuevos.length)return;
   nuevos.forEach(t=>{t.presentado=true});
@@ -2448,7 +2450,7 @@ async function abrirHistorial(){
   if(token){
     try{
       const file=await ghGet(GH_QUEUE_PATH,token);
-      if(file){const raw=atob(file.content.replace(/\n/g,''));queue=JSON.parse(decodeURIComponent(escape(raw)));}
+      if(file){const raw=ghText(file.content);queue=JSON.parse(raw);}
     }catch(e){}
   }
 

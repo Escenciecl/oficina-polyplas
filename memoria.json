@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-11-16",
+  "actualizado": "2026-11-17",
   "sesionAnterior": {
     "fecha": "2026-11-16",
     "titulo": "Cierre 2026-11-16 · Ley 21.719, Google Ads, pedidos en un solo registro y (tarde) cuentas y recompra",
@@ -99,7 +99,7 @@
     "fecha": "2026-11-17",
     "contexto": "Ver Cierre 2026-11-16 en Confluence",
     "siguiente": [
-      "Medición: activadores GTM de login, sign_up, repetir_pedido, checkout_autocompletado, checkout_datos_borrados, aviso_carro, cuenta_ofrecida, cuenta_rechazada",
+      "✅ HECHO 17-nov: GTM v155 con los 8 eventos de cuentas (login, sign_up, repetir_pedido, checkout_autocompletado, checkout_datos_borrados, aviso_carro, cuenta_ofrecida, cuenta_rechazada) + dimensiones GA4 origen_cuenta y accion (cupo 49/50). Revisar en 24-48 h que aparezcan en GA4 > Eventos",
       "Revisar el primer pedido web nuevo: una sola fila, con origen y (si tenía sesión) guardado en su cuenta",
       "Revisar el primer comprobante pagado: trae el botón 'Repetir este pedido'",
       "Ads: evaluar ajustes de puja por día (7 días); jefa decide si aplica el paso 2 de exp-007 (~$81.200/día)",
@@ -108,7 +108,7 @@
       "30-nov: revisión CRO+Medición del checkout (exp-006, exp-012 y causa raíz 'solo retiro') para decidir propuestas",
       "Siguiente en cuentas: estado del pedido en Mi cuenta y documentos para descargar",
       "UX/UI: comuna de facturación que a veces queda 'Santiago' (empresa + RM + otra comuna)",
-      "Mejoras ALTA del mapa: (1) GTM 8 eventos, (2) terminar prueba diaria del Vigilante (rama vigilante-pruebas, ~/Polyplas-web-vig), (3) revisión de seguridad postergada del 12-nov antes del 1-dic",
+      "Mejoras ALTA del mapa: (1) GTM 8 eventos ✅ 17-nov, (2) terminar prueba diaria del Vigilante (rama vigilante-pruebas, ~/Polyplas-web-vig), (3) revisión de seguridad postergada del 12-nov antes del 1-dic",
       "Mejoras MEDIA: comprobantes de compra también por Brevo (toca el pago: aprobación), estado del pedido en Mi cuenta, informe semanal GA4/Ads sin capturas",
       "Mejora BAJA: archivar repos viejos (Agente-google-ads, Agente-de-seo, pruebas, panel-ventas-polyplas vacío)"
     ],
