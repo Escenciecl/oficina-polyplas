@@ -317,5 +317,47 @@
       "Mis datos personales: espera abogado"
     ],
     "url_confluence": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/43843585"
+  },
+  {
+    "fecha": "2026-11-17",
+    "titulo": "2026-11-17 · Mi cuenta (Cowork) + venta asistida, carro compartido y cortes (Claude Code)",
+    "agentes_presentes": [
+      "uxui",
+      "cro",
+      "medicion",
+      "seo",
+      "b2b",
+      "tatis"
+    ],
+    "resumen": "Mañana (Cowork): Mi cuenta solo historial con 'Tu última compra fue…' (PR #28), 'Eliminar mi cuenta' Ley 21.719 (PR #29, #30), GTM v155 con 8 eventos de cuentas. Tarde (Claude Code): enlaces con pedido armado para que clientes mayores solo paguen, en planchas de acrílico, PET, PETG, policarbonato y acrílico a medida (PR #31, #34, #35, #36; la dirección se actualiza sola, incluye opción recomendada); medición venta_asistida sin pasos conf_/med_ (sitio + GTM v156); compartir carrito con canal carro_compartido (PR #37, #38) y eventos a GA4 (GTM v157); el carro muestra los cortes (PR #39). Landings B2B indexadas, 0 leads aún (no concluyente). Medición verificó en vivo: sin page_view extra, Ads intacto.",
+    "implementado": [
+      "PR #28 Mi cuenta solo historial",
+      "PR #29/#30 Eliminar mi cuenta (Ley 21.719)",
+      "GTM v155 8 eventos de cuentas",
+      "PR #31 enlace con piezas (acrílico)",
+      "PR #34 dirección dinámica + acrílico a medida + venta asistida",
+      "PR #35 opción recomendada en el enlace",
+      "PR #36 PET/PETG/policarbonato + arreglo enlace PET",
+      "GTM v156 sin conf_ en venta asistida",
+      "PR #37 compartir carrito",
+      "PR #38 dirección del carro",
+      "PR #39 cortes visibles en el carro",
+      "GTM v157 eventos de carro compartido"
+    ],
+    "alertas": [
+      "Canales venta_asistida y carro_compartido solo en medición propia (GA4 los ve como directo)",
+      "Carro compartido sin add_to_cart en GA4",
+      "Repos públicos: nada sensible en PR/commits",
+      "GTM: importar con Combinar"
+    ],
+    "pendientes_al_cierre": [
+      "GA4 > Eventos: confirmar los 8 eventos de cuentas (v155) y carro_compartir / carro_compartido_abierto (v157); confirmar que no hay conf_ en sesiones venta_asistida",
+      "SEO 18-nov: revisión a 14 días de la categoría planchas (exp-002); 24-nov acrílico transparente; 26-nov landings B2B",
+      "B2B: lista de 20 fábricas de exhibidores y letreros + borrador de mensaje para aprobación de la jefa",
+      "Revisar el primer pedido web nuevo: una sola fila, con origen y (si tenía sesión) en su cuenta; primer comprobante con 'Repetir este pedido'",
+      "Ads: jefa decide paso 2 de exp-007 (~$81.200/día); subir ventas offline desde el 22-oct (incluye Surik)",
+      "Ley 21.719: corregir 3 contradicciones del informe y enviarlo a Fredy y al abogado; doble factor cPanel; contratos Transbank, cPanel y transportistas; invitación Brevo antes del 1-dic"
+    ],
+    "url_confluence": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/44269569"
   }
 ]
