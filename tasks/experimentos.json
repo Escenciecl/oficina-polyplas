@@ -578,5 +578,48 @@
     "revisiones": [],
     "estado": "programado",
     "notas": "Aprobado por la jefa 18-nov como experimento. Al publicar: anotar fecha en 'aplicado', revisar a 14 y 28 días. Confusores: exp-006 y exp-012 (checkout), despacho solo retiro bajo $200.000, computador puede incluir pruebas internas, GA4 no cuenta compras sin cookies. pago_region con motivo 'rm_precargada' separa la región precargada. Prueba en vista previa 18-nov: al presionar 'Pagar' sin términos (carro de planchas no exige términos) el sitio intentó conectar con Webpay desde la vista previa y falló; verificado en Supabase que no se creó ningún pedido."
+  },
+  {
+    "id": "exp-014",
+    "tarea_id": "uxui::1795040000000",
+    "agente": "uxui",
+    "cambio": "Configurador de planchas (acrílico, PET, PETG, policarbonato): 'Sin cortes' muestra CANTIDAD DE PLANCHAS; 'Iguales/Distintos' sin piezas avisa y marca los campos (antes no pasaba nada); carrito muestra 'A regiones' solo con tinas/cascos. Sin cambiar reglas. PR #46",
+    "hipotesis": "Poder elegir varias planchas completas y no quedar bloqueado sube el % que arma el pedido en celular (41 % vs 80 % en computador) y las planchas por pedido",
+    "urls": [
+      "/categoria-producto/planchas-acrilico/",
+      "/categoria-producto/planchas-pet/",
+      "/categoria-producto/planchas-petg/",
+      "/categoria-producto/policarbonato-compacto/",
+      "Carrito global"
+    ],
+    "metrica_primaria": {
+      "tipo": "ga4",
+      "indicador": "Celular: usuarios view_item → conf_pedido",
+      "objetivo": "≥ 50 %",
+      "baseline_valor": "41 % (618 → 255, 21-oct a 17-nov)"
+    },
+    "metrica_secundaria": {
+      "tipo": "supabase",
+      "indicador": "Planchas por pedido y ticket de pedidos con planchas sin corte (por número de pedido); conf_faltan_piezas",
+      "objetivo": "sube"
+    },
+    "reinicia_aprendizaje": "No (no toca Google Ads)",
+    "baseline": {
+      "fecha": "2026-11-18",
+      "herramienta": "ga4 + supabase",
+      "periodo": "2026-10-21 a 2026-11-17",
+      "metricas": {
+        "cel_view_item": 618,
+        "cel_conf_pedido": 255,
+        "pc_view_item": 118,
+        "pc_conf_pedido": 95
+      }
+    },
+    "aplicado": null,
+    "revisar_en": null,
+    "revisar_final": null,
+    "revisiones": [],
+    "estado": "programado",
+    "notas": "Aprobado por la jefa 18-nov ('sin mover ninguna regla'). Corre en paralelo con exp-013 (pago): exp-014 se mide en el configurador (antes del pago), exp-013 desde begin_checkout. Al publicar: anotar fecha y revisar a 14 y 28 días. 'Atrás' del paso 1 no se tocó (a veces vuelve a la elección anterior)."
   }
 ]
