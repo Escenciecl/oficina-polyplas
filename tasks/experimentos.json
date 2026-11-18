@@ -502,7 +502,7 @@
     "id": "exp-013",
     "tarea_id": "cro::cuentas-recompra",
     "agente": "cro",
-    "cambio": "Cuentas para recompra: crear cuenta en la página de gracias, compras anteriores en Mi cuenta, Repetir pedido en un clic (Mi cuenta y comprobante) y pago con datos ya llenados para clientes con sesión. PR #21, #23, #25, #26 de Polyplas-web",
+    "cambio": "Cuentas para recompra: crear cuenta en la página de gracias, compras anteriores en Mi cuenta, Repetir pedido en un clic (Mi cuenta y comprobante) y pago con datos ya llenados para clientes con sesión. PR #21, #23, #25, #26 de Polyplas-web. + Modo 'solo retiro' (idea jefa 18-nov): si ningún despacho es posible (bajo $200.000 y despacho pagado apagado en el CRM), se muestra directo 'Entrega: Retiro en tienda' y región/comuna se piden en los datos de facturación. Automático según el CRM; tinas y cascos sin cambios",
     "hipotesis": "Si crear cuenta y volver a comprar es fácil (sin reescribir datos ni medidas de corte), más clientes web vuelven a comprar, sobre todo empresas",
     "urls": [
       "/gracias/",
@@ -527,7 +527,7 @@
     },
     "revisar_en": "2026-12-16",
     "revisar_final": "2027-02-16",
-    "notas": "Pocos pedidos (~1,5/día): evaluar con reglas, no significancia. Eventos GA4 pendientes de activador GTM. Correos de cuenta funcionan por Brevo desde el 16-nov 19:10 (antes límite 2/hora: confirmaciones pudieron no llegar)."
+    "notas": "Pocos pedidos (~1,5/día): evaluar con reglas, no significancia. Eventos GA4 pendientes de activador GTM. Correos de cuenta funcionan por Brevo desde el 16-nov 19:10 (antes límite 2/hora: confirmaciones pudieron no llegar). | pago_region motivo 'solo_retiro' = modo solo retiro; 'rm_precargada' = RM precargada con pregunta de comuna (≥ $200.000 o despacho prendido). Medir la compra total en celular, no solo el paso: si la gente que quiere despacho se va antes, el paso puede mejorar sin que suban las ventas. Cuando se reactive el despacho pagado (persona nueva de despacho), el modo se apaga solo; abrir experimento nuevo para el despacho (no mezclar con exp-013)."
   },
   {
     "id": "exp-013",

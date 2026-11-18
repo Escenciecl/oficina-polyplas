@@ -140,7 +140,8 @@
       "No proponer prospección saliente (correos/llamadas a empresas) ni seguimiento a los prospectos de octubre: la jefa ya insistió y no avanzó (17-nov)",
       "Medir SEO por compras orgánicas (promedio 4 semanas) y clics/posición de búsquedas fijas; el CTR promedio de página es solo diagnóstico",
       "Datos de facturación (dirección, región, comuna) siempre obligatorios en el pago: se necesitan para facturar (jefa 18-nov)",
-      "Al probar el pago en vistas previas: nunca presionar 'Pagar'/'Confirmar pedido' (los carros de planchas no exigen términos y el botón intenta Webpay)"
+      "Al probar el pago en vistas previas: nunca presionar 'Pagar'/'Confirmar pedido' (los carros de planchas no exigen términos y el botón intenta Webpay)",
+      "Despacho: se prende/apaga en el CRM (sección Despachos). Con despacho pagado apagado y pedido < $200.000, el pago entra en 'modo solo retiro' (exp-013) automáticamente; al prenderlo vuelve la pregunta de comuna. Tinas/cascos siempre con su flujo (envío a regiones)"
     ]
   }
 }
