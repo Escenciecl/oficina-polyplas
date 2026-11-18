@@ -528,5 +528,47 @@
     "revisar_en": "2026-12-16",
     "revisar_final": "2027-02-16",
     "notas": "Pocos pedidos (~1,5/día): evaluar con reglas, no significancia. Eventos GA4 pendientes de activador GTM. Correos de cuenta funcionan por Brevo desde el 16-nov 19:10 (antes límite 2/hora: confirmaciones pudieron no llegar)."
+  },
+  {
+    "id": "exp-013",
+    "tarea_id": "cro::1795035000000",
+    "agente": "cro",
+    "cambio": "Pago en celular sin trabas: RM precargada (solo pide comuna), autocompletar y teclado correcto, 'Continuar al pago' y 'Pagar' activos con aviso de qué falta, comuna de facturación = comuna elegida. PR #43 de Polyplas-web",
+    "hipotesis": "Quitar el bloqueo inicial de región y escribir menos en celular sube el paso 'abre el pago → datos OK' en celular de 29 % hacia el 54 % del computador, y con él las compras web",
+    "urls": [
+      "Checkout global (paso 3 'Datos y envío' y paso 4 'Resumen y pago')"
+    ],
+    "metrica_primaria": {
+      "tipo": "ga4",
+      "indicador": "Celular: usuarios begin_checkout → pago_datos_ok",
+      "objetivo": "≥ 40 %",
+      "baseline_valor": "29 % (104 → 30 usuarios, 21-oct a 17-nov)"
+    },
+    "metrica_secundaria": {
+      "tipo": "ga4+supabase",
+      "indicador": "Celular: pago_datos_ok → purchase (base 27 %, 30 → 8); compras web por número de pedido; pago_cierra por 'Paso del configurador' (base 12-17 nov: región 15, datos 12, comuna 2 usuarios)",
+      "objetivo": "compras en celular 8 → ≥ 12 cada 28 días"
+    },
+    "reinicia_aprendizaje": "No (no toca Google Ads)",
+    "baseline": {
+      "fecha": "2026-11-18",
+      "herramienta": "ga4 (comparación celular vs computador)",
+      "periodo": "2026-10-21 a 2026-11-17",
+      "metricas": {
+        "cel_usuarios": 1322,
+        "cel_begin_checkout": 104,
+        "cel_pago_datos_ok": 30,
+        "cel_purchase": 8,
+        "pc_begin_checkout": 48,
+        "pc_pago_datos_ok": 26,
+        "pc_purchase": 14
+      }
+    },
+    "aplicado": null,
+    "revisar_en": null,
+    "revisar_final": null,
+    "revisiones": [],
+    "estado": "programado",
+    "notas": "Aprobado por la jefa 18-nov como experimento. Al publicar: anotar fecha en 'aplicado', revisar a 14 y 28 días. Confusores: exp-006 y exp-012 (checkout), despacho solo retiro bajo $200.000, computador puede incluir pruebas internas, GA4 no cuenta compras sin cookies. pago_region con motivo 'rm_precargada' separa la región precargada. Prueba en vista previa 18-nov: al presionar 'Pagar' sin términos (carro de planchas no exige términos) el sitio intentó conectar con Webpay desde la vista previa y falló; verificado en Supabase que no se creó ningún pedido."
   }
 ]
