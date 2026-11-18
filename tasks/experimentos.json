@@ -496,9 +496,9 @@
   },
   {
     "reinicia_aprendizaje": "No (no toca Google Ads)",
-    "aplicado": "2026-11-16",
+    "aplicado": "2026-11-18",
     "revisiones": [],
-    "estado": "programado",
+    "estado": "pendiente",
     "id": "exp-013",
     "tarea_id": "cro::cuentas-recompra",
     "agente": "cro",
@@ -525,9 +525,9 @@
       "herramienta": "supabase",
       "periodo": "2026-05-26 a 2026-11-16"
     },
-    "revisar_en": "2026-12-16",
-    "revisar_final": "2027-02-16",
-    "notas": "Pocos pedidos (~1,5/día): evaluar con reglas, no significancia. Eventos GA4 pendientes de activador GTM. Correos de cuenta funcionan por Brevo desde el 16-nov 19:10 (antes límite 2/hora: confirmaciones pudieron no llegar). | pago_region motivo 'solo_retiro' = modo solo retiro; 'rm_precargada' = RM precargada con pregunta de comuna (≥ $200.000 o despacho prendido). Medir la compra total en celular, no solo el paso: si la gente que quiere despacho se va antes, el paso puede mejorar sin que suban las ventas. Cuando se reactive el despacho pagado (persona nueva de despacho), el modo se apaga solo; abrir experimento nuevo para el despacho (no mezclar con exp-013)."
+    "revisar_en": "2026-12-02",
+    "revisar_final": "2026-12-16",
+    "notas": "Pocos pedidos (~1,5/día): evaluar con reglas, no significancia. Eventos GA4 pendientes de activador GTM. Correos de cuenta funcionan por Brevo desde el 16-nov 19:10 (antes límite 2/hora: confirmaciones pudieron no llegar). | pago_region motivo 'solo_retiro' = modo solo retiro; 'rm_precargada' = RM precargada con pregunta de comuna (≥ $200.000 o despacho prendido). Medir la compra total en celular, no solo el paso: si la gente que quiere despacho se va antes, el paso puede mejorar sin que suban las ventas. Cuando se reactive el despacho pagado (persona nueva de despacho), el modo se apaga solo; abrir experimento nuevo para el despacho (no mezclar con exp-013). | 18-nov 15:13: publicada la parte 1 (PR #43: RM precargada, autocompletar, botones con aviso, comuna de facturación); verificada en vivo. Parte 2 (modo solo retiro) en PR #44, pendiente de merge: anotar su fecha y medir desde ahí."
   },
   {
     "id": "exp-013",
