@@ -527,7 +527,15 @@
     },
     "revisar_en": "2026-12-02",
     "revisar_final": "2026-12-16",
-    "notas": "Pocos pedidos (~1,5/día): evaluar con reglas, no significancia. Eventos GA4 pendientes de activador GTM. Correos de cuenta funcionan por Brevo desde el 16-nov 19:10 (antes límite 2/hora: confirmaciones pudieron no llegar). | pago_region motivo 'solo_retiro' = modo solo retiro; 'rm_precargada' = RM precargada con pregunta de comuna (≥ $200.000 o despacho prendido). Medir la compra total en celular, no solo el paso: si la gente que quiere despacho se va antes, el paso puede mejorar sin que suban las ventas. Cuando se reactive el despacho pagado (persona nueva de despacho), el modo se apaga solo; abrir experimento nuevo para el despacho (no mezclar con exp-013). | 18-nov 15:13: publicada la parte 1 (PR #43: RM precargada, autocompletar, botones con aviso, comuna de facturación); verificada en vivo. Parte 2 (modo solo retiro) en PR #44, pendiente de merge: anotar su fecha y medir desde ahí. | 18-nov 15:31: publicada la parte 2 'solo retiro' (PR #44). PR #45 (solo orden de campos: región/comuna antes de la dirección de facturación) pendiente de merge; no afecta la medición."
+    "notas": "Pocos pedidos (~1,5/día): evaluar con reglas, no significancia. Eventos GA4 pendientes de activador GTM. Correos de cuenta funcionan por Brevo desde el 16-nov 19:10 (antes límite 2/hora: confirmaciones pudieron no llegar). | pago_region motivo 'solo_retiro' = modo solo retiro; 'rm_precargada' = RM precargada con pregunta de comuna (≥ $200.000 o despacho prendido). Medir la compra total en celular, no solo el paso: si la gente que quiere despacho se va antes, el paso puede mejorar sin que suban las ventas. Cuando se reactive el despacho pagado (persona nueva de despacho), el modo se apaga solo; abrir experimento nuevo para el despacho (no mezclar con exp-013). | 18-nov 15:13: publicada la parte 1 (PR #43: RM precargada, autocompletar, botones con aviso, comuna de facturación); verificada en vivo. Parte 2 (modo solo retiro) en PR #44, pendiente de merge: anotar su fecha y medir desde ahí. | 18-nov 15:31: publicada la parte 2 'solo retiro' (PR #44). PR #45 (solo orden de campos: región/comuna antes de la dirección de facturación) pendiente de merge; no afecta la medición.",
+    "eventos": {
+      "sin_cambio (usar para comparar)": "begin_checkout, pago_datos_ok, add_shipping_info, pago_resumen, add_payment_info, purchase",
+      "pago_region": "ya no es una acción de la persona: sale sola al abrir el pago con motivo 'solo_retiro' o 'rm_precargada' (o 'rm'/'fuera_rm' si la cambia). 'motivo' NO está registrado en GA4: registrar la dimensión para separar los dos modos",
+      "pago_comuna": "en modo solo retiro ya no sale (no se pregunta comuna de entrega); es esperable que baje",
+      "pago_entrega_vista": "en modo solo retiro sale al abrir (motivo bajo_umbral o despacho_apagado); va a subir",
+      "pago_cierra": "en modo solo retiro el paso es 'datos' desde el inicio: desaparecen los cierres en 'region'. Comparar el total de cierres / begin_checkout, no por paso",
+      "pago_datos_revisar": "nuevos motivos: 'vacio' con detalle region/comuna (cuando se pregunta comuna), 'terminos' (paso 4)"
+    }
   },
   {
     "id": "exp-013",
