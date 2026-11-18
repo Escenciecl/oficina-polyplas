@@ -76,9 +76,23 @@
       }
     },
     "aplicado": "2026-11-04",
-    "revisar_en": "2026-11-18",
-    "revisiones": [],
-    "estado": "pendiente"
+    "revisar_en": "2026-12-02",
+    "revisiones": [
+      {
+        "fecha": "2026-11-18",
+        "herramienta": "gsc (propiedad https://polyplas.cl/, URL exacta, sin #variantes)",
+        "periodo": "4-16 nov vs 22 oct-3 nov (13 días cada uno)",
+        "metricas": {
+          "clics": "66 vs 55 (+20%)",
+          "impresiones": "3.700 vs 2.850 (+30%)",
+          "ctr": "1,8% vs 1,9%",
+          "posicion": "8,2 vs 9,3"
+        },
+        "resultado": "PRELIMINAR (14 días, no concluyente según ROL SEO: mínimo 28 días). CTR bajo la meta (> 2,0%). El CTR quedó igual que en las 2 semanas previas (1,9% -> 1,8%); la base de 1,4% era de 3 meses y no es comparable. Suben clics e impresiones por mejor posición, no por el title. Se mantiene el title (no empeoró). 'acrilico transparente' en la categoría: 266 -> 117 impr., pos 12,6 -> 10,2; /acrilico-transparente/ aún no aparece para esa búsqueda (321 impr. en total, pos 7,2, 8 clics). Revisar dueño de la búsqueda el 24-nov."
+      }
+    ],
+    "estado": "pendiente",
+    "notas": "18-nov: la jefa aclaró que el CTR promedio de la página se diluye cuando crecen las impresiones. Para la revisión final medir también clics y posición de un grupo fijo de búsquedas de compra (ver PLAN_SEO_COMPRAS_WEB_2026-11-18.md)."
   },
   {
     "id": "exp-003",

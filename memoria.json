@@ -106,6 +106,7 @@
     "fecha": "2026-11-18",
     "contexto": "Ver Cierre 2026-11-17 en Confluence",
     "siguiente": [
+      "PLAN SEO COMPRAS WEB (jefa 18-nov, encargado: agente SEO): meta largo plazo $1.000.000/semana en compras web orgánicas de acrílico (prom. 4 semanas). Hoy ~$138.000/semana, ~2 compras. Plan y diagnósticos en agentes/seo/PLAN_SEO_COMPRAS_WEB_2026-11-18.md. En bandeja: categoría fase 1 (sin title hasta 2-dic) y Merchant Center fase 1 (jefa: llave de acceso + vincular GA4). Contar compras orgánicas por número de pedido con atribucion.canal en pedidos_web.",
       "TAREA SEO (jefa 17-nov): top 5 en Google para búsquedas de compra de acrílico. Plan en 3 frentes: (A) que cada búsqueda tenga UNA página dueña (resolver categoría vs /acrilico-transparente/ tras la revisión del 18-nov); (B) celular rápido y claro (76% de las apariciones); (C) autoridad: hoy 23 enlaces externos de poco valor. Seguimiento semanal en el Panel Polyplas",
       "SEO/CRO foco jefa: aumentar compra web de planchas de acrílico desde SEO y GEO. PR #41 (/acrilico-transparente/ compra directa + entrega clara + FAQ GEO + enlaces internos): medir 1-dic y 15-dic. Siguiente candidato: tinas/jacuzzi (11.128 impr, pos 8,2) cuando la jefa lo pida",
       "Panel Polyplas (https://claude.ai/artifact/7wLWL9WCzqi2ftWB2DrEeF): fuente común para todos los agentes; revisar cada lunes. Search Console se actualiza a mano (foto); Ads no está conectado",
@@ -135,7 +136,8 @@
       "Repos del sitio y de la oficina son públicos: nada de datos personales ni detalles de seguridad en PR, commits u oficina",
       "No proponer fotos reales para landings B2B ni reseñas de empresas / ChileProveedores (descartado por la jefa 17-nov)",
       "Polyplas funciona desde 1996 (confirmado por la jefa 17-nov); nunca escribir 1997",
-      "No proponer prospección saliente (correos/llamadas a empresas) ni seguimiento a los prospectos de octubre: la jefa ya insistió y no avanzó (17-nov)"
+      "No proponer prospección saliente (correos/llamadas a empresas) ni seguimiento a los prospectos de octubre: la jefa ya insistió y no avanzó (17-nov)",
+      "Medir SEO por compras orgánicas (promedio 4 semanas) y clics/posición de búsquedas fijas; el CTR promedio de página es solo diagnóstico"
     ]
   }
 }

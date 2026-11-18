@@ -543,5 +543,21 @@
     "estado": "completada",
     "aprobado": "2026-11-16T20:50:45Z",
     "presentado": true
+  },
+  {
+    "id": "seo::1795030000000",
+    "agente": "seo",
+    "what": "Plan SEO compras web de acrílico — fase 1 en la categoría planchas (sin tocar title)",
+    "why": "Plan del 18-nov (agentes/seo/PLAN_SEO_COMPRAS_WEB_2026-11-18.md), acción 1. La categoría tiene ~2.000 impr./semana en pos 8,2 y CTR 1,8 %; en el sitio la pos 2-4 rinde 8-9 %. Hay errores técnicos que restan: módulos de testimonios y FAQ duplicados, H1 que compite con /acrilico-transparente/.",
+    "ficha": "QUÉ (Polyplas-web, content/modulos/04-planchas-acrilico/):\n1. _estructura.html: quitar la 2ª inclusión de 08-lo-que-dicen-nuestros-clientes.html y 09-guia-de-compra-atencion-y-politicas.html (hoy salen 2 veces: FAQ, testimonios y Product+aggregateRating repetidos).\n2. Revisar la llamada a 07-caracteristicas-tecnicas-de-nuestras-pla.html (no existe el archivo).\n3. H1: 'Planchas de Acrílico Transparente y de Colores' → 'Planchas de Acrílico en Santiago: transparente, blanco lechoso, colores y espejo' (deja 'acrílico transparente' a su página propia).\n4. FAQ: corregir 'Contamos with stock' → 'Contamos con stock'.\n5. Enlace interno con texto 'acrílico transparente' desde el primer bloque hacia /acrilico-transparente/.\nNO SE TOCA: title y meta (exp-002 se mide hasta el 2-dic), precios, recargo 10 %, reglas de corte, FAQ del corte (pendiente jefa).\nIMPACTO (acción 1 completa, por semana): conservador $56.000 · esperado $107.000 · optimista $184.000. Esta fase es la base técnica; el salto viene con autoridad y la fase 2 (title) después del 2-dic.\nCONFIANZA: media. ESFUERZO: 2-3 horas. RIESGO: bajo-medio (página que posiciona; no cambia URL, title ni precios). Reversible con un revert del PR.\nMEDIR: posición y clics de 'planchas de acrilico', 'plancha de acrílico', 'lamina de acrilico' a 14 y 28 días; control: /guia-de-acrilicos/.",
+    "estado": "propuesta"
+  },
+  {
+    "id": "seo::1795030000001",
+    "agente": "seo",
+    "what": "Plan SEO compras web — fase 1 en Merchant Center (fichas de producto gratis)",
+    "why": "Diagnóstico 18-nov: 153 productos aprobados, ~27 clics/semana a fichas de acrílico (tanto como la categoría), pero sin conversiones vinculadas, 104 de 272 clics con categoría 'Desconocido' y 48 láminas con descripción incompleta.",
+    "ficha": "QUÉ:\n1. (Jefa) Crear la llave de acceso que pide Merchant Center y vincular GA4 como fuente de conversión → ver compras por ficha.\n2. Completar la categoría de Google en los productos sin categoría (planchas: Bricolaje > materiales de construcción / plásticos, a confirmar en el feed).\n3. Completar descripciones de las 48 láminas que marca Merchant Center (espesor, medida, material AA/PA, usos, retiro/despacho).\n4. Revisar que cada plancha de acrílico tenga precio, stock y enlace directo a la variante (#color/#medida/#espesor).\nNO TOCA Google Ads (0 anuncios en Merchant Center; todo es tráfico gratuito).\nIMPACTO (por semana): conservador $25.000 · esperado $64.000 · optimista $127.000. Confianza baja hasta vincular conversiones.\nESFUERZO: 2-3 días (falta ubicar de dónde sale el feed). RIESGO: bajo; un error de feed puede desaprobar productos → revisar diagnóstico de MC 48 h después.\nMEDIR: clics de producto de acrílico en MC y compras por ficha (después de vincular GA4), a 14 y 28 días.",
+    "estado": "propuesta"
   }
 ]
