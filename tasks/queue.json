@@ -413,8 +413,8 @@
     "pilar": "Auditoría cotizador 2026-11-10",
     "what": "Embudo por paso del cotizador de planchas en GA4, antes y después del 6 y 9 nov, celular vs escritorio",
     "why": "Parte de la auditoría que quedó sin datos: no hay acceso a GA4 desde la sesión.",
-    "ficha": "Ver P3 en la auditoría. REQUISITO: la jefa saca o exporta el informe desde su GA4; no se conectan herramientas externas (decisión 10 nov).",
-    "estado": "propuesta",
+    "ficha": "Ver P3 en la auditoría. REQUISITO: la jefa saca o exporta el informe desde su GA4; no se conectan herramientas externas (decisión 10 nov).\n\nHECHO 18-nov sin export de la jefa: lectura directa de GA4. Ver agentes/medicion/EMBUDO_COTIZADOR_CELULAR_2026-11-18.md. Fugas del celular: pago (datos y envío 29 % vs 54 %; datos OK→compra 27 % vs 54 %) y configurador (41 % vs 80 %).",
+    "estado": "completada",
     "aprobado": null
   },
   {
