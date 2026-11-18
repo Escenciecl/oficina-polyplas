@@ -42,3 +42,7 @@ Fuente: GA4 > Eventos, 21 oct – 17 nov 2026 (28 días), todo el tráfico, comp
 
 ## Impacto si el celular cierra la mitad de la brecha en los dos tramos del pago
 29 % → 41 % y 27 % → 40 %: compras en celular 8 → ~17 cada 28 días (+~2 por semana, ~+$200.000/semana con ticket $98.000, todos los canales).
+
+## Dónde cierran el pago (12-17 nov, desde que existe la dimensión "Paso del configurador")
+pago_cierra: 21 usuarios / 67 eventos → **región 15 usuarios**, datos 12, comuna 2. La mayoría se va en la primera pregunta del paso 3, que abre bloqueado ("🔒 Selecciona tu región para ver las opciones de envío").
+Propuesta CRO+UX/UI: `cro::1795035000000`.
