@@ -73,8 +73,8 @@ Búsquedas fijas a seguir: planchas de acrilico · plancha de acrílico · acril
 - Acrílico en el top de productos: transparente 4 mm 2,40×1,20 AA (41, nuevo), blanco lechoso 8 mm 2,40×1,80 (21), transparente 2 mm 1,80×1,20 AA (16), blanco lechoso 8 mm 2,40×1,20 (15), transparente 2 mm 1,87×1,27 PA (14). **Las fichas ya traen ~25-30 clics/semana de acrílico: tanto como la categoría.**
 - Problemas:
   1. **Sin fuente de conversión**: GA4 no está vinculado a Merchant Center → no vemos qué fichas venden.
-  2. **104 de 272 clics con categoría "Desconocido"** → falta categoría de Google en parte del catálogo.
-  3. **48 productos (láminas) con descripción incompleta** (aviso de Merchant Center).
+  2. ~~104 clics con categoría "Desconocido"~~ → revisado: vienen de los 3 productos que Google encontró solo en el sitio, no del feed.
+  3. ~~48 láminas sin descripción~~ → revisado: el feed de acrílico (Google Sheet `polyplas_merchant_center`, 138 planchas) tiene categoría, tipo AA/PA, descripciones de ~410 caracteres, precio, stock y enlace a la variante. No requiere cambios.
   4. Merchant Center pide crear una llave de acceso para tareas clave (vincular, cambiar URL). Eso lo hace la jefa.
 - Competidores que aparecen junto a nuestras fichas: novoacril.cl (25 %), tiendamicrogeo.cl (23 %), abingraf.cl (13 %).
 
@@ -85,7 +85,7 @@ Búsquedas fijas a seguir: planchas de acrilico · plancha de acrílico · acril
 | Title | "Planchas de Acrílico a Medida · Transparente, Colores y Espejo \| Polyplas" (73 caracteres; Google corta ~60). **No se toca hasta el 2-dic** (exp-002 en medición). |
 | H1 | "Planchas de Acrílico Transparente y de Colores" → compite con /acrilico-transparente/ por "transparente". |
 | Módulos duplicados | `_estructura.html` incluye **dos veces** `08-lo-que-dicen-nuestros-clientes.html` y `09-guia-de-compra-atencion-y-politicas.html` → testimonios, FAQ y datos estructurados repetidos (2 Product con aggregateRating, IDs HTML repetidos). |
-| Módulo faltante | `_estructura.html` llama a `07-caracteristicas-tecnicas-de-nuestras-pla.html`, que no existe en la carpeta. |
+| Módulo 07 | `_estructura.html` llama a `07-caracteristicas-tecnicas-de-nuestras-pla.html`, que fue borrado a propósito (el armado lo ignora). Sin problema. |
 | FAQ (datos estructurados) | "Contamos **with** stock" (error de tipeo). "1 corte gratuito de adaptación… cortes adicionales 10 %": misma duda pendiente con la jefa que en /acrilico-transparente/ (la regla es iguales gratis, distintas +10 %). No se toca sin la jefa. |
 | Enlaces a /acrilico-transparente/ | 1 solo, en el módulo 075. |
 | Indexación | index, follow · canonical propio · OK |
@@ -93,3 +93,7 @@ Búsquedas fijas a seguir: planchas de acrilico · plancha de acrílico · acril
 ## 8. Registro
 
 Propuestas en la bandeja (tasks/queue.json): categoría fase 1 y Merchant Center fase 1. Nada se publica sin aprobación.
+
+## 9. Avance
+
+- 18-nov: jefa aprueba las dos propuestas. Categoría fase 1 → PR #42 (Polyplas-web), build OK, pendiente de merge por la jefa. Merchant Center → feed revisado y en buen estado; pendiente la llave de acceso y el vínculo GA4 (jefa).
