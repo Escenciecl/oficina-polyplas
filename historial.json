@@ -391,5 +391,45 @@
       "FAQ '1 corte gratuito' (jefa)"
     ],
     "url_confluence": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/44269569"
+  },
+  {
+    "fecha": "2026-11-18",
+    "titulo": "2026-11-18 · Plan SEO de compras web, Merchant Center, exp-013 pago en celular, exp-014 configurador, home arreglado (Claude Code + Chrome)",
+    "agentes_presentes": [
+      "seo",
+      "medicion",
+      "cro",
+      "uxui",
+      "tatis"
+    ],
+    "resumen": "exp-002 revisado a 14 días (preliminar). Jefa encarga al agente SEO un plan para compras web orgánicas de acrílico (meta largo plazo $1M/semana; hoy ~$138.000/semana, ~2 compras). Diagnóstico Merchant Center (feed de acrílico OK; falta vincular GA4). Categoría planchas fase 1 publicada. Embudo GA4 celular vs computador: celular convierte ~6 veces menos; fugas en el pago y en el configurador. exp-013 (pago en celular) y exp-014 (configurador) publicados. Home arreglado.",
+    "implementado": [
+      "PR #42 categoría planchas: módulos duplicados, H1, FAQ 'with'",
+      "PR #43 exp-013 parte 1: RM precargada, autocompletar, botones con aviso, comuna de facturación real",
+      "PR #44 exp-013 parte 2: modo solo retiro (entrega directa, región/comuna en facturación)",
+      "PR #45 región/comuna antes de la dirección de facturación (persona y empresa)",
+      "PR #46 exp-014: cantidad de planchas en 'Sin cortes', aviso cuando faltan piezas, 'A regiones' solo con tinas/cascos",
+      "PR #47 home: tarjeta de planchas arreglada (enlace anidado de PR #41), sin pestaña 'Cómo comprar online', sin texto repetido de retiro",
+      "Plan SEO en agentes/seo/PLAN_SEO_COMPRAS_WEB_2026-11-18.md",
+      "Embudo en agentes/medicion/EMBUDO_COTIZADOR_CELULAR_2026-11-18.md",
+      "Recorrido en agentes/uxui/RECORRIDO_CONFIGURADOR_CELULAR_2026-11-18.md",
+      "Regla: UX/UI y CRO recorren el flujo completo cada lunes"
+    ],
+    "alertas": [
+      "Diagnóstico inicial de Merchant Center se corrigió el mismo día (el feed de acrílico estaba bien)",
+      "En una prueba en vista previa se presionó 'Pagar': intentó Webpay y falló; sin pedido ni cobro (verificado en Supabase). Regla nueva: nunca presionar Pagar en pruebas",
+      "El enlace anidado del PR #41 rompió la tarjeta del home del 17 al 18-nov",
+      "GA4 no cuenta compras con cookies rechazadas: contar compras orgánicas por número de pedido en Supabase (atribucion.canal desde 16-nov)",
+      "Uso semanal de Claude al 96 % (se renueva viernes 4:00)"
+    ],
+    "pendientes": [
+      "Jefa: crear llave de acceso en Merchant Center y vincular GA4",
+      "Jefa: autorizar crear la dimensión 'Motivo' en GA4 para separar solo_retiro/rm_precargada",
+      "2-dic: revisión exp-002 (28 días), exp-013 y exp-014 (14 días), categoría planchas fase 1; desde 2-dic se puede cambiar el title de la categoría",
+      "24-nov: revisión /acrilico-transparente/ y página dueña de cada búsqueda",
+      "Imagen IA de planchas transparentes en Figma, sin usar hasta decisión de la jefa",
+      "Siguiente del plan SEO: primera página por espesor y pedido de reseñas"
+    ],
+    "confluence": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/44761089"
   }
 ]

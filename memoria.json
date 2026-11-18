@@ -1,67 +1,41 @@
 {
-  "actualizado": "2026-11-17",
+  "actualizado": "2026-11-18",
   "sesionAnterior": {
-    "fecha": "2026-11-17",
-    "titulo": "Cierre 2026-11-17 · Mi cuenta (Cowork) + venta asistida, carro compartido, Ads, B2B entrante, 1996, SEO top 5 y Panel Polyplas (Claude Code)",
-    "url": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/44269569",
-    "resumen": "Mañana (Cowork): Mi cuenta solo historial con 'Tu última compra fue…' (PR #28), 'Eliminar mi cuenta' Ley 21.719 (PR #29, #30), GTM v155 con 8 eventos de cuentas. Tarde (Claude Code): enlaces con pedido armado para que clientes mayores solo paguen, en planchas de acrílico, PET, PETG, policarbonato y acrílico a medida (PR #31, #34, #35, #36; la dirección se actualiza sola, incluye opción recomendada); medición venta_asistida sin pasos conf_/med_ (sitio + GTM v156); compartir carrito con canal carro_compartido (PR #37, #38) y eventos a GA4 (GTM v157); el carro muestra los cortes (PR #39). Landings B2B indexadas, 0 leads aún (no concluyente). Medición verificó en vivo: sin page_view extra, Ads intacto. NOCHE: Ads se mantiene en $68.400/día (decisión jefa; gasto 1-17 nov $1.027.869; total nov ≈ $1,92M); ventas offline al día (última carga 13-nov). B2B: solo captación entrante (sin prospección saliente); landings indexadas, 0 leads aún. Fundación desde 1996 (PR #40). /acrilico-transparente/ con compra directa, entrega clara y FAQ GEO (PR #41). Tarea SEO de la jefa: top 5 en búsquedas de compra de acrílico (diagnóstico: canibalización categoría vs página dedicada, 76% celular, 23 enlaces externos). Panel Polyplas en vivo: https://claude.ai/artifact/7wLWL9WCzqi2ftWB2DrEeF.",
+    "fecha": "2026-11-18",
+    "titulo": "Cierre 2026-11-18 · Plan SEO compras web, exp-013 pago en celular, exp-014 configurador, home arreglado",
+    "url": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/44761089",
+    "resumen": "Plan SEO de compras web orgánicas de acrílico (meta largo plazo $1M/semana; hoy ~$138.000/semana y ~2 compras, GA4). Merchant Center: 153 productos aprobados, feed de acrílico OK, falta vincular GA4. PR #42 categoría planchas. Embudo celular vs computador (celular 0,6 % vs 3,6 % de compra). exp-013 pago en celular (PR #43, #44, #45) y exp-014 configurador (PR #46) publicados; medir desde 19-nov. PR #47 home arreglado y sin 'Cómo comprar online'.",
     "aprobadas": [
       {
-        "agente": "uxui",
-        "que": "Enlace con pedido armado (planchas y acrílico a medida) + opción recomendada (PR #31, #34, #35, #36)",
-        "estado": "Publicado 17-nov"
-      },
-      {
-        "agente": "medicion",
-        "que": "Venta asistida: canal propio y sin pasos conf_/med_ (PR #34 + GTM v156)",
-        "estado": "Publicado 17-nov"
+        "agente": "seo",
+        "que": "Categoría planchas fase 1 (PR #42)",
+        "estado": "Publicado 18-nov"
       },
       {
         "agente": "cro",
-        "que": "Compartir carrito fase 1 + dirección dinámica del carro (PR #37, #38); fase 2 después de seguridad (decisión jefa)",
-        "estado": "Publicado 17-nov"
+        "que": "exp-013 pago en celular (PR #43-#45)",
+        "estado": "Publicado 18-nov"
       },
       {
         "agente": "uxui",
-        "que": "Cortes visibles en el carro (PR #39)",
-        "estado": "Publicado 17-nov"
+        "que": "exp-014 configurador (PR #46)",
+        "estado": "Publicado 18-nov"
       },
       {
-        "agente": "medicion",
-        "que": "GTM v157: carro_compartir y carro_compartido_abierto a GA4",
-        "estado": "Publicado 17-nov"
-      },
-      {
-        "agente": "ads",
-        "que": "Mantener presupuesto $68.400/día (exp-007 paso 2 no aplicado)",
-        "estado": "Decisión jefa 17-nov"
-      },
-      {
-        "agente": "b2b",
-        "que": "Solo captación entrante; sin prospección saliente",
-        "estado": "Decisión jefa 17-nov"
+        "agente": "uxui",
+        "que": "Home arreglado, sin pestaña 'Cómo comprar online', sin texto de retiro repetido (PR #47)",
+        "estado": "Publicado 18-nov"
       },
       {
         "agente": "seo",
-        "que": "Fundación 1996 en el sitio (PR #40) y conversión de /acrilico-transparente/ (PR #41)",
-        "estado": "Publicado 17-nov"
-      },
-      {
-        "agente": "medicion",
-        "que": "Panel Polyplas en vivo (reemplaza informe en Confluence)",
-        "estado": "Publicado 17-nov"
-      },
-      {
-        "agente": "seo",
-        "que": "Tarea: top 5 en Google para acrílico",
+        "que": "Plan SEO compras web (agentes/seo/PLAN_SEO_COMPRAS_WEB_2026-11-18.md)",
         "estado": "En curso"
       }
     ],
     "trabajado": [
-      "seo+b2b: 3 landings B2B indexadas; datos al 15-nov sin clics no de marca; 0 lead_b2b desde el 15-nov; 'acrílico opal' sí aparece",
-      "uxui: arreglo del enlace de PET que abría el modal vacío en producción",
-      "medicion: análisis de impacto del día verificado en vivo (sin page_view extra; Ads intacto; canales nuevos solo en medición propia)",
-      "orden: memoria de seguridad actualizada (base de datos resuelta 13-nov); repos del sitio y oficina son públicos"
+      "seo: exp-002 a 14 días = preliminar; final 2-dic",
+      "medicion: embudo GA4 celular vs computador y P3 cerrada",
+      "cro+uxui: recorrido del configurador en celular; recorrido semanal cada lunes"
     ]
   },
   "propuestas": {
@@ -103,12 +77,12 @@
     ]
   },
   "retomarManana": {
-    "fecha": "2026-11-18",
-    "contexto": "Ver Cierre 2026-11-17 en Confluence",
+    "fecha": "2026-11-19",
+    "contexto": "Ver Cierre 2026-11-18 en Confluence y historial.json",
     "siguiente": [
       "PLAN SEO COMPRAS WEB (jefa 18-nov, encargado: agente SEO): meta largo plazo $1.000.000/semana en compras web orgánicas de acrílico (prom. 4 semanas). Hoy ~$138.000/semana, ~2 compras. Plan y diagnósticos en agentes/seo/PLAN_SEO_COMPRAS_WEB_2026-11-18.md. En bandeja: categoría fase 1 (sin title hasta 2-dic) y Merchant Center fase 1 (jefa: llave de acceso + vincular GA4). Contar compras orgánicas por número de pedido con atribucion.canal en pedidos_web.",
-      "exp-013 (pago en celular, PR #43): pendiente de merge de la jefa; al publicar anotar fecha y revisar a 14 y 28 días. Base celular: abre pago → datos OK 29 %, datos OK → compra 27 %.",
-      "exp-014 (configurador: cantidad en 'Sin cortes', aviso de piezas, 'A regiones' solo tinas; PR #46): pendiente de merge; al publicar anotar fecha y revisar a 14 y 28 días. exp-013 parte 1 desde 18-nov 15:13, parte 2 'solo retiro' 15:31; revisión 2-dic.",
+      "EXPERIMENTOS EN CURSO (medir desde 19-nov): exp-013 pago en celular (base celular: abre pago→datos OK 29 %, datos OK→compra 27 %, 8 compras/28 días) y exp-014 configurador (base celular: ve plancha→arma pedido 41 %). Revisión 2-dic, final 16-dic. Ver 'eventos' en exp-013 (pago_region ya no es acción de la persona).",
+      "PENDIENTES DE LA JEFA: llave de acceso + vincular GA4 en Merchant Center; autorizar dimensión 'Motivo' en GA4; decidir si usar la imagen IA (Figma 'Polyplas · imágenes web IA').",
       "TAREA SEO (jefa 17-nov): top 5 en Google para búsquedas de compra de acrílico. Plan en 3 frentes: (A) que cada búsqueda tenga UNA página dueña (resolver categoría vs /acrilico-transparente/ tras la revisión del 18-nov); (B) celular rápido y claro (76% de las apariciones); (C) autoridad: hoy 23 enlaces externos de poco valor. Seguimiento semanal en el Panel Polyplas",
       "SEO/CRO foco jefa: aumentar compra web de planchas de acrílico desde SEO y GEO. PR #41 (/acrilico-transparente/ compra directa + entrega clara + FAQ GEO + enlaces internos): medir 1-dic y 15-dic. Siguiente candidato: tinas/jacuzzi (11.128 impr, pos 8,2) cuando la jefa lo pida",
       "Panel Polyplas (https://claude.ai/artifact/7wLWL9WCzqi2ftWB2DrEeF): fuente común para todos los agentes; revisar cada lunes. Search Console se actualiza a mano (foto); Ads no está conectado",

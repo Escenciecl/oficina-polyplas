@@ -527,7 +527,7 @@
     },
     "revisar_en": "2026-12-02",
     "revisar_final": "2026-12-16",
-    "notas": "Pocos pedidos (~1,5/día): evaluar con reglas, no significancia. Eventos GA4 pendientes de activador GTM. Correos de cuenta funcionan por Brevo desde el 16-nov 19:10 (antes límite 2/hora: confirmaciones pudieron no llegar). | pago_region motivo 'solo_retiro' = modo solo retiro; 'rm_precargada' = RM precargada con pregunta de comuna (≥ $200.000 o despacho prendido). Medir la compra total en celular, no solo el paso: si la gente que quiere despacho se va antes, el paso puede mejorar sin que suban las ventas. Cuando se reactive el despacho pagado (persona nueva de despacho), el modo se apaga solo; abrir experimento nuevo para el despacho (no mezclar con exp-013). | 18-nov 15:13: publicada la parte 1 (PR #43: RM precargada, autocompletar, botones con aviso, comuna de facturación); verificada en vivo. Parte 2 (modo solo retiro) en PR #44, pendiente de merge: anotar su fecha y medir desde ahí. | 18-nov 15:31: publicada la parte 2 'solo retiro' (PR #44). PR #45 (solo orden de campos: región/comuna antes de la dirección de facturación) pendiente de merge; no afecta la medición.",
+    "notas": "Pocos pedidos (~1,5/día): evaluar con reglas, no significancia. Eventos GA4 pendientes de activador GTM. Correos de cuenta funcionan por Brevo desde el 16-nov 19:10 (antes límite 2/hora: confirmaciones pudieron no llegar). | pago_region motivo 'solo_retiro' = modo solo retiro; 'rm_precargada' = RM precargada con pregunta de comuna (≥ $200.000 o despacho prendido). Medir la compra total en celular, no solo el paso: si la gente que quiere despacho se va antes, el paso puede mejorar sin que suban las ventas. Cuando se reactive el despacho pagado (persona nueva de despacho), el modo se apaga solo; abrir experimento nuevo para el despacho (no mezclar con exp-013). | 18-nov 15:13: publicada la parte 1 (PR #43: RM precargada, autocompletar, botones con aviso, comuna de facturación); verificada en vivo. Parte 2 (modo solo retiro) en PR #44, pendiente de merge: anotar su fecha y medir desde ahí. | 18-nov 15:31: publicada la parte 2 'solo retiro' (PR #44). PR #45 (solo orden de campos: región/comuna antes de la dirección de facturación) pendiente de merge; no afecta la medición. | PR #45 (orden de campos de facturación) publicado 18-nov 15:36. Medir todo exp-013 desde 19-nov (día completo).",
     "eventos": {
       "sin_cambio (usar para comparar)": "begin_checkout, pago_datos_ok, add_shipping_info, pago_resumen, add_payment_info, purchase",
       "pago_region": "ya no es una acción de la persona: sale sola al abrir el pago con motivo 'solo_retiro' o 'rm_precargada' (o 'rm'/'fuera_rm' si la cambia). 'motivo' NO está registrado en GA4: registrar la dimensión para separar los dos modos",
@@ -577,7 +577,7 @@
     "revisar_final": null,
     "revisiones": [],
     "estado": "programado",
-    "notas": "Aprobado por la jefa 18-nov como experimento. Al publicar: anotar fecha en 'aplicado', revisar a 14 y 28 días. Confusores: exp-006 y exp-012 (checkout), despacho solo retiro bajo $200.000, computador puede incluir pruebas internas, GA4 no cuenta compras sin cookies. pago_region con motivo 'rm_precargada' separa la región precargada. Prueba en vista previa 18-nov: al presionar 'Pagar' sin términos (carro de planchas no exige términos) el sitio intentó conectar con Webpay desde la vista previa y falló; verificado en Supabase que no se creó ningún pedido."
+    "notas": "Aprobado por la jefa 18-nov como experimento. Al publicar: anotar fecha en 'aplicado', revisar a 14 y 28 días. Confusores: exp-006 y exp-012 (checkout), despacho solo retiro bajo $200.000, computador puede incluir pruebas internas, GA4 no cuenta compras sin cookies. pago_region con motivo 'rm_precargada' separa la región precargada. Prueba en vista previa 18-nov: al presionar 'Pagar' sin términos (carro de planchas no exige términos) el sitio intentó conectar con Webpay desde la vista previa y falló; verificado en Supabase que no se creó ningún pedido. | PR #45 (orden de campos de facturación) publicado 18-nov 15:36. Medir todo exp-013 desde 19-nov (día completo)."
   },
   {
     "id": "exp-014",
@@ -615,11 +615,11 @@
         "pc_conf_pedido": 95
       }
     },
-    "aplicado": null,
-    "revisar_en": null,
-    "revisar_final": null,
+    "aplicado": "2026-11-18",
+    "revisar_en": "2026-12-02",
+    "revisar_final": "2026-12-16",
     "revisiones": [],
-    "estado": "programado",
-    "notas": "Aprobado por la jefa 18-nov ('sin mover ninguna regla'). Corre en paralelo con exp-013 (pago): exp-014 se mide en el configurador (antes del pago), exp-013 desde begin_checkout. Al publicar: anotar fecha y revisar a 14 y 28 días. 'Atrás' del paso 1 no se tocó (a veces vuelve a la elección anterior)."
+    "estado": "pendiente",
+    "notas": "Aprobado por la jefa 18-nov ('sin mover ninguna regla'). Corre en paralelo con exp-013 (pago): exp-014 se mide en el configurador (antes del pago), exp-013 desde begin_checkout. Al publicar: anotar fecha y revisar a 14 y 28 días. 'Atrás' del paso 1 no se tocó (a veces vuelve a la elección anterior). | Publicado 18-nov 16:01 (merge PR #46). Medir desde 19-nov."
   }
 ]
