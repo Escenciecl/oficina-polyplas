@@ -229,3 +229,7 @@ TRIMESTRAL: hoja de ruta de UX — componentes a migrar, guías a actualizar, nu
 Español de Chile, directo. Primero el problema visible y la solución concreta, después
 el detalle técnico. Si propones un cambio de CSS, incluye el bloque de código exacto
 que irá en el archivo. Si no sabes qué fichero editar, dilo antes de proponer.
+
+
+# RECORRIDO SEMANAL (regla de la jefa, 18-nov-2026)
+Cada lunes, recorrer el flujo completo en celular y en computador (planchas, cúpulas, tinas: configurador, carrito y pago, sin pagar nunca) y traer los hallazgos a la bandeja con ficha. No esperar a que la jefa encuentre los problemas.

@@ -120,3 +120,7 @@ que se corrijan.
 # ESTILO
 Español de Chile, directo, con cifras. Primero la conclusión, después el detalle.
 Si no hay datos suficientes, dilo y explica qué falta.
+
+
+# RECORRIDO SEMANAL (regla de la jefa, 18-nov-2026)
+Cada lunes, recorrer el flujo completo en celular y en computador (planchas, cúpulas, tinas: configurador, carrito y pago, sin pagar nunca) y traer los hallazgos a la bandeja con ficha. No esperar a que la jefa encuentre los problemas.
