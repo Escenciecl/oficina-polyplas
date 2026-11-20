@@ -454,5 +454,26 @@
       "Google Ads, Merchant Center, Google Maps y redes: no tocar (jefa 20-nov)",
       "Sin ventas web 19-20 nov: diagnóstico conjunto sin fallas técnicas; caída en 'empiezan datos' del pago (10 % vs 35 %) por solo retiro. Jefa: no cambiar nada hasta contratar despacho"
     ]
+  },
+  {
+    "fecha": "2026-11-20",
+    "titulo": "2026-11-20 (tarde) · Intel: informe de precios de acrílico vs competencia; cierre 19-20 nov en Confluence (Claude en Chrome)",
+    "agentes_presentes": [
+      "intel",
+      "tatis"
+    ],
+    "resumen": "La jefa vio que Tecnomat tenía precios más bajos. Intel hizo el informe de precios de planchas de acrílico por medida, espesor y color, con IVA: Tecnomat (PA virgen) está más barato que Polyplas PA en 28 de 30; Bold Eco, Microgeo y Polymershapes bajo Polyplas AA en 1,22 × 2,44 m; Norglas y Bold más caros en casi todo. Tatis dejó Confluence al día (cierre 19-20 nov, Cambios Implementados PR #21-#49, historial de Intel).",
+    "implementado": [
+      "Informe de precios (Claude Docs): https://claude.ai/artifact/QUGcYscgm7Gps9tvFuvF2p + PDF + mensaje para Fredy",
+      "Confluence: Cierre 2026-11-20 (pages/45121537), Cambios Implementados v7, página Intel (pages/45187073)"
+    ],
+    "pendiente": [
+      "Fredy: revisar precios (AA, PA o ambos)",
+      "Jefa: guardar la skill informe-precios-acrilico-polyplas"
+    ],
+    "decisiones": [
+      "Comparar Tecnomat y Bold (PA virgen) solo contra Polyplas PA; el resto contra AA y PA",
+      "Sin vigilancia diaria de precios: Intel actualiza el informe cuando la jefa lo pida"
+    ]
   }
 ]
