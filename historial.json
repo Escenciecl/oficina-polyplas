@@ -436,8 +436,10 @@
     "fecha": "2026-11-20",
     "titulo": "2026-11-20 · Despacho suspendido: la web comunica solo retiro en tienda (Claude Code)",
     "agentes_presentes": [
+      "ads",
+      "cro",
       "uxui",
-      "cro"
+      "vigilante"
     ],
     "resumen": "La jefa apagó el 19-nov el despacho gratis desde $200.000 porque por ahora no hay personal de despacho. Revisión completa del sitio: quedaban textos a la vista en receptáculos, tinas, home, términos y carrito. Se ocultaron con el interruptor del CRM; vuelven solos al prenderlo.",
     "implementado": [
@@ -449,7 +451,8 @@
     ],
     "decisiones": [
       "Tinas: envío a regiones con flete por pagar se mantiene (no lo lleva Polyplas)",
-      "Google Ads, Merchant Center, Google Maps y redes: no tocar (jefa 20-nov)"
+      "Google Ads, Merchant Center, Google Maps y redes: no tocar (jefa 20-nov)",
+      "Sin ventas web 19-20 nov: diagnóstico conjunto sin fallas técnicas; caída en 'empiezan datos' del pago (10 % vs 35 %) por solo retiro. Jefa: no cambiar nada hasta contratar despacho"
     ]
   }
 ]
