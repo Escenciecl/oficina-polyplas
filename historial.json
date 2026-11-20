@@ -431,5 +431,25 @@
       "Siguiente del plan SEO: primera página por espesor y pedido de reseñas"
     ],
     "confluence": "https://moralesgarcianat.atlassian.net/wiki/spaces/PMP/pages/44761089"
+  },
+  {
+    "fecha": "2026-11-20",
+    "titulo": "2026-11-20 · Despacho suspendido: la web comunica solo retiro en tienda (Claude Code)",
+    "agentes_presentes": [
+      "uxui",
+      "cro"
+    ],
+    "resumen": "La jefa apagó el 19-nov el despacho gratis desde $200.000 porque por ahora no hay personal de despacho. Revisión completa del sitio: quedaban textos a la vista en receptáculos, tinas, home, términos y carrito. Se ocultaron con el interruptor del CRM; vuelven solos al prenderlo.",
+    "implementado": [
+      "PR #48 (19-nov): textos de despacho gratis conectados al interruptor DESPACHO|gratis del CRM; títulos, descripciones y JSON-LD sin la promo",
+      "PR #49 (20-nov): últimos textos visibles ocultos; carrito parte con despacho gratis apagado si el CRM no responde; pago de respaldo de los cotizadores sin despacho con el interruptor apagado. Verificado en vivo"
+    ],
+    "pendiente": [
+      "Al contratar: prender interruptor en el CRM, reescribir títulos/descripciones para Google y actualizar la oficina"
+    ],
+    "decisiones": [
+      "Tinas: envío a regiones con flete por pagar se mantiene (no lo lleva Polyplas)",
+      "Google Ads, Merchant Center, Google Maps y redes: no tocar (jefa 20-nov)"
+    ]
   }
 ]

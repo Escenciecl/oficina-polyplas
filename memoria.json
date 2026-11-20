@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-11-18",
+  "actualizado": "2026-11-20",
   "sesionAnterior": {
     "fecha": "2026-11-18",
     "titulo": "Cierre 2026-11-18 · Plan SEO compras web, exp-013 pago en celular, exp-014 configurador, home arreglado",
@@ -80,6 +80,7 @@
     "fecha": "2026-11-19",
     "contexto": "Ver Cierre 2026-11-18 en Confluence y historial.json",
     "siguiente": [
+      "DESPACHO SUSPENDIDO (jefa 19-nov): por ahora no hay personal de despacho. Despacho gratis desde $200.000 APAGADO en el CRM (Despachos > Despacho gratis); la web comunica solo retiro en tienda. PR #48 (19-nov) y PR #49 (20-nov) ocultan todos los textos con data-crm-activo y verificado en vivo. AL CONTRATAR: prender el interruptor en el CRM (textos, opción de pago y servidor vuelven solos) y avisar a Claude para volver a escribir títulos/descripciones/FAQ para Google (_pagina.json), que no se ocultan solos. Tinas: 'Envío a regiones, flete por pagar' SE MANTIENE (jefa 20-nov: no lo lleva Polyplas). Google Ads, Merchant Center, Google Maps y redes: NO TOCAR (jefa 20-nov). Al volver el despacho: actualizar esta nota, historial y bandeja.",
       "PLAN SEO COMPRAS WEB (jefa 18-nov, encargado: agente SEO): meta largo plazo $1.000.000/semana en compras web orgánicas de acrílico (prom. 4 semanas). Hoy ~$138.000/semana, ~2 compras. Plan y diagnósticos en agentes/seo/PLAN_SEO_COMPRAS_WEB_2026-11-18.md. En bandeja: categoría fase 1 (sin title hasta 2-dic) y Merchant Center fase 1 (jefa: llave de acceso + vincular GA4). Contar compras orgánicas por número de pedido con atribucion.canal en pedidos_web.",
       "EXPERIMENTOS EN CURSO (medir desde 19-nov): exp-013 pago en celular (base celular: abre pago→datos OK 29 %, datos OK→compra 27 %, 8 compras/28 días) y exp-014 configurador (base celular: ve plancha→arma pedido 41 %). Revisión 2-dic, final 16-dic. Ver 'eventos' en exp-013 (pago_region ya no es acción de la persona).",
       "PENDIENTES DE LA JEFA: llave de acceso + vincular GA4 en Merchant Center; autorizar dimensión 'Motivo' en GA4; decidir si usar la imagen IA (Figma 'Polyplas · imágenes web IA').",
@@ -116,7 +117,8 @@
       "Medir SEO por compras orgánicas (promedio 4 semanas) y clics/posición de búsquedas fijas; el CTR promedio de página es solo diagnóstico",
       "Datos de facturación (dirección, región, comuna) siempre obligatorios en el pago: se necesitan para facturar (jefa 18-nov)",
       "Al probar el pago en vistas previas: nunca presionar 'Pagar'/'Confirmar pedido' (los carros de planchas no exigen términos y el botón intenta Webpay)",
-      "Despacho: se prende/apaga en el CRM (sección Despachos). Con despacho pagado apagado y pedido < $200.000, el pago entra en 'modo solo retiro' (exp-013) automáticamente; al prenderlo vuelve la pregunta de comuna. Tinas/cascos siempre con su flujo (envío a regiones)"
+      "Despacho: se prende/apaga en el CRM (sección Despachos). Con despacho pagado apagado y pedido < $200.000, el pago entra en 'modo solo retiro' (exp-013) automáticamente; al prenderlo vuelve la pregunta de comuna. Tinas/cascos siempre con su flujo (envío a regiones)",
+      "Mientras no haya personal de despacho: no comunicar despacho gratis en ninguna parte (web, Google, redes); todo texto que lo prometa va con data-crm-activo=\"DESPACHO|gratis\" hidden (jefa 19-nov)"
     ]
   }
 }

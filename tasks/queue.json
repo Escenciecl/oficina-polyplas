@@ -583,5 +583,17 @@
     "estado": "completada",
     "aprobado": "2026-11-18T18:50:00Z",
     "presentado": true
+  },
+  {
+    "id": "uxui::1795211000000",
+    "agente": "uxui",
+    "what": "Despacho suspendido: la web comunica solo retiro en tienda (PR #48 y #49)",
+    "why": "Jefa 19-nov: por ahora no hay personal de despacho; no se puede comunicar despacho gratis desde $200.000.",
+    "ficha": "Interruptor DESPACHO|gratis apagado en el CRM. PR #48 (19-nov) y PR #49 (20-nov) ocultan todos los textos con data-crm-activo=\"DESPACHO|gratis\" hidden; carrito y pago de respaldo sin despacho; el servidor rechaza pedidos con despacho. Al contratar: prender el interruptor y reescribir títulos/descripciones para Google (_pagina.json).",
+    "estado": "completada",
+    "aprobado": "2026-11-19T16:00:00Z",
+    "completado": "2026-11-20T00:00:00Z",
+    "resultado": "Verificado en vivo 20-nov: home, tinas, receptáculos y términos sin despacho gratis visible.",
+    "presentado": false
   }
 ]
